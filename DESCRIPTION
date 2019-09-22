@@ -1,0 +1,13 @@
+Package: nzsf
+Title: New Zealand Spatial Features
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Darcy",
+           family = "Webber",
+           role = c("aut", "cre"),
+           email = "darcy.webber@quantifish.co.nz",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
