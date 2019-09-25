@@ -5,9 +5,13 @@ Authors@R:
     person(given = "Darcy",
            family = "Webber",
            role = c("aut", "cre"),
-           email = "darcy.webber@quantifish.co.nz",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
+           email = "darcy.webber@quantifish.co.nz")
 Description: What the package does (one paragraph).
 License: What license it uses
 Encoding: UTF-8
+Depends:
+    tidyverse,
+    sf,
+    ggspatial,
+    rmapshaper
 LazyData: true

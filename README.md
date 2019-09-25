@@ -1,2 +1,3 @@
-# nz_sf
+# nzsf
+
 New Zealand Spatial Features
