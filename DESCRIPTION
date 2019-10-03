@@ -11,7 +11,9 @@ License: What license it uses
 Encoding: UTF-8
 Depends:
     tidyverse,
+    raster,
     sf,
     ggspatial,
-    rmapshaper
+    rmapshaper,
+    viridis
 LazyData: true
