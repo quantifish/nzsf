@@ -29,12 +29,13 @@ plot_example <- function () {
   rpnts <- st_sample(CRA, size = 10000) %>% st_sf() %>% mutate(poop = rnorm(1:n()))
   ggplot() +
     plot_raster(data = rpnts, field = "poop") +
-    scale_fill_viridis()
+    scale_fill_viridis() +
+    plot_nz(fill = "black", colour = "black", size = 0.3)
     
   
   ggplot() +
     # geom_sf(data = sf_depth, aes(colour = rev(depth))) +
-    #plot_depth(aes(colour = depth), linetype = "solid") +
+    plot_depth(aes(colour = depth), linetype = "solid") +
     geom_sf(data = CRA, fill = NA) +
     geom_sf_label(data = lab1, aes(label = area)) +
     # plot_cra_stats(fill = NA) +
@@ -55,62 +56,14 @@ plot_example <- function () {
 
 
 plot_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100, ...) {
-  #r_empty <- raster(data, nrow = nrow, ncol = ncol)
   r_empty <- raster(data, nrow = nrow, ncol = ncol)
-  #projection(r_empty) <- st_crs(data)
   ras <- rasterize(x = data, y = r_empty, field = field, fun = fun)
   gg_ras <- data.frame(rasterToPoints(ras)) %>% mutate(layer = ifelse(layer == 0, NA, layer))
   
   geom_raster(data = gg_ras, aes(x = x, y = y, fill = layer), ...)
-  #scale_fill_viridis(ctitle, direction = 1, option = "C", na.value = "grey90")
 }
 
 
-get_qma <- function(qma = "CRA",
-                    proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
-  if (qma %in% c("CRA")) {
-    shp <- "SpinyRedRockLobster_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (qma %in% c("PHC")) {
-    shp <- "QMA_Packhorse_rocklobster_region"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = CODE)
-  }
-  if (qma %in% c("PAU")) {
-    shp <- "Paua_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (qma %in% c("COC")) {
-    shp <- "Cockle_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (qma %in% c("HAK")) {
-    shp <- "HAKE_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (qma %in% c("HOK")) {
-    shp <- "HOKI_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (qma %in% c("LIN")) {
-    shp <- "LING_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
-  }
-  if (is.null(proj)) {
-    sf_x
-  } else {
-    sf_x %>% 
-      st_transform(crs = proj, check = TRUE) %>% 
-      st_union(by_feature = TRUE)
-  }
-}
 
 get_marine_reserves <- function() {
   shp <- "doc-marine-reserves"

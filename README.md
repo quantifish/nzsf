@@ -20,4 +20,23 @@ New Zealand Spatial Features (nzsf) is a package for plotting shapefiles. For ex
         coord_sf(xlim = bbox[c(1,3)], bbox[c(2,4)]) +
         theme_bw()
 
-In this example New Zealands marine reserves, rock lobster Quota Management Areas (QMAs), and the New Zealand coastline is plotted. A north arrow and a scale is then added. And finally, the figure is retricted to the North Island only using the bounding box (`bbox`).
+In this example New Zealands marine reserves, rock lobster Quota Management Areas (QMAs), and the New Zealand coastline is plotted. A north arrow and a scale is then added. And finally, the figure is retricted to the North Island only using the bounding box (`bbox`). The functions `get_qma` and `plot_qma` can plot QMA boundaries for many New Zealand shellfish stocks including:
+
+ * CRA - red rock lobster (*Jasus edwardsii*)
+ * PHC - packhorse rock lobster (*Sag*)
+ * COC - cockle
+ * PPI - pipi
+ * PAU - paua
+ * SCA - scallop
+ 
+ And finish:
+ 
+ * HAK - hake
+ * HOK - hoki
+ * LIN - ling
+ * ORH - orange roughy
+ * OEO - oreo
+ * SWA - silver warehou
+ * SBW - southern blue whiting
+
+If you would like additional stocks added just let me know.
