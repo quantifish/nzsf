@@ -1,5 +1,12 @@
-# get_qma
-#
+#' Get a Quota Managemetn Area.
+#' 
+#' @param qma A Quota Managemetn Area (QMA)
+#' @param proj The projection to use.
+#' @return A QMA.
+#' @examples
+#' get_qma(qma = "CRA")
+#' get_qma(qma = "HOK")
+#' 
 get_qma <- function(qma = "CRA",
                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
 
@@ -79,4 +86,20 @@ get_qma <- function(qma = "CRA",
       st_transform(crs = proj, check = TRUE) %>% 
       st_union(by_feature = TRUE)
   }
+}
+
+
+#' Get a Quota Managemetn Area.
+#' 
+#' @param qma A Quota Managemetn Area (QMA)
+#' @param proj The projection to use.
+#' @return A ggplot of the selected QMA.
+#' @examples
+#' ggplot() + 
+#'   plot_qma(qma = "CRA")
+#' 
+plot_qma <- function(qma = "CRA",
+                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", ...) {
+  x <- get_qma(qma = qma) %>% st_transform(crs = proj, check = TRUE)
+  geom_sf(data = x, ...)
 }
