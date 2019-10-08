@@ -1,5 +1,5 @@
 ---
-title: "nzsf"
+title: "New Zealand Spatial Features"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{nzsf}
@@ -14,13 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(nzsf)
-```
-
 # Introduction
 
-A basic map of the New Zealand coastline with a north arrow and a scale bar can be built using:
+The `nzsf` package relies heavily on the R packages `tidyverse` and `sf`. Maps can be built up in layers in the same way as `ggplot2`. A basic map of the New Zealand coastline with a north arrow and a scale bar can be built using:
+
+```{r setup}
+library(nzsf)
+theme_set(theme_bw())
+```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 ggplot() +
@@ -29,7 +30,7 @@ ggplot() +
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
-Maps can be built up in layers in the same way as `ggplot2`:
+Layers such as depth, marine reserves, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 proj <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
@@ -40,9 +41,26 @@ bbox <- get_coast() %>%
   st_bbox()
 
 ggplot() +
-  plot_marine_reserves(fill = "green", colour = "green") +
+  plot_depth(colour = "lightblue") +
+  plot_marine_reserves(fill = "red", colour = "red") +
   plot_qma(qma = "CRA", fill = NA) +
-  plot_nz(fill = "black", colour = "black", size = 0.3) +
+  plot_nz(fill = "forestgreen", colour = NA, size = 0.3) +
+  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  coord_sf(xlim = bbox[c(1,3)], ylim = bbox[c(2,4)])
+```
+
+Adding labels can be a little tricky but can be done with:
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+sf_cra <- get_qma("CRA") %>% st_transform(crs = proj, check = TRUE)
+sf_coast <- get_coast() %>% st_transform(crs = proj, check = TRUE)
+lab_cra <- st_difference(sf_cra, st_combine(sf_coast)) %>% st_point_on_surface()
+
+ggplot() +
+  plot_qma(qma = "CRA", fill = NA) +
+  plot_nz(fill = "forestgreen", colour = NA, size = 0.3) +
+  geom_sf_label(data = lab_cra, aes(label = area)) +
   annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1,3)], ylim = bbox[c(2,4)])
