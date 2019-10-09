@@ -17,7 +17,10 @@
 # RStudio files
 .Rproj.user/
 
-# produced vignettes
+# Raw data files
+data-raw/*.zip
+
+# Produced vignettes
 vignettes/*.html
 vignettes/*.pdf
 
