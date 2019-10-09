@@ -1,24 +1,10 @@
----
-title: "New Zealand Spatial Features"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{nzsf}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, include = FALSE}
+## ---- include = FALSE----------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
 
-# Introduction
-
-The `nzsf` package relies heavily on the R packages `tidyverse` and `sf`. Maps can be built up in layers in the same way as `ggplot2`. A basic map of the New Zealand coastline with a north arrow and a scale bar can be built using:
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 library(nzsf)
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
@@ -26,11 +12,8 @@ ggplot() +
   plot_nz(resolution = "low", fill = "black", colour = "black", size = 0.3) +
   annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
-```
 
-Layers such as depth, marine reserves, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions:
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 proj <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 
 bbox <- get_coast() %>% 
@@ -46,11 +29,8 @@ ggplot() +
   annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
-```
 
-Adding labels can be a little tricky but can be done with:
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 sf_jma <- get_qma("JMA")
 sf_coast <- get_coast() %>% 
   st_transform(crs = proj, check = TRUE) %>% 
@@ -66,9 +46,8 @@ ggplot() +
   geom_sf_label(data = lab, aes(label = QMA)) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
-```
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 data("Gisborne_TToR_Habitats")
 Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% st_transform(crs = proj, check = TRUE)
 
@@ -85,4 +64,4 @@ ggplot() +
   plot_nz(resolution = "med", fill = "black", colour = NA, size = 0.3) +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
-```
+

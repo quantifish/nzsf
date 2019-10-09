@@ -4,7 +4,10 @@
 \alias{get_depth}
 \title{Get depth polylines around New Zealand.}
 \usage{
-get_depth()
+get_depth(resolution = "low")
+}
+\arguments{
+\item{resolution}{the resolution}
 }
 \value{
 New Zealands depth polylines.
@@ -13,6 +16,6 @@ New Zealands depth polylines.
 Get depth polylines around New Zealand.
 }
 \examples{
-get_depth()
+get_depth(resolution = "low")
 
 }

@@ -20,6 +20,9 @@ Get a Quota Managemetn Area.
 }
 \examples{
 get_qma(qma = "CRA")
+get_qma(qma = "PHC")
+get_qma(qma = "COC")
 get_qma(qma = "HOK")
+get_qma(qma = "HAK")
 
 }

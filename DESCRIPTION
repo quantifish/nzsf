@@ -10,9 +10,10 @@ Description: What the package does (one paragraph).
 License: What license it uses
 Encoding: UTF-8
 Depends:
-    tidyverse,
     raster,
+    tidyverse,
     sf,
+    lwgeom,
     ggspatial,
     rmapshaper,
     viridis

@@ -6,10 +6,12 @@
 \usage{
 
   plot_depth(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
-  ...)
+  resolution = "low", ...)
 }
 \arguments{
 \item{proj}{The projection to use.}
+
+\item{resolution}{the resolution}
 }
 \value{
 ggplot of New Zealands depth polylines.
@@ -20,5 +22,8 @@ Plot depth polylines around New Zealand.
 \examples{
 ggplot() + 
   plot_depth()
+ ggplot() + 
+  plot_depth(resolution = "high") +
+  plot_nz()
 
 }

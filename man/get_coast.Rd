@@ -4,10 +4,12 @@
 \alias{get_coast}
 \title{Get the New Zealand coastline.}
 \usage{
-get_coast(keep = 0.05)
+get_coast(resolution = "low", keep = 1)
 }
 \arguments{
-\item{keep}{proportion of points to retain (0-1; default 0.05)}
+\item{resolution}{the resolution}
+
+\item{keep}{proportion of points to retain (0-1; default 1)}
 }
 \value{
 New Zealands coastline.
@@ -16,6 +18,6 @@ New Zealands coastline.
 Get the New Zealand coastline.
 }
 \examples{
-get_coast(keep = 0.25)
+get_coast(resolution = "low")
 
 }

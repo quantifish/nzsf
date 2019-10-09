@@ -1,19 +1,20 @@
 #' Get Marine Reserves.
 #' 
 #' @return New Zealands marine reserves.
+#' @export
 #' @examples
 #' get_marine_reserves()
 #' 
 get_marine_reserves <- function() {
-  shp <- "doc-marine-reserves"
-  dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-  x <- st_read(dsn = dsn, layer = shp)
-  x
+  data("doc_marine_reserves")
+  x <- doc_marine_reserves
+  return(x)
 }
 
 #' Plot Marine Reserves.
 #' 
 #' @return ggplot of New Zealand's marine reserves.
+#' @export
 #' @examples
 #' plot_marine_reserves()
 #' 
