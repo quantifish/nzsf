@@ -14,6 +14,10 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
+# TO ADD
+# FisheriesManagementAreas
+
+# Various ---
 
 nz_fisheries_general_statistical_areas <- unzip_and_clean("data-raw/kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
   dplyr::select(-Descriptio)
@@ -42,6 +46,8 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("data-raw/lds-depth
   rename(depth = VALDCO)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
+# New Zealand coastline ---
+
 nz_coastlines_and_islands_polygons_topo_150k <- unzip_and_clean("data-raw/lds-nz-coastlines-and-islands-polygons-topo-150k-SHP.zip")
 use_data(nz_coastlines_and_islands_polygons_topo_150k, overwrite = TRUE)
 
@@ -54,36 +60,73 @@ use_data(nz_coastlines_and_islands_polygons_topo_1500k, overwrite = TRUE)
 nz_coastlines_topo_150k <- unzip_and_clean("data-raw/lds-nz-coastlines-topo-150k-SHP.zip")
 use_data(nz_coastlines_topo_150k, overwrite = TRUE)
 
-# lds-nz-coastlines-topo-1250k-SHP
-# lds-nz-coastlines-topo-1500k-SHP
+nz_coastlines_topo_1250k <- unzip_and_clean("data-raw/lds-nz-coastlines-topo-1250k-SHP.zip")
+use_data(nz_coastlines_topo_1250k, overwrite = TRUE)
 
+nz_coastlines_topo_1500k <- unzip_and_clean("data-raw/lds-nz-coastlines-topo-1500k-SHP.zip")
+use_data(nz_coastlines_topo_1500k, overwrite = TRUE)
 
-# Quota Management Areas (QMAs) ---
+# Finfish Quota Management Areas (QMAs) ---
+
+HAKE_QMA <- unzip_and_clean("data-raw/HAKE_QMA.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(HAKE_QMA, overwrite = TRUE)
+
+HOKI_QMA <- unzip_and_clean("data-raw/HOKI_QMA.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(HOKI_QMA, overwrite = TRUE)
 
 JackMackerel_QMA <- unzip_and_clean("data-raw/JackMackerel_QMA.zip") %>% 
   rename(QMA = FishstockC)
 use_data(JackMackerel_QMA, overwrite = TRUE)
 
+LING_QMA <- unzip_and_clean("data-raw/LING_QMA.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(LING_QMA, overwrite = TRUE)
+
+OrangeRoughy_QMA <- unzip_and_clean("data-raw/OrangeRoughy_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(OrangeRoughy_QMA, overwrite = TRUE)
+
+OREO_QMA <- unzip_and_clean("data-raw/OREO_QMA.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(OREO_QMA, overwrite = TRUE)
+
+SilverWarehou_QMA <- unzip_and_clean("data-raw/SilverWarehou_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(SilverWarehou_QMA, overwrite = TRUE)
+
+SouthernBlueWhiting_QMA <- unzip_and_clean("data-raw/SouthernBlueWhiting_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(SouthernBlueWhiting_QMA, overwrite = TRUE)
+
+# Shellfish Quota Management Areas (QMAs) ---
+
+Cockle_QMA <- unzip_and_clean("data-raw/Cockle_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(Cockle_QMA, overwrite = TRUE)
+
+Paua_QMA <- unzip_and_clean("data-raw/Paua_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(Paua_QMA, overwrite = TRUE)
+
+Pipi_QMA <- unzip_and_clean("data-raw/Pipi_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(Pipi_QMA, overwrite = TRUE)
+
+Scallop_QMA <- unzip_and_clean("data-raw/Scallop_QMAs.zip") %>% 
+  rename(QMA = FishstockC)
+use_data(Scallop_QMA, overwrite = TRUE)
+
+# Rock lobsters ---
+
+PackhorseRockLobster_QMA <- unzip_and_clean("data-raw/QMA_Packhorse_rocklobster_region.zip") %>% 
+  rename(QMA = CODE)
+use_data(PackhorseRockLobster_QMA, overwrite = TRUE)
+
 SpinyRedRockLobster_QMA <- unzip_and_clean("data-raw/SpinyRedRockLobster_QMAs.zip") %>% 
   rename(QMA = FishstockC)
 use_data(SpinyRedRockLobster_QMA, overwrite = TRUE)
-
-# Scallop_QMAs
-# OrangeRoughy_QMAs
-# OREO_QMA
-# Paua_QMAs
-# Pipi_QMAs
-# HAKE_QMA
-# HOKI_QMA
-# LING_QMA
-# SilverWarehou_QMAs
-# SouthernBlueWhiting_QMAs
-# Cockle_QMAs
-# QMA_Packhorse_rocklobster_region
-
-# FisheriesManagementAreas
-
-# Rock lobster specific stuff ---
 
 rock_lobster_stat_areas <- unzip_and_clean("data-raw/rock_lobster_stat_areas.zip") %>% 
   rename(area = AREA_CODE) %>%
@@ -103,6 +146,8 @@ use_data(Gisborne_TToR_Habitats, overwrite = TRUE)
 Gisborne_TToR_Reefs <- unzip_and_clean("data-raw/Gisborne_TToR_Reefs.zip")
 use_data(Gisborne_TToR_Reefs, overwrite = TRUE)
 
+Rocky_reef_National_NZ <- unzip_and_clean("data-raw/Rocky_reef_National_NZ.zip")
+use_data(Rocky_reef_National_NZ, overwrite = TRUE)
 
 
 

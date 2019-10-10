@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_qma.R
 \name{get_qma}
 \alias{get_qma}
-\title{Get a Quota Managemetn Area.}
+\title{Get a Quota Managemetn Area}
 \usage{
 get_qma(qma = "CRA",
   proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
 }
 \arguments{
-\item{qma}{A Quota Managemetn Area (QMA)}
+\item{qma}{A Quota Managemetn Area (QMA).}
 
 \item{proj}{The projection to use.}
 }
@@ -16,7 +16,7 @@ get_qma(qma = "CRA",
 A QMA.
 }
 \description{
-Get a Quota Managemetn Area.
+Get a Quota Managemetn Area
 }
 \examples{
 get_qma(qma = "CRA")

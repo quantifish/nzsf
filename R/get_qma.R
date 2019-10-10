@@ -1,6 +1,6 @@
-#' Get a Quota Managemetn Area.
+#' Get a Quota Managemetn Area
 #' 
-#' @param qma A Quota Managemetn Area (QMA)
+#' @param qma A Quota Managemetn Area (QMA).
 #' @param proj The projection to use.
 #' @return A QMA.
 #' @export
@@ -15,7 +15,7 @@ get_qma <- function(qma = "CRA",
                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
 
   # Shellfish
-  if (qma %in% c("CRA")) {
+  if (qma %in% c("CRA", "crayfish")) {
     data("SpinyRedRockLobster_QMA")
     sf_x <- SpinyRedRockLobster_QMA
     # shp <- "SpinyRedRockLobster_QMAs"
@@ -23,19 +23,16 @@ get_qma <- function(qma = "CRA",
     # sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
   }
   if (qma %in% c("PHC")) {
-    shp <- "QMA_Packhorse_rocklobster_region"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = CODE)
+    data("PackhorseRockLobster_QMA")
+    sf_x <- PackhorseRockLobster_QMA
   }
   if (qma %in% c("COC")) {
-    shp <- "Cockle_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("Cockle_QMA")
+    sf_x <- Cockle_QMA
   }
   if (qma %in% c("PAU")) {
-    shp <- "Paua_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("Paua_QMA")
+    sf_x <- Paua_QMA
   }
   if (qma %in% c("PPI")) {
     shp <- "Pipi_QMAs"

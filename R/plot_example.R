@@ -3,6 +3,17 @@
 theme_nz <- theme_bw()
 
 
+
+plot_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100, ...) {
+  r_empty <- raster(data, nrow = nrow, ncol = ncol)
+  ras <- rasterize(x = data, y = r_empty, field = field, fun = fun)
+  gg_ras <- data.frame(rasterToPoints(ras)) %>% mutate(layer = ifelse(layer == 0, NA, layer))
+  
+  geom_raster(data = gg_ras, aes(x = x, y = y, fill = layer), ...)
+}
+
+
+
 # all
 #
 plot_example <- function () {
@@ -51,21 +62,7 @@ plot_example <- function () {
   #theme(axis.title = element_blank(), panel.grid = element_line(color = "darkgrey", linetype = 2))
 }
 
-
-# sf_coast <- st_read(dsn = "inst/extdata", layer = "nz-coastlines-and-islands-polygons-topo-150k") %>% 
-#   st_transform(crs = proj) %>%
-#   rmapshaper::ms_simplify(keep = 0.001, keep_shapes = FALSE)
-# depth_sf_km <- st_read(dsn = "inst/extdata", layer = "depth-contour-polyline-hydro-1350k-11500k") %>%
-#   filter(VALDCO %in% c(200)) %>%
-#   rename(depth = VALDCO) %>%
-#   st_transform(crs = proj, check = TRUE)
-# sf_qma <- st_read(dsn = "inst/extdata", layer = "QMA_Spiny_Red_Rocklobster") %>% st_transform(crs = proj)
-# sf_stat <- st_read(dsn = "inst/extdata", layer = "rock_lobster_stat_areas") %>% st_transform(crs = proj)
-# 
-# sf_lab <- st_difference(st_cast(sf_qma, "MULTIPOLYGON"), st_combine(sf_coast)) %>%
-#   #st_centroid() %>% 
-#   st_point_on_surface() %>%
-#   select(CODE)
+# sf_lab <- st_difference(st_cast(sf_qma, "MULTIPOLYGON"), st_combine(sf_coast)) %>% st_centroid() %>% st_point_on_surface() %>% select(CODE)
 # 
 # ggplot() + 
 #   #geom_sf(data = depth_sf_km, colour = "blue", linetype = "dotted") +
