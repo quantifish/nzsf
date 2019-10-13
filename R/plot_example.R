@@ -39,18 +39,18 @@ plot_example <- function () {
   ggplot() +
     plot_raster(data = rpnts, field = "poop") +
     scale_fill_viridis() +
-    plot_nz(fill = "black", colour = "black", size = 0.3)
+    plot_coast(fill = "black", colour = "black", size = 0.3)
     
   
   ggplot() +
     # geom_sf(data = sf_depth, aes(colour = rev(depth))) +
     #plot_depth(aes(colour = depth), linetype = "solid") +
-    geom_sf(data = CRA, fill = NA) +
-    geom_sf_label(data = lab1, aes(label = area)) +
+    #geom_sf(data = CRA, fill = NA) +
+    #geom_sf_label(data = lab1, aes(label = area)) +
     # plot_cra_stats(fill = NA) +
     plot_marine_reserves(fill = "red", colour = "red") +
-    plot_nz(fill = "black", colour = "black", size = 0.3) +
-    coord_sf(xlim = bbox[c(1,3)], bbox[c(2,4)]) +
+    plot_coast(fill = "black", colour = "black", size = 0.3) +
+    #coord_sf(xlim = bbox[c(1,3)], bbox[c(2,4)]) +
     annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
     annotation_scale(location = "br", unit_category = "metric")
 
@@ -75,3 +75,4 @@ plot_example <- function () {
 #   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
 #   annotation_scale(location = "br", unit_category = "metric") +
 #   theme(axis.title = element_blank(), panel.grid = element_line(color = "darkgrey", linetype = 2))
+
