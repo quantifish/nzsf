@@ -10,7 +10,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-7
             - libudunits2-dev
             - libv8-dev
             - libgdal1-dev
@@ -18,10 +17,3 @@ matrix:
             - libgeos-dev
             - libjq-dev
             - libprotobuf-dev
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
-
-before_install:
-  - mkdir -p ~/.R/
-  - echo "CXX14 = g++-7 -fPIC" >> ~/.R/Makevars
-  - echo "CXX14FLAGS = -mtune=native -march=native -Wno-unused-variable -Wno-unused-function -Wno-unused-local-typedefs -Wno-ignored-attributes -Wno-deprecated-declarations -Wno-attributes -O3" >> ~/.R/Makevars
