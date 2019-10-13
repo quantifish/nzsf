@@ -5,7 +5,9 @@
 #' @return A FMA.
 #' @export
 #' @examples
-#' get_statistical_areas(area = "CRA")
+#' x <- get_statistical_areas(area = "CRA")
+#' ggplot() +
+#'   geom_sf(data = x, fill = NA)
 #' 
 get_statistical_areas <- function(area = "CRA",
                                   proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {

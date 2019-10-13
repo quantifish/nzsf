@@ -21,7 +21,7 @@ For example:
     ggplot() +
         plot_marine_reserves(fill = "green", colour = "green") +
         plot_qma(qma = "CRA", fill = NA) +
-        plot_nz(fill = "black", colour = "black", size = 0.3) +
+        plot_coast(fill = "black", colour = "black", size = 0.3) +
         annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
         annotation_scale(location = "br", unit_category = "metric") +
         coord_sf(xlim = bbox[c(1,3)], ylim = bbox[c(2,4)]) +

@@ -2,7 +2,7 @@
 #' 
 #' @param qma A Quota Managemetn Area (QMA).
 #' @param proj The projection to use.
-#' @return An \code{sf} \cod{data.frame} of QMA polygons.
+#' @return An \code{sf} \code{data.frame} of QMA polygons.
 #' @export
 #' @examples
 #' x <- get_qma(qma = "CRA")

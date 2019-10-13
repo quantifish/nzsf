@@ -4,7 +4,9 @@
 #' @return New Zealands depth polylines.
 #' @export
 #' @examples
-#' get_depth(resolution = "low")
+#' x <- get_depth(resolution = "low")
+#' ggplot() +
+#'   geom_sf(data = x, colour = "lightblue)
 #' 
 get_depth <- function(resolution = "low") {
   if (resolution %in% c("high", "122k_190k")) {
@@ -31,7 +33,7 @@ get_depth <- function(resolution = "low") {
 #'   plot_depth()
 #'  ggplot() + 
 #'   plot_depth(resolution = "high") +
-#'   plot_nz()
+#'   plot_coast()
 #' 
 plot_depth <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", 
                        resolution = "low", ...) {
