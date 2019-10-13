@@ -11,3 +11,4 @@ addons:
       - libgeos-dev
       - libjq-dev
       - libprotobuf-dev
+      - protobuf-compiler
