@@ -2,10 +2,12 @@
 #' 
 #' @param qma A Quota Managemetn Area (QMA).
 #' @param proj The projection to use.
-#' @return QMA polygons.
+#' @return An \code{sf} \cod{data.frame} of QMA polygons.
 #' @export
 #' @examples
-#' get_qma(qma = "CRA")
+#' x <- get_qma(qma = "CRA")
+#' ggplot() +
+#'   geom_sf(data = x, fill = NA)
 #' 
 get_qma <- function(qma = "CRA",
                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
@@ -31,12 +33,12 @@ get_qma <- function(qma = "CRA",
     sf_x <- Paua_QMA
   }
   if (qma %in% c("PPI")) {
-    data("Pipi_QMAs")
-    sf_x <- Pipi_QMAs
+    data("Pipi_QMA")
+    sf_x <- Pipi_QMA
   }
   if (qma %in% c("SCA")) {
-    data("Scallop_QMAs")
-    sf_x <- Scallop_QMAs
+    data("Scallop_QMA")
+    sf_x <- Scallop_QMA
   }
   
   # Finfish
@@ -61,16 +63,16 @@ get_qma <- function(qma = "CRA",
     sf_x <- OREO_QMA
   }
   if (qma %in% c("ORH")) {
-    data("OrangeRoughy_QMAs")
-    sf_x <- OrangeRoughy_QMAs
+    data("OrangeRoughy_QMA")
+    sf_x <- OrangeRoughy_QMA
   }
   if (qma %in% c("SBW")) {
-    data("SouthernBlueWhiting_QMAs")
-    sf_x <- SouthernBlueWhiting_QMAs
+    data("SouthernBlueWhiting_QMA")
+    sf_x <- SouthernBlueWhiting_QMA
   }
   if (qma %in% c("SWA")) {
-    data("SilverWarehou_QMAs")
-    sf_x <- SilverWarehou_QMAs
+    data("SilverWarehou_QMA")
+    sf_x <- SilverWarehou_QMA
   }
   
   if (is.null(proj)) {

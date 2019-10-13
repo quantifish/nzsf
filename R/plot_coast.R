@@ -5,13 +5,15 @@
 #' @return New Zealands coastline.
 #' @export
 #' @examples
-#' get_coast(resolution = "low")
+#' x <- get_coast(resolution = "low")
+#' ggplot() +
+#'   geom_sf(data = x, fill = "forestgreen")
 #' 
 get_coast <- function(resolution = "low", keep = 1) {
-  if (resolution %in% c("high", "150k")) {
+  if (resolution %in% c("h", "high", "150k")) {
     data("nz_coastlines_and_islands_polygons_topo_150k")
     x <- nz_coastlines_and_islands_polygons_topo_150k
-  } else if (resolution %in% c("med", "1250k")) {
+  } else if (resolution %in% c("m", "med", "1250k")) {
     data("nz_coastlines_and_islands_polygons_topo_1250k")
     x <- nz_coastlines_and_islands_polygons_topo_1250k
   } else {
@@ -31,7 +33,7 @@ get_coast <- function(resolution = "low", keep = 1) {
 #' @export
 #' @examples
 #' ggplot() +
-#'   plot_nz()
+#'   plot_coast()
 #' 
 plot_coast <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", 
                        resolution = "low", keep = 1, ...) {

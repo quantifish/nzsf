@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_qma.R
 \name{get_qma}
 \alias{get_qma}
-\title{Get a Quota Managemetn Area}
+\title{Get Quota Management Area (QMA) polygons}
 \usage{
 get_qma(qma = "CRA",
   proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
@@ -13,16 +13,14 @@ get_qma(qma = "CRA",
 \item{proj}{The projection to use.}
 }
 \value{
-A QMA.
+An \code{sf} \cod{data.frame} of QMA polygons.
 }
 \description{
-Get a Quota Managemetn Area
+Get Quota Management Area (QMA) polygons
 }
 \examples{
-get_qma(qma = "CRA")
-get_qma(qma = "PHC")
-get_qma(qma = "COC")
-get_qma(qma = "HOK")
-get_qma(qma = "HAK")
+x <- get_qma(qma = "CRA")
+ggplot() +
+  geom_sf(data = x, fill = NA)
 
 }

@@ -18,6 +18,8 @@ New Zealands coastline.
 Get the New Zealand coastline.
 }
 \examples{
-get_coast(resolution = "low")
+x <- get_coast(resolution = "low")
+ggplot() +
+  geom_sf(data = x, fill = "forestgreen")
 
 }

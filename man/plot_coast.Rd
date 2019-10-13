@@ -23,6 +23,6 @@ Plot the New Zealand coastline.
 }
 \examples{
 ggplot() +
-  plot_nz()
+  plot_coast()
 
 }
