@@ -1,19 +1,13 @@
 language: r
 sudo: false
 cache: packages
-
-matrix:
-  include:
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - libudunits2-dev
-            - libv8-dev
-            - libgdal1-dev
-            - libproj-dev
-            - libgeos-dev
-            - libjq-dev
-            - libprotobuf-dev
+addons:
+  apt:
+    packages:
+      - libudunits2-dev
+      - libv8-dev
+      - libgdal1-dev
+      - libproj-dev
+      - libgeos-dev
+      - libjq-dev
+      - libprotobuf-dev
