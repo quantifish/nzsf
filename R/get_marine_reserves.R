@@ -11,8 +11,11 @@ get_marine_reserves <- function() {
   return(x)
 }
 
+
 #' Plot Marine Reserves.
 #' 
+#' @param proj The projection to use.
+#' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealand's marine reserves.
 #' @export
 #' @examples

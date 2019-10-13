@@ -1,6 +1,6 @@
 #' Get Statistical Areas.
 #' 
-#' @param qma A Quota Managemetn Area (QMA)
+#' @param area A Quota Managemetn Area (QMA)
 #' @param proj The projection to use.
 #' @return A FMA.
 #' @export
@@ -34,6 +34,7 @@ get_statistical_areas <- function(area = "CRA",
 #' 
 #' @param area A Quota Managemetn Area (QMA)
 #' @param proj The projection to use.
+#' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
 #' @export
 #' @examples

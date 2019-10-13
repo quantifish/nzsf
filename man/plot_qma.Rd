@@ -12,6 +12,8 @@ plot_qma(qma = "CRA",
 \item{qma}{A Quota Managemetn Area (QMA)}
 
 \item{proj}{The projection to use.}
+
+\item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
 A ggplot of the selected QMA.

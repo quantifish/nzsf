@@ -14,6 +14,8 @@
 \item{resolution}{the resolution}
 
 \item{keep}{proportion of points to retain (0-1; default 0.05)}
+
+\item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
 ggplot of New Zealands coastline.

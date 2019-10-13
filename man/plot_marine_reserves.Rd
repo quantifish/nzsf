@@ -8,6 +8,11 @@
   plot_marine_reserves(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
   ...)
 }
+\arguments{
+\item{proj}{The projection to use.}
+
+\item{...}{Other arguments passed on to \code{geom_sf}.}
+}
 \value{
 ggplot of New Zealand's marine reserves.
 }

@@ -11,7 +11,9 @@
 \arguments{
 \item{proj}{The projection to use.}
 
-\item{resolution}{the resolution}
+\item{resolution}{the resolution.}
+
+\item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
 ggplot of New Zealands depth polylines.

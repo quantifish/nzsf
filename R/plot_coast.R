@@ -29,6 +29,7 @@ get_coast <- function(resolution = "low", keep = 1) {
 #' @param proj The projection to use.
 #' @param resolution the resolution
 #' @param keep proportion of points to retain (0-1; default 0.05)
+#' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands coastline.
 #' @export
 #' @examples
