@@ -4,13 +4,16 @@
 \alias{get_statistical_areas}
 \title{Get Statistical Areas.}
 \usage{
-get_statistical_areas(area = "CRA")
+get_statistical_areas(area = "CRA",
+  proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
 }
 \arguments{
+\item{proj}{The projection to use.}
+
 \item{qma}{A Quota Managemetn Area (QMA)}
 }
 \value{
-A QMA.
+A FMA.
 }
 \description{
 Get Statistical Areas.

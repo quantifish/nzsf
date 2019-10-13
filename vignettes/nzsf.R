@@ -42,6 +42,7 @@ lab <- st_difference(sf_jma, sf_coast) %>%
 
 ggplot() +
   plot_qma(qma = "JMA", fill = NA) +
+  plot_statistical_areas(area = "JMA", fill = NA) +
   plot_coast(fill = "forestgreen", colour = NA, size = 0.3) +
   geom_sf_label(data = lab, aes(label = QMA)) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_fancy_orienteering) +

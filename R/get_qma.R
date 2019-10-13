@@ -1,15 +1,11 @@
-#' Get a Quota Managemetn Area
+#' Get Quota Management Area (QMA) polygons
 #' 
 #' @param qma A Quota Managemetn Area (QMA).
 #' @param proj The projection to use.
-#' @return A QMA.
+#' @return QMA polygons.
 #' @export
 #' @examples
 #' get_qma(qma = "CRA")
-#' get_qma(qma = "PHC")
-#' get_qma(qma = "COC")
-#' get_qma(qma = "HOK")
-#' get_qma(qma = "HAK")
 #' 
 get_qma <- function(qma = "CRA",
                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
@@ -35,14 +31,12 @@ get_qma <- function(qma = "CRA",
     sf_x <- Paua_QMA
   }
   if (qma %in% c("PPI")) {
-    shp <- "Pipi_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("Pipi_QMAs")
+    sf_x <- Pipi_QMAs
   }
   if (qma %in% c("SCA")) {
-    shp <- "Scallop_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("Scallop_QMAs")
+    sf_x <- Scallop_QMAs
   }
   
   # Finfish
@@ -51,39 +45,32 @@ get_qma <- function(qma = "CRA",
     sf_x <- JackMackerel_QMA
   }
   if (qma %in% c("HAK")) {
-    shp <- "HAKE_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("HAKE_QMA")
+    sf_x <- HAKE_QMA
   }
   if (qma %in% c("HOK")) {
-    shp <- "HOKI_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("HOKI_QMA")
+    sf_x <- HOKI_QMA
   }
   if (qma %in% c("LIN")) {
-    shp <- "LING_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("LING_QMA")
+    sf_x <- LING_QMA
   }
   if (qma %in% c("OEO")) {
-    shp <- "OREO_QMA"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("OREO_QMA")
+    sf_x <- OREO_QMA
   }
   if (qma %in% c("ORH")) {
-    shp <- "OrangeRoughy_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("OrangeRoughy_QMAs")
+    sf_x <- OrangeRoughy_QMAs
   }
   if (qma %in% c("SBW")) {
-    shp <- "SouthernBlueWhiting_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("SouthernBlueWhiting_QMAs")
+    sf_x <- SouthernBlueWhiting_QMAs
   }
   if (qma %in% c("SWA")) {
-    shp <- "SilverWarehou_QMAs"
-    dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    data("SilverWarehou_QMAs")
+    sf_x <- SilverWarehou_QMAs
   }
   
   if (is.null(proj)) {
