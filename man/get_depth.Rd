@@ -15,7 +15,3 @@ New Zealands depth polylines.
 \description{
 Get depth polylines around New Zealand.
 }
-\examples{
-get_depth(resolution = "low")
-
-}

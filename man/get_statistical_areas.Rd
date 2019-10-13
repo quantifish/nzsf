@@ -19,6 +19,8 @@ A FMA.
 Get Statistical Areas.
 }
 \examples{
-get_statistical_areas(area = "CRA")
+x <- get_statistical_areas(area = "CRA")
+ggplot() +
+  geom_sf(data = x, fill = NA)
 
 }

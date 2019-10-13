@@ -4,14 +4,18 @@ test_that("number of QMAs", {
   
   expect_equal(nrow(get_qma("COC")), 13)
   expect_equal(nrow(get_qma("CRA")), 10)
-  expect_equal(nrow(get_qma("PHC")), 1)
   expect_equal(nrow(get_qma("PAU")), 11)
+  expect_equal(nrow(get_qma("PHC")), 1)
   expect_equal(nrow(get_qma("PPI")), 10)
   expect_equal(nrow(get_qma("SCA")), 13)
   
   expect_equal(nrow(get_qma("HAK")), 4)
   expect_equal(nrow(get_qma("HOK")), 2)
+  expect_equal(nrow(get_qma("JMA")), 4)
   expect_equal(nrow(get_qma("LIN")), 8)
+  expect_equal(nrow(get_qma("ORH")), 8)
+  expect_equal(nrow(get_qma("OEO")), 5)
+  expect_equal(nrow(get_qma("SBW")), 5)
   expect_equal(nrow(get_qma("SWA")), 4)
   
 })

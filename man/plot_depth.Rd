@@ -24,6 +24,6 @@ ggplot() +
   plot_depth()
  ggplot() + 
   plot_depth(resolution = "high") +
-  plot_nz()
+  plot_coast()
 
 }

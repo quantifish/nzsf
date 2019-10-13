@@ -13,7 +13,7 @@ get_qma(qma = "CRA",
 \item{proj}{The projection to use.}
 }
 \value{
-An \code{sf} \cod{data.frame} of QMA polygons.
+An \code{sf} \code{data.frame} of QMA polygons.
 }
 \description{
 Get Quota Management Area (QMA) polygons
