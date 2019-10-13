@@ -22,8 +22,5 @@ Plot depth polylines around New Zealand.
 \examples{
 ggplot() + 
   plot_depth()
- ggplot() + 
-  plot_depth(resolution = "high") +
-  plot_coast()
 
 }

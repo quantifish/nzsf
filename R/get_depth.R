@@ -6,7 +6,7 @@
 #' @examples
 #' x <- get_depth(resolution = "low")
 #' ggplot() +
-#'   geom_sf(data = x, colour = "lightblue)
+#'   geom_sf(data = x, colour = "lightblue")
 #' 
 get_depth <- function(resolution = "low") {
   if (resolution %in% c("high", "122k_190k")) {

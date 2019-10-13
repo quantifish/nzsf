@@ -7,9 +7,11 @@ Authors@R:
            role = c("aut", "cre"),
            email = "darcy.webber@quantifish.co.nz")
 Description: What the package does (one paragraph).
+BugReports: https://github.com/quantifish/nzsf/issues
 License: What license it uses
 Encoding: UTF-8
 Depends:
+    R (>= 2.10),
     raster,
     tidyverse,
     sf,
@@ -21,6 +23,5 @@ LazyData: true
 RoxygenNote: 6.1.1
 Suggests: 
     knitr,
-    rmarkdown,
-    testthat
+    rmarkdown
 VignetteBuilder: knitr

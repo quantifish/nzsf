@@ -24,9 +24,8 @@ plot_example <- function () {
   unique(sf_depth$depth)
   
   sf_coast <- get_coast() %>% st_transform(crs = proj, check = TRUE)
-  #bbox <- st_bbox(sf_coast %>% filter(name %in% c("North Island or Te Ika-a-Māui","South Island or Te Waipounamu", "Chatham Island", "Stewart Island/Rakiura")))
-  bbox <- st_bbox(sf_coast %>% filter(name %in% c("North Island or Te Ika-a-Māui")))
-  
+  bbox <- st_bbox(sf_coast %>% filter(name %in% c("South Island or Te Waipounamu")))
+
   CRA <- get_qma("CRA")
 
   theme_set(theme_linedraw(base_size = 17) +
@@ -63,7 +62,6 @@ plot_example <- function () {
 }
 
 # sf_lab <- st_difference(st_cast(sf_qma, "MULTIPOLYGON"), st_combine(sf_coast)) %>% st_centroid() %>% st_point_on_surface() %>% select(CODE)
-# 
 # ggplot() + 
 #   #geom_sf(data = depth_sf_km, colour = "blue", linetype = "dotted") +
 #   geom_sf(data = sf_stat, fill = NA, colour = "grey", linetype = "solid") +
