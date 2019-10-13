@@ -1,5 +1,7 @@
 # nzsf
 
+[![Build Status](https://travis-ci.org/NZRLIC/rlsd.svg?branch=master)](https://travis-ci.org/NZRLIC/rlsd)
+
 New Zealand Spatial Features (nzsf) is a package for plotting shapefiles. For example:
 
     library(nzsf)
