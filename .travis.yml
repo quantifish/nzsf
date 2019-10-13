@@ -17,6 +17,7 @@ matrix:
             - libproj-dev
             - libgeos-dev
             - libjq-dev
+            - libprotobuf-dev
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
