@@ -14,10 +14,12 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
-# TO ADD
-# FisheriesManagementAreas
-
 # Various ---
+
+FisheriesManagementAreas <- unzip_and_clean("data-raw/FisheriesManagementAreas.zip") %>%
+  dplyr::select(-Descriptio) %>%
+  rename(SpeciesCode = SpeciesCod)
+use_data(FisheriesManagementAreas, overwrite = TRUE)
 
 nz_fisheries_general_statistical_areas <- unzip_and_clean("data-raw/kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
   dplyr::select(-Descriptio)
@@ -148,11 +150,3 @@ use_data(Gisborne_TToR_Reefs, overwrite = TRUE)
 
 Rocky_reef_National_NZ <- unzip_and_clean("data-raw/Rocky_reef_National_NZ.zip")
 use_data(Rocky_reef_National_NZ, overwrite = TRUE)
-
-
-
-
-
-
-
-
