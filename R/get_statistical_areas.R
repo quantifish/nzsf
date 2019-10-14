@@ -3,6 +3,9 @@
 #' @param area A Quota Managemetn Area (QMA)
 #' @param proj The projection to use.
 #' @return A FMA.
+#' @importFrom utils data
+#' @importFrom dplyr filter
+#' @importFrom sf st_transform st_union st_cast
 #' @export
 #' @examples
 #' x <- get_statistical_areas(area = "CRA")
@@ -30,12 +33,14 @@ get_statistical_areas <- function(area = "CRA",
   }
 }
 
+
 #' Get a Quota Managemetn Area.
 #' 
 #' @param area A Quota Managemetn Area (QMA)
 #' @param proj The projection to use.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
+#' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples
 #' ggplot() + 

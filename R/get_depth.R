@@ -2,6 +2,7 @@
 #' 
 #' @param resolution the resolution
 #' @return New Zealands depth polylines.
+#' @importFrom utils data
 #' @export
 #' @examples
 #' x <- get_depth(resolution = "low")
@@ -19,7 +20,7 @@ get_depth <- function(resolution = "low") {
     data("depth_contour_polyline_hydro_1350k_11500k")
     x <- depth_contour_polyline_hydro_1350k_11500k
   }
-  x
+  return(x)
 }
 
 #' Plot depth polylines around New Zealand.
@@ -28,6 +29,8 @@ get_depth <- function(resolution = "low") {
 #' @param resolution the resolution.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands depth polylines.
+#' @importFrom ggplot2 geom_sf
+#' @importFrom sf st_transform
 #' @export
 #' @examples
 #' ggplot() + 
@@ -35,6 +38,6 @@ get_depth <- function(resolution = "low") {
 #' 
 plot_depth <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", 
                        resolution = "low", ...) {
-  x <- get_depth(resolution = resolution) %>% st_transform(crs = proj, check = TRUE)# %>% filter(depth %in% c(200))
+  x <- get_depth(resolution = resolution) %>% st_transform(crs = proj, check = TRUE)
   geom_sf(data = x, ...)
 }

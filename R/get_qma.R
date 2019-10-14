@@ -3,6 +3,8 @@
 #' @param qma A Quota Managemetn Area (QMA).
 #' @param proj The projection to use.
 #' @return A simple feature collection of QMA polygons.
+#' @importFrom utils data
+#' @importFrom sf st_transform st_union st_cast
 #' @export
 #' @examples
 #' x <- get_qma(qma = "CRA")
@@ -92,6 +94,7 @@ get_qma <- function(qma = "CRA",
 #' @param proj The projection to use.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
+#' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples
 #' ggplot() + 

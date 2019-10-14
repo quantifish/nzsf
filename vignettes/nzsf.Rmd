@@ -20,6 +20,10 @@ The `nzsf` package relies heavily on the R packages `tidyverse` and `sf`. Maps c
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 library(nzsf)
+library(ggspatial)
+library(lwgeom)
+library(viridis)
+
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
 ggplot() +

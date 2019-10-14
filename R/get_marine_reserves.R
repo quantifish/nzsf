@@ -2,6 +2,7 @@
 #' 
 #' @return New Zealands marine reserves.
 #' @keywords reserve
+#' @importFrom utils data
 #' @export
 #' @examples
 #' get_marine_reserves()
@@ -18,6 +19,8 @@ get_marine_reserves <- function() {
 #' @param proj The projection to use.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealand's marine reserves.
+#' @importFrom ggplot2 geom_sf
+#' @importFrom sf st_transform
 #' @export
 #' @examples
 #' plot_marine_reserves()

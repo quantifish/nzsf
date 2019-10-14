@@ -3,7 +3,9 @@
 #' @param resolution the resolution
 #' @param keep proportion of points to retain (0-1; default 1)
 #' @return New Zealands coastline.
+#' @importFrom utils data
 #' @importFrom rmapshaper ms_simplify
+#' @import sf
 #' @export
 #' @examples
 #' x <- get_coast(resolution = "low")
@@ -32,6 +34,8 @@ get_coast <- function(resolution = "low", keep = 1) {
 #' @param keep proportion of points to retain (0-1; default 0.05)
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands coastline.
+#' @importFrom ggplot2 geom_sf
+#' @importFrom sf st_transform
 #' @export
 #' @examples
 #' ggplot() +

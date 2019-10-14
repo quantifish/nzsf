@@ -6,6 +6,10 @@ knitr::opts_chunk$set(
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 library(nzsf)
+library(ggspatial)
+library(lwgeom)
+library(viridis)
+
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
 ggplot() +

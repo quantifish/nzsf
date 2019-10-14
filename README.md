@@ -1,6 +1,6 @@
 # nzsf
 
-[![Build Status](https://travis-ci.org/NZRLIC/rlsd.svg?branch=master)](https://travis-ci.org/NZRLIC/rlsd)
+[![Build Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)
 
 New Zealand Spatial Features (nzsf) is a package for plotting shapefiles. It can be installed from within R using:
 
@@ -10,7 +10,10 @@ New Zealand Spatial Features (nzsf) is a package for plotting shapefiles. It can
 For example:
 
     library(nzsf)
-    
+    library(ggspatial)
+    library(lwgeom)
+    library(viridis)
+
     proj <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
     
     bbox <- get_coast() %>% 

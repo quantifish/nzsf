@@ -12,18 +12,20 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
     R (>= 2.10),
-    tidyverse,
-    sf,
-    lwgeom,
-    ggspatial,
-    raster,
-    viridis
+    dplyr,
+    ggplot2,
+    sf
 Imports:
     rmapshaper
 Suggests: 
     knitr,
+    devtools,
+    ggspatial,
+    lwgeom,
     rmarkdown,
-    testthat
+    roxygen2,
+    testthat,
+    viridis
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
