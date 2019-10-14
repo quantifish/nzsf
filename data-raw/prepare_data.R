@@ -17,6 +17,7 @@ unzip_and_clean <- function(f) {
 
 # Generate sticker
 
+# devtools::install_github("GuangchuangYu/hexSticker")
 library(hexSticker)
 library(nzsf)
 library(ggspatial)

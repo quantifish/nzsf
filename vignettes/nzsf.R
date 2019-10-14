@@ -7,8 +7,6 @@ knitr::opts_chunk$set(
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 library(nzsf)
 library(ggspatial)
-library(lwgeom)
-library(viridis)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
@@ -35,6 +33,8 @@ ggplot() +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+library(lwgeom)
+
 sf_jma <- get_qma("JMA")
 sf_coast <- get_coast() %>% 
   st_transform(crs = proj, check = TRUE) %>% 
@@ -49,10 +49,12 @@ ggplot() +
   plot_statistical_areas(area = "JMA", fill = NA) +
   plot_coast(fill = "forestgreen", colour = NA, size = 0.3) +
   geom_sf_label(data = lab, aes(label = QMA)) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_fancy_orienteering) +
+  annotation_north_arrow(location = "tl", which_north = "true") +
   annotation_scale(location = "br", unit_category = "metric")
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+library(viridis)
+
 data("Gisborne_TToR_Habitats")
 Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% st_transform(crs = proj, check = TRUE)
 
@@ -73,5 +75,24 @@ ggplot() +
   plot_marine_reserves(fill = NA) +
   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
   annotation_scale(location = "br", unit_category = "metric") +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
+  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  labs(title = "Te Tapuwae o Rongokako Marine Reserve")
+
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+stewart <- get_coast() %>%
+  st_transform(crs = proj, check = TRUE) %>%
+  filter(name == "Stewart Island/Rakiura") %>%
+  st_buffer(dist = 4500)
+bbox <- stewart %>% st_bbox()
+
+pts <- st_sample(stewart, size = 10000) %>% st_sf() %>% mutate(z = rnorm(1:n()))
+
+ggplot() +
+  plot_depth(resolution = "med", size = 0.2, colour = "grey") +
+  plot_raster(data = pts, field = "z") +
+  scale_fill_viridis("Stuff", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  labs(title = "Rakiura")
 
