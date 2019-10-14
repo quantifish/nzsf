@@ -14,6 +14,22 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
+
+# Generate sticker
+
+library(hexSticker)
+library(nzsf)
+library(ggspatial)
+
+p <- ggplot() +
+  plot_coast(resolution = "low", fill = "orange", colour = NA, size = 0.3) +
+  theme_void() + theme_transparent()
+
+sticker(p, package = "nzsf", h_color = "orange",
+        p_y = 1.65, p_size = 20, p_color = "orange",
+        s_x = 1, s_y = 0.85, s_width = 1.3, s_height = 1.3, 
+        filename = "sticker.png")
+
 # Various ---
 
 FisheriesManagementAreas <- unzip_and_clean("data-raw/FisheriesManagementAreas.zip") %>%
@@ -37,15 +53,18 @@ use_data(coastline_polyline_hydro_14k_122k, overwrite = TRUE)
 # Depth ---
 
 depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("data-raw/lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
-  rename(depth = VALDCO)
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_122k_190k, overwrite = TRUE)
 
 depth_contour_polyline_hydro_190k_1350k <- unzip_and_clean("data-raw/lds-depth-contour-polyline-hydro-190k-1350k-SHP.zip") %>% 
-  rename(depth = VALDCO)
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_190k_1350k, overwrite = TRUE)
 
 depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("data-raw/lds-depth-contour-polyline-hydro-1350k-11500k-SHP.zip") %>%
-  rename(depth = VALDCO)
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
 # New Zealand coastline ---

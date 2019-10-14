@@ -20,6 +20,7 @@ ggplot of New Zealand's marine reserves.
 Plot Marine Reserves.
 }
 \examples{
-plot_marine_reserves()
+ggplot() +
+  plot_marine_reserves()
 
 }

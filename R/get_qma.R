@@ -17,70 +17,70 @@ get_qma <- function(qma = "CRA",
   # Shellfish
   if (qma %in% c("CRA", "crayfish")) {
     data("SpinyRedRockLobster_QMA")
-    sf_x <- SpinyRedRockLobster_QMA
+    x <- SpinyRedRockLobster_QMA
     # shp <- "SpinyRedRockLobster_QMAs"
     # dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    # sf_x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
+    # x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
   }
   if (qma %in% c("PHC")) {
     data("PackhorseRockLobster_QMA")
-    sf_x <- PackhorseRockLobster_QMA
+    x <- PackhorseRockLobster_QMA
   }
   if (qma %in% c("COC")) {
     data("Cockle_QMA")
-    sf_x <- Cockle_QMA
+    x <- Cockle_QMA
   }
   if (qma %in% c("PAU")) {
     data("Paua_QMA")
-    sf_x <- Paua_QMA
+    x <- Paua_QMA
   }
   if (qma %in% c("PPI")) {
     data("Pipi_QMA")
-    sf_x <- Pipi_QMA
+    x <- Pipi_QMA
   }
   if (qma %in% c("SCA")) {
     data("Scallop_QMA")
-    sf_x <- Scallop_QMA
+    x <- Scallop_QMA
   }
   
   # Finfish
   if (qma %in% c("JMA")) {
     data("JackMackerel_QMA")
-    sf_x <- JackMackerel_QMA
+    x <- JackMackerel_QMA
   }
   if (qma %in% c("HAK")) {
     data("HAKE_QMA")
-    sf_x <- HAKE_QMA
+    x <- HAKE_QMA
   }
   if (qma %in% c("HOK")) {
     data("HOKI_QMA")
-    sf_x <- HOKI_QMA
+    x <- HOKI_QMA
   }
   if (qma %in% c("LIN")) {
     data("LING_QMA")
-    sf_x <- LING_QMA
+    x <- LING_QMA
   }
   if (qma %in% c("OEO")) {
     data("OREO_QMA")
-    sf_x <- OREO_QMA
+    x <- OREO_QMA
   }
   if (qma %in% c("ORH")) {
     data("OrangeRoughy_QMA")
-    sf_x <- OrangeRoughy_QMA
+    x <- OrangeRoughy_QMA
   }
   if (qma %in% c("SBW")) {
     data("SouthernBlueWhiting_QMA")
-    sf_x <- SouthernBlueWhiting_QMA
+    x <- SouthernBlueWhiting_QMA
   }
   if (qma %in% c("SWA")) {
     data("SilverWarehou_QMA")
-    sf_x <- SilverWarehou_QMA
+    x <- SilverWarehou_QMA
   }
   
   if (is.null(proj)) {
-    sf_x
+    x
   } else {
-    sf_x %>% 
+    x %>% 
       st_transform(crs = proj, check = TRUE) %>% 
       st_union(by_feature = TRUE) %>%
       st_cast("MULTIPOLYGON")

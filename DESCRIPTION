@@ -7,6 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "darcy.webber@quantifish.co.nz")
 Description: What the package does (one paragraph).
+URL: https://github.com/quantifish/nzsf
 BugReports: https://github.com/quantifish/nzsf/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,6 +26,7 @@ Suggests:
     rmarkdown,
     roxygen2,
     testthat,
+    usethis,
     viridis
 LazyData: true
 RoxygenNote: 6.1.1

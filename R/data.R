@@ -18,10 +18,30 @@
 #' @format Simple feature collection with 9261 features and 7 fields:
 #' \describe{
 #'   \item{name}{blah}
-#'   \item{macronated}{blah blah}
+#'   \item{macronated}{blah}
+#'   \item{grp_macron}{blah}
+#'   \item{TARGET_FID}{blah}
+#'   \item{grp_ascii}{blah}
+#'   \item{grp_name}{blah}
+#'   \item{name_ascii}{blah}
 #' }
 #' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
 "nz_coastlines_and_islands_polygons_topo_150k"
+
+
+#' New Zealand depth contours
+#'
+#' New Zealand depth contours.
+#'
+#' @format Simple feature collection with 17157 features and 4 fields:
+#' \describe{
+#'   \item{depth}{the depth in m}
+#'   \item{SCAMIN}{blah}
+#'   \item{SORDAT}{blah}
+#'   \item{SORIND}{blah}
+#' }
+#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
+"depth_contour_polyline_hydro_122k_190k"
 
 
 #' New Zealand marine reserves
