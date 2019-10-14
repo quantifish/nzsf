@@ -13,23 +13,23 @@ You can view the package vignette from within R using:
     browseVignettes(package = "nzsf")
     vignette(package = "nzsf")
 
- can plot QMA boundaries for many New Zealand shellfish stocks including:
+ The `nzsf` package can plot QMA boundaries for many New Zealand finfish and shellfish stocks:
+
+| Species code | Common name           | Scientific name            | Maori name |
+| ------------ |:---------------------:| -----:| -----:|
+| HAK          | Hake                  | XXX | XXX |
+| HOK          | Hoki                  | XXX | XXX |
+| LIN          | Ling                  | XXX | XXX |
+| OEO          | Oreo                  | XXX      | XXX |
+| ORH          | Orange roughy         | *Hoplostethus atlanticus*      | XXX |
+| SWA          | Silver warehou        | *Seriolella punctata*      | XXX |
+| SBW          | Southern blue whiting | *Micromesistius australis* | XXX |
 
  * CRA - red rock lobster (*Jasus edwardsii*)
- * PHC - packhorse rock lobster (*Sag*)
+ * PHC - packhorse rock lobster (*Sagmariasus verreauxi*)
  * COC - cockle
  * PPI - pipi
- * PAU - paua
- * SCA - scallop
+ * PAU - paua (*Haliotis iris*)
+ * SCA - scallop (*Pecten novaezealandiae*)
  
- And finish:
- 
- * HAK - hake
- * HOK - hoki
- * LIN - ling
- * ORH - orange roughy
- * OEO - oreo
- * SWA - silver warehou
- * SBW - southern blue whiting
-
-If you would like additional stocks added just let me know.
+If you would like additional stocks added just let me know in the issues (please include a link to the shapefiles).

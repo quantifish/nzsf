@@ -12,6 +12,8 @@ warnings_are_errors: false
 r_packages:
   - roxygen2
   - testthat
+  
+r_github_packages: thomasp85/patchwork
 
 addons:
   apt:
