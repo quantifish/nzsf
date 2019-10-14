@@ -8,20 +8,22 @@ Authors@R:
            email = "darcy.webber@quantifish.co.nz")
 Description: What the package does (one paragraph).
 BugReports: https://github.com/quantifish/nzsf/issues
-License: What license it uses
+License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
     R (>= 2.10),
-    raster,
     tidyverse,
     sf,
     lwgeom,
     ggspatial,
-    rmapshaper,
+    raster,
     viridis
-LazyData: true
-RoxygenNote: 6.1.1
+Imports:
+    rmapshaper
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
+LazyData: true
+RoxygenNote: 6.1.1
 VignetteBuilder: knitr

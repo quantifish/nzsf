@@ -85,6 +85,7 @@ get_qma <- function(qma = "CRA",
   }
 }
 
+
 #' Get a Quota Managemetn Area.
 #' 
 #' @param qma A Quota Managemetn Area (QMA)

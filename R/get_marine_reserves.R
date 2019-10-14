@@ -1,6 +1,7 @@
 #' Get Marine Reserves.
 #' 
 #' @return New Zealands marine reserves.
+#' @keywords reserve
 #' @export
 #' @examples
 #' get_marine_reserves()

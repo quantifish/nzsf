@@ -3,6 +3,7 @@
 #' @param resolution the resolution
 #' @param keep proportion of points to retain (0-1; default 1)
 #' @return New Zealands coastline.
+#' @importFrom rmapshaper ms_simplify
 #' @export
 #' @examples
 #' x <- get_coast(resolution = "low")
