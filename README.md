@@ -1,4 +1,5 @@
-# nzsf
+nzsf <img src="sticker.png" align="right" height=140/>
+===============================================================
 
 ![Build Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)
 
