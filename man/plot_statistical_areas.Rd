@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_statistical_areas.R
 \name{plot_statistical_areas}
 \alias{plot_statistical_areas}
-\title{Get a Quota Managemetn Area.}
+\title{Get statistical areas}
 \usage{
 
   plot_statistical_areas(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
@@ -19,7 +19,7 @@
 A ggplot of the selected QMA.
 }
 \description{
-Get a Quota Managemetn Area.
+Get statistical areas
 }
 \examples{
 ggplot() + 

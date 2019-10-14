@@ -28,7 +28,8 @@ Suggests:
     roxygen2,
     testthat,
     usethis,
-    viridis
+    viridis,
+    patchwork
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

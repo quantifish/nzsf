@@ -77,14 +77,13 @@ get_qma <- function(qma = "CRA",
     x <- SilverWarehou_QMA
   }
   
-  if (is.null(proj)) {
-    x
-  } else {
-    x %>% 
+  if (!is.null(proj)) {
+    x <- x %>% 
       st_transform(crs = proj, check = TRUE) %>% 
       st_union(by_feature = TRUE) %>%
       st_cast("MULTIPOLYGON")
   }
+  return(x)
 }
 
 
@@ -103,5 +102,6 @@ get_qma <- function(qma = "CRA",
 plot_qma <- function(qma = "CRA",
                      proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", ...) {
   x <- get_qma(qma = qma, proj = proj)
-  geom_sf(data = x, ...)
+  p <- geom_sf(data = x, ...)
+  return(p)
 }

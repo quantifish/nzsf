@@ -6,7 +6,12 @@ nzsf <img src="sticker.png" align="right" height=140/>
 New Zealand Spatial Features (nzsf) is a package for plotting shapefiles. It can be installed from within R using:
 
     library(devtools)
-    install_github("quantifish/nzsf")
+    install_github("quantifish/nzsf", build_vignettes = TRUE)
+
+You can view the package vignette from within R using:
+
+    browseVignettes(package = "nzsf")
+    vignette(package = "nzsf")
 
  can plot QMA boundaries for many New Zealand shellfish stocks including:
 

@@ -2,7 +2,7 @@
 title: "New Zealand Spatial Features"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{nzsf}
+  %\VignetteIndexEntry{New Zealand Spatial Features}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -31,10 +31,7 @@ ggplot() +
 Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be retricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-proj <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
-
 bbox <- get_coast() %>% 
-  st_transform(crs = proj, check = TRUE) %>% 
   filter(name %in% c("North Island or Te Ika-a-Māui")) %>%
   st_bbox()
 
@@ -55,7 +52,6 @@ library(lwgeom)
 
 sf_jma <- get_qma("JMA")
 sf_coast <- get_coast() %>% 
-  st_transform(crs = proj, check = TRUE) %>% 
   st_combine() %>% 
   st_make_valid()
 lab <- st_difference(sf_jma, sf_coast) %>% 
@@ -71,10 +67,12 @@ ggplot() +
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
-You can then add polygons, points, lines, rasters, etc to maps:
+You can then add polygons, points, lines/arrows, and/or rasters to maps and change the map projection:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 library(viridis)
+
+proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
 Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% st_transform(crs = proj, check = TRUE)
@@ -85,37 +83,48 @@ Rocky_reef_National_NZ <- Rocky_reef_National_NZ %>% st_transform(crs = proj, ch
 bbox <- get_marine_reserves() %>%
   st_transform(crs = proj, check = TRUE) %>%
   filter(Name == "Te Tapuwae o Rongokako Marine Reserve") %>%
-  st_buffer(dist = 4500) %>%
   st_bbox()
 
 ggplot() +
   geom_sf(data = Rocky_reef_National_NZ, fill = "lightgrey", colour = NA) +
-  plot_depth(resolution = "med", size = 0.2, colour = "skyblue") +
+  plot_depth(proj = proj, resolution = "med", size = 0.2, colour = "skyblue") +
   geom_sf(data = Gisborne_TToR_Habitats, aes(fill = Habitat), colour = NA) +
   scale_fill_viridis_d(alpha = 0.5) +
-  plot_marine_reserves(fill = NA) +
-  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  plot_marine_reserves(proj = proj, fill = NA) +
+  plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA, size = 0.3) +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Te Tapuwae o Rongokako Marine Reserve")
 ```
 
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
+library(patchwork)
+
 stewart <- get_coast() %>%
-  st_transform(crs = proj, check = TRUE) %>%
   filter(name == "Stewart Island/Rakiura") %>%
   st_buffer(dist = 4500)
 bbox <- stewart %>% st_bbox()
 
-pts <- st_sample(stewart, size = 10000) %>% st_sf() %>% mutate(z = rnorm(1:n()))
+# Simulate some points around Stewart Island
+pts <- st_sample(stewart, size = 5000) %>% st_sf() %>% mutate(z = rnorm(1:n()))
 
-ggplot() +
+p1 <- ggplot() +
   plot_depth(resolution = "med", size = 0.2, colour = "grey") +
-  plot_raster(data = pts, field = "z") +
-  scale_fill_viridis("Stuff", alpha = 0.8, option = "plasma") +
+  geom_sf(data = pts, aes(colour = z)) +
   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  labs(colour = "Points", title = "Rakiura")
+p2 <- ggplot() +
+  plot_depth(resolution = "med", size = 0.2, colour = "grey") +
+  plot_raster(data = pts, field = "z", fun = mean, nrow = 50, ncol = 50) +
+  scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Rakiura")
+p1 + p2
 ```

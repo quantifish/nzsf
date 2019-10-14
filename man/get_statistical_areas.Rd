@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_statistical_areas.R
 \name{get_statistical_areas}
 \alias{get_statistical_areas}
-\title{Get Statistical Areas.}
+\title{Get Statistical Areas}
 \usage{
 get_statistical_areas(area = "CRA",
   proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
@@ -16,7 +16,7 @@ get_statistical_areas(area = "CRA",
 A FMA.
 }
 \description{
-Get Statistical Areas.
+Get Statistical Areas
 }
 \examples{
 x <- get_statistical_areas(area = "CRA")
