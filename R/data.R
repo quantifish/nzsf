@@ -6,6 +6,8 @@
 #' \describe{
 #'   \item{FeatureKey}{blah}
 #'   \item{LayerKey}{blah blah}
+#'   \item{LayerGroup}{blah blah}
+#'   \item{LayerName}{blah blah}
 #' }
 #' @source \url{http://www.diamondse.info/}
 "SpinyRedRockLobster_QMA"

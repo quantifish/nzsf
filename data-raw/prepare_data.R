@@ -154,7 +154,11 @@ use_data(SpinyRedRockLobster_QMA, overwrite = TRUE)
 
 rock_lobster_stat_areas <- unzip_and_clean("data-raw/rock_lobster_stat_areas.zip") %>% 
   rename(area = AREA_CODE) %>%
-  mutate(QMA = ifelse(area %in% 909:911, "CRA3", "CRA"))
+  mutate(QMA = case_when(
+    area %in% c(901:904, 939) ~ "CRA1",
+    area %in% 905:908 ~ "CRA2",
+    area %in% 909:911 ~ "CRA3",
+    TRUE ~ "Unknown"))
 use_data(rock_lobster_stat_areas, overwrite = TRUE)
 
 # Marine reserves ---

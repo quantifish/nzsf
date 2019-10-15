@@ -1,0 +1,65 @@
+## ---- include = FALSE----------------------------------------------------
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+library(nzsf)
+library(ggspatial)
+library(lwgeom)
+
+theme_set(theme_bw() + theme(axis.title = element_blank()))
+
+stock <- "CRA1"
+
+sf_qma <- get_qma("CRA")
+sf_coast <- get_coast() %>% 
+  st_combine() %>% 
+  st_buffer(dist = 4500) %>%
+  st_make_valid()
+lab <- st_difference(sf_qma, sf_coast) %>%
+  st_centroid()
+  #st_point_on_surface()
+
+sf_stat <- get_statistical_areas("CRA") %>% filter(QMA == stock)
+bbox <- sf_stat %>% filter(QMA == stock) %>% st_bbox()
+box <- st_as_sfc(bbox)
+
+ggplot() +
+  plot_qma(qma = "CRA", fill = NA) +
+  plot_coast(resolution = "low", fill = "orange", colour = "black", size = 0.3) +
+  geom_sf(data = box, colour = "red", fill = NA) +
+  geom_sf_text(data = lab, aes(label = QMA), size = 2.5) +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
+
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+#library(ggrepel)
+
+sf_diff <- st_difference(sf_stat, sf_coast)
+lab1 <- sf_diff %>% 
+  st_centroid()
+lab2 <- sf_diff %>% 
+  st_point_on_surface()
+
+ggplot() +
+  geom_sf(data = sf_diff) +
+  #geom_sf_label(data = lab, aes(label = area)) +
+  #geom_label_repel(data = lab, aes(label = area)) +
+  geom_sf(data = lab1, colour = "red") +
+  geom_sf(data = lab2, colour = "blue")
+
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+p <- ggplot() +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
+  plot_qma(qma = "CRA", fill = NA) +
+  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
+  geom_sf_label(data = lab1, aes(label = area)) +
+  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
+if (stock %in% c("CRA1")) {
+  p <- p + annotation_scale(location = "bl", unit_category = "metric")
+} else {
+  p <- p + annotation_scale(location = "br", unit_category = "metric")
+}
+p
+
