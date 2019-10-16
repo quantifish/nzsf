@@ -3,12 +3,12 @@ New Zealand Spatial Features <img src="sticker.png" align="right" height=140/>
 
 ![Build Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)
 
-New Zealand Spatial Features (`nzsf`) is a package for plotting shapefiles. It can be installed from within R using:
+New Zealand Spatial Features (`nzsf`) is a package for creating scientific maps in New Zealand waters. The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf` providing a fresh and easy approach for complex mapping tasks. Maps can be built up in layers in the same way as `ggplot2` so users can easily add points, lines/arrows, polygons, coastlines, and much more. It can be installed from within R using:
 
     library(devtools)
     install_github("quantifish/nzsf", build_vignettes = TRUE)
 
-You can view the package vignettes from within R using:
+The package vignettes are a great place to see what `nzsf` can do. You can view the package vignettes from within R using:
 
     browseVignettes(package = "nzsf")
     vignette(package = "nzsf")
