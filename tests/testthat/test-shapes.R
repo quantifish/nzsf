@@ -31,3 +31,16 @@ test_that("number of shapes", {
   expect_equal(nrow(get_coast(resolution = "high")), 9261)
   
 })
+
+test_that("return a plot", {
+  
+  p1 <- ggplot() + 
+    plot_coast() + 
+    plot_depth() + 
+    plot_marine_reserves() + 
+    plot_qma(qma = "CRA") + 
+    plot_statistical_areas(area = "CRA")
+  expect_type(p1, "list")
+  expect_true("ggplot" %in% class(p1))
+  
+})
