@@ -18,7 +18,7 @@ The `nzsf` package can be installed from within R using:
 
 ``` r
 library(devtools)
-install_github("quantifish/nzsf", build_vignettes = TRUE)
+install_github(repo = "quantifish/nzsf", build_vignettes = TRUE)
 ```
 
 ## Help
@@ -28,7 +28,7 @@ can view the package vignettes from within R using:
 
 ``` r
 browseVignettes(package = "nzsf")
-vignette(package = "nzsf")
+vignette(topic = "nzsf", package = "nzsf")
 ```
 
 ## Shapefiles
