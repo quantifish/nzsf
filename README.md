@@ -21,6 +21,8 @@ library(devtools)
 install_github("quantifish/nzsf", build_vignettes = TRUE)
 ```
 
+## Help
+
 The package vignettes are a great place to see what `nzsf` can do. You
 can view the package vignettes from within R using:
 
@@ -28,6 +30,8 @@ can view the package vignettes from within R using:
 browseVignettes(package = "nzsf")
 vignette(package = "nzsf")
 ```
+
+## Species
 
 The `nzsf` package can plot QMA boundaries for many New Zealand finfish
 and shellfish
