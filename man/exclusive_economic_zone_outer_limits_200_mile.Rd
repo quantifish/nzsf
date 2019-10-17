@@ -4,12 +4,10 @@
 \name{exclusive_economic_zone_outer_limits_200_mile}
 \alias{exclusive_economic_zone_outer_limits_200_mile}
 \title{New Zealand Exclusive Economic Zone (EEZ)}
-\format{Simple feature collection with 153 features and 29 fields:
-\describe{
-  \item{OBJECTID}{blah}
-  \item{MARZONEID}{blah}
-  \item{BP1}{blah}
-}}
+\format{Simple feature collection with 153 features and 29 fields:}
+\source{
+Fisheries New Zealand
+}
 \usage{
 exclusive_economic_zone_outer_limits_200_mile
 }

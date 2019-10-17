@@ -8,7 +8,6 @@
 #' @return a raster.
 #' @importFrom raster raster rasterize
 #' @importFrom sf st_sample st_sf
-#' @importFrom dplyr mutate
 #' @export
 #' @examples
 #' x <- get_qma("CRA")
@@ -34,7 +33,8 @@ get_points_as_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 10
 #' @param ... Other arguments passed on to \code{geom_raster}.
 #' @return a ggplot.
 #' @importFrom raster rasterToPoints
-#' @importFrom ggplot2 geom_raster
+#' @import ggplot2
+#' @import dplyr
 #' @export
 #' @examples
 #' x <- get_qma("CRA")

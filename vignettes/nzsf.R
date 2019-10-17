@@ -10,12 +10,10 @@ library(ggspatial)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
-get_statistical_areas(area = "EEZ")
-
 ggplot() +
   plot_statistical_areas(area = "EEZ") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
-  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------

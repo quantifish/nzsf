@@ -7,8 +7,8 @@
 \format{Simple feature collection with 44 features and 3 fields:
 \describe{
   \item{Name}{blah}
-  \item{Recorded_A}{blah blah}
-  \item{Conservati}{blah blah}
+  \item{Recorded_A}{blah}
+  \item{Conservati}{blah}
 }}
 \source{
 \url{https://koordinates.com/layer/6026-doc-marine-reserves/}
