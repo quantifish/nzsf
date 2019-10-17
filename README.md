@@ -31,10 +31,11 @@ browseVignettes(package = "nzsf")
 vignette(package = "nzsf")
 ```
 
-## Species
+## Shapefiles
 
-The `nzsf` package can plot New Zealand Quota Management Area (QMA)
-boundaries for many finfish and shellfish stocks
+The `nzsf` package includes many different shapefiles as data.
+Shapefiles contained in `nzsf` include New Zealand Quota Management Area
+(QMA) boundaries for many finfish and shellfish stocks
 including:
 
 | Species code | Common name            | Scientific name             | Maori name           |
@@ -62,6 +63,13 @@ Other useful shapefiles include:
   - Rock lobster statistical areas
   - New Zealand rocky reefs
   - Gisborne Te Tapuwae o Rongokako habitats and reefs
+
+These shapefiles can be accessed using the `data` command in R. For
+example:
+
+``` r
+data("doc_marine_reserves")
+```
 
 If you would like additional shapefiles added just let me know in the
 issues (please include a link to the shapefiles).
