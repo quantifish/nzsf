@@ -4,7 +4,6 @@
 .travis.yml
 ^README\.Rmd$
 ^LICENSE\.md$
-R/plot_example.R
 other/
 sticker.R
 sticker.png
