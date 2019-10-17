@@ -159,7 +159,7 @@ use_data(rock_lobster_stat_areas, overwrite = TRUE)
 # Marine reserves ---
 
 doc_marine_reserves <- unzip_and_clean("kx-doc-marine-reserves-SHP.zip") %>%
-  dplyr::select(-Section, -Legislatio, -Government, -Local_Purp, -Type, -GlobalID)
+  select(-Section, -Legislatio, -Government, -Local_Purp, -Type, -GlobalID)
 use_data(doc_marine_reserves, overwrite = TRUE)
 
 Gisborne_TToR_Habitats <- unzip_and_clean("Gisborne_Te_Tapuwae_o_Rongokako_Habitats.zip") %>%

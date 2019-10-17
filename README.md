@@ -53,7 +53,15 @@ including:
 |     PAU      | Paua                   | *Haliotis iris*             | Pāua                 |
 |     SCA      | Scallop                | *Pecten novaezealandiae*    | Tupa                 |
 
-Other useful
+Other useful shapefiles include:
+
+  - The New Zealand coastline (in high, medium, and low resolution)
+  - Depth contours (in high, medium, and low resolution)
+  - New Zealands Exclusive Economic Zone (EEZ)
+  - Department of Conservation (DOC) marine reserves
+  - Rock lobster statistical areas
+  - New Zealand rocky reefs
+  - Gisborne Te Tapuwae o Rongokako habitats and reefs
 
 If you would like additional shapefiles added just let me know in the
 issues (please include a link to the shapefiles).
