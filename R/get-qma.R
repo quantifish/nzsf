@@ -89,8 +89,7 @@ get_qma <- function(qma = "CRA",
 
 #' Get a Quota Managemetn Area.
 #' 
-#' @param qma A Quota Managemetn Area (QMA)
-#' @param proj The projection to use.
+#' @inheritParams get_qma
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
 #' @importFrom ggplot2 geom_sf

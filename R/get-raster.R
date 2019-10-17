@@ -25,11 +25,7 @@ get_points_as_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 10
 
 #' Convert points to a raster
 #' 
-#' @param data a spatial feature data.
-#' @param field the field to rasterize.
-#' @param fun the function
-#' @param nrow number of rows
-#' @param ncol number of rows
+#' @inheritParams get_points_as_raster
 #' @param ... Other arguments passed on to \code{geom_raster}.
 #' @return a ggplot.
 #' @importFrom raster rasterToPoints

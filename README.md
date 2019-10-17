@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# New Zealand Spatial Features <img src="man/figures/sticker.png" align="right" height=140/>
+# New Zealand Spatial Features <img src="man/figures/logo.png" align="right" height=140/>
 
 ![Build Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)
 
@@ -31,11 +31,18 @@ browseVignettes(package = "nzsf")
 vignette(topic = "nzsf", package = "nzsf")
 ```
 
+Alternatively, you can look at the help pages associated with each
+function and data set in `nzsf`. To see them all use:
+
+``` r
+help(package = "nzsf")
+```
+
 ## Shapefiles
 
-The `nzsf` package includes many different shapefiles as data.
-Shapefiles contained in `nzsf` include New Zealand Quota Management Area
-(QMA) boundaries for many finfish and shellfish stocks
+The `nzsf` package includes many different shapefiles including New
+Zealand Quota Management Area (QMA) boundaries for many finfish and
+shellfish stocks
 including:
 
 | Species code | Common name            | Scientific name             | Maori name           |

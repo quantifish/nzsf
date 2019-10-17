@@ -9,7 +9,7 @@ plot_qma(qma = "CRA",
   ...)
 }
 \arguments{
-\item{qma}{A Quota Managemetn Area (QMA)}
+\item{qma}{A Quota Managemetn Area (QMA).}
 
 \item{proj}{The projection to use.}
 

@@ -13,7 +13,7 @@
 
 \item{resolution}{the resolution}
 
-\item{keep}{proportion of points to retain (0-1; default 0.05)}
+\item{keep}{proportion of points to retain (0-1; default 1)}
 
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }

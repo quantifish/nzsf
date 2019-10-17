@@ -18,7 +18,7 @@ get_marine_reserves <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40
 
 #' Plot Marine Reserves
 #' 
-#' @param proj The projection to use.
+#' @inheritParams get_marine_reserves
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealand's marine reserves.
 #' @importFrom ggplot2 geom_sf

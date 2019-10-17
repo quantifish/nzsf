@@ -29,8 +29,7 @@ get_depth <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=17
 
 #' Plot depth polylines around New Zealand
 #' 
-#' @param proj The projection to use.
-#' @param resolution the resolution.
+#' @inheritParams get_depth
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands depth polylines.
 #' @importFrom ggplot2 geom_sf

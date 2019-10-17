@@ -5,5 +5,5 @@
 ^README\.Rmd$
 ^LICENSE\.md$
 other/
-sticker.R
-sticker.png
+logo.R
+logo.png

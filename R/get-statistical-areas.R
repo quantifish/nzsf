@@ -43,8 +43,7 @@ get_statistical_areas <- function(area = "CRA",
 
 #' Get statistical areas
 #' 
-#' @param area A Quota Managemetn Area (QMA)
-#' @param proj The projection to use.
+#' @inheritParams get_statistical_areas
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
 #' @importFrom ggplot2 geom_sf
