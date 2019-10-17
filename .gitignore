@@ -16,6 +16,7 @@
 
 # RStudio files
 .Rproj.user/
+nzsf.Rproj
 
 # Raw data files
 data-raw/*.zip
