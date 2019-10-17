@@ -40,7 +40,7 @@ including:
 | Species code | Common name            | Scientific name             | Maori name           |
 | :----------: | :--------------------- | :-------------------------- | :------------------- |
 |     HAK      | Hake                   | *Merluccius australis*      | Kehe, tiikati        |
-|     HOK      | Hoki                   | *Macruronus novaezelandiae* |                      |
+|     HOK      | Hoki                   | *Macruronus novaezelandiae* | Hoki                 |
 |     LIN      | Ling                   | *Genypterus blacodes*       | Hoka, hokarari, rari |
 |     OEO      | Oreo                   |                             |                      |
 |     ORH      | Orange roughy          | *Hoplostethus atlanticus*   |                      |
@@ -48,8 +48,8 @@ including:
 |     SBW      | Southern blue whiting  | *Micromesistius australis*  |                      |
 |     CRA      | Red rock lobster       | *Jasus edwardsii*           | Kōura                |
 |     PHC      | Packhorse rock lobster | *Sagmariasus verreauxi*     | Kōura Papatia        |
-|     COC      | Cockle                 |                             | Tuangi               |
-|     PPI      | Pipi                   |                             | Pipi                 |
+|     COC      | Cockle                 | *Austrovenus stutchburyi*   | Tuangi               |
+|     PPI      | Pipi                   | *Paphies australis*         | Pipi                 |
 |     PAU      | Paua                   | *Haliotis iris*             | Pāua                 |
 |     SCA      | Scallop                | *Pecten novaezealandiae*    | Tupa                 |
 
