@@ -14,7 +14,7 @@ lines/arrows, polygons, coastlines, and much more.
 
 ## Installation
 
-It can be installed from within R using:
+The `nzsf` package can be installed from within R using:
 
 ``` r
 library(devtools)
@@ -33,9 +33,9 @@ vignette(package = "nzsf")
 
 ## Species
 
-The `nzsf` package can plot QMA boundaries for many New Zealand finfish
-and shellfish
-stocks:
+The `nzsf` package can plot New Zealand Quota Management Area (QMA)
+boundaries for many finfish and shellfish stocks
+including:
 
 | Species code | Common name            | Scientific name             | Maori name           |
 | :----------: | :--------------------- | :-------------------------- | :------------------- |
@@ -53,5 +53,7 @@ stocks:
 |     PAU      | Paua                   | *Haliotis iris*             | Pāua                 |
 |     SCA      | Scallop                | *Pecten novaezealandiae*    | Tupa                 |
 
-If you would like additional stocks added just let me know in the issues
-(please include a link to the shapefiles).
+Other useful
+
+If you would like additional shapefiles added just let me know in the
+issues (please include a link to the shapefiles).
