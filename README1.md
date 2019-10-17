@@ -1,41 +1,19 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
-# New Zealand Spatial Features <img src="man/figures/sticker.png" align="right" height=140/>
+New Zealand Spatial Features <img src="sticker.png" align="right" height=140/>
+==============================================================================
 
 ![Build Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)
 
-New Zealand Spatial Features (`nzsf`) is a package for creating scientific maps in New Zealand waters. The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf` providing a fresh and easy approach for complex mapping tasks. Maps can be built up in layers in the same way as `ggplot2` so users can easily add points, lines/arrows, polygons, coastlines, and much more. 
+New Zealand Spatial Features (`nzsf`) is a package for creating scientific maps in New Zealand waters. The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf` providing a fresh and easy approach for complex mapping tasks. Maps can be built up in layers in the same way as `ggplot2` so users can easily add points, lines/arrows, polygons, coastlines, and much more. It can be installed from within R using:
 
-## Installation
-
-It can be installed from within R using:
-
-``` r
-library(devtools)
-install_github("quantifish/nzsf", build_vignettes = TRUE)
-```
+    library(devtools)
+    install_github("quantifish/nzsf", build_vignettes = TRUE)
 
 The package vignettes are a great place to see what `nzsf` can do. You can view the package vignettes from within R using:
 
-``` r
-browseVignettes(package = "nzsf")
-vignette(package = "nzsf")
-```
+    browseVignettes(package = "nzsf")
+    vignette(package = "nzsf")
 
-The `nzsf` package can plot QMA boundaries for many New Zealand finfish and shellfish stocks:
+ The `nzsf` package can plot QMA boundaries for many New Zealand finfish and shellfish stocks:
 
 | Species code | Common name            | Scientific name             | Maori name           |
 |:------------:|:---------------------- |:--------------------------- |:-------------------- |
