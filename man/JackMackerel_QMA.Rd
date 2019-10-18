@@ -4,12 +4,12 @@
 \name{JackMackerel_QMA}
 \alias{JackMackerel_QMA}
 \title{New Zealand jack mackerel QMAs}
-\format{Simple feature collection with 4 features and 20 fields:
+\format{Simple feature collection with 4 features and 4 fields:
 \describe{
-  \item{SpeciesCod}{Species code}
-  \item{SpeciesSci}{Scientific name}
   \item{QMA}{Quota Management Area or stock}
-  \item{SpeciesCom}{Common name}
+  \item{SpeciesCode}{Species code}
+  \item{SpeciesScientific}{Scientific name}
+  \item{SpeciesCommon}{Common name}
 }}
 \source{
 Fisheries New Zealand

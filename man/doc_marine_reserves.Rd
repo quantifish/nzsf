@@ -4,11 +4,9 @@
 \name{doc_marine_reserves}
 \alias{doc_marine_reserves}
 \title{New Zealand marine reserves}
-\format{Simple feature collection with 44 features and 3 fields:
+\format{Simple feature collection with 44 features and 1 field:
 \describe{
-  \item{Name}{blah}
-  \item{Recorded_A}{blah}
-  \item{Conservati}{blah}
+  \item{Name}{name of the marine reserve}
 }}
 \source{
 \url{https://koordinates.com/layer/6026-doc-marine-reserves/}
@@ -17,6 +15,6 @@
 doc_marine_reserves
 }
 \description{
-New Zealand marine reserves.
+New Zealand Department of Conservation (DOC) marine reserves.
 }
 \keyword{datasets}

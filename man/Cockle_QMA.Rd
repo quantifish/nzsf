@@ -4,13 +4,13 @@
 \name{Cockle_QMA}
 \alias{Cockle_QMA}
 \title{New Zealand cockle QMAs}
-\format{Simple feature collection with 13 features and 20 fields:
+\format{Simple feature collection with 13 features and 5 fields:
 \describe{
-  \item{SpeciesCod}{Species code}
-  \item{SpeciesSci}{Scientific name}
   \item{QMA}{Quota Management Area or stock}
+  \item{SpeciesCode}{Species code}
+  \item{SpeciesScientific}{Scientific name}
+  \item{SpeciesCommon}{Common name}
   \item{QmaName}{Quota Management Area or stock name}
-  \item{SpeciesCom}{Common name}
 }}
 \source{
 Fisheries New Zealand

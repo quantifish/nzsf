@@ -14,7 +14,7 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
-# Various ---
+# Various ----
 
 FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
   select(-Descriptio) %>%
@@ -34,7 +34,7 @@ use_data(exclusive_economic_zone_outer_limits_200_mile, overwrite = TRUE)
 coastline_polyline_hydro_14k_122k <- unzip_and_clean("lds-coastline-polyline-hydro-14k-122k-SHP.zip")
 use_data(coastline_polyline_hydro_14k_122k, overwrite = TRUE)
 
-# Depth ---
+# Depth ----
 
 depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
   rename(depth = VALDCO) %>%
@@ -51,7 +51,7 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
-# New Zealand coastline ---
+# New Zealand coastline ----
 
 nz_coastlines_and_islands_polygons_topo_150k <- unzip_and_clean("lds-nz-coastlines-and-islands-polygons-topo-150k-SHP.zip")
 use_data(nz_coastlines_and_islands_polygons_topo_150k, overwrite = TRUE)
@@ -71,7 +71,7 @@ use_data(nz_coastlines_topo_1250k, overwrite = TRUE)
 nz_coastlines_topo_1500k <- unzip_and_clean("lds-nz-coastlines-topo-1500k-SHP.zip")
 use_data(nz_coastlines_topo_1500k, overwrite = TRUE)
 
-# Finfish Quota Management Areas (QMAs) ---
+# Finfish Quota Management Areas (QMAs) ----
 
 HAKE_QMA <- unzip_and_clean("HAKE_QMA.zip") %>% 
   rename(QMA = FishstockC, SpeciesCode = SpeciesCod, SpeciesScientific = SpeciesSci, SpeciesCommmon = SpeciesCom) %>%
@@ -113,7 +113,7 @@ SouthernBlueWhiting_QMA <- unzip_and_clean("SouthernBlueWhiting_QMAs.zip") %>%
   select(QMA, SpeciesCode, SpeciesScientific, SpeciesCommmon)
 use_data(SouthernBlueWhiting_QMA, overwrite = TRUE)
 
-# Shellfish Quota Management Areas (QMAs) ---
+# Shellfish Quota Management Areas (QMAs) ----
 
 Cockle_QMA <- unzip_and_clean("Cockle_QMAs.zip") %>% 
   rename(QMA = FishstockC, SpeciesCode = SpeciesCod, SpeciesScientific = SpeciesSci, SpeciesCommmon = SpeciesCom) %>%
@@ -135,7 +135,7 @@ Scallop_QMA <- unzip_and_clean("Scallop_QMAs.zip") %>%
   select(QMA, SpeciesCode, SpeciesScientific, SpeciesCommmon, QmaName)
 use_data(Scallop_QMA, overwrite = TRUE)
 
-# Rock lobsters ---
+# Rock lobsters ----
 
 PackhorseRockLobster_QMA <- unzip_and_clean("QMA_Packhorse_rocklobster_region.zip") %>% 
   rename(QMA = CODE, SpeciesCode = CODE0, SpeciesScientific = NAME0, SpeciesCommmon = NAME) %>%
@@ -156,18 +156,22 @@ rock_lobster_stat_areas <- unzip_and_clean("rock_lobster_stat_areas.zip") %>%
     TRUE ~ "Unknown"))
 use_data(rock_lobster_stat_areas, overwrite = TRUE)
 
-# Marine reserves ---
+# Marine reserves ----
 
 doc_marine_reserves <- unzip_and_clean("kx-doc-marine-reserves-SHP.zip") %>%
-  select(-Section, -Legislatio, -Government, -Local_Purp, -Type, -GlobalID)
+  select(Name)
 use_data(doc_marine_reserves, overwrite = TRUE)
+
+# Marine habitats ----
 
 Gisborne_TToR_Habitats <- unzip_and_clean("Gisborne_Te_Tapuwae_o_Rongokako_Habitats.zip") %>%
   rename(Habitat = HABITAT)
 use_data(Gisborne_TToR_Habitats, overwrite = TRUE)
 
-Gisborne_TToR_Reefs <- unzip_and_clean("Gisborne_TToR_Reefs.zip")
+Gisborne_TToR_Reefs <- unzip_and_clean("Gisborne_TToR_Reefs.zip") %>%
+  select(Reef_name)
 use_data(Gisborne_TToR_Reefs, overwrite = TRUE)
 
-Rocky_reef_National_NZ <- unzip_and_clean("Rocky_reef_National_NZ.zip")
+Rocky_reef_National_NZ <- unzip_and_clean("Rocky_reef_National_NZ.zip") %>%
+  select(Source)
 use_data(Rocky_reef_National_NZ, overwrite = TRUE)
