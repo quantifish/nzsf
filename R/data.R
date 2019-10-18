@@ -142,6 +142,22 @@
 "SouthernBlueWhiting_QMA"
 
 
+#' New Zealand orange roughy QMAs
+#'
+#' New Zealand orange roughy Quota Management Areas (QMAs).
+#'
+#' @format Simple feature collection with 4 features and 4 fields:
+#' \describe{
+#'   \item{QMA}{Quota Management Area or stock}
+#'   \item{SpeciesCode}{Species code}
+#'   \item{SpeciesScientific}{Scientific name}
+#'   \item{SpeciesCommon}{Common name}
+#' }
+#' @source Fisheries New Zealand
+#' 
+"OrangeRoughy_QMA"
+
+
 #' New Zealand cockle QMAs
 #'
 #' New Zealand cockle Quota Management Areas (QMAs).
