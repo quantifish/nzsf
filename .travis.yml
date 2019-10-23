@@ -13,16 +13,15 @@ r_packages:
   - roxygen2
   - testthat
   
-r_github_packages: thomasp85/patchwork
+r_github_packages: 
+  - thomasp85/patchwork
 
-addons:
-  apt:
-    packages:
-      - libudunits2-dev
-      - libv8-dev
-      - libgdal1-dev
-      - libproj-dev
-      - libgeos-dev
-      - libjq-dev
-      - libprotobuf-dev
-      - protobuf-compiler
+apt_packages:
+  - libudunits2-dev
+  - libv8-dev
+  - libgdal1-dev
+  - libproj-dev
+  - libgeos-dev
+  - libjq-dev
+  - libprotobuf-dev
+  - protobuf-compiler
