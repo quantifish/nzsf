@@ -106,3 +106,16 @@ p2 <- ggplot() +
   labs(title = "Rakiura")
 p1 + p2
 
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+data(gebco_depth_raster)
+
+rpts <- gebco_depth_raster %>%
+  rasterToPoints() %>%
+  data.frame()
+
+ggplot() +
+  geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
+  geom_sf(data = exclusive_economic_zone_outer_limits_200_mile) +
+  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3)# +
+  #coord_sf(datum = sf::st_crs(4326))
+

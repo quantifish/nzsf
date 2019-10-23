@@ -11,8 +11,7 @@
 #' ggplot() +
 #'   geom_sf(data = x, fill = NA)
 #' 
-get_qma <- function(qma = "CRA",
-                    proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
+get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 
   # Shellfish
   if (qma %in% c("CRA", "crayfish")) {
@@ -98,8 +97,7 @@ get_qma <- function(qma = "CRA",
 #' ggplot() + 
 #'   plot_qma(qma = "CRA")
 #' 
-plot_qma <- function(qma = "CRA",
-                     proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", ...) {
+plot_qma <- function(qma = "CRA", proj = proj_nzsf(), ...) {
   x <- get_qma(qma = qma, proj = proj)
   p <- geom_sf(data = x, ...)
   return(p)

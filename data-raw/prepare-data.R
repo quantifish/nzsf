@@ -14,6 +14,8 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
+proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+
 # Various ----
 
 FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
@@ -33,23 +35,6 @@ use_data(exclusive_economic_zone_outer_limits_200_mile, overwrite = TRUE)
 
 coastline_polyline_hydro_14k_122k <- unzip_and_clean("lds-coastline-polyline-hydro-14k-122k-SHP.zip")
 use_data(coastline_polyline_hydro_14k_122k, overwrite = TRUE)
-
-# Depth ----
-
-depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
-  rename(depth = VALDCO) %>%
-  select(depth, SCAMIN, SORDAT, SORIND)
-use_data(depth_contour_polyline_hydro_122k_190k, overwrite = TRUE)
-
-depth_contour_polyline_hydro_190k_1350k <- unzip_and_clean("lds-depth-contour-polyline-hydro-190k-1350k-SHP.zip") %>% 
-  rename(depth = VALDCO) %>%
-  select(depth, SCAMIN, SORDAT, SORIND)
-use_data(depth_contour_polyline_hydro_190k_1350k, overwrite = TRUE)
-
-depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-polyline-hydro-1350k-11500k-SHP.zip") %>%
-  rename(depth = VALDCO) %>%
-  select(depth, SCAMIN, SORDAT, SORIND)
-use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
 # New Zealand coastline ----
 
@@ -175,3 +160,20 @@ use_data(Gisborne_TToR_Reefs, overwrite = TRUE)
 Rocky_reef_National_NZ <- unzip_and_clean("Rocky_reef_National_NZ.zip") %>%
   select(Source)
 use_data(Rocky_reef_National_NZ, overwrite = TRUE)
+
+# Depth ----
+
+depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
+use_data(depth_contour_polyline_hydro_122k_190k, overwrite = TRUE)
+
+depth_contour_polyline_hydro_190k_1350k <- unzip_and_clean("lds-depth-contour-polyline-hydro-190k-1350k-SHP.zip") %>% 
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
+use_data(depth_contour_polyline_hydro_190k_1350k, overwrite = TRUE)
+
+depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-polyline-hydro-1350k-11500k-SHP.zip") %>%
+  rename(depth = VALDCO) %>%
+  select(depth, SCAMIN, SORDAT, SORIND)
+use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)

@@ -8,7 +8,7 @@
 #' @examples
 #' get_marine_reserves()
 #' 
-get_marine_reserves <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
+get_marine_reserves <- function(proj = proj_nzsf()) {
   data("doc_marine_reserves")
   x <- doc_marine_reserves
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
@@ -28,7 +28,7 @@ get_marine_reserves <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40
 #' ggplot() +
 #'   plot_marine_reserves()
 #' 
-plot_marine_reserves <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", ...) {
+plot_marine_reserves <- function(proj = proj_nzsf(), ...) {
   x <- get_marine_reserves()
   p <- geom_sf(data = x, ...)
   return(p)

@@ -4,9 +4,7 @@
 \alias{plot_statistical_areas}
 \title{Get statistical areas}
 \usage{
-
-  plot_statistical_areas(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
-  area = "CRA", ...)
+plot_statistical_areas(proj = proj_nzsf(), area = "CRA", ...)
 }
 \arguments{
 \item{proj}{The projection to use.}

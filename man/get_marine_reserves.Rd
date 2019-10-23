@@ -4,8 +4,7 @@
 \alias{get_marine_reserves}
 \title{Get Marine Reserves}
 \usage{
-
-  get_marine_reserves(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs")
+get_marine_reserves(proj = proj_nzsf())
 }
 \arguments{
 \item{proj}{The projection to use.}

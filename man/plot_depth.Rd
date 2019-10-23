@@ -4,9 +4,7 @@
 \alias{plot_depth}
 \title{Plot depth polylines around New Zealand}
 \usage{
-
-  plot_depth(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
-  resolution = "low", ...)
+plot_depth(proj = proj_nzsf(), resolution = "low", ...)
 }
 \arguments{
 \item{proj}{The projection to use.}

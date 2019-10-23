@@ -12,8 +12,7 @@
 #' ggplot() +
 #'   geom_sf(data = x, fill = NA)
 #' 
-get_statistical_areas <- function(area = "CRA",
-                                  proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs") {
+get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
   if (area %in% c("EEZ")) {
     data("exclusive_economic_zone_outer_limits_200_mile")
@@ -52,8 +51,7 @@ get_statistical_areas <- function(area = "CRA",
 #' ggplot() + 
 #'   plot_statistical_areas(area = "CRA")
 #' 
-plot_statistical_areas <- function(proj = "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs", 
-                                   area = "CRA", ...) {
+plot_statistical_areas <- function(proj = proj_nzsf(), area = "CRA", ...) {
   x <- get_statistical_areas(area = area, proj = proj)
   p <- geom_sf(data = x, ...)
   return(p)
