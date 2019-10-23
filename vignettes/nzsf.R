@@ -115,7 +115,7 @@ rpts <- gebco_depth_raster %>%
 
 ggplot() +
   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
-  geom_sf(data = exclusive_economic_zone_outer_limits_200_mile) +
-  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3)# +
-  #coord_sf(datum = sf::st_crs(4326))
+  plot_statistical_areas(area = "EEZ", fill = NA) +
+  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  coord_sf()
 
