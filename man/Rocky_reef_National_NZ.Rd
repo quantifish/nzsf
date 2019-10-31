@@ -8,6 +8,9 @@
 \describe{
   \item{Source}{the source of the reef polygon}
 }}
+\source{
+New Zealand Department of Conservation (DOC)
+}
 \usage{
 Rocky_reef_National_NZ
 }

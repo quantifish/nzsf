@@ -12,6 +12,6 @@
 Gisborne_TToR_Habitats
 }
 \description{
-Gisborne Te Tapuwae o Rongokako Habitats.
+Gisborne Te Tapuwae o Rongokako Habitats provided by the Department of Conservation (DOC).
 }
 \keyword{datasets}

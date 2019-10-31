@@ -3,7 +3,7 @@
 \docType{data}
 \name{nz_coastlines_and_islands_polygons_topo_150k}
 \alias{nz_coastlines_and_islands_polygons_topo_150k}
-\title{New Zealand coastlines}
+\title{New Zealand coastlines and islands 150k}
 \format{Simple feature collection with 9261 features and 7 fields:
 \describe{
   \item{name}{blah}
@@ -21,6 +21,6 @@
 nz_coastlines_and_islands_polygons_topo_150k
 }
 \description{
-New Zealand coastlines.
+New Zealand coastlines and islands 150k.
 }
 \keyword{datasets}

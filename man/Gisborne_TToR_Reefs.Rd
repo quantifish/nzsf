@@ -8,6 +8,9 @@
 \describe{
   \item{Reef_name}{the name of the reef}
 }}
+\source{
+New Zealand Department of Conservation (DOC)
+}
 \usage{
 Gisborne_TToR_Reefs
 }

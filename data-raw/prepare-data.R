@@ -177,3 +177,20 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   rename(depth = VALDCO) %>%
   select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
+
+# Environmental layers ----
+
+# setwd("/home/darcy/Projects/nzsf/data-raw")
+library(raster)
+
+f <- "mfe-average-seasurface-temperature-19932012-GTiff.zip"
+fz <- unzip(zipfile = f, list = TRUE)
+fz
+unzip(zipfile = f)
+
+mfe_average_sst <- raster::raster(x = "average-seasurface-temperature-19932012.tif", values = TRUE) %>%
+  projectRaster(crs = proj_nzsf)
+names(mfe_average_sst) <- "layer"
+mfe_average_sst[mfe_average_sst[] < -5 | mfe_average_sst[] > 60] <- NA
+file.remove(fz$Name)
+use_data(mfe_average_sst, overwrite = TRUE)

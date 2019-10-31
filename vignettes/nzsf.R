@@ -107,6 +107,21 @@ p2 <- ggplot() +
 p1 + p2
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+data(mfe_average_sst)
+
+rpts <- mfe_average_sst %>%
+  rasterToPoints() %>%
+  data.frame()
+
+ggplot() +
+  geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
+  plot_statistical_areas(area = "EEZ", fill = NA) +
+  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  coord_sf() +
+  scale_fill_viridis(alpha = 0.8, option = "magma") +
+  labs(fill = "Depth (m)")
+
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
 data(gebco_depth_raster)
 
 rpts <- gebco_depth_raster %>%
@@ -117,5 +132,7 @@ ggplot() +
   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
   plot_statistical_areas(area = "EEZ", fill = NA) +
   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
-  coord_sf()
+  coord_sf() +
+  scale_fill_viridis(alpha = 0.8, option = "magma") +
+  labs(fill = "Depth (m)")
 

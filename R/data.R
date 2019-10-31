@@ -226,9 +226,39 @@
 "Paua_QMA"
 
 
-#' New Zealand coastlines
+#' New Zealand coastlines 150k
 #'
-#' New Zealand coastlines.
+#' New Zealand coastlines 150k.
+#'
+#' @format Simple feature collection with 9261 features and 7 fields:
+#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
+#' 
+"nz_coastlines_topo_150k"
+
+
+#' New Zealand coastlines 1250k
+#'
+#' New Zealand coastlines 1250k.
+#'
+#' @format Simple feature collection with 9261 features and 7 fields:
+#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
+#' 
+"nz_coastlines_topo_1250k"
+
+
+#' New Zealand coastlines 1500k
+#'
+#' New Zealand coastlines 1500k.
+#'
+#' @format Simple feature collection with 9261 features and 7 fields:
+#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
+#' 
+"nz_coastlines_topo_1500k"
+
+
+#' New Zealand coastlines and islands 150k
+#'
+#' New Zealand coastlines and islands 150k.
 #'
 #' @format Simple feature collection with 9261 features and 7 fields:
 #' \describe{
@@ -245,9 +275,67 @@
 "nz_coastlines_and_islands_polygons_topo_150k"
 
 
-#' New Zealand depth contours
+#' New Zealand coastlines and islands 1250k
 #'
-#' New Zealand depth contours.
+#' New Zealand coastlines and islands 1250k.
+#'
+#' @format Simple feature collection with 9261 features and 7 fields:
+#' \describe{
+#'   \item{name}{blah}
+#'   \item{macronated}{blah}
+#'   \item{grp_macron}{blah}
+#'   \item{TARGET_FID}{blah}
+#'   \item{grp_ascii}{blah}
+#'   \item{grp_name}{blah}
+#'   \item{name_ascii}{blah}
+#' }
+#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
+#' 
+"nz_coastlines_and_islands_polygons_topo_1250k"
+
+
+#' New Zealand coastlines and islands 1500k
+#'
+#' New Zealand coastlines and islands 1500k.
+#'
+#' @format Simple feature collection with 9261 features and 7 fields:
+#' \describe{
+#'   \item{name}{blah}
+#'   \item{macronated}{blah}
+#'   \item{grp_macron}{blah}
+#'   \item{TARGET_FID}{blah}
+#'   \item{grp_ascii}{blah}
+#'   \item{grp_name}{blah}
+#'   \item{name_ascii}{blah}
+#' }
+#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
+#' 
+"nz_coastlines_and_islands_polygons_topo_1500k"
+
+
+#' New Zealand depth contours 14 by 122k
+#'
+#' New Zealand depth contours 14 by 122k.
+#'
+#' @format Simple feature collection with 17157 features and 4 fields:
+#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
+#' 
+"coastline_polyline_hydro_14k_122k"
+
+
+#' New Zealand depth contours 122k by 190k
+#'
+#' New Zealand depth contours 122k by 190k.
+#'
+#' @format Simple feature collection with 17157 features and 4 fields:
+#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
+#' 
+"depth_contour_polyline_hydro_122k_190k"
+
+
+#' New Zealand depth contours 1350k by 11500k
+#'
+#' New Zealand depth contours 1350k by 11500k.
 #'
 #' @format Simple feature collection with 17157 features and 4 fields:
 #' \describe{
@@ -258,7 +346,23 @@
 #' }
 #' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
 #' 
-"depth_contour_polyline_hydro_122k_190k"
+"depth_contour_polyline_hydro_1350k_11500k"
+
+
+#' New Zealand depth contours 190k by 1350k
+#'
+#' New Zealand depth contours 190k by 1350k.
+#'
+#' @format Simple feature collection with 17157 features and 4 fields:
+#' \describe{
+#'   \item{depth}{the depth in m}
+#'   \item{SCAMIN}{blah}
+#'   \item{SORDAT}{blah}
+#'   \item{SORIND}{blah}
+#' }
+#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
+#' 
+"depth_contour_polyline_hydro_190k_1350k"
 
 
 #' New Zealand marine reserves
@@ -276,7 +380,7 @@
 
 #' Gisborne Te Tapuwae o Rongokako Habitats
 #'
-#' Gisborne Te Tapuwae o Rongokako Habitats.
+#' Gisborne Te Tapuwae o Rongokako Habitats provided by the Department of Conservation (DOC).
 #'
 #' @format Simple feature collection with 482 features and 15 field:
 #' \describe{
@@ -294,6 +398,7 @@
 #' \describe{
 #'   \item{Reef_name}{the name of the reef}
 #' }
+#' @source New Zealand Department of Conservation (DOC)
 #' 
 "Gisborne_TToR_Reefs"
 
@@ -306,6 +411,7 @@
 #' \describe{
 #'   \item{Source}{the source of the reef polygon}
 #' }
+#' @source New Zealand Department of Conservation (DOC)
 #' 
 "Rocky_reef_National_NZ"
 
@@ -320,3 +426,61 @@
 "exclusive_economic_zone_outer_limits_200_mile"
 
 
+#' New Zealand 12 mile limit
+#'
+#' New Zealand 12 mile limit.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Fisheries New Zealand
+#' 
+"territorial_sea_outer_limit_12_mile"
+
+
+#' New Zealand General Statistical Areas
+#'
+#' New Zealand general Statistical Areas.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Fisheries New Zealand
+#' 
+"nz_fisheries_general_statistical_areas"
+
+
+#' New Zealand Rock Lobster Statistical Areas
+#'
+#' New Zealand rock lobster Statistical Areas.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Fisheries New Zealand
+#' 
+"rock_lobster_stat_areas"
+
+
+#' New Zealand Fisheries Management Areas (FMAs)
+#'
+#' New Zealand Fisheries Management Areas (FMAs).
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Fisheries New Zealand
+#' 
+"FisheriesManagementAreas"
+
+
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#' 
+"gebco_depth_raster"
+
+
+#' Average SST
+#'
+#' Average SST.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source MFE
+#' 
+"mfe_average_sst"
