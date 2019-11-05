@@ -15,14 +15,11 @@
 #' 
 get_coast <- function(proj = proj_nzsf(), resolution = "low", keep = 1) {
   if (resolution %in% c("h", "high", "150k")) {
-    data("nz_coastlines_and_islands_polygons_topo_150k")
-    x <- nz_coastlines_and_islands_polygons_topo_150k
+    x <- nzsf::nz_coastlines_and_islands_polygons_topo_150k
   } else if (resolution %in% c("m", "med", "1250k")) {
-    data("nz_coastlines_and_islands_polygons_topo_1250k")
-    x <- nz_coastlines_and_islands_polygons_topo_1250k
+    x <- nzsf::nz_coastlines_and_islands_polygons_topo_1250k
   } else {
-    data("nz_coastlines_and_islands_polygons_topo_1500k")
-    x <- nz_coastlines_and_islands_polygons_topo_1500k
+    x <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k
   }
   if (keep < 1) x <- x %>% ms_simplify(keep = keep, keep_shapes = FALSE)
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)

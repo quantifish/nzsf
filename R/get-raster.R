@@ -45,6 +45,6 @@ plot_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100, ...) {
   df <- rasterToPoints(r) %>%
     data.frame() %>%
     mutate(layer = ifelse(layer == 0, NA, layer))
-  p <- geom_raster(data = df, aes(x = x, y = y, fill = layer), ...)
+  p <- geom_raster(data = df, aes(x = .data$x, y = .data$y, fill = layer), ...)
   return(p)
 }

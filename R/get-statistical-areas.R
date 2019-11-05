@@ -15,16 +15,14 @@
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
   if (area %in% c("EEZ")) {
-    data("exclusive_economic_zone_outer_limits_200_mile")
-    x <- exclusive_economic_zone_outer_limits_200_mile
+    x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
   }
   if (area %in% c("CRA")) {
-    data("rock_lobster_stat_areas")
-    x <- rock_lobster_stat_areas
+    x <- nzsf::rock_lobster_stat_areas
   }
   if (area %in% c("JMA")) {
-    data("FisheriesManagementAreas")
-    x <- FisheriesManagementAreas %>% filter(LayerName == "General FMAs")
+    x <- nzsf::FisheriesManagementAreas %>% 
+      filter(.data$LayerName == "General FMAs")
   }
   
   if (!is.null(proj)) {
@@ -35,7 +33,6 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
       x <- x %>% st_cast("MULTIPOLYGON")
     }
   }
-  
   return(x)
 }
 

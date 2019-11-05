@@ -9,8 +9,7 @@
 #' get_marine_reserves()
 #' 
 get_marine_reserves <- function(proj = proj_nzsf()) {
-  data("doc_marine_reserves")
-  x <- doc_marine_reserves
+  x <- nzsf::doc_marine_reserves
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
   return(x)
 }

@@ -30,6 +30,6 @@ Suggests:
     usethis,
     viridis,
     patchwork
-LazyData: false
+LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

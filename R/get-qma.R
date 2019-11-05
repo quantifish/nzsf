@@ -15,65 +15,51 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 
   # Shellfish
   if (qma %in% c("CRA", "crayfish")) {
-    data("SpinyRedRockLobster_QMA")
-    x <- SpinyRedRockLobster_QMA
+    x <- nzsf::SpinyRedRockLobster_QMA
     # shp <- "SpinyRedRockLobster_QMAs"
     # dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
     # x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
   }
   if (qma %in% c("PHC")) {
-    data("PackhorseRockLobster_QMA")
-    x <- PackhorseRockLobster_QMA
+    x <- nzsf::PackhorseRockLobster_QMA
   }
   if (qma %in% c("COC")) {
-    data("Cockle_QMA")
-    x <- Cockle_QMA
+    x <- nzsf::Cockle_QMA
   }
   if (qma %in% c("PAU")) {
-    data("Paua_QMA")
-    x <- Paua_QMA
+    x <- nzsf::Paua_QMA
   }
   if (qma %in% c("PPI")) {
-    data("Pipi_QMA")
-    x <- Pipi_QMA
+    x <- nzsf::Pipi_QMA
   }
   if (qma %in% c("SCA")) {
-    data("Scallop_QMA")
-    x <- Scallop_QMA
+    x <- nzsf::Scallop_QMA
   }
   
   # Finfish
   if (qma %in% c("JMA")) {
-    data("JackMackerel_QMA")
-    x <- JackMackerel_QMA
+    x <- nzsf::JackMackerel_QMA
   }
   if (qma %in% c("HAK")) {
-    data("HAKE_QMA")
-    x <- HAKE_QMA
+    x <- nzsf::HAKE_QMA
   }
   if (qma %in% c("HOK")) {
-    data("HOKI_QMA")
-    x <- HOKI_QMA
+    x <- nzsf::HOKI_QMA
   }
   if (qma %in% c("LIN")) {
-    data("LING_QMA")
-    x <- LING_QMA
+    x <- nzsf::LING_QMA
   }
   if (qma %in% c("OEO")) {
-    data("OREO_QMA")
-    x <- OREO_QMA
+    x <- nzsf::OREO_QMA
   }
   if (qma %in% c("ORH")) {
-    data("OrangeRoughy_QMA")
-    x <- OrangeRoughy_QMA
+    x <- nzsf::OrangeRoughy_QMA
   }
   if (qma %in% c("SBW")) {
-    data("SouthernBlueWhiting_QMA")
-    x <- SouthernBlueWhiting_QMA
+    x <- nzsf::SouthernBlueWhiting_QMA
   }
   if (qma %in% c("SWA")) {
-    data("SilverWarehou_QMA")
-    x <- SilverWarehou_QMA
+    x <- nzsf::SilverWarehou_QMA
   }
   
   if (!is.null(proj)) {

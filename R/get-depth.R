@@ -12,14 +12,11 @@
 #' 
 get_depth <- function(proj = proj_nzsf(), resolution = "low") {
   if (resolution %in% c("high", "122k_190k")) {
-    data("depth_contour_polyline_hydro_122k_190k")
-    x <- depth_contour_polyline_hydro_122k_190k
+    x <- nzsf::depth_contour_polyline_hydro_122k_190k
   } else if (resolution %in% c("med", "190k_1350k")) {
-    data("depth_contour_polyline_hydro_190k_1350k")
-    x <- depth_contour_polyline_hydro_190k_1350k
+    x <- nzsf::depth_contour_polyline_hydro_190k_1350k
   } else {
-    data("depth_contour_polyline_hydro_1350k_11500k")
-    x <- depth_contour_polyline_hydro_1350k_11500k
+    x <- nzsf::depth_contour_polyline_hydro_1350k_11500k
   }
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
   return(x)

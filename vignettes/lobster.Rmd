@@ -62,6 +62,7 @@ ggplot() +
   geom_sf(data = lab1, colour = "red") +
   geom_sf(data = lab2, colour = "blue")
 ```
+
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 p <- ggplot() +
   plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
