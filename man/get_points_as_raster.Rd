@@ -4,8 +4,7 @@
 \alias{get_points_as_raster}
 \title{Convert points to a raster}
 \usage{
-get_points_as_raster(data, field, fun = "sum", nrow = 100,
-  ncol = 100)
+get_points_as_raster(data, field, fun = "sum", nrow = 100, ncol = 100)
 }
 \arguments{
 \item{data}{a spatial feature data.}

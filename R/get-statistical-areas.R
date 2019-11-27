@@ -15,13 +15,13 @@
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
   if (area %in% c("EEZ")) {
-    x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
+    x <- exclusive_economic_zone_outer_limits_200_mile
   }
   if (area %in% c("CRA")) {
-    x <- nzsf::rock_lobster_stat_areas
+    x <- rock_lobster_stat_areas
   }
   if (area %in% c("JMA")) {
-    x <- nzsf::FisheriesManagementAreas %>% 
+    x <- FisheriesManagementAreas %>% 
       filter(.data$LayerName == "General FMAs")
   }
   

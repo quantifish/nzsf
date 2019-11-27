@@ -3,7 +3,6 @@
 \docType{package}
 \name{nzsf}
 \alias{nzsf}
-\alias{nzsf-package}
 \title{New Zealand Spatial Features}
 \description{
 \if{html}{\figure{logo.png}{options: align='right' alt='logo' width='120'}}
