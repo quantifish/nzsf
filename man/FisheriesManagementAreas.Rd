@@ -4,7 +4,9 @@
 \name{FisheriesManagementAreas}
 \alias{FisheriesManagementAreas}
 \title{New Zealand Fisheries Management Areas (FMAs)}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 Fisheries New Zealand
 }

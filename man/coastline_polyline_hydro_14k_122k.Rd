@@ -4,7 +4,9 @@
 \name{coastline_polyline_hydro_14k_122k}
 \alias{coastline_polyline_hydro_14k_122k}
 \title{New Zealand depth contours 14 by 122k}
-\format{Simple feature collection with 17157 features and 4 fields:}
+\format{
+Simple feature collection with 17157 features and 4 fields:
+}
 \source{
 \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
 }

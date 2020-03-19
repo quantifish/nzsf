@@ -4,7 +4,9 @@
 \name{nz_coastlines_topo_1250k}
 \alias{nz_coastlines_topo_1250k}
 \title{New Zealand coastlines 1250k}
-\format{Simple feature collection with 9261 features and 7 fields:}
+\format{
+Simple feature collection with 9261 features and 7 fields:
+}
 \source{
 \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
 }

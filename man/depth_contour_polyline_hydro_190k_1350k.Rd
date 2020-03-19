@@ -4,13 +4,15 @@
 \name{depth_contour_polyline_hydro_190k_1350k}
 \alias{depth_contour_polyline_hydro_190k_1350k}
 \title{New Zealand depth contours 190k by 1350k}
-\format{Simple feature collection with 17157 features and 4 fields:
+\format{
+Simple feature collection with 17157 features and 4 fields:
 \describe{
   \item{depth}{the depth in m}
   \item{SCAMIN}{blah}
   \item{SORDAT}{blah}
   \item{SORIND}{blah}
-}}
+}
+}
 \source{
 \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
 }

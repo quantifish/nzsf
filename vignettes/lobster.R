@@ -1,10 +1,10 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 library(nzsf)
 library(ggspatial)
 library(lwgeom)
@@ -22,8 +22,23 @@ lab <- st_difference(sf_qma, sf_coast) %>%
   st_centroid()
   #st_point_on_surface()
 
-sf_stat <- get_statistical_areas("CRA") %>% filter(QMA == stock)
-bbox <- sf_stat %>% filter(QMA == stock) %>% st_bbox()
+sf_stat <- get_statistical_areas("CRA") %>% 
+  # filter(QMA %in% stock)
+  filter(area %in% c(901, 902, 903, 904, 939, 905, 906))
+# bbox <- lab %>%
+#   filter(QMA %in% stock) %>%
+#   st_join(sf_stat) %>%
+#   # filter(QMA %in% stock) %>%
+#   st_bbox()
+# bbox <- sf_stat %>% 
+#   # filter(QMA %in% stock) %>% 
+#   st_bbox()
+bbox <- sf_stat %>%
+  dplyr::select(geometry) %>%
+  st_cast("POINT") %>%
+  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
+  st_buffer(dist = 2e4) %>%
+  st_bbox()
 box <- st_as_sfc(bbox)
 
 ggplot() +
@@ -33,7 +48,7 @@ ggplot() +
   geom_sf_text(data = lab, aes(label = QMA), size = 2.5) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 #library(ggrepel)
 
 sf_diff <- st_difference(sf_stat, sf_coast)
@@ -49,17 +64,23 @@ ggplot() +
   geom_sf(data = lab1, colour = "red") +
   geom_sf(data = lab2, colour = "blue")
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 p <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
   plot_qma(qma = "CRA", fill = NA) +
   plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
   geom_sf_label(data = lab1, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
+  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical)
+
 if (stock %in% c("CRA1")) {
-  p <- p + annotation_scale(location = "bl", unit_category = "metric")
+  p <- p + 
+    annotation_scale(location = "bl", unit_category = "metric") +
+    geom_sf_text(data = lab %>% filter(QMA %in% stock), aes(label = QMA), size = 5.5, nudge_x = -60000, nudge_y = 20000)
 } else {
   p <- p + annotation_scale(location = "br", unit_category = "metric")
 }
+
 p
 

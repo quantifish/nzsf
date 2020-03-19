@@ -4,13 +4,15 @@
 \name{SilverWarehou_QMA}
 \alias{SilverWarehou_QMA}
 \title{New Zealand silver warehou QMAs}
-\format{Simple feature collection with 4 features and 4 fields:
+\format{
+Simple feature collection with 4 features and 4 fields:
 \describe{
   \item{QMA}{Quota Management Area or stock}
   \item{SpeciesCode}{Species code}
   \item{SpeciesScientific}{Scientific name}
   \item{SpeciesCommon}{Common name}
-}}
+}
+}
 \source{
 Fisheries New Zealand
 }

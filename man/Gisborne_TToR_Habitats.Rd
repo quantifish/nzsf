@@ -4,10 +4,12 @@
 \name{Gisborne_TToR_Habitats}
 \alias{Gisborne_TToR_Habitats}
 \title{Gisborne Te Tapuwae o Rongokako Habitats}
-\format{Simple feature collection with 482 features and 15 field:
+\format{
+Simple feature collection with 482 features and 15 field:
 \describe{
   \item{Habitat}{the type of habitat}
-}}
+}
+}
 \usage{
 Gisborne_TToR_Habitats
 }

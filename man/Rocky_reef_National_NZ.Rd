@@ -4,10 +4,12 @@
 \name{Rocky_reef_National_NZ}
 \alias{Rocky_reef_National_NZ}
 \title{New Zealand Rocky Reefs}
-\format{Simple feature collection with 4817 features and 1 field:
+\format{
+Simple feature collection with 4817 features and 1 field:
 \describe{
   \item{Source}{the source of the reef polygon}
-}}
+}
+}
 \source{
 New Zealand Department of Conservation (DOC)
 }

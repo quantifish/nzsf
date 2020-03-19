@@ -4,7 +4,9 @@
 \name{mfe_average_sst}
 \alias{mfe_average_sst}
 \title{Average SST}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 MFE
 }

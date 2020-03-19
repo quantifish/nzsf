@@ -4,14 +4,16 @@
 \name{Pipi_QMA}
 \alias{Pipi_QMA}
 \title{New Zealand pipi QMAs}
-\format{Simple feature collection with 10 features and 5 fields:
+\format{
+Simple feature collection with 10 features and 5 fields:
 \describe{
   \item{QMA}{Quota Management Area or stock}
   \item{SpeciesCode}{Species code}
   \item{SpeciesScientific}{Scientific name}
   \item{SpeciesCommon}{Common name}
   \item{QmaName}{Quota Management Area or stock name}
-}}
+}
+}
 \source{
 Fisheries New Zealand
 }

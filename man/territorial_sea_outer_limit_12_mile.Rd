@@ -4,7 +4,9 @@
 \name{territorial_sea_outer_limit_12_mile}
 \alias{territorial_sea_outer_limit_12_mile}
 \title{New Zealand 12 mile limit}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 Fisheries New Zealand
 }

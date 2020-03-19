@@ -4,7 +4,8 @@
 \name{nz_coastlines_and_islands_polygons_topo_150k}
 \alias{nz_coastlines_and_islands_polygons_topo_150k}
 \title{New Zealand coastlines and islands 150k}
-\format{Simple feature collection with 9261 features and 7 fields:
+\format{
+Simple feature collection with 9261 features and 7 fields:
 \describe{
   \item{name}{blah}
   \item{macronated}{blah}
@@ -13,7 +14,8 @@
   \item{grp_ascii}{blah}
   \item{grp_name}{blah}
   \item{name_ascii}{blah}
-}}
+}
+}
 \source{
 \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
 }

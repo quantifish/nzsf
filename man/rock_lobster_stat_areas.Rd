@@ -4,7 +4,9 @@
 \name{rock_lobster_stat_areas}
 \alias{rock_lobster_stat_areas}
 \title{New Zealand Rock Lobster Statistical Areas}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 Fisheries New Zealand
 }

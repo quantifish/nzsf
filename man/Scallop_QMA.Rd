@@ -4,14 +4,16 @@
 \name{Scallop_QMA}
 \alias{Scallop_QMA}
 \title{New Zealand scallop QMAs}
-\format{Simple feature collection with 13 features and 5 fields:
+\format{
+Simple feature collection with 13 features and 5 fields:
 \describe{
   \item{QMA}{Quota Management Area or stock}
   \item{SpeciesCode}{Species code}
   \item{SpeciesScientific}{Scientific name}
   \item{SpeciesCommon}{Common name}
   \item{QmaName}{Quota Management Area or stock name}
-}}
+}
+}
 \source{
 Fisheries New Zealand
 }

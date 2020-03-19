@@ -4,7 +4,9 @@
 \name{gebco_depth_raster}
 \alias{gebco_depth_raster}
 \title{Gebco depth}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 Gebco
 }

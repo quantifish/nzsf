@@ -4,10 +4,12 @@
 \name{Gisborne_TToR_Reefs}
 \alias{Gisborne_TToR_Reefs}
 \title{Gisborne Te Tapuwae o Rongokako Reefs}
-\format{Simple feature collection with 3 features and 1 field:
+\format{
+Simple feature collection with 3 features and 1 field:
 \describe{
   \item{Reef_name}{the name of the reef}
-}}
+}
+}
 \source{
 New Zealand Department of Conservation (DOC)
 }

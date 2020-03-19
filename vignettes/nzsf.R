@@ -1,10 +1,10 @@
-## ---- include = FALSE----------------------------------------------------
+## ---- include = FALSE---------------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 library(nzsf)
 library(ggspatial)
 
@@ -16,7 +16,7 @@ ggplot() +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 bbox <- get_coast() %>% 
   filter(name %in% c("North Island or Te Ika-a-Māui")) %>%
   st_bbox()
@@ -30,7 +30,7 @@ ggplot() +
   annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 library(lwgeom)
 
 sf_jma <- get_qma("JMA")
@@ -49,7 +49,7 @@ ggplot() +
   annotation_north_arrow(location = "tl", which_north = "true") +
   annotation_scale(location = "br", unit_category = "metric")
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 library(viridis)
 
 proj <- "+proj=longlat +datum=WGS84 +no_defs"
@@ -76,7 +76,7 @@ ggplot() +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Te Tapuwae o Rongokako Marine Reserve")
 
-## ----echo=TRUE, fig.height=6, fig.width=12, message=FALSE----------------
+## ----echo=TRUE, fig.height=6, fig.width=12, message=FALSE---------------------
 library(patchwork)
 
 stewart <- get_coast() %>%
@@ -106,7 +106,7 @@ p2 <- ggplot() +
   labs(title = "Rakiura")
 p1 + p2
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 data(mfe_average_sst)
 
 rpts <- mfe_average_sst %>%
@@ -121,7 +121,7 @@ ggplot() +
   scale_fill_viridis(alpha = 0.8, option = "magma") +
   labs(fill = "Depth (m)")
 
-## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE-----------------
+## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
 data(gebco_depth_raster)
 
 rpts <- gebco_depth_raster %>%

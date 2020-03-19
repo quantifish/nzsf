@@ -4,13 +4,15 @@
 \name{SpinyRedRockLobster_QMA}
 \alias{SpinyRedRockLobster_QMA}
 \title{New Zealand red rock lobster QMAs}
-\format{Simple feature collection with 10 features and 4 fields:
+\format{
+Simple feature collection with 10 features and 4 fields:
 \describe{
   \item{QMA}{Quota Management Area or stock}
   \item{SpeciesCode}{Species code}
   \item{SpeciesScientific}{Scientific name}
   \item{SpeciesCommon}{Common name}
-}}
+}
+}
 \source{
 Fisheries New Zealand
 }

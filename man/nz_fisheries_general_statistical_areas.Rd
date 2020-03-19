@@ -4,7 +4,9 @@
 \name{nz_fisheries_general_statistical_areas}
 \alias{nz_fisheries_general_statistical_areas}
 \title{New Zealand General Statistical Areas}
-\format{Simple feature collection with 153 features and 29 fields:}
+\format{
+Simple feature collection with 153 features and 29 fields:
+}
 \source{
 Fisheries New Zealand
 }
