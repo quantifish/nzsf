@@ -165,3 +165,7 @@ ggplot() +
   labs(fill = "Depth (m)")
 ```
 
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+# Add ERA5 data here
+# wf_set_key(user = "youremail@gmail.com", key = "secretkey", service = "webapi")
+```
