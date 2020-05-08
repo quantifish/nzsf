@@ -68,18 +68,20 @@ ggplot() +
 p <- ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
-  plot_qma(qma = "CRA", fill = NA) +
+  # plot_qma(qma = "CRA", fill = NA) +
   plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
   geom_sf_label(data = lab1, aes(label = area)) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical)
+  annotation_north_arrow(location = "tr", style = north_arrow_nautical)
 
 if (stock %in% c("CRA1")) {
-  p <- p + 
-    annotation_scale(location = "bl", unit_category = "metric") +
+  p <- p +
+    # annotation_scale(location = "bl", unit_category = "metric") +
+    # annotation_scale() +
     geom_sf_text(data = lab %>% filter(QMA %in% stock), aes(label = QMA), size = 5.5, nudge_x = -60000, nudge_y = 20000)
 } else {
-  p <- p + annotation_scale(location = "br", unit_category = "metric")
+  p <- p +
+    annotation_scale(location = "br", unit_category = "metric")
 }
 
 p

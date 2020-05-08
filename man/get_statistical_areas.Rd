@@ -12,7 +12,7 @@ get_statistical_areas(area = "CRA", proj = proj_nzsf())
 \item{proj}{The projection to use.}
 }
 \value{
-A FMA.
+New Zealands statistical areas as a \code{sf} object.
 }
 \description{
 Get Statistical Areas

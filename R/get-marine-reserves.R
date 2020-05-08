@@ -1,7 +1,8 @@
 #' Get Marine Reserves
 #' 
-#' @param proj The projection to use.
-#' @return New Zealands marine reserves.
+#' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
+#' @return New Zealands marine reserves as a \code{sf} object.
+#' 
 #' @keywords reserve
 #' @importFrom utils data
 #' @export
@@ -19,7 +20,8 @@ get_marine_reserves <- function(proj = proj_nzsf()) {
 #' 
 #' @inheritParams get_marine_reserves
 #' @param ... Other arguments passed on to \code{geom_sf}.
-#' @return ggplot of New Zealand's marine reserves.
+#' @return a \code{ggplot} object of New Zealand's marine reserves.
+#' 
 #' @importFrom ggplot2 geom_sf
 #' @importFrom sf st_transform
 #' @export

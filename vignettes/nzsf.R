@@ -26,8 +26,9 @@ ggplot() +
   plot_marine_reserves(fill = "red", colour = "red") +
   plot_qma(qma = "CRA", fill = NA) +
   plot_coast(fill = "grey", colour = NA, size = 0.3) +
-  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric") +
+  annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
+  # annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
+  # annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
 
 ## ----echo=TRUE, fig.height=6, fig.width=6, message=FALSE----------------------
@@ -72,7 +73,7 @@ ggplot() +
   scale_fill_viridis_d(alpha = 0.5) +
   plot_marine_reserves(proj = proj, fill = NA) +
   plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA, size = 0.3) +
-  annotation_scale(location = "br", unit_category = "metric") +
+  # annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Te Tapuwae o Rongokako Marine Reserve")
 
@@ -91,8 +92,9 @@ p1 <- ggplot() +
   plot_depth(resolution = "med", size = 0.2, colour = "grey") +
   geom_sf(data = pts, aes(colour = z)) +
   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric") +
+  annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
+  # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  # annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(colour = "Points", title = "Rakiura")
 p2 <- ggplot() +
@@ -100,8 +102,9 @@ p2 <- ggplot() +
   plot_raster(data = pts, field = "z", fun = mean, nrow = 50, ncol = 50) +
   scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric") +
+  annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
+  # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  # annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Rakiura")
 p1 + p2

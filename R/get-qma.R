@@ -1,8 +1,9 @@
 #' Get Quota Management Area (QMA) polygons
 #' 
 #' @param qma A Quota Managemetn Area (QMA).
-#' @param proj The projection to use.
-#' @return A simple feature collection of QMA polygons.
+#' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
+#' @return A simple feature collection of QMA polygons as a \code{sf} object.
+#' 
 #' @importFrom utils data
 #' @importFrom sf st_transform st_union st_cast
 #' @export
@@ -76,7 +77,8 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 #' 
 #' @inheritParams get_qma
 #' @param ... Other arguments passed on to \code{geom_sf}.
-#' @return A ggplot of the selected QMA.
+#' @return A \code{ggplot} object of the selected QMA.
+#' 
 #' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples

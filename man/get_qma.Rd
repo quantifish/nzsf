@@ -9,10 +9,10 @@ get_qma(qma = "CRA", proj = proj_nzsf())
 \arguments{
 \item{qma}{A Quota Managemetn Area (QMA).}
 
-\item{proj}{The projection to use.}
+\item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 }
 \value{
-A simple feature collection of QMA polygons.
+A simple feature collection of QMA polygons as a \code{sf} object.
 }
 \description{
 Get Quota Management Area (QMA) polygons

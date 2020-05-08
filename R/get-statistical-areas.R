@@ -2,7 +2,10 @@
 #' 
 #' @param area A Quota Managemetn Area (QMA)
 #' @param proj The projection to use.
-#' @return A FMA.
+#' @return New Zealands statistical areas as a \code{sf} object.
+#' 
+#' @seealso \code{\link{plot_statistical_areas}}
+#' 
 #' @importFrom utils data
 #' @importFrom dplyr filter
 #' @importFrom sf st_transform st_union st_cast
@@ -15,13 +18,13 @@
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
   if (area %in% c("EEZ")) {
-    x <- exclusive_economic_zone_outer_limits_200_mile
+    x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
   }
   if (area %in% c("CRA")) {
-    x <- rock_lobster_stat_areas
+    x <- nzsf::rock_lobster_stat_areas
   }
   if (area %in% c("JMA")) {
-    x <- FisheriesManagementAreas %>% 
+    x <- nzsf::FisheriesManagementAreas %>% 
       filter(.data$LayerName == "General FMAs")
   }
   
@@ -42,6 +45,9 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 #' @inheritParams get_statistical_areas
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A ggplot of the selected QMA.
+#' 
+#' @seealso \code{\link{get_statistical_areas}}
+#' 
 #' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples

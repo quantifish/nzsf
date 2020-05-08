@@ -1,9 +1,12 @@
-#' Get the New Zealand coastline.
+#' Get the New Zealand coastline
 #' 
-#' @param proj The projection to use.
-#' @param resolution the resolution
-#' @param keep proportion of points to retain (0-1; default 1)
-#' @return New Zealands coastline.
+#' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
+#' @param resolution the resolution.
+#' @param keep proportion of points to retain (0-1; default 1).
+#' @return New Zealands coastline as a \code{sf} object.
+#' 
+#' @seealso \code{\link{plot_coast}}
+#' 
 #' @importFrom utils data
 #' @importFrom rmapshaper ms_simplify
 #' @import sf
@@ -32,6 +35,9 @@ get_coast <- function(proj = proj_nzsf(), resolution = "low", keep = 1) {
 #' @inheritParams get_coast
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands coastline.
+#' 
+#' @seealso \code{\link{get_coast}}
+#' 
 #' @importFrom ggplot2 geom_sf
 #' @importFrom sf st_transform
 #' @export

@@ -7,12 +7,12 @@
 get_depth(proj = proj_nzsf(), resolution = "low")
 }
 \arguments{
-\item{proj}{The projection to use.}
+\item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 
 \item{resolution}{the resolution.}
 }
 \value{
-New Zealands depth polylines.
+New Zealands depth polylines as a \code{sf} object.
 }
 \description{
 Get depth polylines around New Zealand
@@ -22,4 +22,10 @@ x <- get_depth(resolution = "low")
 ggplot() +
   geom_sf(data = x, colour = "lightblue")
 
+}
+\seealso{
+\code{\link{plot_depth}}
+}
+\author{
+Darcy Webber \email{darcy@quantifish.co.nz}
 }

@@ -7,12 +7,12 @@
 plot_marine_reserves(proj = proj_nzsf(), ...)
 }
 \arguments{
-\item{proj}{The projection to use.}
+\item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
-ggplot of New Zealand's marine reserves.
+a \code{ggplot} object of New Zealand's marine reserves.
 }
 \description{
 Plot Marine Reserves

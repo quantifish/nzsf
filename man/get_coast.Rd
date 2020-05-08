@@ -2,22 +2,22 @@
 % Please edit documentation in R/get-coast.R
 \name{get_coast}
 \alias{get_coast}
-\title{Get the New Zealand coastline.}
+\title{Get the New Zealand coastline}
 \usage{
 get_coast(proj = proj_nzsf(), resolution = "low", keep = 1)
 }
 \arguments{
-\item{proj}{The projection to use.}
+\item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 
-\item{resolution}{the resolution}
+\item{resolution}{the resolution.}
 
-\item{keep}{proportion of points to retain (0-1; default 1)}
+\item{keep}{proportion of points to retain (0-1; default 1).}
 }
 \value{
-New Zealands coastline.
+New Zealands coastline as a \code{sf} object.
 }
 \description{
-Get the New Zealand coastline.
+Get the New Zealand coastline
 }
 \examples{
 x <- get_coast(resolution = "low")
