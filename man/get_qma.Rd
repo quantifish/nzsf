@@ -7,7 +7,7 @@
 get_qma(qma = "CRA", proj = proj_nzsf())
 }
 \arguments{
-\item{qma}{A Quota Managemetn Area (QMA).}
+\item{qma}{A Quota Managemetn Area (QMA). Can be CRA, PHC, COC, ...}
 
 \item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 }

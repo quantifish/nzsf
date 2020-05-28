@@ -3,17 +3,25 @@
 \docType{data}
 \name{mfe_average_sst}
 \alias{mfe_average_sst}
-\title{Average SST}
+\title{Gebco depth}
 \format{
+Simple feature collection with 153 features and 29 fields:
+
 Simple feature collection with 153 features and 29 fields:
 }
 \source{
+Gebco
+
+Average SST
+
+Average SST.
+
 MFE
 }
 \usage{
 mfe_average_sst
 }
 \description{
-Average SST.
+Gebco depth as a raster.
 }
 \keyword{datasets}

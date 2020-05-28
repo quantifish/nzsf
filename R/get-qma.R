@@ -1,6 +1,6 @@
 #' Get Quota Management Area (QMA) polygons
 #' 
-#' @param qma A Quota Managemetn Area (QMA).
+#' @param qma A Quota Managemetn Area (QMA). Can be CRA, PHC, COC, ...
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
 #' @return A simple feature collection of QMA polygons as a \code{sf} object.
 #' 

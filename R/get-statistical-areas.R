@@ -1,6 +1,6 @@
 #' Get Statistical Areas
 #' 
-#' @param area A Quota Managemetn Area (QMA)
+#' @param area A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
 #' @param proj The projection to use.
 #' @return New Zealands statistical areas as a \code{sf} object.
 #' 
@@ -26,6 +26,9 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   if (area %in% c("JMA")) {
     x <- nzsf::FisheriesManagementAreas %>% 
       filter(.data$LayerName == "General FMAs")
+  }
+  if (area %in% c("CCSBT")) {
+    x <- nzsf::CCSBT
   }
   
   if (!is.null(proj)) {

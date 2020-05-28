@@ -29,6 +29,25 @@ ggplot() +
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
+```{r echo=TRUE, fig.height=6, fig.width=10, message=FALSE}
+library(rnaturalearth)
+
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  st_transform(3994)
+
+CCSBT3994 <- CCSBT %>% 
+  st_transform(3994) %>%
+  st_union(by_feature = TRUE)
+
+ccsbt_lab <- st_centroid(CCSBT3994)
+
+ggplot() +
+  geom_sf(data = world, fill = "black", colour = "black") +
+  geom_sf(data = CCSBT3994, fill = NA, colour = "red") +
+  geom_sf_label(data = ccsbt_lab, aes(label = Area)) +
+  coord_sf(xlim = c(-14302980, 7572167), ylim = c(-6320521, -840052))
+```
+
 Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be retricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
@@ -150,19 +169,19 @@ ggplot() +
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-data(gebco_depth_raster)
-
-rpts <- gebco_depth_raster %>%
-  rasterToPoints() %>%
-  data.frame()
-
-ggplot() +
-  geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
-  plot_statistical_areas(area = "EEZ", fill = NA) +
-  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
-  coord_sf() +
-  scale_fill_viridis(alpha = 0.8, option = "magma") +
-  labs(fill = "Depth (m)")
+# data(gebco_depth_raster)
+# 
+# rpts <- gebco_depth_raster %>%
+#   rasterToPoints() %>%
+#   data.frame()
+# 
+# ggplot() +
+#   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
+#   plot_statistical_areas(area = "EEZ", fill = NA) +
+#   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+#   coord_sf() +
+#   scale_fill_viridis(alpha = 0.8, option = "magma") +
+#   labs(fill = "Depth (m)")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}

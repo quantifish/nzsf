@@ -14,7 +14,9 @@ unzip_and_clean <- function(f) {
   return(x)
 }
 
-proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+# proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+source("../R/projection.R")
+proj_nzsf <- proj_nzsf()
 
 # Various ----
 
@@ -24,7 +26,8 @@ FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
 use_data(FisheriesManagementAreas, overwrite = TRUE)
 
 nz_fisheries_general_statistical_areas <- unzip_and_clean("kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
-  select(-Descriptio)
+  select(-Descriptio)  %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"))
 use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
 
 territorial_sea_outer_limit_12_mile <- unzip_and_clean("lds-12-mile-territorial-sea-outer-limit-SHP.zip")
@@ -55,6 +58,12 @@ use_data(nz_coastlines_topo_1250k, overwrite = TRUE)
 
 nz_coastlines_topo_1500k <- unzip_and_clean("lds-nz-coastlines-topo-1500k-SHP.zip")
 use_data(nz_coastlines_topo_1500k, overwrite = TRUE)
+
+# CCSBT ----
+
+CCSBT <- unzip_and_clean("CCSBT_Statistical_Areas.zip") %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
+use_data(CCSBT, overwrite = TRUE)
 
 # Finfish Quota Management Areas (QMAs) ----
 

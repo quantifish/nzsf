@@ -25,3 +25,6 @@ ggplot() +
   geom_sf(data = x, fill = "forestgreen")
 
 }
+\seealso{
+\code{\link{plot_coast}}
+}

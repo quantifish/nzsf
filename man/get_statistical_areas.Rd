@@ -7,7 +7,7 @@
 get_statistical_areas(area = "CRA", proj = proj_nzsf())
 }
 \arguments{
-\item{area}{A Quota Managemetn Area (QMA)}
+\item{area}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
 
 \item{proj}{The projection to use.}
 }
@@ -22,4 +22,7 @@ x <- get_statistical_areas(area = "CRA")
 ggplot() +
   geom_sf(data = x, fill = NA)
 
+}
+\seealso{
+\code{\link{plot_statistical_areas}}
 }

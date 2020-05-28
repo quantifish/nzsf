@@ -29,7 +29,8 @@ Suggests:
     testthat,
     usethis,
     viridis,
-    patchwork
+    patchwork,
+    rnaturalearth
 LazyData: true
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr

@@ -1,3 +1,16 @@
+#' CCSBT Management Areas
+#'
+#' CCSBT Management Areas.
+#'
+#' @format Simple feature collection with 12 features and 2 fields:
+#' \describe{
+#'   \item{Area}{CCSBT Management Area}
+#' }
+#' @source CCSBT
+#' 
+"CCSBT"
+
+
 #' New Zealand red rock lobster QMAs
 #'
 #' New Zealand red rock lobster (Jasus edwardsii) Quota Management Areas (QMAs).
@@ -466,14 +479,14 @@
 "FisheriesManagementAreas"
 
 
-#' Gebco depth
-#'
-#' Gebco depth as a raster.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#' 
-"gebco_depth_raster"
+##' Gebco depth
+##'
+##' Gebco depth as a raster.
+##'
+##' @format Simple feature collection with 153 features and 29 fields:
+##' @source Gebco
+##' 
+#"gebco_depth_raster"
 
 
 #' Average SST

@@ -26,3 +26,6 @@ ggplot() +
   plot_coast()
 
 }
+\seealso{
+\code{\link{get_coast}}
+}
