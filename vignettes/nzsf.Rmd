@@ -32,6 +32,7 @@ ggplot() +
 ```{r echo=TRUE, fig.height=6, fig.width=10, message=FALSE}
 library(rnaturalearth)
 library(rnaturalearthdata)
+library(viridis)
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   st_transform(3994)
@@ -39,14 +40,33 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
 CCSBT3994 <- CCSBT %>% 
   st_transform(3994) %>%
   st_union(by_feature = TRUE)
-
 ccsbt_lab <- st_centroid(CCSBT3994)
+ccsbt_bb <- CCSBT3994 %>% st_buffer(dist = 1e5) %>% st_bbox()
+
+# Simulate some points within the areas
+pts1 <- st_sample(CCSBT3994, size = 100) %>% st_sf() %>% mutate(z = rnorm(1:n()))
+pts2 <- st_sample(CCSBT3994, size = 5000) %>% st_sf() %>% mutate(z = rnorm(1:n()))
+
+# Sum up points within voronoi polygons
+vri <- pts1 %>%
+  st_union() %>%
+  st_voronoi() %>%
+  st_collection_extract() %>%
+  st_cast() %>%
+  st_sf() %>%
+  mutate(id = 1:n()) %>%
+  st_join(pts2, join = st_contains, left = TRUE) %>%
+  group_by(id) %>%
+  summarise(z = sum(z)) %>%
+  st_intersection(CCSBT3994)
 
 ggplot() +
+  geom_sf(data = vri, aes(fill = z), colour = NA) +
+  scale_fill_viridis("Variable", alpha = 0.7, na.value = NA) +
   geom_sf(data = world, fill = "black", colour = "black") +
   geom_sf(data = CCSBT3994, fill = NA, colour = "red") +
   geom_sf_label(data = ccsbt_lab, aes(label = Area)) +
-  coord_sf(xlim = c(-14302980, 7572167), ylim = c(-6320521, -840052))
+  coord_sf(xlim = ccsbt_bb[c(1, 3)], ylim = ccsbt_bb[c(2, 4)], expand = FALSE)
 ```
 
 Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be retricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
@@ -92,8 +112,6 @@ ggplot() +
 You can then add polygons, points, lines/arrows, and/or rasters to maps and change the map projection:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-library(viridis)
-
 proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
