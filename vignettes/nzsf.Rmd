@@ -31,6 +31,7 @@ ggplot() +
 
 ```{r echo=TRUE, fig.height=6, fig.width=10, message=FALSE}
 library(rnaturalearth)
+library(rnaturalearthdata)
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   st_transform(3994)

@@ -30,7 +30,8 @@ Suggests:
     usethis,
     viridis,
     patchwork,
-    rnaturalearth
+    rnaturalearth,
+    rnaturalearthdata
 LazyData: true
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
