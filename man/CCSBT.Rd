@@ -7,6 +7,7 @@
 \format{
 Simple feature collection with 12 features and 2 fields:
 \describe{
+  \item{id}{CCSBT Management Area}
   \item{Area}{CCSBT Management Area}
 }
 }
@@ -17,6 +18,6 @@ CCSBT
 CCSBT
 }
 \description{
-CCSBT Management Areas.
+Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas.
 }
 \keyword{datasets}

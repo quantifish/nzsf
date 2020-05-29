@@ -20,6 +20,6 @@ Fisheries New Zealand
 LING_QMA
 }
 \description{
-New Zealand ling Quota Management Areas (QMAs).
+New Zealand ling (LIN) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

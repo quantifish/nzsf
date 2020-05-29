@@ -1,9 +1,59 @@
+#' SST
+#'
+#' NZ SST.
+#'
+#' @format A RasterBrick
+#' @source ERA
+#' 
+"era5_nz_sst"
+
+
+#' CCAMLR Marine Protected Areas
+#'
+#' CCAMLR MPAs.
+#'
+#' @format Simple feature collection with 19 features and 13 fields:
+#' \describe{
+#'   \item{LongLabel}{CCAMLR Statistical Areas}
+#' }
+#' @source CCAMLR
+#' 
+"ccamlr_mpa"
+
+
+#' CCAMLR Small Scale Research Units
+#'
+#' CCAMLR SSRUs.
+#'
+#' @format Simple feature collection with 19 features and 13 fields:
+#' \describe{
+#'   \item{LongLabel}{CCAMLR Statistical Areas}
+#' }
+#' @source CCAMLR
+#' 
+"ccamlr_ssru"
+
+
+#' CCAMLR Statistical Areas
+#'
+#' CCAMLR Areas.
+#'
+#' @format Simple feature collection with 19 features and 13 fields:
+#' \describe{
+#'   \item{LongLabel}{CCAMLR Statistical Areas}
+#' }
+#' @source CCAMLR
+#' 
+"ccamlr_statistical_areas"
+
+
 #' CCSBT Management Areas
 #'
-#' CCSBT Management Areas.
+#' Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas.
 #'
 #' @format Simple feature collection with 12 features and 2 fields:
 #' \describe{
+#'   \item{id}{CCSBT Management Area}
 #'   \item{Area}{CCSBT Management Area}
 #' }
 #' @source CCSBT
@@ -45,7 +95,7 @@
 
 #' New Zealand jack mackerel QMAs
 #'
-#' New Zealand jack mackerel Quota Management Areas (QMAs).
+#' New Zealand jack mackerel (JMA) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 4 features and 4 fields:
 #' \describe{
@@ -61,7 +111,7 @@
 
 #' New Zealand hake QMAs
 #'
-#' New Zealand hake Quota Management Areas (QMAs).
+#' New Zealand hake (HAK) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 4 features and 4 fields:
 #' \describe{
@@ -77,7 +127,7 @@
 
 #' New Zealand hoki QMAs
 #'
-#' New Zealand hoki Quota Management Areas (QMAs).
+#' New Zealand hoki (HOK) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 2 features and 4 fields:
 #' \describe{
@@ -93,7 +143,7 @@
 
 #' New Zealand ling QMAs
 #'
-#' New Zealand ling Quota Management Areas (QMAs).
+#' New Zealand ling (LIN) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 8 features and 4 fields:
 #' \describe{
@@ -109,7 +159,7 @@
 
 #' New Zealand oreo QMAs
 #'
-#' New Zealand oreo Quota Management Areas (QMAs).
+#' New Zealand oreo (OEO) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 5 features and 4 fields:
 #' \describe{
@@ -125,7 +175,7 @@
 
 #' New Zealand silver warehou QMAs
 #'
-#' New Zealand silver warehou Quota Management Areas (QMAs).
+#' New Zealand silver warehou (SWA) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 4 features and 4 fields:
 #' \describe{
@@ -141,7 +191,7 @@
 
 #' New Zealand southern blue whiting QMAs
 #'
-#' New Zealand southern blue whiting Quota Management Areas (QMAs).
+#' New Zealand southern blue whiting (SBW) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 4 features and 4 fields:
 #' \describe{
@@ -157,7 +207,7 @@
 
 #' New Zealand orange roughy QMAs
 #'
-#' New Zealand orange roughy Quota Management Areas (QMAs).
+#' New Zealand orange roughy (ORH) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 4 features and 4 fields:
 #' \describe{
@@ -173,7 +223,7 @@
 
 #' New Zealand cockle QMAs
 #'
-#' New Zealand cockle Quota Management Areas (QMAs).
+#' New Zealand cockle (COC) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 13 features and 5 fields:
 #' \describe{
@@ -190,7 +240,7 @@
 
 #' New Zealand pipi QMAs
 #'
-#' New Zealand pipi Quota Management Areas (QMAs).
+#' New Zealand pipi (PIP) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 10 features and 5 fields:
 #' \describe{
@@ -207,7 +257,7 @@
 
 #' New Zealand scallop QMAs
 #'
-#' New Zealand scallop Quota Management Areas (QMAs).
+#' New Zealand scallop (SCA) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 13 features and 5 fields:
 #' \describe{
@@ -224,7 +274,7 @@
 
 #' New Zealand paua QMAs
 #'
-#' New Zealand paua Quota Management Areas (QMAs).
+#' New Zealand paua (PAU) Quota Management Areas (QMAs).
 #'
 #' @format Simple feature collection with 11 features and 4 fields:
 #' \describe{
@@ -395,9 +445,12 @@
 #'
 #' Gisborne Te Tapuwae o Rongokako Habitats provided by the Department of Conservation (DOC).
 #'
-#' @format Simple feature collection with 482 features and 15 field:
+#' @format Simple feature collection with 482 features and 15 fields:
 #' \describe{
+#'   \item{DEPTH}{the depth (m) of the habitat}
+#'   \item{SUBSTRATE}{the type of subsrate}
 #'   \item{Habitat}{the type of habitat}
+#'   \item{TYPE}{the type of habitat}
 #' }
 #' 
 "Gisborne_TToR_Habitats"
@@ -489,11 +542,11 @@
 #"gebco_depth_raster"
 
 
-#' Average SST
-#'
-#' Average SST.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source MFE
-#' 
-"mfe_average_sst"
+##' Average SST
+##'
+##' Average SST.
+##'
+##' @format Simple feature collection with 153 features and 29 fields:
+##' @source MFE
+##' 
+#"mfe_average_sst"

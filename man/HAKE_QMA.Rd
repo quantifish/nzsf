@@ -20,6 +20,6 @@ Fisheries New Zealand
 HAKE_QMA
 }
 \description{
-New Zealand hake Quota Management Areas (QMAs).
+New Zealand hake (HAK) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

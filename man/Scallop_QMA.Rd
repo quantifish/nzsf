@@ -21,6 +21,6 @@ Fisheries New Zealand
 Scallop_QMA
 }
 \description{
-New Zealand scallop Quota Management Areas (QMAs).
+New Zealand scallop (SCA) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

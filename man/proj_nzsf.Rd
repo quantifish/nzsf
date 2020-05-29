@@ -2,10 +2,10 @@
 % Please edit documentation in R/projection.R
 \name{proj_nzsf}
 \alias{proj_nzsf}
-\title{Default projection}
+\title{New Zealand projection}
 \usage{
 proj_nzsf()
 }
 \description{
-The default projection for nzsf
+The default projection for New Zealand.
 }

@@ -20,6 +20,6 @@ Fisheries New Zealand
 OREO_QMA
 }
 \description{
-New Zealand oreo Quota Management Areas (QMAs).
+New Zealand oreo (OEO) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

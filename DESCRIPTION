@@ -19,7 +19,8 @@ Depends:
     sf
 Imports:
     rmapshaper
-Suggests: 
+Suggests:
+    tidyverse,
     knitr,
     devtools,
     ggspatial,

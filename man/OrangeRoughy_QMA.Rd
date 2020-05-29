@@ -20,6 +20,6 @@ Fisheries New Zealand
 OrangeRoughy_QMA
 }
 \description{
-New Zealand orange roughy Quota Management Areas (QMAs).
+New Zealand orange roughy (ORH) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

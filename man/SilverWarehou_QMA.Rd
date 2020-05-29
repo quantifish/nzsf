@@ -20,6 +20,6 @@ Fisheries New Zealand
 SilverWarehou_QMA
 }
 \description{
-New Zealand silver warehou Quota Management Areas (QMAs).
+New Zealand silver warehou (SWA) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

@@ -17,21 +17,39 @@ knitr::opts_chunk$set(
 The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`. A basic map of the New Zealand coastline with a north arrow and a scale bar can be built using the `nzsf` helper function `plot_coast` and functions from the `ggspatial` package:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+library(tidyverse)
 library(nzsf)
 library(ggspatial)
+library(patchwork)
+library(rnaturalearth)
+library(rnaturalearthdata)
+# devtools::install_github(repo = "ropensci/rnaturalearthhires")
+# library(rnaturalearthhires) # required for scale = "large" in ne_countries below
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
-ggplot() +
+p1 <- ggplot() +
   plot_statistical_areas(area = "EEZ") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
+
+nz <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  st_transform(proj_nzsf()) %>%
+  st_crop(get_statistical_areas(area = "EEZ"))
+
+p2 <- ggplot() +
+  plot_statistical_areas(area = "EEZ") +
+  geom_sf(data = nz, fill = "black", colour = "black") +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_scale(location = "br", unit_category = "metric")
+
+p1 + p2
 ```
 
-```{r echo=TRUE, fig.height=6, fig.width=10, message=FALSE}
-library(rnaturalearth)
-library(rnaturalearthdata)
+The `nzsf` package also includes functions for plotting CCSBT management areas. In the example below I simulate 100 points, generate a voronoi diagram around these points, then simulate values at 5000 points and sum the values of these points within the voronoi polygons:
+
+```{r echo=TRUE, fig.height=6, fig.width=11, message=FALSE}
 library(viridis)
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
@@ -44,13 +62,13 @@ ccsbt_lab <- st_centroid(CCSBT3994)
 ccsbt_bb <- CCSBT3994 %>% st_buffer(dist = 1e5) %>% st_bbox()
 
 # Simulate some points within the areas
-pts1 <- st_sample(CCSBT3994, size = 100) %>% st_sf() %>% mutate(z = rnorm(1:n()))
+pts1 <- st_sample(CCSBT3994, size = 100) %>% st_sf()
 pts2 <- st_sample(CCSBT3994, size = 5000) %>% st_sf() %>% mutate(z = rnorm(1:n()))
 
 # Sum up points within voronoi polygons
 vri <- pts1 %>%
   st_union() %>%
-  st_voronoi() %>%
+  st_voronoi(envelope = NULL) %>%
   st_collection_extract() %>%
   st_cast() %>%
   st_sf() %>%
@@ -63,10 +81,30 @@ vri <- pts1 %>%
 ggplot() +
   geom_sf(data = vri, aes(fill = z), colour = NA) +
   scale_fill_viridis("Variable", alpha = 0.7, na.value = NA) +
+  # plot_depth(proj = 3994) +
   geom_sf(data = world, fill = "black", colour = "black") +
   geom_sf(data = CCSBT3994, fill = NA, colour = "red") +
-  geom_sf_label(data = ccsbt_lab, aes(label = Area)) +
+  geom_sf_label(data = ccsbt_lab, aes(label = Area), colour = "red") +
   coord_sf(xlim = ccsbt_bb[c(1, 3)], ylim = ccsbt_bb[c(2, 4)], expand = FALSE)
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
+bb <- ccamlr_statistical_areas %>%
+  filter(LongLabel %in% c(88.1, 88.2)) %>%
+  st_bbox()
+
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  st_transform(proj_ccamlr())
+
+ggplot() +
+  geom_sf(data = ccamlr_mpa, fill = "orange", colour = NA, alpha = 0.75) +
+  geom_sf(data = ccamlr_ssru, fill = NA, colour = "black") +
+  # geom_sf(data = ccamlr_statistical_areas, fill = NA, colour = "black") +
+  geom_sf_text(data = ccamlr_ssru, aes(label = LongLabel), colour = "darkgrey") +
+  geom_sf(data = world, fill = "black", colour = "black") +
+  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical, pad_y = unit(1, "cm")) +
+  annotation_scale(location = "tr", unit_category = "metric") +
+  coord_sf(xlim = bb[c(1, 3)], ylim = bb[c(2, 4)])
 ```
 
 Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be retricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
@@ -81,13 +119,12 @@ ggplot() +
   plot_marine_reserves(fill = "red", colour = "red") +
   plot_qma(qma = "CRA", fill = NA) +
   plot_coast(fill = "grey", colour = NA, size = 0.3) +
-  annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
-  # annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
-  # annotation_scale(location = "br", unit_category = "metric") +
+  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
+  annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)])
 ```
 
-Adding labels can be a little tricky but can be done with:
+Adding labels can be done with:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 library(lwgeom)
@@ -139,8 +176,6 @@ ggplot() +
 
 
 ```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
-library(patchwork)
-
 stewart <- get_coast() %>%
   filter(name == "Stewart Island/Rakiura") %>%
   st_buffer(dist = 4500)
@@ -171,20 +206,77 @@ p2 <- ggplot() +
 p1 + p2
 ```
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-data(mfe_average_sst)
+```{r echo=TRUE, fig.height=8, fig.width=8, message=FALSE}
+# library(ncdf4)
+# library(ncdf.tools)
+# library(ecmwfr)
+# 
+# wf_set_key(user = "youremail@gmail.com", key = "secretkey", service = "webapi")
+# 
+# request <- list(dataset      = "reanalysis-era5-single-levels-monthly-means",
+#                 product_type = "reanalysis",
+#                 variable     = "sea_surface_temperature",
+#                 year         = 1979:2020,
+#                 month        = 1:12,
+#                 area         = "-30/160/-55/185",
+#                 format       = "netcdf",
+#                 target       = "era5-nz_sst_to_2020.nc")
+# 
+# ncfile <- wf_request(user = "41999", request = request, transfer = TRUE, path = "", verbose = FALSE)
 
-rpts <- mfe_average_sst %>%
+library(raster)
+# should add code to get this direct from web
+data(era5_nz_sst)
+prj <- "+proj=merc +lon_0=100 +lat_ts=-41 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+
+sst <- era5_nz_sst %>% 
+  projectRaster(crs = prj) %>%
   rasterToPoints() %>%
-  data.frame()
+  data.frame() %>%
+  pivot_longer(cols = c(-x, -y)) %>%
+  separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
+  mutate(year = gsub("X", "", year), value = value - 273.15) %>%
+  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
+nz <- get_coast(proj = prj, resolution = "med")
 
 ggplot() +
-  geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
-  plot_statistical_areas(area = "EEZ", fill = NA) +
-  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  geom_tile(data = sst, aes(x = x, y = y, fill = value), alpha = 0.95) +
+  facet_wrap(year ~ month) +
+  geom_sf(data = nz, fill = "black", colour = NA, size = 0.3) +
   coord_sf() +
-  scale_fill_viridis(alpha = 0.8, option = "magma") +
-  labs(fill = "Depth (m)")
+  scale_fill_viridis("SST (°C)", alpha = 0.8, option = "plasma")
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+# f <- "../data-raw/mfe-average-seasurface-temperature-19932012-GTiff.zip"
+# fz <- unzip(zipfile = f, list = TRUE)
+# fz
+# unzip(zipfile = f)
+
+# mfe_average_sst <- raster::raster(x = "average-seasurface-temperature-19932012.tif", values = TRUE)# %>%
+  # projectRaster(crs = proj_nzsf)
+# names(mfe_average_sst) <- "layer"
+# mfe_average_sst[mfe_average_sst[] < -10 | mfe_average_sst[] > 35] <- NA
+# range(mfe_average_sst[], na.rm = TRUE)
+# plot(mfe_average_sst)
+# file.remove(fz$Name)
+# use_data(mfe_average_sst, overwrite = TRUE)
+
+  # st_transform(3994) %>%
+
+# data(mfe_average_sst)
+
+# rpts <- mfe_average_sst %>%
+#   rasterToPoints() %>%
+#   data.frame()
+
+# ggplot() +
+#   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
+#   # plot_statistical_areas(area = "EEZ", fill = NA) +
+#   # plot_coast(proj = projection(mfe_average_sst), resolution = "med", fill = "black", colour = NA, size = 0.3) +
+#   coord_sf() +
+#   scale_fill_viridis(alpha = 0.8, option = "magma") +
+#   labs(fill = "SST (°C)")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
@@ -201,9 +293,4 @@ ggplot() +
 #   coord_sf() +
 #   scale_fill_viridis(alpha = 0.8, option = "magma") +
 #   labs(fill = "Depth (m)")
-```
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-# Add ERA5 data here
-# wf_set_key(user = "youremail@gmail.com", key = "secretkey", service = "webapi")
 ```

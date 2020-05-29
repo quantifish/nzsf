@@ -20,6 +20,6 @@ Fisheries New Zealand
 JackMackerel_QMA
 }
 \description{
-New Zealand jack mackerel Quota Management Areas (QMAs).
+New Zealand jack mackerel (JMA) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

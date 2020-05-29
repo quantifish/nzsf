@@ -20,6 +20,6 @@ Fisheries New Zealand
 SouthernBlueWhiting_QMA
 }
 \description{
-New Zealand southern blue whiting Quota Management Areas (QMAs).
+New Zealand southern blue whiting (SBW) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

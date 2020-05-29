@@ -21,6 +21,6 @@ Fisheries New Zealand
 Paua_QMA
 }
 \description{
-New Zealand paua Quota Management Areas (QMAs).
+New Zealand paua (PAU) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

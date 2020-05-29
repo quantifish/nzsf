@@ -21,6 +21,6 @@ Fisheries New Zealand
 Cockle_QMA
 }
 \description{
-New Zealand cockle Quota Management Areas (QMAs).
+New Zealand cockle (COC) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

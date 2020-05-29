@@ -20,6 +20,6 @@ Fisheries New Zealand
 HOKI_QMA
 }
 \description{
-New Zealand hoki Quota Management Areas (QMAs).
+New Zealand hoki (HOK) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

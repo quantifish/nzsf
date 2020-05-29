@@ -5,9 +5,12 @@
 \alias{Gisborne_TToR_Habitats}
 \title{Gisborne Te Tapuwae o Rongokako Habitats}
 \format{
-Simple feature collection with 482 features and 15 field:
+Simple feature collection with 482 features and 15 fields:
 \describe{
+  \item{DEPTH}{the depth (m) of the habitat}
+  \item{SUBSTRATE}{the type of subsrate}
   \item{Habitat}{the type of habitat}
+  \item{TYPE}{the type of habitat}
 }
 }
 \usage{

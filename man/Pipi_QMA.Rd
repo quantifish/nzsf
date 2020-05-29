@@ -21,6 +21,6 @@ Fisheries New Zealand
 Pipi_QMA
 }
 \description{
-New Zealand pipi Quota Management Areas (QMAs).
+New Zealand pipi (PIP) Quota Management Areas (QMAs).
 }
 \keyword{datasets}

@@ -2,6 +2,9 @@ library(usethis)
 library(sf)
 library(tidyverse)
 
+# setwd("/home/darcy/Projects/nzsf/data-raw")
+# setwd("/home/darcy/Projects/nzsf")
+
 unzip_and_clean <- function(f) {
   fz <- unzip(zipfile = f, list = TRUE)
   unzip(zipfile = f)
@@ -27,7 +30,7 @@ use_data(FisheriesManagementAreas, overwrite = TRUE)
 
 nz_fisheries_general_statistical_areas <- unzip_and_clean("kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
   select(-Descriptio)  %>%
-  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"))
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
 use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
 
 territorial_sea_outer_limit_12_mile <- unzip_and_clean("lds-12-mile-territorial-sea-outer-limit-SHP.zip")
@@ -64,6 +67,24 @@ use_data(nz_coastlines_topo_1500k, overwrite = TRUE)
 CCSBT <- unzip_and_clean("CCSBT_Statistical_Areas.zip") %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
 use_data(CCSBT, overwrite = TRUE)
+
+# CCAMLR ----
+
+ccamlr_statistical_areas <- unzip_and_clean("asd-shapefile-WGS84.zip") %>%
+  st_transform(crs = proj_ccamlr())
+use_data(ccamlr_statistical_areas, overwrite = TRUE)
+
+ccamlr_ssru <- unzip_and_clean("ssru-shapefile-WGS84.zip") %>%
+  st_transform(crs = proj_ccamlr())
+use_data(ccamlr_ssru, overwrite = TRUE)
+
+ccamlr_mpa <- unzip_and_clean("mpa-shapefile-WGS84.zip") %>%
+  st_transform(crs = proj_ccamlr())
+use_data(ccamlr_mpa, overwrite = TRUE)
+
+# ccamlr_eez <- unzip_and_clean("eez-shapefile-WGS84.zip") %>%
+#   st_transform(crs = proj_ccamlr())
+# use_data(ccamlr_eez, overwrite = TRUE)
 
 # Finfish Quota Management Areas (QMAs) ----
 
@@ -180,7 +201,7 @@ use_data(Rocky_reef_National_NZ, overwrite = TRUE)
 
 depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
   rename(depth = VALDCO) %>%
-  select(depth, SCAMIN, SORDAT, SORIND)
+  dplyr::select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_122k_190k, overwrite = TRUE)
 
 depth_contour_polyline_hydro_190k_1350k <- unzip_and_clean("lds-depth-contour-polyline-hydro-190k-1350k-SHP.zip") %>% 
@@ -195,17 +216,24 @@ use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
 # Environmental layers ----
 
-# setwd("/home/darcy/Projects/nzsf/data-raw")
 library(raster)
+library("ncdf4")
 
-f <- "mfe-average-seasurface-temperature-19932012-GTiff.zip"
-fz <- unzip(zipfile = f, list = TRUE)
-fz
-unzip(zipfile = f)
+ncfile <- "era5-nz_sst_to_2020.nc"
+era5_nz_sst <- stack(x = ncfile) %>%
+  rotate()
+nlayers(era5_nz_sst)
 
-mfe_average_sst <- raster::raster(x = "average-seasurface-temperature-19932012.tif", values = TRUE) %>%
-  projectRaster(crs = proj_nzsf)
-names(mfe_average_sst) <- "layer"
-mfe_average_sst[mfe_average_sst[] < -5 | mfe_average_sst[] > 60] <- NA
-file.remove(fz$Name)
-use_data(mfe_average_sst, overwrite = TRUE)
+use_data(era5_nz_sst, overwrite = TRUE)
+
+# f <- "mfe-average-seasurface-temperature-19932012-GTiff.zip"
+# fz <- unzip(zipfile = f, list = TRUE)
+# fz
+# unzip(zipfile = f)
+# 
+# mfe_average_sst <- raster::raster(x = "average-seasurface-temperature-19932012.tif", values = TRUE) %>%
+#   projectRaster(crs = proj_nzsf)
+# names(mfe_average_sst) <- "layer"
+# mfe_average_sst[mfe_average_sst[] < -5 | mfe_average_sst[] > 60] <- NA
+# file.remove(fz$Name)
+# use_data(mfe_average_sst, overwrite = TRUE)
