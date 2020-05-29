@@ -22,6 +22,7 @@ nzsf.Rproj
 data-raw/*.zip
 
 # Produced vignettes
+vignettes/*.R
 vignettes/*.html
 vignettes/*.pdf
 
