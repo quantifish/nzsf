@@ -49,17 +49,12 @@ p1 + p2
 
 The `nzsf` package also includes functions for plotting CCSBT management areas. In the example below I simulate 100 points, generate a voronoi diagram around these points, then simulate values at 5000 points and sum the values of these points within the voronoi polygons:
 
-```{r echo=TRUE, fig.height=6, fig.width=11, message=FALSE}
+```{r echo=TRUE, fig.width=11, message=FALSE}
 library(viridis)
-
-world <- ne_countries(scale = "medium", returnclass = "sf") %>%
-  st_transform(3994)
 
 CCSBT3994 <- CCSBT %>% 
   st_transform(3994) %>%
   st_union(by_feature = TRUE)
-ccsbt_lab <- st_centroid(CCSBT3994)
-ccsbt_bb <- CCSBT3994 %>% st_buffer(dist = 1e5) %>% st_bbox()
 
 # Simulate some points within the areas
 pts1 <- st_sample(CCSBT3994, size = 100) %>% st_sf()
@@ -82,32 +77,24 @@ ggplot() +
   geom_sf(data = vri, aes(fill = z), colour = NA) +
   scale_fill_viridis("Variable", alpha = 0.7, na.value = NA) +
   # plot_depth(proj = 3994) +
-  geom_sf(data = world, fill = "black", colour = "black") +
-  geom_sf(data = CCSBT3994, fill = NA, colour = "red") +
-  geom_sf_label(data = ccsbt_lab, aes(label = Area), colour = "red") +
-  coord_sf(xlim = ccsbt_bb[c(1, 3)], ylim = ccsbt_bb[c(2, 4)], expand = FALSE)
+  geom_ccsbt("land", fill = "black", colour = "black") +
+  geom_ccsbt("area", colour = "red") +
+  geom_ccsbt("label", fill = "white", colour = "red") +
+  coord_ccsbt()
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
-bb <- ccamlr_statistical_areas %>%
-  filter(LongLabel %in% c(88.1, 88.2)) %>%
-  st_bbox()
-
-world <- ne_countries(scale = "medium", returnclass = "sf") %>%
-  st_transform(proj_ccamlr())
-
 ggplot() +
-  geom_sf(data = ccamlr_mpa, fill = "orange", colour = NA, alpha = 0.75) +
-  geom_sf(data = ccamlr_ssru, fill = NA, colour = "black") +
-  # geom_sf(data = ccamlr_statistical_areas, fill = NA, colour = "black") +
-  geom_sf_text(data = ccamlr_ssru, aes(label = LongLabel), colour = "darkgrey") +
-  geom_sf(data = world, fill = "black", colour = "black") +
+  geom_ccamlr("mpa", fill = "tomato", colour = NA, alpha = 0.75) +
+  geom_ccamlr("ssru") +
+  geom_ccamlr("land", fill = "black") +
+  geom_ccamlr("label") +
   annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical, pad_y = unit(1, "cm")) +
   annotation_scale(location = "tr", unit_category = "metric") +
-  coord_sf(xlim = bb[c(1, 3)], ylim = bb[c(2, 4)])
+  coord_ccamlr()
 ```
 
-Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be retricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
+Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be restricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 bbox <- get_coast() %>% 
@@ -236,7 +223,7 @@ sst <- era5_nz_sst %>%
   pivot_longer(cols = c(-x, -y)) %>%
   separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
   mutate(year = gsub("X", "", year), value = value - 273.15) %>%
-  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
+  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01", "06"))
 nz <- get_coast(proj = prj, resolution = "med")
 
 ggplot() +

@@ -4,7 +4,10 @@
 \alias{proj_ccamlr}
 \title{CCAMLR projection}
 \usage{
-proj_ccamlr()
+proj_ccamlr(rotation = 180)
+}
+\arguments{
+\item{rotation}{The rotation to apply.}
 }
 \description{
 This is the CRS 3031 with a 180 degree rotation.
