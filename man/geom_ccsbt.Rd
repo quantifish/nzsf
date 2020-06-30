@@ -13,21 +13,22 @@ geom_ccsbt(
 )
 }
 \arguments{
-\item{feature}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
+\item{feature}{A CCSBT feature such as a management area, label or land.}
 
 \item{proj}{The projection to use.}
 
-\item{fill}{The projection to use.}
+\item{fill}{The fill colour for the selected feature.}
 
-\item{colour}{The projection to use.}
+\item{colour}{The colour for the seleceted feature.}
 
-\item{...}{The projection to use.}
+\item{...}{Any additional arguments passed to \code{geom_sf}.}
 }
 \value{
-New Zealands statistical areas as a \code{sf} object.
+A \code{geom_sf} object.
 }
 \description{
-CCSBT geometry
+A helper function for obtaining a CCSBT related feature and returning a \code{geom_sf} object of that feature. Feature include the CCSBT 
+management areas, labels or land. By default the projection returned by the function \code{proj_ccsbt} is used.
 }
 \examples{
 ggplot() +
@@ -37,5 +38,5 @@ ggplot() +
 
 }
 \seealso{
-\code{\link{coord_ccsbt}}
+\code{\link{coord_ccsbt}} for coord and \code{\link{proj_ccsbt}} for projection.
 }

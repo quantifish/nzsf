@@ -214,6 +214,9 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
+gebco_contours <- unzip_and_clean("gebco_2019_contours.zip")
+use_data(gebco_contours, overwrite = TRUE)
+
 # Environmental layers ----
 
 library(raster)

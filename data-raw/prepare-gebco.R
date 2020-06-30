@@ -54,19 +54,26 @@ gc()
 
 # Aggregate and reproject ----
 
-gebco_depth_raster <- r0 %>%
-  raster::aggregate(fact = 10) %>%
-  projectRaster(crs = proj_nzsf)
+gebco_depth_raster <- r0
 
-# dfr <- gebco_depth_raster %>% 
-#   rasterToPoints() %>% 
-#   data.frame()
-# 
-# ggplot() +
-#   geom_raster(data = dfr, aes(x = x, y = y, fill = layer)) +
-#   plot_statistical_areas(area = "EEZ", fill = NA) +
-#   #plot_coast(proj = projection(gebco_depth_raster), resolution = "med", fill = "black", colour = NA) +
-#   plot_coast(resolution = "med", fill = "black", colour = NA) +
-#   coord_sf()
+gebco_depth_raster <- gebco_depth_raster %>%
+  raster::aggregate(fact = 10)
+  # projectRaster(crs = proj_nzsf)
 
-use_data(gebco_depth_raster, overwrite = TRUE)
+cont <- c(0,100,200,300,400,500,550,600,650,700,750,800,850,900,950,1000,1250,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000)
+# gebco_depth_contour <- rasterToContour(x = gebco_depth_raster, maxpixels = 1e+05, levels = cont)
+gebco_depth_contour <- rasterToContour(x = gebco_depth_raster, maxpixels = 1e+05, nlevels = 20)
+
+save(gebco_depth_raster, file = "gebco_depth_raster.rda")
+save(gebco_depth_contour, file = "gebco_depth_contour.rda")
+# setwd("/home/darcy/Projects/nzsf/data-raw")
+# load("gebco_depth_raster.rda")
+# use_data(gebco_depth_raster, overwrite = TRUE)
+
+dfr <- gebco_depth_raster %>%
+  rasterToPoints() %>%
+  data.frame()
+
+ggplot() +
+  geom_tile(data = dfr, aes(x = x, y = y, fill = layer))
+

@@ -9,10 +9,10 @@ coord_ccsbt(proj = proj_ccsbt(), ...)
 \arguments{
 \item{proj}{The projection to use.}
 
-\item{...}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
+\item{...}{Any additional arguments passed to \code{coord_sf}.}
 }
 \value{
-New Zealands statistical areas as a \code{sf} object.
+A \code{geom_coord} object.
 }
 \description{
 CCSBT coord

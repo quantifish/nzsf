@@ -1,13 +1,16 @@
 #' CCSBT geometry
 #' 
-#' @param feature A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
-#' @param proj The projection to use.
-#' @param fill The projection to use.
-#' @param colour The projection to use.
-#' @param ... The projection to use.
-#' @return New Zealands statistical areas as a \code{sf} object.
+#' A helper function for obtaining a CCSBT related feature and returning a \code{geom_sf} object of that feature. Feature include the CCSBT 
+#' management areas, labels or land. By default the projection returned by the function \code{proj_ccsbt} is used.
 #' 
-#' @seealso \code{\link{coord_ccsbt}}
+#' @param feature A CCSBT feature such as a management area, label or land.
+#' @param proj The projection to use.
+#' @param fill The fill colour for the selected feature.
+#' @param colour The colour for the seleceted feature.
+#' @param ... Any additional arguments passed to \code{geom_sf}.
+#' @return A \code{geom_sf} object.
+#' 
+#' @seealso \code{\link{coord_ccsbt}} for coord and \code{\link{proj_ccsbt}} for projection.
 #' 
 #' @importFrom utils data
 #' @importFrom rnaturalearth ne_countries
@@ -45,8 +48,8 @@ geom_ccsbt <- function(feature = "area", proj = proj_ccsbt(), fill = NA, colour 
 #' CCSBT coord
 #' 
 #' @param proj The projection to use.
-#' @param ... A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
-#' @return New Zealands statistical areas as a \code{sf} object.
+#' @param ... Any additional arguments passed to \code{coord_sf}.
+#' @return A \code{geom_coord} object.
 #' 
 #' @seealso \code{\link{geom_ccsbt}}
 #' 

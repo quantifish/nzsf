@@ -53,7 +53,7 @@ The `nzsf` package also includes functions for plotting CCSBT management areas. 
 library(viridis)
 
 CCSBT3994 <- CCSBT %>% 
-  st_transform(3994) %>%
+  st_transform(proj_ccsbt()) %>%
   st_union(by_feature = TRUE)
 
 # Simulate some points within the areas
@@ -73,7 +73,16 @@ vri <- pts1 %>%
   summarise(z = sum(z)) %>%
   st_intersection(CCSBT3994)
 
-ggplot() +
+# unique(gebco_contours$DEPTH)
+# x <- gebco_contours %>%
+#   st_make_valid() %>%
+#   # filter(DEPTH %in% c("-100", "-1000", "-2000", "-5000", "-10000")) %>%
+#   filter(DEPTH %in% c("-100", "-1000", "-10000")) %>%
+#   st_transform(crs = proj_ccsbt()) %>%
+#   st_crop(st_bbox(CCSBT3994)) %>%
+#   st_simplify(dTolerance = 1e5)
+
+p <- ggplot() +
   geom_sf(data = vri, aes(fill = z), colour = NA) +
   scale_fill_viridis("Variable", alpha = 0.7, na.value = NA) +
   # plot_depth(proj = 3994) +
@@ -81,6 +90,51 @@ ggplot() +
   geom_ccsbt("area", colour = "red") +
   geom_ccsbt("label", fill = "white", colour = "red") +
   coord_ccsbt()
+p
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
+# register_google(key = key)
+# 
+# ggmap_bbox <- function(map, crs = 3857) {
+#   if (!inherits(map, "ggmap")) stop("map must be a ggmap object")
+#   # Extract the bounding box (in lat/lon) from the ggmap to a numeric vector, 
+#   # and set the names to what sf::st_bbox expects:
+#   map_bbox <- setNames(unlist(attr(map, "bb")), c("ymin", "xmin", "ymax", "xmax"))
+# 
+#   # Coonvert the bbox to an sf polygon, transform it to 3857, 
+#   # and convert back to a bbox (convoluted, but it works)
+#   bbox_3857 <- st_bbox(map_bbox, crs = 4326) %>%
+#     st_as_sfc() %>%
+#     st_transform(crs = crs) %>%
+#     st_bbox()
+# 
+#   # Overwrite the bbox of the ggmap object with the transformed coordinates 
+#   attr(map, "bb")$ll.lat <- bbox_3857["ymin"]
+#   attr(map, "bb")$ll.lon <- bbox_3857["xmin"]
+#   attr(map, "bb")$ur.lat <- bbox_3857["ymax"]
+#   attr(map, "bb")$ur.lon <- bbox_3857["xmax"]
+#   map
+# }
+# 
+# 
+# library(ggmap)
+# get_map("Japan", zoom = 5, source = "stamen") %>% ggmap()
+# 
+# st_bbox(CCSBT %>% st_transform(crs = 4326))
+# # gm <- get_map(location = "New Zealand", zoom = 2, source = "google", maptype = "satellite")
+# gm <- get_map(location = c(lon = 0, lat = -30), zoom = 1, source = "google", maptype = "satellite")
+# ggmap(gm)
+# 
+# 
+# map <- ggmap_bbox(gm, crs = proj_ccsbt())
+# # map <- ggmap_bbox(gm)
+# # p <- ggmap(map) +
+# p <- ggplot() +
+#   annotation_map_tile(zoom = 7) +
+#   geom_sf(data = CCSBT, fill = NA)
+#   # coord_ccsbt()
+# p
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
