@@ -1,11 +1,11 @@
-#' GEBCO depth contours
-#'
-#' NZ SST.
-#'
-#' @format A simple feature collection with 1357601 features and 1 field.
-#' @source https://www.opendem.info/download_bathymetry.html
-#' 
-"gebco_contours"
+#' #' GEBCO depth contours
+#' #'
+#' #' NZ SST.
+#' #'
+#' #' @format A simple feature collection with 1357601 features and 1 field.
+#' #' @source https://www.opendem.info/download_bathymetry.html
+#' #' 
+#' "gebco_contours"
 
 
 #' SST
