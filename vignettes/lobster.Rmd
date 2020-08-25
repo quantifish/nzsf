@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This vignette showcases `nzsf` applied to New Zeland rok lobster.
+This vignette showcases `nzsf` applied to New Zealand rock lobster.
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 library(nzsf)
