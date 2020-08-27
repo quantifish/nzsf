@@ -265,31 +265,31 @@ p1 + p2
 # 
 # ncfile <- wf_request(user = "41999", request = request, transfer = TRUE, path = "", verbose = FALSE)
 
-library(raster)
-# should add code to get this direct from web
-data(era5_nz_sst)
-prj <- "+proj=merc +lon_0=100 +lat_ts=-41 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
-
-suppressWarnings({
-  sst1 <- era5_nz_sst %>% 
-    projectRaster(crs = prj) %>%
-    rasterToPoints()
-})
-
-sst <- sst1 %>%
-  data.frame() %>%
-  pivot_longer(cols = c(-x, -y)) %>%
-  separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
-  mutate(year = gsub("X", "", year), value = value - 273.15) %>%
-  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
-nz <- get_coast(proj = prj, resolution = "med")
-
-ggplot() +
-  geom_tile(data = sst, aes(x = x, y = y, fill = value), alpha = 0.95) +
-  facet_wrap(year ~ month) +
-  geom_sf(data = nz, fill = "black", colour = NA, size = 0.3) +
-  coord_sf() +
-  scale_fill_viridis("SST (°C)", alpha = 0.8, option = "plasma")
+# library(raster)
+# # should add code to get this direct from web
+# data(era5_nz_sst)
+# prj <- "+proj=merc +lon_0=100 +lat_ts=-41 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+# 
+# suppressWarnings({
+#   sst1 <- era5_nz_sst %>% 
+#     projectRaster(crs = prj) %>%
+#     rasterToPoints()
+# })
+# 
+# sst <- sst1 %>%
+#   data.frame() %>%
+#   pivot_longer(cols = c(-x, -y)) %>%
+#   separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
+#   mutate(year = gsub("X", "", year), value = value - 273.15) %>%
+#   filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
+# nz <- get_coast(proj = prj, resolution = "med")
+# 
+# ggplot() +
+#   geom_tile(data = sst, aes(x = x, y = y, fill = value), alpha = 0.95) +
+#   facet_wrap(year ~ month) +
+#   geom_sf(data = nz, fill = "black", colour = NA, size = 0.3) +
+#   coord_sf() +
+#   scale_fill_viridis("SST (°C)", alpha = 0.8, option = "plasma")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
