@@ -270,14 +270,18 @@ library(raster)
 data(era5_nz_sst)
 prj <- "+proj=merc +lon_0=100 +lat_ts=-41 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
 
-sst <- era5_nz_sst %>% 
-  projectRaster(crs = prj) %>%
-  rasterToPoints() %>%
+suppressWarnings({
+  sst1 <- era5_nz_sst %>% 
+    projectRaster(crs = prj) %>%
+    rasterToPoints()
+})
+
+sst <- sst1 %>%
   data.frame() %>%
   pivot_longer(cols = c(-x, -y)) %>%
   separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
   mutate(year = gsub("X", "", year), value = value - 273.15) %>%
-  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01", "06"))
+  filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
 nz <- get_coast(proj = prj, resolution = "med")
 
 ggplot() +
