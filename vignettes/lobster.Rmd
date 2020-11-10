@@ -61,6 +61,24 @@ ggplot() +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
 ```
 
+```{r echo=TRUE, fig.height=14, fig.width=12, message=FALSE}
+sf_stat <- get_statistical_areas("CRA")
+sf_diff <- st_difference(sf_stat, sf_coast)
+lab1 <- sf_diff %>% 
+  st_centroid()
+lab2 <- sf_diff %>% 
+  st_point_on_surface()
+
+ggplot() +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
+  plot_qma(qma = "CRA", fill = NA) +
+  plot_coast(resolution = "low", fill = "orange", colour = "black", size = 0.3) +
+  geom_sf_text(data = lab, aes(label = QMA)) +
+  # geom_sf_label(data = lab1, aes(label = area), size = 2.5) +
+  geom_sf_text(data = lab1, aes(label = area), size = 3, colour = "blue") +
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
+```
+
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 #library(ggrepel)
 

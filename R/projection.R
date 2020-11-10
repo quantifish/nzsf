@@ -1,11 +1,14 @@
 #' New Zealand projection
 #' 
-#' The default projection for New Zealand.
+#' The default projection for New Zealand. See the document "A standardised 
+#' approach for creating spatial grids for New Zealand marine environment and 
+#' species data". This CRS has been formally registered by EPSG as EPSG:9191 
+#' (see: https://epsg.io/9191 which includes the formal OGP XML specification).
 #'
 #' @export
 #' 
 proj_nzsf <- function() {
-  "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+  "+proj=aea +lat_1=-30 +lat_2=-50 +lat_0=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 }
 
 

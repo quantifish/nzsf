@@ -135,6 +135,29 @@ p
 #   geom_sf(data = CCSBT, fill = NA)
 #   # coord_ccsbt()
 # p
+
+# Working on A standardised approach for creating spatial grids for New Zealand marine environment and species data 
+library(raster)
+x <- raster(xmn = -1024479, xmx = 1091182, ymn = -1789355, ymx = 1545850)
+# x <- raster(ncol = 36, nrow = 18, xmn = -1000, xmx = 1000, ymn = -100, ymx = 900)
+projection(x) <- proj_nzsf()
+origin(x) <- c(0, -422600)
+origin(x)
+res(x)
+x
+
+xp <- rasterToPoints(x) %>%
+  data.frame()
+xp$value <- rnorm(nrow(xp))
+
+# get_statistical_areas(area = "EEZ") %>%
+#   st_transform(crs = proj_nzsf())
+
+ggplot() +
+  geom_tile(data = xp, aes(x = x, y = y, fill = value), alpha = 0.95) +
+  plot_statistical_areas(area = "EEZ") +
+  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  geom_point(aes(x = 0, y = -422600), colour = "red")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
