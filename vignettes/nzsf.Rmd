@@ -153,11 +153,16 @@ xp$value <- rnorm(nrow(xp))
 # get_statistical_areas(area = "EEZ") %>%
 #   st_transform(crs = proj_nzsf())
 
+grd <- get_statistical_areas(area = "EEZ") %>%
+  st_make_grid(cellsize = 500^2, offset = c(0, -422600), crs = proj_nzsf())
+
 ggplot() +
-  geom_tile(data = xp, aes(x = x, y = y, fill = value), alpha = 0.95) +
+  geom_sf(data = grd) +
+  geom_tile(data = xp, aes(x = x, y = y, fill = value), alpha = 0.5) +
   plot_statistical_areas(area = "EEZ") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
-  geom_point(aes(x = 0, y = -422600), colour = "red")
+  geom_point(aes(x = 0, y = -422600), colour = "red") +
+  annotation_scale(location = "tr", unit_category = "metric")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
