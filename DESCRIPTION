@@ -18,22 +18,22 @@ Depends:
     raster,
     sf
 Imports:
+    tidyverse,
     stringr,
     rmapshaper,
-    rnaturalearth
-Suggests:
-    tidyverse,
-    knitr,
-    devtools,
+    rnaturalearth,
+    rnaturalearthdata,
     ggspatial,
     lwgeom,
+    viridis,
+    patchwork
+Suggests:
+    knitr,
+    devtools,
     rmarkdown,
     roxygen2,
     testthat,
-    usethis,
-    viridis,
-    patchwork,
-    rnaturalearthdata
+    usethis
 LazyData: true
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr

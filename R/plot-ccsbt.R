@@ -26,21 +26,42 @@
 geom_ccsbt <- function(feature = "area", proj = proj_ccsbt(), fill = NA, colour = "black", ...) {
   if (feature %in% c("Area", "area")) {
     x <- nzsf::CCSBT %>% 
-      st_transform(crs = proj) %>%
+      st_transform(crs = proj)
+    # Two of these areas were split at the 180 line and needed to be combined
+    x[9,] <- x[9,] %>%
+      st_buffer(dist = 1e-9) %>%
+      st_cast(to = "POLYGON") %>%
+      st_union(by_feature = TRUE)
+    x[10,] <- x[10,] %>%
+      st_buffer(dist = 1e-9) %>%
+      st_cast(to = "POLYGON") %>%
       st_union(by_feature = TRUE)
     p <- geom_sf(data = x, fill = fill, colour = colour, ...)
   }
+  
   if (feature %in% c("label")) {
     x <- nzsf::CCSBT %>% 
-      st_transform(crs = proj) %>%
+      st_transform(crs = proj)
+    # Two of these areas were split at the 180 line and needed to be combined
+    x[9,] <- x[9,] %>%
+      st_buffer(dist = 1e-9) %>%
+      st_cast(to = "POLYGON") %>%
+      st_union(by_feature = TRUE)
+    x[10,] <- x[10,] %>%
+      st_buffer(dist = 1e-9) %>%
+      st_cast(to = "POLYGON") %>%
+      st_union(by_feature = TRUE)
+    x <- x %>%
       st_centroid()
     p <- geom_sf_label(data = x, aes(label = .data$Area), fill = fill, colour = colour, ...)
   }
+  
   if (feature %in% c("land")) {
     x <- ne_countries(scale = "medium", returnclass = "sf") %>%
       st_transform(crs = proj)
     p <- geom_sf(data = x, fill = fill, colour = colour, ...)
   }
+  
   return(p)
 }
 
