@@ -50,3 +50,20 @@ plot_coast <- function(proj = proj_nzsf(), resolution = "low", keep = 1, ...) {
   p <- geom_sf(data = x, ...)
   return(p)
 }
+
+
+#' Clip to a shapefile.
+#' 
+#' @param x The sf object to clip to.
+#' @param ... Other arguments passed on to \code{coord_sf}.
+#' @return a coord_sf.
+#' 
+#' @importFrom ggplot2 coord_sf
+#' @importFrom sf st_bbox
+#' @export
+#' 
+plot_clip <- function(x, ...) {
+  bbox <- st_bbox(x)
+  p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
+  return(p)
+}

@@ -2,12 +2,14 @@
 #' 
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
 #' @param resolution the resolution.
+#' @param depths a vector of specific depths to filter. Depths (in metres) that are available include: 0, 2, 5, 10, 20, 30, 50, 100, 200, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, and 10000.
 #' @return New Zealands depth polylines as a \code{sf} object.
 #' 
 #' @author Darcy Webber \email{darcy@quantifish.co.nz}
 #' 
 #' @seealso \code{\link{plot_depth}}
 #' 
+#' @importFrom dplyr filter
 #' @importFrom utils data
 #' @export
 #' @examples
@@ -15,7 +17,7 @@
 #' ggplot() +
 #'   geom_sf(data = x, colour = "lightblue")
 #' 
-get_depth <- function(proj = proj_nzsf(), resolution = "low") {
+get_depth <- function(proj = proj_nzsf(), resolution = "low", depths = NULL) {
   if (resolution %in% c("high", "122k_190k")) {
     x <- nzsf::depth_contour_polyline_hydro_122k_190k
   } else if (resolution %in% c("med", "190k_1350k")) {
@@ -23,6 +25,7 @@ get_depth <- function(proj = proj_nzsf(), resolution = "low") {
   } else {
     x <- nzsf::depth_contour_polyline_hydro_1350k_11500k
   }
+  if (!is.null(depths)) x <- x %>% filter(.data$depth %in% depths)
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
   return(x)
 }
@@ -31,6 +34,8 @@ get_depth <- function(proj = proj_nzsf(), resolution = "low") {
 #' Plot depth polylines around New Zealand
 #' 
 #' @inheritParams get_depth
+#' @param col_depth Different colours for the depth contours.
+#' @param lty_depth Different line types for the depth contours.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A \code{ggplot} object of New Zealands depth polylines.
 #' 
@@ -45,8 +50,17 @@ get_depth <- function(proj = proj_nzsf(), resolution = "low") {
 #' ggplot() + 
 #'   plot_depth()
 #' 
-plot_depth <- function(proj = proj_nzsf(), resolution = "low", ...) {
-  x <- get_depth(proj = proj, resolution = resolution)
-  p <- geom_sf(data = x, ...)
+plot_depth <- function(proj = proj_nzsf(), resolution = "low", depths = NULL, 
+                       col_depth = FALSE, lty_depth = FALSE, ...) {
+  x <- get_depth(proj = proj, resolution = resolution, depths = depths)
+  if (col_depth & lty_depth) {
+    p <- geom_sf(data = x, aes(colour = factor(.data$depth), linetype = factor(.data$depth)), ...)
+  } else if (col_depth & !lty_depth) {
+    p <- geom_sf(data = x, aes(colour = factor(.data$depth)), ...)
+  } else if (!col_depth & lty_depth) {
+    p <- geom_sf(data = x, aes(linetype = factor(.data$depth)), ...)
+  } else {
+    p <- geom_sf(data = x, ...)
+  }
   return(p)
 }

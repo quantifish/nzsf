@@ -54,6 +54,24 @@ p2 <- ggplot() +
   annotation_scale(location = "br", unit_category = "metric")
 
 p1 + p2
+# aa <- nz_fisheries_general_statistical_areas %>% 
+#   dplyr::select(Statistica) %>%
+#   st_transform(crs = proj_nzsf()) %>%
+#   st_union(by_feature = TRUE) %>%
+#   mutate(area = case_when(
+#     Statistica %in% 401:412 ~ "a",
+#     Statistica %in% 601:625 ~ "b",
+#     TRUE ~ as.character("c")
+#   )) %>%
+#   group_by(area) %>%
+#   summarize(geometry = st_union(geometry))
+# 
+# ggplot() +
+#   # plot_qma(qma = "LIN") + 
+#   plot_statistical_areas(area = "stat area") +
+#   # geom_sf(data = aa) +
+#   plot_coast(resolution = "low", fill = "forestgreen", colour = "black", size = 0.3) +
+#   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
 ```
 
 The `nzsf` package also includes functions for plotting CCSBT management areas. In the example below I simulate 100 points, generate a voronoi diagram around these points, then simulate values at 5000 points and sum the values of these points within the voronoi polygons:

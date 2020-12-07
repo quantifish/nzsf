@@ -17,6 +17,10 @@
 #' 
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
+  if (area %in% c("statistical area", "statistical areas", "stat area", "stat areas")) {
+    x <- nzsf::nz_fisheries_general_statistical_areas
+  }
+  
   if (area %in% c("EEZ")) {
     # x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
     x <- nzsf::FisheriesManagementAreas %>% 
@@ -39,7 +43,8 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   
   if (!is.null(proj)) {
     x <- x %>% 
-      st_transform(crs = proj, check = TRUE) %>% 
+      # st_transform(crs = proj, check = TRUE) %>% 
+      st_transform(crs = proj) %>% 
       st_union(by_feature = TRUE)
     # if (!area %in% "EEZ") {
     #   x <- x %>% st_cast("MULTIPOLYGON")
