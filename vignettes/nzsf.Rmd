@@ -54,7 +54,9 @@ p2 <- ggplot() +
   annotation_scale(location = "br", unit_category = "metric")
 
 p1 + p2
+```
 
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 aa <- nz_fisheries_general_statistical_areas %>%
   dplyr::select(Statistica) %>%
   st_transform(crs = proj_nzsf()) %>%
@@ -71,7 +73,7 @@ ggplot() +
   geom_sf(data = aa, aes(fill = area)) +
   plot_qma(qma = "LIN", fill = "transparent") +
   # plot_statistical_areas(area = "stat area", fill = "transparent") +
-  plot_coast(resolution = "low", fill = "forestgreen", colour = "black", size = 0.3) +
+  plot_coast(resolution = "med", fill = "forestgreen", colour = "black", size = 0.3) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
 ```
 
