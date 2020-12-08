@@ -26,7 +26,7 @@
 #' \describe{
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR
+#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
 #' 
 "ccamlr_mpa"
 
@@ -39,9 +39,22 @@
 #' \describe{
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR
+#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
 #' 
 "ccamlr_ssru"
+
+
+#' CCAMLR EEZ
+#'
+#' CCAMLR EEZs.
+#'
+#' @format Simple feature collection with 7 features and 13 fields:
+#' \describe{
+#'   \item{LongLabel}{CCAMLR Statistical Areas}
+#' }
+#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+#' 
+"ccamlr_eez"
 
 
 #' CCAMLR Statistical Areas
@@ -52,7 +65,7 @@
 #' \describe{
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR
+#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
 #' 
 "ccamlr_statistical_areas"
 
@@ -514,10 +527,15 @@
 
 #' New Zealand General Statistical Areas
 #'
-#' New Zealand general Statistical Areas.
+#' A more detailed description for the New Zealand general Statistical Areas can 
+#' be found at \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
+#' 
+#' For many other shapefiles see
+#' \url{https://data-mpi.opendata.arcgis.com/search?tags=Fisheries%2Cfisheries%20new%20zealand}.
 #'
 #' @format Simple feature collection with 153 features and 29 fields:
 #' @source Fisheries New Zealand
+#' @source \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
 #' 
 "nz_fisheries_general_statistical_areas"
 
@@ -537,6 +555,15 @@
 #' New Zealand Fisheries Management Areas (FMAs).
 #'
 #' @format Simple feature collection with 153 features and 29 fields:
+#' \describe{
+#'   \item{FeatureKey}{the}
+#'   \item{LayerKey}{the}
+#'   \item{LayerGroup}{the}
+#'   \item{LayerName}{the}
+#'   \item{MetadataKe}{the}
+#'   \item{PortalUrl}{the}
+#'   \item{SpeciesCode}{the}
+#' }
 #' @source Fisheries New Zealand
 #' 
 "FisheriesManagementAreas"

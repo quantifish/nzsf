@@ -6,6 +6,15 @@
 \title{New Zealand Fisheries Management Areas (FMAs)}
 \format{
 Simple feature collection with 153 features and 29 fields:
+\describe{
+  \item{FeatureKey}{the}
+  \item{LayerKey}{the}
+  \item{LayerGroup}{the}
+  \item{LayerName}{the}
+  \item{MetadataKe}{the}
+  \item{PortalUrl}{the}
+  \item{SpeciesCode}{the}
+}
 }
 \source{
 Fisheries New Zealand

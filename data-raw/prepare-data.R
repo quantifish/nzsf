@@ -28,8 +28,19 @@ FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
   rename(SpeciesCode = SpeciesCod)
 use_data(FisheriesManagementAreas, overwrite = TRUE)
 
-nz_fisheries_general_statistical_areas <- unzip_and_clean("kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
-  dplyr::select(-Descriptio)  %>%
+# nz_fisheries_general_statistical_areas <- unzip_and_clean("kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
+#   dplyr::select(-Descriptio)  %>%
+#   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
+# use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
+# this version has several issues including gaps between polygons and the land area is clipped to a high resolution coastline making spatial operations slow
+
+nz_fisheries_general_statistical_areas <- unzip_and_clean("General_Statistical_Areas-shp.zip") %>%
+  dplyr::select(-c(Descriptio, SpeciesCod, SpeciesSci, Accuracy, SpeciesCom, SHAPESTAre, SHAPESTLen))  %>%
+  st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
+use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
+
+nz_inshore_statistical_areas <- unzip_and_clean("Inshore_Statistical_Areas-shp.zip") %>%
+  dplyr::select(-c(Descriptio, SpeciesCod, SpeciesSci, Accuracy, SpeciesCom, SHAPESTAre, SHAPESTLen))  %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
 use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
 
@@ -82,9 +93,9 @@ ccamlr_mpa <- unzip_and_clean("mpa-shapefile-WGS84.zip") %>%
   st_transform(crs = proj_ccamlr())
 use_data(ccamlr_mpa, overwrite = TRUE)
 
-# ccamlr_eez <- unzip_and_clean("eez-shapefile-WGS84.zip") %>%
-#   st_transform(crs = proj_ccamlr())
-# use_data(ccamlr_eez, overwrite = TRUE)
+ccamlr_eez <- unzip_and_clean("eez-shapefile-WGS84.zip") %>%
+  st_transform(crs = proj_ccamlr())
+use_data(ccamlr_eez, overwrite = TRUE)
 
 # Finfish Quota Management Areas (QMAs) ----
 
@@ -201,7 +212,7 @@ use_data(Rocky_reef_National_NZ, overwrite = TRUE)
 
 depth_contour_polyline_hydro_122k_190k <- unzip_and_clean("lds-depth-contour-polyline-hydro-122k-190k-SHP.zip") %>% 
   rename(depth = VALDCO) %>%
-  dplyr::dplyr::select(depth, SCAMIN, SORDAT, SORIND)
+  dplyr::select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_122k_190k, overwrite = TRUE)
 
 depth_contour_polyline_hydro_190k_1350k <- unzip_and_clean("lds-depth-contour-polyline-hydro-190k-1350k-SHP.zip") %>% 
@@ -214,20 +225,20 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   dplyr::select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
-gebco_contours <- unzip_and_clean("gebco_2019_contours.zip")
-use_data(gebco_contours, overwrite = TRUE)
+# gebco_contours <- unzip_and_clean("gebco_2019_contours.zip")
+# use_data(gebco_contours, overwrite = TRUE)
 
 # Environmental layers ----
 
-library(raster)
-library("ncdf4")
-
-ncfile <- "era5-nz_sst_to_2020.nc"
-era5_nz_sst <- stack(x = ncfile) %>%
-  rotate()
-nlayers(era5_nz_sst)
-
-use_data(era5_nz_sst, overwrite = TRUE)
+# library(raster)
+# library("ncdf4")
+# 
+# ncfile <- "era5-nz_sst_to_2020.nc"
+# era5_nz_sst <- stack(x = ncfile) %>%
+#   rotate()
+# nlayers(era5_nz_sst)
+# 
+# use_data(era5_nz_sst, overwrite = TRUE)
 
 # f <- "mfe-average-seasurface-temperature-19932012-GTiff.zip"
 # fz <- unzip(zipfile = f, list = TRUE)

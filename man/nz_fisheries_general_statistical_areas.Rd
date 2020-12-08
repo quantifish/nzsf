@@ -9,11 +9,17 @@ Simple feature collection with 153 features and 29 fields:
 }
 \source{
 Fisheries New Zealand
+
+\url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
 }
 \usage{
 nz_fisheries_general_statistical_areas
 }
 \description{
-New Zealand general Statistical Areas.
+A more detailed description for the New Zealand general Statistical Areas can 
+be found at \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
+}
+\details{
+
 }
 \keyword{datasets}
