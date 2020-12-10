@@ -18,7 +18,7 @@
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
   if (area %in% c("statistical area", "statistical areas", "stat area", "stat areas")) {
-    x <- nzsf::nz_fisheries_general_statistical_areas
+    x <- nzsf::nz_general_statistical_areas
   }
   
   if (area %in% c("EEZ")) {

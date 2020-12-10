@@ -24,25 +24,25 @@ proj_nzsf <- proj_nzsf()
 # Various ----
 
 FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
-  dplyr::select(-Descriptio) %>%
+  dplyr::select(FeatureKey, LayerKey, LayerGroup, LayerName, SpeciesCod, SpeciesSci, FishstockC, SpeciesCom, FmaName, FmaId, Annotation) %>%
   rename(SpeciesCode = SpeciesCod)
 use_data(FisheriesManagementAreas, overwrite = TRUE)
 
+# this version has several issues including gaps between polygons and the land area is clipped to a high resolution coastline making spatial operations slow
 # nz_fisheries_general_statistical_areas <- unzip_and_clean("kx-nz-fisheries-general-statistical-areas-SHP.zip") %>%
 #   dplyr::select(-Descriptio)  %>%
 #   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
 # use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
-# this version has several issues including gaps between polygons and the land area is clipped to a high resolution coastline making spatial operations slow
 
-nz_fisheries_general_statistical_areas <- unzip_and_clean("General_Statistical_Areas-shp.zip") %>%
-  dplyr::select(-c(Descriptio, SpeciesCod, SpeciesSci, Accuracy, SpeciesCom, SHAPESTAre, SHAPESTLen))  %>%
+nz_general_statistical_areas <- unzip_and_clean("General_Statistical_Areas-shp.zip") %>%
+  dplyr::select(OBJECTID, Statistica, Statisti_2)  %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
-use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
+use_data(nz_general_statistical_areas, overwrite = TRUE)
 
 nz_inshore_statistical_areas <- unzip_and_clean("Inshore_Statistical_Areas-shp.zip") %>%
-  dplyr::select(-c(Descriptio, SpeciesCod, SpeciesSci, Accuracy, SpeciesCom, SHAPESTAre, SHAPESTLen))  %>%
+  dplyr::select(OBJECTID, Statistica, Statisti_2)  %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
-use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
+use_data(nz_inshore_statistical_areas, overwrite = TRUE)
 
 territorial_sea_outer_limit_12_mile <- unzip_and_clean("lds-12-mile-territorial-sea-outer-limit-SHP.zip")
 use_data(territorial_sea_outer_limit_12_mile, overwrite = TRUE)
@@ -82,6 +82,7 @@ use_data(CCSBT, overwrite = TRUE)
 # CCAMLR ----
 
 ccamlr_statistical_areas <- unzip_and_clean("asd-shapefile-WGS84.zip") %>%
+  dplyr::select(GAR_ID, Name, ShortLabel, LongLabel, StartDate, EndDate)  %>%
   st_transform(crs = proj_ccamlr())
 use_data(ccamlr_statistical_areas, overwrite = TRUE)
 

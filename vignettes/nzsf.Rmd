@@ -44,7 +44,7 @@ p1 <- ggplot() +
 
 # Get the coastline from the rnaturalearth package for comparison
 nz <- ne_countries(scale = "medium", returnclass = "sf", country = "New Zealand") %>%
-  st_transform(proj_nzsf()) %>%
+  st_transform(crs = proj_nzsf()) %>%
   st_crop(get_statistical_areas(area = "EEZ"))
 
 p2 <- ggplot() +
@@ -57,7 +57,7 @@ p1 + p2
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-aa <- nz_fisheries_general_statistical_areas %>%
+aa <- nz_general_statistical_areas %>%
   dplyr::select(Statistica) %>%
   st_transform(crs = proj_nzsf()) %>%
   # st_snap(x = ., y = ., tolerance = 0.0001) %>%

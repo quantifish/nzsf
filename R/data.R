@@ -1,21 +1,34 @@
-#' #' GEBCO depth contours
-#' #'
-#' #' NZ SST.
-#' #'
-#' #' @format A simple feature collection with 1357601 features and 1 field.
-#' #' @source https://www.opendem.info/download_bathymetry.html
-#' #' 
-#' "gebco_contours"
-
-
-#' SST
+#' New Zealand General Statistical Areas
 #'
-#' NZ SST.
-#'
-#' @format A RasterBrick
-#' @source ERA
+#' \code{nz_general_statistical_areas} returns a \code{sf} shapefile. A more detailed summary 
+#' for the New Zealand General Statistical Areas can be found at 
+#' \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}. 
 #' 
-"era5_nz_sst"
+#' @format Simple feature collection with 153 features and 3 fields:
+#' \describe{
+#'   \item{OBJECTID}{the object ID}
+#'   \item{Statistica}{the statistical area}
+#'   \item{Statisti_2}{the statistical area}
+#'  }
+#' @source Fisheries New Zealand \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
+#' 
+"nz_general_statistical_areas"
+
+
+#' New Zealand Inshore Statistical Areas
+#'
+#' A more detailed summary for the New Zealand inshore Statistical Areas can be 
+#' found at \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
+#' 
+#' @format Simple feature collection with 53 features and 3 fields:
+#' \describe{
+#'   \item{OBJECTID}{the object ID}
+#'   \item{Statistica}{the statistical area}
+#'   \item{Statisti_2}{the statistical area}
+#'  }
+#' @source Fisheries New Zealand \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
+#' 
+"nz_inshore_statistical_areas"
 
 
 #' CCAMLR Marine Protected Areas
@@ -523,21 +536,6 @@
 #' @source Fisheries New Zealand
 #' 
 "territorial_sea_outer_limit_12_mile"
-
-
-#' New Zealand General Statistical Areas
-#'
-#' A more detailed description for the New Zealand general Statistical Areas can 
-#' be found at \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
-#' 
-#' For many other shapefiles see
-#' \url{https://data-mpi.opendata.arcgis.com/search?tags=Fisheries%2Cfisheries%20new%20zealand}.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Fisheries New Zealand
-#' @source \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
-#' 
-"nz_fisheries_general_statistical_areas"
 
 
 #' New Zealand Rock Lobster Statistical Areas
