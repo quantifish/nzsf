@@ -1,22 +1,17 @@
 language: r
-
 os: linux
 dist: xenial
+warnings_are_errors: false
+cache: packages
 
 r:
   - oldrel
   - release
   - devel
 
-cache: packages
-warnings_are_errors: false
-
-before_install:
-  - sudo apt-get update
-
 r_packages:
-  - roxygen2
   - testthat
+  - roxygen2
 
 r_github_packages: 
   - thomasp85/patchwork
@@ -32,3 +27,10 @@ apt_packages:
   - libjq-dev
   - libprotobuf-dev
   - protobuf-compiler
+
+repos: 
+  CRAN: https://cran.rstudio.com
+  rforge: http://R-Forge.R-project.org
+
+before_install:
+  - sudo apt-get update
