@@ -7,7 +7,12 @@
 \format{
 Simple feature collection with 19 features and 13 fields:
 \describe{
+  \item{GAR_ID}{CCAMLR Statistical Areas}
+  \item{Name}{CCAMLR Statistical Areas}
+  \item{ShortLabel}{CCAMLR Statistical Areas}
   \item{LongLabel}{CCAMLR Statistical Areas}
+  \item{StartDate}{CCAMLR Statistical Areas}
+  \item{EndDate}{CCAMLR Statistical Areas}
 }
 }
 \source{
@@ -17,6 +22,6 @@ CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
 ccamlr_mpa
 }
 \description{
-CCAMLR MPAs.
+CCAMLR Marine Protected Areas (MPAs).
 }
 \keyword{datasets}

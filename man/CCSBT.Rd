@@ -12,12 +12,12 @@ Simple feature collection with 12 features and 2 fields:
 }
 }
 \source{
-CCSBT
+The CCSBT Data Manager \email{datamanager@ccsbt.org}
 }
 \usage{
 CCSBT
 }
 \description{
-Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas.
+The Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas data set is a \code{sf} shapefile.
 }
 \keyword{datasets}

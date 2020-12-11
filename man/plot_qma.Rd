@@ -2,12 +2,12 @@
 % Please edit documentation in R/get-qma.R
 \name{plot_qma}
 \alias{plot_qma}
-\title{Get a Quota Managemetn Area.}
+\title{Plot a Quota Management Area (QMA)}
 \usage{
 plot_qma(qma = "CRA", proj = proj_nzsf(), ...)
 }
 \arguments{
-\item{qma}{A Quota Managemetn Area (QMA). Can be CRA, PHC, COC, ...}
+\item{qma}{A Quota Management Area (QMA). Can be CRA, PHC, COC, ...}
 
 \item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 
@@ -17,10 +17,22 @@ plot_qma(qma = "CRA", proj = proj_nzsf(), ...)
 A \code{ggplot} object of the selected QMA.
 }
 \description{
-Get a Quota Managemetn Area.
+This function is used to plot a Quota Management Area (QMA) as a \code{ggplot2} object.
 }
 \examples{
+# Packhorse rock lobster
 ggplot() + 
-  plot_qma(qma = "CRA")
+  plot_qma(qma = "PHC")
+  
+# Jack mackerel
+ggplot() + 
+  plot_qma(qma = "JMA")
 
+# Paua
+ggplot() + 
+  plot_qma(qma = "PAU")
+
+}
+\seealso{
+\code{\link{get_qma}} to return Quota Management Area (QMA) polygons as \code{sf} objects.
 }

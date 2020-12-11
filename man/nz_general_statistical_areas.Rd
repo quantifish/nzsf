@@ -19,7 +19,7 @@ Fisheries New Zealand \url{https://data-mpi.opendata.arcgis.com/datasets/general
 nz_general_statistical_areas
 }
 \description{
-\code{nz_general_statistical_areas} returns a \code{sf} shapefile. A more detailed summary 
+The \code{nz_general_statistical_areas} data set is a \code{sf} shapefile. A more detailed summary 
 for the New Zealand General Statistical Areas can be found at 
 \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
 }

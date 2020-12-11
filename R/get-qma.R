@@ -1,27 +1,36 @@
 #' Get Quota Management Area (QMA) polygons
 #' 
-#' @param qma A Quota Managemetn Area (QMA). Can be CRA, PHC, COC, ...
+#' This function is used to return a Quota Management Area (QMA) as a \code{sf} object. 
+#' 
+#' @param qma A Quota Management Area (QMA). Can be CRA, PHC, COC, ...
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
 #' @return A simple feature collection of QMA polygons as a \code{sf} object.
+#' @seealso \code{\link{plot_qma}} to plot Quota Management Area's.
 #' 
 #' @importFrom utils data
 #' @importFrom sf st_transform st_union st_cast
 #' @export
 #' @examples
+#' # Red rock lobster
 #' x <- get_qma(qma = "CRA")
 #' ggplot() +
 #'   geom_sf(data = x, fill = NA)
-#' 
+#'
+#' # Hake
+#' y <- get_qma(qma = "HAK")
+#' ggplot() +
+#'   geom_sf(data = y, fill = NA)
+#'   
+#' # Ling
+#' z <- get_qma(qma = "LIN")
+#' ggplot() +
+#'   geom_sf(data = z, fill = NA)
+#'   
 get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 
   # Shellfish
-  # qma <- "CRA"
-  # any(str_detect(qma, regex(c("CRA", "crayfish", "koura"), ignore_case = TRUE)))
   if (qma %in% c("CRA", "crayfish", "koura", "Koura", "Jasus", "Jasus edwardsii")) {
     x <- nzsf::SpinyRedRockLobster_QMA
-    # shp <- "SpinyRedRockLobster_QMAs"
-    # dsn <- system.file("extdata", paste0(shp, ".shp"), package = "nzsf")
-    # x <- st_read(dsn = dsn, layer = shp) %>% rename(area = FishstockC)
   }
   if (qma %in% c("PHC", "packhorse", "koura papatia", "Sagmariasus verreauxi")) {
     x <- nzsf::PackhorseRockLobster_QMA
@@ -75,17 +84,29 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 }
 
 
-#' Get a Quota Managemetn Area.
+#' Plot a Quota Management Area (QMA)
+#' 
+#' This function is used to plot a Quota Management Area (QMA) as a \code{ggplot2} object. 
 #' 
 #' @inheritParams get_qma
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return A \code{ggplot} object of the selected QMA.
+#' @seealso \code{\link{get_qma}} to return Quota Management Area (QMA) polygons as \code{sf} objects.
 #' 
 #' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples
+#' # Packhorse rock lobster
 #' ggplot() + 
-#'   plot_qma(qma = "CRA")
+#'   plot_qma(qma = "PHC")
+#'   
+#' # Jack mackerel
+#' ggplot() + 
+#'   plot_qma(qma = "JMA")
+#'
+#' # Paua
+#' ggplot() + 
+#'   plot_qma(qma = "PAU")
 #' 
 plot_qma <- function(qma = "CRA", proj = proj_nzsf(), ...) {
   x <- get_qma(qma = qma, proj = proj)

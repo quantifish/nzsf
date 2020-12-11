@@ -1,6 +1,6 @@
 #' New Zealand General Statistical Areas
 #'
-#' \code{nz_general_statistical_areas} returns a \code{sf} shapefile. A more detailed summary 
+#' The \code{nz_general_statistical_areas} data set is a \code{sf} shapefile. A more detailed summary 
 #' for the New Zealand General Statistical Areas can be found at 
 #' \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}. 
 #' 
@@ -33,11 +33,16 @@
 
 #' CCAMLR Marine Protected Areas
 #'
-#' CCAMLR MPAs.
+#' CCAMLR Marine Protected Areas (MPAs).
 #'
 #' @format Simple feature collection with 19 features and 13 fields:
 #' \describe{
+#'   \item{GAR_ID}{CCAMLR Statistical Areas}
+#'   \item{Name}{CCAMLR Statistical Areas}
+#'   \item{ShortLabel}{CCAMLR Statistical Areas}
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
+#'   \item{StartDate}{CCAMLR Statistical Areas}
+#'   \item{EndDate}{CCAMLR Statistical Areas}
 #' }
 #' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
 #' 
@@ -46,10 +51,13 @@
 
 #' CCAMLR Small Scale Research Units
 #'
-#' CCAMLR SSRUs.
+#' CCAMLR Small Scale Research Units (SSRUs).
 #'
 #' @format Simple feature collection with 19 features and 13 fields:
 #' \describe{
+#'   \item{GAR_ID}{CCAMLR Statistical Areas}
+#'   \item{Name}{CCAMLR Statistical Areas}
+#'   \item{ShortLabel}{CCAMLR Statistical Areas}
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
 #' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
@@ -85,14 +93,14 @@
 
 #' CCSBT Management Areas
 #'
-#' Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas.
+#' The Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas data set is a \code{sf} shapefile.
 #'
 #' @format Simple feature collection with 12 features and 2 fields:
 #' \describe{
-#'   \item{id}{CCSBT Management Area}
-#'   \item{Area}{CCSBT Management Area}
+#'   \item{id}{The CCSBT Management Area}
+#'   \item{Area}{The CCSBT Management Area}
 #' }
-#' @source CCSBT
+#' @source The CCSBT Data Manager (\email{datamanager@@ccsbt.org}).
 #' 
 "CCSBT"
 
