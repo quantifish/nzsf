@@ -33,4 +33,5 @@ repos:
   rforge: http://R-Forge.R-project.org
 
 before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
   - sudo apt-get update
