@@ -7,12 +7,12 @@
 \format{
 Simple feature collection with 12 features and 2 fields:
 \describe{
-  \item{id}{CCSBT Management Area}
-  \item{Area}{CCSBT Management Area}
+  \item{id}{The CCSBT Management Area}
+  \item{Area}{The CCSBT Management Area}
 }
 }
 \source{
-The CCSBT Data Manager \email{datamanager@ccsbt.org}
+The CCSBT Data Manager (\email{datamanager@ccsbt.org}).
 }
 \usage{
 CCSBT
