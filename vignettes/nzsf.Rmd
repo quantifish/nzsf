@@ -22,12 +22,12 @@ The `stsd` package makes extensive use of the `nzsf` package. The `nzsf` package
 library(tidyverse)
 library(nzsf)
 library(ggspatial)
-library(patchwork)
 library(rnaturalearth)
 library(rnaturalearthdata)
 library(viridis)
 library(raster)
 library(lwgeom)
+library(patchwork)
 # devtools::install_github(repo = "ropensci/rnaturalearthhires")
 # library(rnaturalearthhires) # required for scale = "large" in ne_countries below
 
