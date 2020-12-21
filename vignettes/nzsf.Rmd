@@ -57,11 +57,10 @@ p1 + p2
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+# An example that aggregates spatial features
 aa <- nz_general_statistical_areas %>%
   dplyr::select(Statistica) %>%
   st_transform(crs = proj_nzsf()) %>%
-  # st_snap(x = ., y = ., tolerance = 0.0001) %>%
-  # st_simplify(dTolerance = 1) %>%
   st_union(by_feature = TRUE) %>%
   mutate(area = case_when(
     Statistica %in% c(401:412, "049", "050", "051", "052") ~ "a",
