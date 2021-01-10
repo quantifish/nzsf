@@ -41,6 +41,10 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
     x <- nzsf::CCSBT
   }
   
+  if (area %in% c("SIOFA")) {
+    x <- nzsf::SIOFA
+  }
+  
   if (!is.null(proj)) {
     x <- x %>% 
       # st_transform(crs = proj, check = TRUE) %>% 

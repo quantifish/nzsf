@@ -1,3 +1,21 @@
+#' Lookup the depth (m) at specific locations around New Zealand
+#' 
+#' @param pts The points to generate a depth for.
+#' @return Depth at each location.
+#' 
+#' @author Darcy Webber \email{darcy@quantifish.co.nz}
+#' 
+#' @export
+#' 
+lookup_depth <- function(pts) {
+  x <- nzsf::NZBathymetry_2016_grid
+  y <- pts %>%
+    st_transform(crs = st_crs(x))
+  z <- raster::extract(x = x, y = y)
+  return(z)
+}
+
+
 #' Get depth polylines around New Zealand
 #' 
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.

@@ -1,3 +1,18 @@
+#' SIOFA polygon
+#' 
+#' @format A sf polygon
+#' 
+"SIOFA"
+
+
+#' New Zealand depth ASCII grid
+#' 
+#' @format A RasterLayer
+#' @source NIWA \url{https://niwa.co.nz/our-science/oceans/bathymetry}
+#' 
+"NZBathymetry_2016_grid"
+
+
 #' New Zealand General Statistical Areas
 #'
 #' The \code{nz_general_statistical_areas} data set is a \code{sf} shapefile. A more detailed summary 
