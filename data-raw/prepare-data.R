@@ -231,13 +231,15 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   dplyr::select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
-f <- "NZBathy_DTM_2016_ascii_grid.zip"
-fz <- unzip(zipfile = f, list = TRUE)
-unzip(zipfile = f)
-NZBathymetry_2016_grid <- readGDAL("nzbathymetry_2016_ascii-grid.txt") %>%
-  raster()
-crs(NZBathymetry_2016_grid) <- "+proj=merc +lat_ts=-41 +lon_0=100 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
-file.remove(fz$Name)
+# This file is too big
+# f <- "NZBathy_DTM_2016_ascii_grid.zip"
+# fz <- unzip(zipfile = f, list = TRUE)
+# unzip(zipfile = f)
+# NZBathymetry_2016_grid <- readGDAL("nzbathymetry_2016_ascii-grid.txt") %>%
+#   raster()
+# crs(NZBathymetry_2016_grid) <- "+proj=merc +lat_ts=-41 +lon_0=100 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
+# file.remove(fz$Name)
+NZBathymetry_2016_grid <- NULL
 use_data(NZBathymetry_2016_grid, overwrite = TRUE)
 
 # gebco_contours <- unzip_and_clean("gebco_2019_contours.zip")
