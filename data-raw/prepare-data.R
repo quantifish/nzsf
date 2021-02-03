@@ -25,7 +25,9 @@ proj_nzsf <- proj_nzsf()
 
 # Various ----
 
-SIOFA <- unzip_and_clean("SIOFA.zip")
+# SIOFA <- unzip_and_clean("SIOFA.zip")
+# use_data(SIOFA, overwrite = TRUE)
+SIOFA <- unzip_and_clean("siofa_subarea_final.zip")
 use_data(SIOFA, overwrite = TRUE)
 
 FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
