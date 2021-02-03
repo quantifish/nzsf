@@ -124,6 +124,22 @@ ggplot() +
   coord_ccsbt()
 ```
 
+```{r echo=TRUE, fig.width=7, message=FALSE}
+SPRFMO3832 <- SPRFMO %>%
+  st_transform(crs = 3832)
+
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  st_transform(crs = 3832)
+
+ggplot() +
+  geom_sf(data = world, fill = "black", colour = "black") +
+  geom_sf(data = SPRFMO3832, aes(fill = factor(OBJECTID))) +
+  coord_sf() +
+  plot_clip(SPRFMO3832) +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
 # register_google(key = key)
 # 

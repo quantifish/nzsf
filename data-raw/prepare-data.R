@@ -25,6 +25,10 @@ proj_nzsf <- proj_nzsf()
 
 # Various ----
 
+SPRFMO <- unzip_and_clean("FAO_RFB_SPRFMO.zip") %>%
+  dplyr::select(OBJECTID, SHAPE_LENG, SHAPE_AREA)
+use_data(SPRFMO, overwrite = TRUE)
+
 # SIOFA <- unzip_and_clean("SIOFA.zip")
 # use_data(SIOFA, overwrite = TRUE)
 SIOFA <- unzip_and_clean("siofa_subarea_final.zip")
@@ -42,7 +46,7 @@ use_data(FisheriesManagementAreas, overwrite = TRUE)
 # use_data(nz_fisheries_general_statistical_areas, overwrite = TRUE)
 
 nz_general_statistical_areas <- unzip_and_clean("General_Statistical_Areas-shp.zip") %>%
-  dplyr::select(OBJECTID, Statistica, Statisti_2)  %>%
+  dplyr::select(OBJECTID, Statistica, Statisti_2) %>%
   st_wrap_dateline(options = c("WRAPDATELINE=YES", "DATELINEOFFSET=180"), quiet = TRUE)
 use_data(nz_general_statistical_areas, overwrite = TRUE)
 

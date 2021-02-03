@@ -1,3 +1,10 @@
+#' SPRFMO polygon
+#' 
+#' @format A sf polygon
+#' 
+"SPRFMO"
+
+
 #' SIOFA polygon
 #' 
 #' @format A sf polygon
