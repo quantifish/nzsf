@@ -168,4 +168,5 @@ p <- ggplot() +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 p
+ggsave(filename = "CRA5.png", plot = p, width = 5, height = 7)
 ```
