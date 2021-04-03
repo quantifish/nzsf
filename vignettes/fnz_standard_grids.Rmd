@@ -1,0 +1,43 @@
+---
+title: "FNZ standard grids"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{FNZ standard grids}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r echo=TRUE}
+library(nzsf)
+library(ggspatial)
+```
+
+```{r}
+eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
+
+grd200 <- get_standard_grid(200, bounding_box = st_bbox(eez), clip = FALSE)
+grd050 <- get_standard_grid( 50, bounding_box = st_bbox(eez), clip = TRUE)
+```
+
+```{r plot}
+# plot and check with centre point
+gg <- ggplot() +
+  plot_statistical_areas(area = "EEZ") +
+  geom_sf(data = grd200,  col = "grey",  fill = NA, alpha = 0.1) +
+  geom_sf(data = grd050,  col = "blue",  fill = NA, alpha = 0.1) +
+  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  geom_point(aes(x = 0, y = -422600), colour = "red") + xlab("") + ylab("") + 
+  annotation_scale(location = "br", unit_category = "metric")
+print(gg)
+```
+
