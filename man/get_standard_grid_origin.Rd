@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-fnz-standard-grid.R
 \name{get_standard_grid_origin}
 \alias{get_standard_grid_origin}
-\title{Get Fisheries New Zealand standard grid definitions}
+\title{Get Fisheries New Zealand standard grid origin}
 \usage{
 get_standard_grid_origin(x, bounding_box)
 }
@@ -11,8 +11,14 @@ get_standard_grid_origin(x, bounding_box)
 
 \item{bounding_box}{limits generated from call to sf::st_bbox()}
 }
+\value{
+standard grid origin \code{data.frame}
+}
 \description{
-Get Fisheries New Zealand standard grid definitions
+Get Fisheries New Zealand standard grid origin
+}
+\seealso{
+\code{\link{get_standard_grid}}
 }
 \author{
 Sophie Mormede

@@ -83,8 +83,10 @@ ggplot() +
 #library(ggrepel)
 
 sf_diff <- st_difference(sf_stat, sf_coast)
+
 lab1 <- sf_diff %>% 
   st_centroid()
+
 lab2 <- sf_diff %>% 
   st_point_on_surface()
 
@@ -121,9 +123,11 @@ p
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA4"
 
-sf_stat <- get_statistical_areas("CRA") %>% filter(QMA %in% stock)
-sf_diff <- st_difference(sf_stat, sf_coast)
-lab1 <- sf_diff %>% st_centroid()
+sf_stat <- get_statistical_areas("CRA") %>% 
+  filter(QMA %in% stock)
+
+sf_lab <- st_difference(sf_stat, sf_coast) %>% 
+  st_centroid()
 
 bbox <- sf_stat %>%
   dplyr::select(geometry) %>%
@@ -131,13 +135,12 @@ bbox <- sf_stat %>%
   rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
   st_buffer(dist = 2e4) %>%
   st_bbox()
-box <- st_as_sfc(bbox)
 
 p <- ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
   plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = lab1, aes(label = area)) +
+  geom_sf_label(data = sf_lab, aes(label = area)) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
@@ -147,9 +150,13 @@ p
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA5"
 
-sf_stat <- get_statistical_areas("CRA") %>% filter(QMA %in% stock | area %in% c(915, 934))
-sf_diff <- st_difference(sf_stat, sf_coast)
-lab1 <- sf_diff %>% st_centroid()
+sf_stat <- get_statistical_areas("CRA") %>% 
+  filter(QMA %in% stock)
+  # filter(QMA %in% stock | area %in% c(915, 934)
+
+sf_lab <- st_difference(sf_stat, sf_coast) %>% 
+  # st_centroid()
+  st_point_on_surface()
 
 bbox <- sf_stat %>%
   dplyr::select(geometry) %>%
@@ -157,13 +164,12 @@ bbox <- sf_stat %>%
   rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
   st_buffer(dist = 2e4) %>%
   st_bbox()
-box <- st_as_sfc(bbox)
 
 p <- ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
   plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = lab1, aes(label = area)) +
+  geom_sf_label(data = sf_lab, aes(label = area)) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")

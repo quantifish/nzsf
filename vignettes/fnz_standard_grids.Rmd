@@ -20,24 +20,25 @@ knitr::opts_chunk$set(
 ```{r echo=TRUE}
 library(nzsf)
 library(ggspatial)
+
+theme_set(theme_bw() + theme(axis.title = element_blank()))
 ```
 
 ```{r}
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
 
-grd200 <- get_standard_grid(200, bounding_box = st_bbox(eez), clip = FALSE)
-grd050 <- get_standard_grid( 50, bounding_box = st_bbox(eez), clip = TRUE)
+grd200 <- get_standard_grid(200, bounding_box = st_bbox(eez), clip_eez = FALSE)
+grd050 <- get_standard_grid(50, bounding_box = st_bbox(eez), clip_eez = TRUE)
 ```
 
 ```{r plot}
-# plot and check with centre point
-gg <- ggplot() +
+# plot and check with center point
+ggplot() +
   plot_statistical_areas(area = "EEZ") +
   geom_sf(data = grd200,  col = "grey",  fill = NA, alpha = 0.1) +
   geom_sf(data = grd050,  col = "blue",  fill = NA, alpha = 0.1) +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
-  geom_point(aes(x = 0, y = -422600), colour = "red") + xlab("") + ylab("") + 
+  geom_point(aes(x = 0, y = -422600), colour = "red") + 
   annotation_scale(location = "br", unit_category = "metric")
-print(gg)
 ```
 

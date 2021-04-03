@@ -58,6 +58,7 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
     #   x <- x %>% st_cast("MULTIPOLYGON")
     # }
   }
+  
   return(x)
 }
 

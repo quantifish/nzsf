@@ -37,3 +37,17 @@ Suggests:
 LazyData: true
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+Collate: 
+    'data.R'
+    'get-coast.R'
+    'get-depth.R'
+    'projection.R'
+    'get-statistical-areas.R'
+    'get-fnz-standard-grid.R'
+    'get-marine-reserves.R'
+    'get-qma.R'
+    'get-raster.R'
+    'nzsf.R'
+    'plot-ccamlr.R'
+    'plot-ccsbt.R'
+    'theme-nzsf.R'
