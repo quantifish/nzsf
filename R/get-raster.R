@@ -23,7 +23,7 @@ get_points_as_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 10
 }
 
 
-#' Convert points to a raster
+#' Plot points as a raster
 #' 
 #' @inheritParams get_points_as_raster
 #' @param ... Other arguments passed on to \code{geom_raster}.
