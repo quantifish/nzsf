@@ -8,7 +8,7 @@
 #' 
 #' @importFrom utils data
 #' @importFrom dplyr filter
-#' @importFrom sf st_transform st_union st_cast
+#' @importFrom sf st_transform st_union st_cast st_make_valid
 #' @export
 #' @examples
 #' x <- get_statistical_areas(area = "CRA")
@@ -25,6 +25,7 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
     # x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
     x <- nzsf::FisheriesManagementAreas %>% 
       filter(.data$LayerName == "General FMAs") %>%
+      st_make_valid() %>%
       st_union()
   }
   
