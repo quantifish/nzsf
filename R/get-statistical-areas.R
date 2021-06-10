@@ -35,7 +35,8 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   
   if (area %in% c("FMA", "JMA")) {
     x <- nzsf::FisheriesManagementAreas %>% 
-      filter(.data$LayerName == "General FMAs")
+      filter(.data$LayerName == "General FMAs") %>%
+      st_make_valid()
   }
   
   if (area %in% c("CCSBT")) {
