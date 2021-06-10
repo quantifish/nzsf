@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-raster.R
 \name{plot_raster}
 \alias{plot_raster}
-\title{Convert points to a raster}
+\title{Plot points as a raster}
 \usage{
 plot_raster(data, field, fun = "sum", nrow = 100, ncol = 100, ...)
 }
@@ -23,7 +23,7 @@ plot_raster(data, field, fun = "sum", nrow = 100, ncol = 100, ...)
 a ggplot.
 }
 \description{
-Convert points to a raster
+Plot points as a raster
 }
 \examples{
 x <- get_qma("CRA")
