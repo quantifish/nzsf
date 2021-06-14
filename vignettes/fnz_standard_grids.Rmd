@@ -26,11 +26,10 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 
 ```{r}
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
-bb <- st_bbox(eez) %>%
-  st_as_sfc()
+bb <- st_bbox(eez) %>% st_as_sfc()
 
-grd200 <- get_standard_grid(200, bounding_box = st_bbox(eez), clip_eez = FALSE)
-grd050 <- get_standard_grid(50, bounding_box = st_bbox(eez), clip_eez = FALSE)
+grd200 <- get_standard_grid(cell_size = 200, bounding_box = st_bbox(eez), clip_eez = FALSE)
+grd050 <- get_standard_grid(cell_size = 50, bounding_box = st_bbox(eez), clip_eez = FALSE)
 ```
 
 ```{r plot}
@@ -49,7 +48,6 @@ ggplot() +
 # The next (yet most important step) is to do this for rasters
 polys <- grd200 %>% 
   as_Spatial()
-# value <- rnorm(length(polys))
 
 # Create a raster that matches your data
 # NEED TO FIGURE OUT SOME WAY OF GETTING THE NUMBER OF ROWS AND COLUMNS
