@@ -26,19 +26,41 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 
 ```{r}
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
+bb <- st_bbox(eez) %>%
+  st_as_sfc()
 
 grd200 <- get_standard_grid(200, bounding_box = st_bbox(eez), clip_eez = FALSE)
-grd050 <- get_standard_grid(50, bounding_box = st_bbox(eez), clip_eez = TRUE)
+grd050 <- get_standard_grid(50, bounding_box = st_bbox(eez), clip_eez = FALSE)
 ```
 
 ```{r plot}
-# plot and check with center point
+# plot and check with center point and bounding box
 ggplot() +
   plot_statistical_areas(area = "EEZ") +
-  geom_sf(data = grd200,  col = "grey",  fill = NA, alpha = 0.1) +
-  geom_sf(data = grd050,  col = "blue",  fill = NA, alpha = 0.1) +
+  geom_sf(data = grd050,  colour = "blue",  fill = NA, alpha = 0.1) +
+  geom_sf(data = grd200,  colour = "grey",  fill = NA, alpha = 0.1) +
+  geom_sf(data = bb, colour = "red", fill = NA, linetype = "dashed") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
   geom_point(aes(x = 0, y = -422600), colour = "red") + 
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
+```{r}
+# The next (yet most important step) is to do this for rasters
+polys <- grd200 %>% 
+  as_Spatial()
+# value <- rnorm(length(polys))
+
+# Create a raster that matches your data
+# NEED TO FIGURE OUT SOME WAY OF GETTING THE NUMBER OF ROWS AND COLUMNS
+r <- raster(nrow = 21, ncol = 12, ext = extent(polys), crs = crs(polys))
+r[] <- rnorm(length(polys))
+
+library(stars)
+
+rstar <- st_as_stars(r)
+
+ggplot() +
+  geom_stars(data = rstar) +
+  geom_sf(data = grd200, fill = NA)
+```

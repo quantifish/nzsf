@@ -41,10 +41,11 @@ get_standard_grid <- function(x, bounding_box, clip_eez = TRUE) {
   grid_origin <- get_standard_grid_origin(x, bounding_box)
   
   grids <- bounding_box %>% 
-    st_make_grid(cellsize = as.numeric(grid_origin["grid_size_km"]) * 1000, offset = as.numeric(grid_origin[c("xmin", "ymin")]), crs = proj_nzsf())
+    st_make_grid(cellsize = as.numeric(grid_origin["grid_size_km"]) * 1000, 
+                 offset = as.numeric(grid_origin[c("xmin", "ymin")]), 
+                 crs = proj_nzsf())
 
   if (clip_eez) {
-    
     eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
     
     grids <- grids %>% 
