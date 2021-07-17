@@ -173,7 +173,7 @@ p <- ggplot() +
   annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 p
-ggsave(filename = "CRA4.png", plot = p, width = 5, height = 7)
+ggsave(filename = "CRA4.png", plot = p, width = 7, height = 7)
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
