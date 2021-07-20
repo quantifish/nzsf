@@ -16,7 +16,6 @@ Depends:
     dplyr,
     ggplot2,
     raster,
-    stars,
     sf
 Imports:
     tidyverse,
@@ -27,6 +26,7 @@ Imports:
     ggspatial,
     lwgeom,
     viridis,
+    stars,
     patchwork
 Suggests:
     knitr,

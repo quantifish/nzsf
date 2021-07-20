@@ -4,12 +4,14 @@
 \alias{get_standard_grid_origin}
 \title{Get Fisheries New Zealand standard grid origin}
 \usage{
-get_standard_grid_origin(cell_size, bounding_box)
+get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 422600))
 }
 \arguments{
 \item{cell_size}{square grid boundary length in km}
 
 \item{bounding_box}{limits generated from call to sf::st_bbox()}
+
+\item{anchor}{the point to anchor the grid to}
 }
 \value{
 standard grid origin \code{data.frame}
@@ -21,5 +23,5 @@ Get Fisheries New Zealand standard grid origin
 \code{\link{get_standard_grid}}
 }
 \author{
-Sophie Mormede, Darcy Webber
+Darcy Webber, Sophie Mormede
 }

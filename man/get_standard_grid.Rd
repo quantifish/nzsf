@@ -4,12 +4,19 @@
 \alias{get_standard_grid}
 \title{Get Fisheries New Zealand standard grid definitions}
 \usage{
-get_standard_grid(cell_size, bounding_box, return_raster = TRUE)
+get_standard_grid(
+  cell_size,
+  bounding_box,
+  anchor = c(0, 422600),
+  return_raster = TRUE
+)
 }
 \arguments{
 \item{cell_size}{square grid boundary length in km}
 
 \item{bounding_box}{limits generated from call to sf::st_bbox()}
+
+\item{anchor}{the point to anchor the grid to}
 
 \item{return_raster}{return a raster or polygons}
 }
