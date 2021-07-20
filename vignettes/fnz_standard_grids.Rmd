@@ -29,13 +29,15 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
 bb_eez <- st_bbox(eez) %>% st_as_sfc()
 
-grd200_eez <- get_standard_grid(cell_size = 200, bounding_box = st_bbox(eez), return_raster = FALSE)
-grd050_eez <- get_standard_grid(cell_size = 50, bounding_box = st_bbox(eez), return_raster = FALSE)
+grd200_eez <- get_standard_grid(cell_size = 200, 
+                                bounding_box = st_bbox(eez), return_raster = FALSE)
+grd050_eez <- get_standard_grid(cell_size = 50, 
+                                bounding_box = st_bbox(eez), return_raster = FALSE)
 
 # Plot and check with center point and bounding box
 ggplot() +
-  geom_sf(data = grd050_eez,  colour = "lightblue",  fill = NA, alpha = 0.5) +
-  geom_sf(data = grd200_eez,  colour = "grey",  fill = NA, alpha = 0.5) +
+  geom_sf(data = grd050_eez,  colour = "lightblue",  fill = NA, alpha = 0.15) +
+  geom_sf(data = grd200_eez,  colour = "tomato",  fill = NA, alpha = 0.5) +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA, linetype = "dashed") +
   geom_sf(data = bb_eez, colour = "red", fill = NA, linetype = "dashed") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
@@ -47,12 +49,14 @@ ggplot() +
 cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% filter(QMA %in% "CRA1")
 bb_cra1 <- st_bbox(cra1) %>% st_as_sfc()
 
-grd200_cra1 <- get_standard_grid(cell_size = 200, bounding_box = st_bbox(cra1), return_raster = FALSE)
-grd050_cra1 <- get_standard_grid(cell_size = 50, bounding_box = st_bbox(cra1), return_raster = FALSE)
+grd200_cra1 <- get_standard_grid(cell_size = 200, 
+                                 bounding_box = st_bbox(cra1), return_raster = FALSE)
+grd050_cra1 <- get_standard_grid(cell_size = 50, 
+                                 bounding_box = st_bbox(cra1), return_raster = FALSE)
 
 ggplot() +
   geom_sf(data = grd050_cra1,  colour = "lightblue",  fill = NA, alpha = 0.5) +
-  geom_sf(data = grd200_cra1,  colour = "grey",  fill = NA, alpha = 0.5) +
+  geom_sf(data = grd200_cra1,  colour = "tomato",  fill = NA, alpha = 0.5) +
   geom_sf(data = cra1, colour = "black", fill = NA, linetype = "dashed") +
   geom_sf(data = bb_cra1, colour = "red", fill = NA, linetype = "dashed") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
@@ -64,7 +68,7 @@ ggplot() +
 # Plot and check overlap of two grids
 ggplot() +
   geom_sf(data = grd200_eez,  colour = "lightblue",  fill = NA, alpha = 0.5) +
-  geom_sf(data = grd200_cra1,  colour = "red",  fill = NA, alpha = 0.5, linetype = "dashed") +
+  geom_sf(data = grd200_cra1,  colour = "blue",  fill = NA, alpha = 0.5, linetype = "dashed") +
   plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
   geom_point(aes(x = 0, y = -422600), colour = "green") +
   coord_sf(xlim = c(-4e+05, 2e+05), ylim = c(-422600, 777400))
