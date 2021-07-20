@@ -4,14 +4,14 @@
 \alias{get_standard_grid}
 \title{Get Fisheries New Zealand standard grid definitions}
 \usage{
-get_standard_grid(x, bounding_box, clip_eez = TRUE)
+get_standard_grid(cell_size, bounding_box, return_raster = TRUE)
 }
 \arguments{
-\item{x}{square grid boundary length in km}
+\item{cell_size}{square grid boundary length in km}
 
 \item{bounding_box}{limits generated from call to sf::st_bbox()}
 
-\item{clip_eez}{should the grid be clipped to the NZ EEZZ}
+\item{return_raster}{return a raster or polygons}
 }
 \value{
 New Zealands standard grid polygon as a \code{sf} object.
@@ -23,5 +23,5 @@ Get Fisheries New Zealand standard grid definitions
 \code{\link{get_standard_grid_origin}}
 }
 \author{
-Sophie Mormede
+Darcy Webber
 }
