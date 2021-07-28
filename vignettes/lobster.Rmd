@@ -98,6 +98,8 @@ ggplot() +
   geom_sf(data = lab2, colour = "blue")
 ```
 
+# CRA 1
+
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 p <- ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
@@ -118,7 +120,9 @@ if (stock %in% c("CRA1")) {
     annotation_scale(location = "br", unit_category = "metric")
 }
 p
+ggsave(filename = "CRA1.png", plot = p, width = 7, height = 6)
 ```
+# CRA 2
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA2"
@@ -148,6 +152,8 @@ p
 ggsave(filename = "CRA2.png", plot = p, width = 7, height = 6)
 ```
 
+# CRA 4
+
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA4"
 
@@ -175,6 +181,8 @@ p <- ggplot() +
 p
 ggsave(filename = "CRA4.png", plot = p, width = 7, height = 7)
 ```
+
+# CRA 5
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA5"
@@ -206,6 +214,8 @@ p
 ggsave(filename = "CRA5.png", plot = p, width = 5, height = 7)
 ```
 
+# CRA 7
+
 ```{r echo=TRUE, fig.height=4, fig.width=5.5, message=FALSE}
 stock <- "CRA7"
 
@@ -235,6 +245,8 @@ p <- ggplot() +
 p
 ggsave(filename = "CRA7.png", plot = p, width = 6, height = 6)
 ```
+
+# CRA 8
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stock <- "CRA8"
