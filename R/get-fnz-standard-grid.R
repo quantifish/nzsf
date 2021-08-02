@@ -35,7 +35,7 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' 
 #' @inheritParams get_standard_grid_origin
 #' @param return_raster return a raster or polygons
-#' @return New Zealands standard grid polygon as a \code{sf} object.
+#' @return New Zealands standard grid polygon as a \code{sf} object or as a raster.
 #'
 #' @seealso \code{\link{get_standard_grid_origin}}
 #' @author Darcy Webber
