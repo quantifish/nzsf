@@ -30,9 +30,11 @@ eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf())
 bb_eez <- st_bbox(eez) %>% st_as_sfc()
 
 grd200_eez <- get_standard_grid(cell_size = 200, 
-                                bounding_box = st_bbox(eez), return_raster = FALSE)
+                                bounding_box = st_bbox(eez), 
+                                return_raster = FALSE)
 grd050_eez <- get_standard_grid(cell_size = 50, 
-                                bounding_box = st_bbox(eez), return_raster = FALSE)
+                                bounding_box = st_bbox(eez), 
+                                return_raster = FALSE)
 
 # Plot and check with center point and bounding box
 ggplot() +
@@ -50,9 +52,11 @@ cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% filter(QMA %
 bb_cra1 <- st_bbox(cra1) %>% st_as_sfc()
 
 grd200_cra1 <- get_standard_grid(cell_size = 200, 
-                                 bounding_box = st_bbox(cra1), return_raster = FALSE)
+                                 bounding_box = st_bbox(cra1), 
+                                 return_raster = FALSE)
 grd050_cra1 <- get_standard_grid(cell_size = 50, 
-                                 bounding_box = st_bbox(cra1), return_raster = FALSE)
+                                 bounding_box = st_bbox(cra1), 
+                                 return_raster = FALSE)
 
 ggplot() +
   geom_sf(data = grd050_cra1,  colour = "lightblue",  fill = NA, alpha = 0.5) +
@@ -83,7 +87,8 @@ bb1[3] <- 3000 # xmax (3 cells to the right of the origin)
 bb1[4] <- -400000 # ymax
 
 grd001_eez <- get_standard_grid(cell_size = 1, 
-                                bounding_box = bb1, return_raster = FALSE)
+                                bounding_box = bb1, 
+                                return_raster = FALSE)
 
 # Plot and check center point at fine scale
 ggplot() +
@@ -96,7 +101,9 @@ ggplot() +
 
 ```{r raster, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point)."}
 # Get standard grid as a raster
-r <- get_standard_grid(cell_size = 200, bounding_box = st_bbox(eez), return_raster = TRUE)
+r <- get_standard_grid(cell_size = 200, 
+                       bounding_box = st_bbox(eez), 
+                       return_raster = TRUE)
 
 # Fill the grid with random values and plot it
 r[] <- rnorm(n = ncell(r))
