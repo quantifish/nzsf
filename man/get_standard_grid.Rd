@@ -21,7 +21,7 @@ get_standard_grid(
 \item{return_raster}{return a raster or polygons}
 }
 \value{
-New Zealands standard grid polygon as a \code{sf} object.
+New Zealands standard grid polygon as a \code{sf} object or as a raster.
 }
 \description{
 Get Fisheries New Zealand standard grid definitions

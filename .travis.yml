@@ -13,9 +13,6 @@ r_packages:
   - testthat
   - roxygen2
 
-r_github_packages:
-  - thomasp85/patchwork
-
 apt_packages:
   - libudunits2-dev
   - libgdal-dev
