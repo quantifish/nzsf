@@ -29,9 +29,10 @@ SPRFMO <- unzip_and_clean("FAO_RFB_SPRFMO.zip") %>%
   dplyr::select(OBJECTID, SHAPE_LENG, SHAPE_AREA)
 use_data(SPRFMO, overwrite = TRUE)
 
-# SIOFA <- unzip_and_clean("SIOFA.zip")
+SIOFA1 <- unzip_and_clean("SIOFA.zip")
 # use_data(SIOFA, overwrite = TRUE)
 SIOFA <- unzip_and_clean("siofa_subarea_final.zip")
+st_crs(SIOFA) <- st_crs(SIOFA1)
 use_data(SIOFA, overwrite = TRUE)
 
 FisheriesManagementAreas <- unzip_and_clean("FisheriesManagementAreas.zip") %>%
