@@ -31,4 +31,3 @@ repos:
 before_install:
   - sudo add-apt-repository -y ppa:ubuntugis/ubuntugis-unstable
   - sudo apt-get update
-  - R -e 'source("https://install-github.me/r-lib/remotes")'
