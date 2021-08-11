@@ -140,6 +140,22 @@ ggplot() +
   theme(legend.position = "none")
 ```
 
+```{r echo=TRUE, fig.width=7, message=FALSE}
+SIOFA3832 <- SIOFA %>%
+  st_transform(crs = 3832)
+
+world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+  st_transform(crs = 3832)
+
+ggplot() +
+  geom_sf(data = world, fill = "black", colour = "black") +
+  geom_sf(data = SIOFA3832, aes(fill = factor(SubArea))) +
+  coord_sf() +
+  plot_clip(SIOFA3832) +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
 # register_google(key = key)
 # 
