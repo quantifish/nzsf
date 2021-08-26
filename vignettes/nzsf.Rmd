@@ -28,6 +28,8 @@ library(viridis)
 library(raster)
 library(lwgeom)
 library(patchwork)
+library(stars)
+library(ggnewscale)
 # devtools::install_github(repo = "ropensci/rnaturalearthhires")
 # library(rnaturalearthhires) # required for scale = "large" in ne_countries below
 
@@ -148,9 +150,11 @@ world <- ne_countries(scale = "medium", returnclass = "sf") %>%
   st_transform(crs = 3832)
 
 ggplot() +
+  # geom_gebco(proj = 3832, downsample = 3) +
+  # geom_stars(data = bathy, downsample = 3) +
   geom_sf(data = world, fill = "black", colour = "black") +
-  geom_sf(data = SIOFA3832, aes(fill = factor(SubArea))) +
-  coord_sf() +
+  new_scale("fill") +
+  geom_sf(data = SIOFA3832, aes(fill = factor(SubArea), colour = factor(SubArea)), alpha = 0.5) +
   plot_clip(SIOFA3832) +
   theme_bw() +
   theme(legend.position = "none")
@@ -200,37 +204,26 @@ ggplot() +
 # p
 ```
 
-In this next example I attempt to set up a grid of polygons and a raster that conforms to the document: A standardised approach for creating spatial grids for New Zealand marine environment and species data. I can almost get the polygons to work as I can specify the origin of {0, -422600} as an offset. However, this doesn't quite do what we want if the goal is to cover the New Zealand EEZ. I have no idea how to set up a raster with such an origin.
-
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
-# Working on A standardised approach for creating spatial grids for New Zealand marine environment and species data 
-x <- raster(xmn = -1024479, xmx = 1091182, ymn = -1789355, ymx = 1545850)
-# x <- raster(ncol = 36, nrow = 18, xmn = -1000, xmx = 1000, ymn = -100, ymx = 900)
-projection(x) <- proj_nzsf()
-origin(x) <- c(0, -422600)
-origin(x)
-res(x)
-x
+x <- gebco_CCAMLR %>%
+  st_as_stars() %>%
+  st_transform(crs = proj_ccamlr()) %>%
+  as.data.frame()
+  # as("raster") %>%
+  # as("SpatialPixelsDataFrame")
 
-xp <- rasterToPoints(x) %>%
-  data.frame()
-xp$value <- rnorm(nrow(xp))
-
-grd <- get_statistical_areas(area = "EEZ") %>%
-  st_make_grid(cellsize = 500^2, offset = c(0, -422600), crs = proj_nzsf())
+# x <- gebco_CCAMLR %>%
+#   as("SpatialPixelsDataFrame") %>%
+#   st_transform(crs = proj_ccamlr())
 
 ggplot() +
-  plot_statistical_areas(area = "EEZ") +
-  geom_sf(data = grd) +
-  geom_tile(data = xp, aes(x = x, y = y, fill = value), alpha = 0.5) +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
-  geom_point(aes(x = 0, y = -422600), colour = "red") +
-  annotation_scale(location = "tr", unit_category = "metric")
-```
+  geom_point(data = x, aes(x = x, y = y, colour = layer))
 
-```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
 ggplot() +
-  geom_ccamlr("mpa", fill = "tomato", colour = NA, alpha = 0.75) +
+  geom_tile(data = x, aes(x = x, y = y, fill = layer)) + 
+  # geom_stars(data = x) +
+  # geom_ccamlr("gebco") +
+  geom_ccamlr("mpa", fill = "tomato", colour = "tomato", alpha = 0.25, size = 1.5) +
   geom_ccamlr("ssru") +
   geom_ccamlr("land", fill = "black") +
   geom_ccamlr("label") +

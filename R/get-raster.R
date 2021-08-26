@@ -16,9 +16,15 @@
 #'   mutate(z = rnorm(1:n()))
 #' r <- get_points_as_raster(data = pts, field = "z")
 #' 
-get_points_as_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100) {
+get_points_as_raster <- function(data, 
+                                 field, 
+                                 fun = "sum", 
+                                 nrow = 100, 
+                                 ncol = 100) {
+  
   r_empty <- raster(data, nrow = nrow, ncol = ncol)
   r <- rasterize(x = data, y = r_empty, field = field, fun = fun)
+  
   return(r)
 }
 
@@ -40,11 +46,19 @@ get_points_as_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 10
 #' ggplot() +
 #'   plot_raster(data = pts, field = "z")
 #' 
-plot_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100, ...) {
+plot_raster <- function(data, 
+                        field, 
+                        fun = "sum", 
+                        nrow = 100, 
+                        ncol = 100, ...) {
+  
   r <- get_points_as_raster(data = data, field = field, fun = fun, nrow = nrow, ncol = ncol)
+  
   df <- rasterToPoints(r) %>%
     data.frame() %>%
     mutate(layer = ifelse(layer == 0, NA, layer))
+  
   p <- geom_raster(data = df, aes(x = .data$x, y = .data$y, fill = .data$layer), ...)
+  
   return(p)
 }

@@ -3,8 +3,10 @@ title: "New Zealand Rock Lobster"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{New Zealand Rock Lobster}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r, include = FALSE}
@@ -20,6 +22,7 @@ This vignette showcases `nzsf` applied to New Zealand rock lobster.
 library(nzsf)
 library(ggspatial)
 library(lwgeom)
+library(ggnewscale)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
@@ -35,8 +38,8 @@ lab <- st_difference(sf_qma, sf_coast) %>%
   #st_point_on_surface()
 
 sf_stat <- get_statistical_areas("CRA") %>% 
-  # filter(QMA %in% stock)
-  filter(area %in% c(901, 902, 903, 904, 939, 905, 906))
+  filter(QMA %in% stock)
+  # filter(area %in% c(901, 902, 903, 904, 939, 905, 906))
 # bbox <- lab %>%
 #   filter(QMA %in% stock) %>%
 #   st_join(sf_stat) %>%
@@ -54,11 +57,13 @@ bbox <- sf_stat %>%
 box <- st_as_sfc(bbox)
 
 ggplot() +
+  # geom_gebco(proj = proj_nzsf(), downsample = 0) +
   plot_qma(qma = "CRA", fill = NA) +
   plot_coast(resolution = "low", fill = "orange", colour = "black", size = 0.3) +
   geom_sf(data = box, colour = "red", fill = NA) +
   geom_sf_text(data = lab, aes(label = QMA), size = 2.5) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  plot_clip(sf_qma)
 ```
 
 ```{r echo=TRUE, fig.height=14, fig.width=12, message=FALSE}
@@ -76,7 +81,31 @@ ggplot() +
   geom_sf_text(data = lab, aes(label = QMA)) +
   # geom_sf_label(data = lab1, aes(label = area), size = 2.5) +
   geom_sf_text(data = lab1, aes(label = area), size = 3, colour = "blue") +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
+  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  plot_clip("NZ")
+```
+
+```{r echo=TRUE, fig.height=14, fig.width=12, message=FALSE}
+bathy <- cbind(coordinates(gebco_NZ), as.data.frame(gebco_NZ)) %>%
+  mutate(z = ifelse(z > 10, NA, z)) %>%
+  filter(x > -1.4e6, x < 1.4e6, y > -2e6, y < 2e6)
+
+ggplot() +
+  geom_tile(data = bathy, aes(x = x, y = y, fill = z)) +
+  plot_qma(qma = "CRA", fill = NA, colour = "black") +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
+  plot_coast(resolution = "med", fill = "forestgreen", colour = "forestgreen", size = 0.3) +
+  plot_clip(get_statistical_areas(area = "EEZ")) +
+  theme(legend.position = "none")
+# https://stackoverflow.com/questions/47749078/how-to-put-a-geom-sf-produced-map-on-top-of-a-ggmap-produced-raster
+# library(ggplot2)
+# library(ggmap)
+# library(sf)
+# nc_map <- get_map("north carolina", maptype = "satellite", zoom = 6, source = "google")
+# st_crs(nc_map)
+# # Coordinate Reference System: NA
+# # assume the coordinate refence system is 3857
+# plot(st_transform(nc_shp, crs = 3857)[1], bgMap = nc_map)
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
@@ -102,9 +131,9 @@ ggplot() +
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 p <- ggplot() +
+  # geom_gebco(proj = proj_nzsf(), downsample = 0) +
   plot_qma(qma = "CRA", fill = NA) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
-  # plot_qma(qma = "CRA", fill = NA) +
   plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
   geom_sf_label(data = lab1, aes(label = area)) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
@@ -122,6 +151,7 @@ if (stock %in% c("CRA1")) {
 p
 ggsave(filename = "CRA1.png", plot = p, width = 7, height = 6)
 ```
+
 # CRA 2
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}

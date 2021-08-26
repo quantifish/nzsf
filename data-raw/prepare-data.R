@@ -3,6 +3,8 @@ library(sf)
 library(tidyverse)
 library(rgdal)
 library(raster)
+library(ncdf4)
+library(stars)
 
 # setwd("/home/darcy/Projects/nzsf/data-raw")
 # setwd("/home/darcy/Projects/nzsf")
@@ -238,6 +240,70 @@ depth_contour_polyline_hydro_1350k_11500k <- unzip_and_clean("lds-depth-contour-
   dplyr::select(depth, SCAMIN, SORDAT, SORIND)
 use_data(depth_contour_polyline_hydro_1350k_11500k, overwrite = TRUE)
 
+# GEBCO depth ----
+
+# Install GMT
+# https://www.generic-mapping-tools.org/
+# https://github.com/GenericMappingTools/gmt/blob/master/INSTALL.md
+# Download GEBCO
+# https://www.gebco.net/data_and_products/gridded_bathymetry_data/
+f <- "gebco_2021.zip"
+fz <- unzip(zipfile = f, list = TRUE)
+# unzip(zipfile = f)
+# Too big
+# gebco <- stack(x = "GEBCO_2021.nc") %>% readAll()
+system("gmt grdsample GEBCO_2021.nc -GGEBCO.nc -I20k")
+system("gmt grdedit GEBCO.nc -GGEBCO.nc -Dzelevation")
+system("gmt grdedit GEBCO.nc -fg")
+gebco <- stack(x = "GEBCO.nc") %>% readAll()
+crs(gebco) <- "+proj=longlat +datum=WGS84 +no_defs"
+# use_data(gebco, overwrite = TRUE)
+
+system("gmt grdsample GEBCO_2021.nc -GNZ.nc -R-180/180/-60/-15 -I5k")
+system("gmt grdedit NZ.nc -GNZ.nc -Dzelevation")
+system("gmt grdedit NZ.nc -fg")
+
+bb <- FisheriesManagementAreas %>% 
+  filter(.data$LayerName == "General FMAs") %>%
+  st_make_valid() %>%
+  st_union() %>% 
+  st_transform(crs = proj_nzsf()) %>%
+  as_Spatial()
+  # st_buffer(dist = 1e7) %>%
+  # st_bbox() %>% 
+  # st_as_sfc()
+
+nz1 <- raster(x = "NZ.nc")
+nz2 <- projectRaster(from = nz1, crs = proj_nzsf())
+gebco_NZ <- crop(nz2, extent(bb))
+# gebco_NZ <- shift(rotate(shift(gebco_NZ, 180)), 180)
+# plot(gebco_NZ)
+# readAll() %>%
+# st_as_stars() %>%
+#   # st_transform(crs = proj_nzsf()) %>%
+#   st_warp(crs = proj_nzsf()) %>%
+#   st_crop(bb)
+use_data(gebco_NZ, overwrite = TRUE)
+file.remove("NZ.nc")
+
+system("gmt grdsample GEBCO_2021.nc -GSIOFA.nc -R0/125/-75/15 -I20k")
+system("gmt grdedit SIOFA.nc -GSIOFA.nc -Dzelevation")
+system("gmt grdedit SIOFA.nc -fg")
+gebco_SIOFA <- stack(x = "SIOFA.nc") %>% readAll()
+#   rotate()
+use_data(gebco_SIOFA, overwrite = TRUE)
+file.remove("SIOFA.nc")
+
+# system("gmt grdsample GEBCO_2021.nc -GCCAMLR.nc -R110/179/-75/-50 -I15k")
+system("gmt grdsample GEBCO_2021.nc -GCCAMLR.nc -R-180/180/-85/-40 -I20k")
+system("gmt grdedit CCAMLR.nc -GCCAMLR.nc -Dzelevation")
+system("gmt grdedit CCAMLR.nc -fg")
+gebco_CCAMLR <- stack(x = "CCAMLR.nc") %>% readAll()
+use_data(gebco_CCAMLR, overwrite = TRUE)
+file.remove("CCAMLR.nc")
+
+# file.remove(fz$Name)
+
 # This file is too big
 # f <- "NZBathy_DTM_2016_ascii_grid.zip"
 # fz <- unzip(zipfile = f, list = TRUE)
@@ -255,13 +321,11 @@ use_data(NZBathymetry_2016_grid, overwrite = TRUE)
 # Environmental layers ----
 
 # library(raster)
-# library("ncdf4")
-# 
+# library(ncdf4)
 # ncfile <- "era5-nz_sst_to_2020.nc"
 # era5_nz_sst <- stack(x = ncfile) %>%
 #   rotate()
 # nlayers(era5_nz_sst)
-# 
 # use_data(era5_nz_sst, overwrite = TRUE)
 
 # f <- "mfe-average-seasurface-temperature-19932012-GTiff.zip"

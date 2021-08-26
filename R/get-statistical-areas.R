@@ -79,8 +79,12 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 #' ggplot() + 
 #'   plot_statistical_areas(area = "CRA")
 #' 
-plot_statistical_areas <- function(proj = proj_nzsf(), area = "CRA", ...) {
+plot_statistical_areas <- function(proj = proj_nzsf(), 
+                                   area = "CRA", ...) {
+  
   x <- get_statistical_areas(area = area, proj = proj)
+  
   p <- geom_sf(data = x, ...)
+  
   return(p)
 }

@@ -1,3 +1,43 @@
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#'
+"gebco"
+
+
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#'
+"gebco_NZ"
+
+
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#'
+"gebco_CCAMLR"
+
+
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#'
+"gebco_SIOFA"
+
+
 #' SPRFMO polygon
 #' 
 #' @format A sf polygon
@@ -595,16 +635,6 @@
 #' @source Fisheries New Zealand
 #' 
 "FisheriesManagementAreas"
-
-
-##' Gebco depth
-##'
-##' Gebco depth as a raster.
-##'
-##' @format Simple feature collection with 153 features and 29 fields:
-##' @source Gebco
-##' 
-#"gebco_depth_raster"
 
 
 ##' Average SST
