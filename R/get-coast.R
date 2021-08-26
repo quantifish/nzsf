@@ -84,7 +84,7 @@ plot_clip <- function(x, proj = proj_nzsf(), ...) {
   if ("bbox" %in% class(x)) {
     bbox <- x
     p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
-  } else if ("sf" %in% class(x)) {
+  } else if (any(c("sf", "sfc") %in% class(x))) {
     bbox <- st_bbox(x)
     p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
   } else if (x %in% c("nz", "NZ", "new zealand", "New Zealand")) {
