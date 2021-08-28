@@ -4,10 +4,12 @@
 \alias{plot_clip}
 \title{Clip to a shapefile.}
 \usage{
-plot_clip(x, ...)
+plot_clip(x, proj = proj_nzsf(), ...)
 }
 \arguments{
 \item{x}{The sf object to clip to.}
+
+\item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 
 \item{...}{Other arguments passed on to \code{coord_sf}.}
 }

@@ -18,19 +18,21 @@
 #'   geom_sf(data = x, fill = "forestgreen")
 #' 
 get_coast <- function(proj = proj_nzsf(), 
-                      resolution = "low", 
+                      resolution = "medium", 
                       keep = 1) {
   
-  if (resolution %in% c("h", "high", "large", "150k")) {
+  if (resolution %in% c("l", "large", 10)) {
+    x <- ne_countries(scale = "large", returnclass = "sf")
+  } else if (resolution %in% c("m", "med", "medium", 50)) {
+    x <- ne_countries(scale = "medium", returnclass = "sf")
+  } else if (resolution %in% c("s", "small", 110)) {
+    x <- ne_countries(scale = "small", returnclass = "sf")
+  } else if (resolution %in% c("150k", "150")) {
     x <- nzsf::nz_coastlines_and_islands_polygons_topo_150k
-  } else if (resolution %in% c("m", "med", "medium", "1250k")) {
-    # x <- nzsf::nz_coastlines_and_islands_polygons_topo_1250k
-    x <- ne_countries(scale = "medium", returnclass = "sf") %>% 
-      st_transform(crs = 3832)
-  } else {
-    # x <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k
-    x <- ne_countries(scale = "small", returnclass = "sf") %>% 
-      st_transform(crs = 3832)
+  } else if (resolution %in% c("1250k", "1250")) {
+    x <- nzsf::nz_coastlines_and_islands_polygons_topo_1250k
+  } else if (resolution %in% c("1500k", "1500")) {
+    x <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k
   }
   
   if (keep < 1) x <- x %>% ms_simplify(keep = keep, keep_shapes = FALSE)
@@ -57,7 +59,7 @@ get_coast <- function(proj = proj_nzsf(),
 #'   plot_coast()
 #' 
 plot_coast <- function(proj = proj_nzsf(), 
-                       resolution = "low", 
+                       resolution = "medium", 
                        keep = 1, ...) {
   
   x <- get_coast(proj = proj, resolution = resolution, keep = keep)

@@ -1,8 +1,13 @@
 ---
-title: "New Zealand Rock Lobster"
-output: rmarkdown::html_vignette
+title: "New Zealand Rock Lobster Maps"
+author: Darcy Webber
+date: 28 August 2021
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{New Zealand Rock Lobster}
+  %\VignetteIndexEntry{New Zealand Rock Lobster Maps}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -23,22 +28,33 @@ library(nzsf)
 library(ggspatial)
 library(lwgeom)
 library(ggnewscale)
+library(stars)
+library(cowplot)
+library(patchwork)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
-stock <- "CRA1"
+colour_land <- "#39B600"
+colour_coast <- "#39B600"
+colour_stat <- "#00ABFD"
+colour_qma <- colour_box <- "#F8766D"
+```
 
+```{r echo=TRUE, fig.width=6, fig.height=7, message=FALSE}
 sf_qma <- get_qma("CRA")
-sf_coast <- get_coast() %>% 
+
+sf_coast <- get_coast(resolution = "medium") %>% 
   st_combine() %>% 
   st_buffer(dist = 4500) %>%
   st_make_valid()
+
 lab <- st_difference(sf_qma, sf_coast) %>%
-  st_centroid()
-  #st_point_on_surface()
+  st_centroid() #st_point_on_surface()
+lab$geometry[1] <- st_point(c(-270000, 772461))
+lab$geometry[6] <- st_point(c(150000, -220000))
 
 sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+  filter(QMA %in% "CRA1")
   # filter(area %in% c(901, 902, 903, 904, 939, 905, 906))
 # bbox <- lab %>%
 #   filter(QMA %in% stock) %>%
@@ -49,40 +65,53 @@ sf_stat <- get_statistical_areas("CRA") %>%
 #   # filter(QMA %in% stock) %>% 
 #   st_bbox()
 bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
+  # dplyr::select(geometry) %>%
+  # st_cast("POINT") %>%
+  # rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
+  st_buffer(dist = 1e5) %>%
   st_bbox()
 box <- st_as_sfc(bbox)
 
 ggplot() +
   # geom_gebco(proj = proj_nzsf(), downsample = 0) +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_coast(resolution = "low", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf(data = box, colour = "red", fill = NA) +
-  geom_sf_text(data = lab, aes(label = QMA), size = 2.5) +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf(data = box, colour = NA, fill = colour_box, alpha = 0.5) +
+  geom_sf_text(data = lab, aes(label = QMA), size = 2.5, colour = colour_qma) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  plot_clip(sf_qma)
+  plot_clip(x = sf_qma)
 ```
 
-```{r echo=TRUE, fig.height=14, fig.width=12, message=FALSE}
+```{r echo=TRUE, fig.width=6, fig.height=8.5, message=FALSE}
 sf_stat <- get_statistical_areas("CRA")
 sf_diff <- st_difference(sf_stat, sf_coast)
+
 lab1 <- sf_diff %>% 
   st_centroid()
+
 lab2 <- sf_diff %>% 
   st_point_on_surface()
 
-ggplot() +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_coast(resolution = "low", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_text(data = lab, aes(label = QMA)) +
+bb <- sf_qma %>%
+  st_bbox()
+# bb[1] <- -750000 # xmin
+# bb[2] <- -990000 # ymin
+# bb[3] <- 800000 # xmax
+# bb[4] <- 1000000 # ymax
+
+p <- ggplot() +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_text(data = lab, aes(label = QMA), colour = colour_qma) +
   # geom_sf_label(data = lab1, aes(label = area), size = 2.5) +
-  geom_sf_text(data = lab1, aes(label = area), size = 3, colour = "blue") +
+  geom_sf_text(data = lab1, aes(label = area), size = 2, colour = colour_stat) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  plot_clip("NZ")
+  plot_clip(x = bb, expand = TRUE)
+
+ggsave(filename = "CRA_QMA_stat.png", plot = p, width = 6, height = 8.5)
+
+p
 ```
 
 ```{r echo=TRUE, fig.height=14, fig.width=12, message=FALSE}
@@ -91,10 +120,11 @@ bathy <- cbind(coordinates(gebco_NZ), as.data.frame(gebco_NZ)) %>%
   filter(x > -1.4e6, x < 1.4e6, y > -2e6, y < 2e6)
 
 ggplot() +
+  # geom_gebco(proj = proj_nzsf(), downsample = 0) +
   geom_tile(data = bathy, aes(x = x, y = y, fill = z)) +
-  plot_qma(qma = "CRA", fill = NA, colour = "black") +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
-  plot_coast(resolution = "med", fill = "forestgreen", colour = "forestgreen", size = 0.3) +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "medium", fill = "forestgreen", colour = "forestgreen", size = 0.3) +
   plot_clip(get_statistical_areas(area = "EEZ")) +
   theme(legend.position = "none")
 # https://stackoverflow.com/questions/47749078/how-to-put-a-geom-sf-produced-map-on-top-of-a-ggmap-produced-raster
@@ -110,7 +140,6 @@ ggplot() +
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 #library(ggrepel)
-
 sf_diff <- st_difference(sf_stat, sf_coast)
 
 lab1 <- sf_diff %>% 
@@ -130,180 +159,326 @@ ggplot() +
 # CRA 1
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-p <- ggplot() +
-  # geom_gebco(proj = proj_nzsf(), downsample = 0) +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = lab1, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tr", style = north_arrow_nautical)
+p1 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab1, aes(label = area), colour = colour_stat) +
+  plot_clip(x = bbox) +
+  # geom_sf_text(data = lab %>% filter(QMA %in% stock), 
+  #              aes(label = QMA), size = 5.5, nudge_x = -60000, nudge_y = 20000) +
+  labs(title = "CRA 1") +
+  annotation_scale(location = "bl", unit_category = "metric")
 
-if (stock %in% c("CRA1")) {
-  p <- p +
-    # annotation_scale(location = "bl", unit_category = "metric") +
-    # annotation_scale() +
-    geom_sf_text(data = lab %>% filter(QMA %in% stock), aes(label = QMA), size = 5.5, nudge_x = -60000, nudge_y = 20000)
-} else {
-  p <- p +
-    annotation_scale(location = "br", unit_category = "metric")
-}
+pi1 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p1) +
+  draw_plot(pi1, x = 0.73, y = 0.63, width = 0.3, height = 0.3)
+
+ggsave(filename = "CRA1.png", plot = p, width = 6, height = 6)
+
 p
-ggsave(filename = "CRA1.png", plot = p, width = 7, height = 6)
 ```
 
 # CRA 2
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-stock <- "CRA2"
+```{r echo=TRUE, fig.width=7, fig.height=6, message=FALSE}
+stat2 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA2")
 
-sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+lab2 <- st_difference(stat2, sf_coast) %>% st_centroid()
+lab2$geometry[1] <- st_point(c(21042, 454394))
+lab2$geometry[3] <- st_point(c(156026, 276000))
 
-sf_lab <- st_difference(sf_stat, sf_coast) %>% 
-  st_centroid()
+box2 <- stat2 %>%
+  st_buffer(dist = 4e4) %>%
+  st_bbox() %>%
+  st_as_sfc()
 
-bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
-  st_bbox()
+p2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab2, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box2, expand = FALSE) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  labs(title = "CRA 2")
 
-p <- ggplot() +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = sf_lab, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric")
-p
+pi2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box2, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p2) +
+  draw_plot(pi2, x = 0.73, y = 0.63, width = 0.3, height = 0.3)
+
 ggsave(filename = "CRA2.png", plot = p, width = 7, height = 6)
+
+p
+```
+
+```{r echo=TRUE, fig.width=7, fig.height=6, message=FALSE}
+pts <- st_sample(stat2, size = 1000) %>% 
+  st_sf() %>% 
+  mutate(z = rnorm(1:n()))
+
+r0 <- get_standard_grid(cell_size = 5, 
+                        bounding_box = st_bbox(stat2), 
+                        return_raster = TRUE)
+
+r <- rasterize(x = pts, y = r0, field = "z", fun = mean)
+# r[] <- ifelse(r[] < 0, NA, r[])
+rstar <- st_as_stars(r)
+
+ggplot() +
+  # geom_sf(data = pts, aes(colour = z)) +
+  geom_stars(data = rstar) +
+  scale_fill_viridis_c(option = "C", na.value = NA) +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_clip(x = box2, expand = FALSE) +
+  annotation_scale(location = "tr", unit_category = "metric") +
+  labs(fill = "Mean")
 ```
 
 # CRA 4
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-stock <- "CRA4"
+stat4 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA4")
 
-sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+lab4 <- st_difference(stat4, sf_coast) %>% st_centroid()
 
-sf_lab <- st_difference(sf_stat, sf_coast) %>% 
-  st_centroid()
-
-bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
+box4 <- stat4 %>%
+  st_buffer(dist = 4e4) %>%
   st_bbox()
 
 p <- ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = sf_lab, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat, linetype = "dashed") +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab4, aes(label = area)) +
+  plot_clip(x = box4, expand = FALSE) +
   annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
-p
+
 ggsave(filename = "CRA4.png", plot = p, width = 7, height = 7)
+
+p
 ```
 
 # CRA 5
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-stock <- "CRA5"
-
-sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+stat5 <- get_statistical_areas("CRA") %>% 
+  filter(QMA %in% "CRA5")
   # filter(QMA %in% stock | area %in% c(915, 934)
 
-sf_lab <- st_difference(sf_stat, sf_coast) %>% 
-  # st_centroid()
+lab5 <- st_difference(stat5, sf_coast) %>% 
   st_point_on_surface()
 
-bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
+box5 <- stat5 %>%
+  st_buffer(dist = 4e4) %>%
   st_bbox()
 
 p <- ggplot() +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = sf_lab, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat, linetype = "dashed") +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab5, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box5, expand = FALSE) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric")
-p
+  annotation_scale(location = "br", unit_category = "metric") +
+  labs(title = "CRA 5")
+
 ggsave(filename = "CRA5.png", plot = p, width = 5, height = 7)
+
+p
 ```
+
+# CRA 6
 
 # CRA 7
 
-```{r echo=TRUE, fig.height=4, fig.width=5.5, message=FALSE}
-stock <- "CRA7"
+```{r echo=TRUE, fig.width=6, fig.height=7, message=FALSE}
+stat7 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA7")
 
-sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+lab7 <- st_difference(stat7, sf_coast) %>% st_centroid()
+lab7$geometry[1] <- st_point(c(-302000, -611022))
+lab7$geometry[2] <- st_point(c(-349800, -701800))
 
-sf_lab <- st_difference(sf_stat, sf_coast) %>% 
-  # st_centroid()
-  st_point_on_surface()
-
-bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
+box7 <- stat7 %>%
+  st_buffer(dist = 1e4) %>%
   st_bbox()
+box7[2] <- -790000
+box7 <- box7 %>%
+  st_as_sfc()
 
-p <- ggplot() +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = sf_lab, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric") +
+p7 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab7, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box7, expand = FALSE) +
+  annotation_scale(location = "tl", unit_category = "metric") +
   labs(title = "CRA 7")
+
+pi7 <- ggplot() +
+  plot_qma(qma = "CRA", colour = colour_qma, fill = "white", size = 0.3) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box7, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p7) +
+  draw_plot(pi7, x = 0.72, y = 0.05, width = 0.3, height = 0.3)
+
+ggsave(filename = "CRA7.png", plot = p, width = 6, height = 7)
+
 p
-ggsave(filename = "CRA7.png", plot = p, width = 6, height = 6)
 ```
 
 # CRA 8
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-stock <- "CRA8"
+```{r echo=TRUE, fig.width=4, fig.height=7, message=FALSE}
+stat8 <- get_statistical_areas(area = "CRA") %>% filter(QMA %in% "CRA8" | area %in% 929)
 
-sf_stat <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% stock)
+lab8 <- st_difference(stat8, sf_coast) %>% st_centroid()
+lab8$geometry[1] <- st_point(c(-430815, -796000)) # 922
+lab8$geometry[2] <- st_point(c(-526000, -747000)) # 923
+lab8$geometry[3] <- st_point(c(-579832, -805969)) # 924
+lab8$geometry[4] <- st_point(c(-650000, -933000)) # 925
+lab8$geometry[5] <- st_point(c(-622000, -755000)) # 926
+lab8$geometry[6] <- st_point(c(-640000, -570000)) # 927
+lab8$geometry[7] <- st_point(c(-530000, -440000)) # 928
+lab8$geometry[8] <- st_point(c(-371183, -318000)) # 929
 
-sf_lab <- st_difference(sf_stat, sf_coast) %>% 
-  st_centroid()
-  # st_point_on_surface()
+box8 <- stat8 %>%
+  st_buffer(dist = 1e4) %>%
+  st_bbox() %>%
+  st_as_sfc()
 
-bbox <- sf_stat %>%
-  dplyr::select(geometry) %>%
-  st_cast("POINT") %>%
-  rbind(lab %>% filter(QMA %in% stock) %>% dplyr::select(geometry)) %>%
-  st_buffer(dist = 2e4) %>%
-  st_bbox()
-
-p <- ggplot() +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = "grey", linetype = "dashed") +
-  plot_coast(resolution = "med", fill = "orange", colour = "black", size = 0.3) +
-  geom_sf_label(data = sf_lab, aes(label = area)) +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
+p8 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab8, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box8, expand = FALSE) +
   annotation_scale(location = "br", unit_category = "metric") +
   labs(title = "CRA 8")
-p
+
+pi8 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma, size = 0.3) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box8, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p8) +
+  draw_plot(pi8, x = 0.12, y = 0.65, width = 0.3, height = 0.3)
+
 ggsave(filename = "CRA8.png", plot = p, width = 4, height = 7)
+
+p
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+gebco8 <- crop(gebco_NZ, get_qma(qma = "CRA") %>% filter(QMA == "CRA8") %>% st_bbox())
+
+bathy8 <- cbind(coordinates(gebco8), as.data.frame(gebco8)) %>%
+  mutate(z = ifelse(z < -4500 | z > 500, NA, z))
+
+p <- ggplot() +
+  geom_tile(data = bathy8, aes(x = x, y = y, fill = z)) +
+  scale_fill_viridis_c(option = "E") +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_clip(x = box8, expand = FALSE) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  labs(title = "CRA 8", fill = "Depth (m)")
+
+p
+```
+
+```{r echo=TRUE, fig.height=8, fig.width=9, message=FALSE}
+p <- ggplot() +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat)
+
+s1 <- p + 
+  plot_coast(resolution = "small", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = small") + 
+  plot_clip(x = box8, expand = FALSE)
+s2 <- p + 
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = medium") + 
+  plot_clip(x = box8, expand = FALSE)
+s3 <- p + 
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = large") + 
+  plot_clip(x = box8, expand = FALSE)
+s4 <- p + 
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = 1500k") + 
+  plot_clip(x = box8, expand = FALSE)
+s5 <- p + 
+  plot_coast(resolution = "1250k", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = 1250k") + 
+  plot_clip(x = box8, expand = FALSE)
+s6 <- p + 
+  plot_coast(resolution = "150k", fill = colour_land, colour = colour_coast, size = 0.3) +
+  labs(title = "resolution = 150k") + 
+  plot_clip(x = box8, expand = FALSE)
+
+s1 + s2 + s3 + s4 + s5 + s6
+```
+
+# Combinations
+
+```{r echo=TRUE, fig.width=5, fig.height=7, message=FALSE}
+stat78 <- get_statistical_areas(area = "CRA") %>% 
+  filter(QMA %in% c("CRA7", "CRA8") | area %in% 929)
+
+lab78 <- bind_rows(lab7, lab8)
+lab78$geometry[1] <- st_point(c(-289000, -611022)) # 920
+lab78$geometry[2] <- st_point(c(-330000, -706800)) # 921
+
+box78 <- stat78 %>%
+  st_buffer(dist = 1e4) %>%
+  st_bbox() %>%
+  st_as_sfc()
+
+p78 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab78, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box78, expand = FALSE) +
+  annotation_scale(location = "br", unit_category = "metric") +
+  labs(title = "CRA 7 & 8")
+
+pi78 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma, size = 0.3) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box78, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p78) +
+  draw_plot(pi8, x = 0.13, y = 0.68, width = 0.27, height = 0.27)
+
+ggsave(filename = "CRA7_CRA8.png", plot = p, width = 5, height = 7)
+
+p
 ```

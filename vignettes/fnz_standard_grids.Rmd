@@ -1,8 +1,13 @@
 ---
-title: "FNZ standard grids"
-output: rmarkdown::html_vignette
+title: "Fisheries New Zealand standard grids"
+author: Darcy Webber
+date: 28 August 2021
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{FNZ standard grids}
+  %\VignetteIndexEntry{Fisheries New Zealand standard grids}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -25,13 +30,26 @@ library(stars)
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 ```
 
-```{r EEZ_eg, fig.height=7, fig.width=7, fig.cap="The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (grey lines), and the origin (green point)."}
-eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf()) 
-bb_eez <- st_bbox(eez) %>% st_as_sfc()
+The process is:
+
+ - Identify the area of interest (e.g., the New Zealand EEZ, a QMA)
+ - Place a bounding box around the area of interest
+ - Generate a standard grid,  with the specified `cell_size`, that covers the bounding box
+ 
+The standard grid can either be a simple feature collection of polygons (`return_raster = FALSE`) or a raster (`return_raster = TRUE`). The standard grid can extend beyond the range of the bounding box, depending on the `cell_size`.
+
+# Standard grids as polygons
+
+```{r EEZ_eg, fig.height=7, fig.width=7, fig.cap="Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (red lines), and the origin (green point)."}
+eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf())
+
+bb_eez <- st_bbox(eez) %>% 
+  st_as_sfc()
 
 grd200_eez <- get_standard_grid(cell_size = 200, 
                                 bounding_box = st_bbox(eez), 
                                 return_raster = FALSE)
+
 grd050_eez <- get_standard_grid(cell_size = 50, 
                                 bounding_box = st_bbox(eez), 
                                 return_raster = FALSE)
@@ -42,18 +60,23 @@ ggplot() +
   geom_sf(data = grd200_eez,  colour = "tomato",  fill = NA, alpha = 0.5) +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA, linetype = "dashed") +
   geom_sf(data = bb_eez, colour = "red", fill = NA, linetype = "dashed") +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  plot_coast(resolution = "medium", fill = "black", colour = "black", size = 0.3) +
   geom_point(aes(x = 0, y = -422600), colour = "green") + 
+  plot_clip("NZ") +
   annotation_scale(location = "tr", unit_category = "metric")
 ```
 
-```{r CRA1_eg, fig.height=6, fig.width=7, fig.cap="The CRA 1 QMA (dashed black), a box bounding CRA 1 (dashed red), a 50 x 50 km grid (blue), and 200 x 200 km grid (grey). Note that there is no point of origin shown as it is outside of the CRA 1 QMA."}
-cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% filter(QMA %in% "CRA1")
-bb_cra1 <- st_bbox(cra1) %>% st_as_sfc()
+```{r CRA1_eg, fig.height=6, fig.width=7, fig.cap="The CRA 1 QMA (dashed black), a box bounding around CRA 1 (dashed red), a 50 x 50 km grid (blue), and 200 x 200 km grid (red). Note that there is no point of origin shown as it is outside of the CRA 1 QMA."}
+cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% 
+  filter(QMA %in% "CRA1")
+
+bb_cra1 <- st_bbox(cra1) %>% 
+  st_as_sfc()
 
 grd200_cra1 <- get_standard_grid(cell_size = 200, 
                                  bounding_box = st_bbox(cra1), 
                                  return_raster = FALSE)
+
 grd050_cra1 <- get_standard_grid(cell_size = 50, 
                                  bounding_box = st_bbox(cra1), 
                                  return_raster = FALSE)
@@ -63,21 +86,24 @@ ggplot() +
   geom_sf(data = grd200_cra1,  colour = "tomato",  fill = NA, alpha = 0.5) +
   geom_sf(data = cra1, colour = "black", fill = NA, linetype = "dashed") +
   geom_sf(data = bb_cra1, colour = "red", fill = NA, linetype = "dashed") +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  plot_coast(resolution = "large", fill = "black", colour = "black", size = 0.3) +
   annotation_scale(location = "tr", unit_category = "metric") +
   plot_clip(x = grd200_cra1)
 ```
 
-```{r overlap_eg, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid (blue), CRA 1 200 x 200 km grid (dashed red), origin (green point)."}
+```{r overlap_eg, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid (light blue), CRA 1 200 x 200 km grid (dashed blue), origin (green point)."}
 # Plot and check overlap of two grids
 ggplot() +
   geom_sf(data = grd200_eez,  colour = "lightblue",  fill = NA, alpha = 0.5) +
   geom_sf(data = grd200_cra1,  colour = "blue",  fill = NA, alpha = 0.5, linetype = "dashed") +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  geom_sf(data = grd050_cra1,  colour = "tomato",  fill = NA, alpha = 0.5, linetype = "dashed") +
+  plot_coast(resolution = "medium", fill = "black", colour = "black", size = 0.3) +
   geom_point(aes(x = 0, y = -422600), colour = "green") +
   annotation_scale(location = "tr", unit_category = "metric") +
   coord_sf(xlim = c(-4e+05, 2e+05), ylim = c(-422600, 777400))
 ```
+
+In the figure below, I show that you can specify the number of cells either side of the origin.
 
 ```{r fine_eg, fig.height=3, fig.width=12, fig.cap="A 1 x 1 km grid (blue), origin (green point), and tip of Banks Peninsula to west. Note that the cell sizes agree well with the scale at top-right."}
 bb1 <- st_bbox(eez)
@@ -93,11 +119,15 @@ grd001_eez <- get_standard_grid(cell_size = 1,
 # Plot and check center point at fine scale
 ggplot() +
   geom_sf(data = grd001_eez,  colour = "lightblue",  fill = NA, alpha = 0.15) +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  plot_coast(resolution = "150k", fill = "black", colour = "black", size = 0.3) +
   geom_point(aes(x = 0, y = -422600), colour = "green") + 
   annotation_scale(location = "tr", unit_category = "metric") +
   plot_clip(x = grd001_eez)
 ```
+
+# Standard grids as rasters
+
+Rasters are more useful than polygons...
 
 ```{r raster, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point)."}
 # Get standard grid as a raster
@@ -112,35 +142,8 @@ rstar <- st_as_stars(r)
 ggplot() +
   geom_stars(data = rstar) +
   geom_sf(data = grd200_eez, fill = NA, colour = "red", linetype = "dotted") +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
+  plot_coast(resolution = "large", fill = "black", colour = "black", size = 0.3) +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA) +
-  geom_point(aes(x = 0, y = -422600), colour = "green")
-```
-
-In this next example I attempt to set up a grid of polygons and a raster that conforms to the document: A standardised approach for creating spatial grids for New Zealand marine environment and species data. I can almost get the polygons to work as I can specify the origin of {0, -422600} as an offset. However, this doesn't quite do what we want if the goal is to cover the New Zealand EEZ. I have no idea how to set up a raster with such an origin.
-
-```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
-# Working on A standardised approach for creating spatial grids for New Zealand marine environment and species data 
-x <- raster(xmn = -1024479, xmx = 1091182, ymn = -1789355, ymx = 1545850)
-# x <- raster(ncol = 36, nrow = 18, xmn = -1000, xmx = 1000, ymn = -100, ymx = 900)
-projection(x) <- proj_nzsf()
-origin(x) <- c(0, -422600)
-origin(x)
-res(x)
-x
-
-xp <- rasterToPoints(x) %>%
-  data.frame()
-xp$value <- rnorm(nrow(xp))
-
-grd <- get_statistical_areas(area = "EEZ") %>%
-  st_make_grid(cellsize = 500^2, offset = c(0, -422600), crs = proj_nzsf())
-
-ggplot() +
-  plot_statistical_areas(area = "EEZ") +
-  geom_sf(data = grd) +
-  geom_tile(data = xp, aes(x = x, y = y, fill = value), alpha = 0.5) +
-  plot_coast(resolution = "low", fill = "black", colour = "black", size = 0.3) +
-  geom_point(aes(x = 0, y = -422600), colour = "red") +
-  annotation_scale(location = "tr", unit_category = "metric")
+  geom_point(aes(x = 0, y = -422600), colour = "green") +
+  plot_clip("NZ")
 ```

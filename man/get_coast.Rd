@@ -4,7 +4,7 @@
 \alias{get_coast}
 \title{Get the New Zealand coastline}
 \usage{
-get_coast(proj = proj_nzsf(), resolution = "low", keep = 1)
+get_coast(proj = proj_nzsf(), resolution = "medium", keep = 1)
 }
 \arguments{
 \item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
