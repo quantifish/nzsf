@@ -21,11 +21,11 @@ get_coast <- function(proj = proj_nzsf(),
                       resolution = "medium", 
                       keep = 1) {
   
-  if (resolution %in% c("l", "large", 10)) {
+  if (resolution %in% c("large", "high", 10)) {
     x <- ne_countries(scale = "large", returnclass = "sf")
   } else if (resolution %in% c("m", "med", "medium", 50)) {
     x <- ne_countries(scale = "medium", returnclass = "sf")
-  } else if (resolution %in% c("s", "small", 110)) {
+  } else if (resolution %in% c("small", "low", 110)) {
     x <- ne_countries(scale = "small", returnclass = "sf")
   } else if (resolution %in% c("150k", "150")) {
     x <- nzsf::nz_coastlines_and_islands_polygons_topo_150k
