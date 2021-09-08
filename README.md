@@ -4,7 +4,7 @@
 # New Zealand Spatial Features <img src="man/figures/logo.png" align="right" height=140/>
 
 [![Build
-Status](https://travis-ci.org/quantifish/nzsf.svg?branch=master)](https://travis-ci.org/quantifish/nzsf)
+Status](https://travis-ci.com/quantifish/nzsf.svg?branch=master)](https://travis-ci.com/quantifish/nzsf)
 
 New Zealand Spatial Features (`nzsf`) is a package for creating
 scientific maps in New Zealand waters. The `nzsf` package relies heavily
