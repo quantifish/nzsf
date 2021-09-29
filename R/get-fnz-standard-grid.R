@@ -12,6 +12,12 @@
 get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 422600)) {
   
   cell_size_m <- cell_size * 1000
+  
+  stnd_cell_size <- c(250, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000)
+  
+  if (!cell_size %in% stnd_cell_size) {
+    warning(paste0("The chosen grid size does not conform to the standard grid specification, consider setting cell_size to one of: ", paste(stnd_cell_size / 1000, collapse = ", "), "."))
+  }
 
   bb_xmin <- as.numeric(bounding_box$xmin)
   bb_xmax <- as.numeric(bounding_box$xmax)
