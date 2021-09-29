@@ -6,7 +6,7 @@
 #' @return standard grid origin \code{data.frame}
 #'
 #' @seealso \code{\link{get_standard_grid}}
-#' @author Darcy Webber, Sophie Mormede
+#' @author Darcy Webber, Sophie Mormede, Charles Edwards
 #' @export
 #' 
 get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 422600)) {
@@ -41,10 +41,10 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' 
 #' @inheritParams get_standard_grid_origin
 #' @param return_raster return a raster or polygons
-#' @return New Zealands standard grid polygon as a \code{sf} object or as a raster.
+#' @return New Zealand's standard grid polygon as a \code{sf} object or as a raster.
 #'
 #' @seealso \code{\link{get_standard_grid_origin}}
-#' @author Darcy Webber
+#' @author Darcy Webber, Sophie Mormede, Charles Edwards
 #' 
 #' @importFrom sf st_make_grid st_join st_as_sf st_as_sfc
 #' @importFrom raster extent crs
