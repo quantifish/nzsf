@@ -56,8 +56,10 @@ get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), re
   
   if (return_raster) {
     grids <- raster(crs = proj_nzsf(), 
-                    xmn = grid_origin$xmin, ymn = grid_origin$ymin, 
-                    xmx = grid_origin$xmax, ymx = grid_origin$ymax, 
+                    xmn = grid_origin$xmin, 
+                    ymn = grid_origin$ymin, 
+                    xmx = grid_origin$xmax, 
+                    ymx = grid_origin$ymax, 
                     res = grid_origin$cell_size_m)
   } else {
     grids <- bounding_box %>% 
