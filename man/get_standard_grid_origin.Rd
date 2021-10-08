@@ -23,5 +23,5 @@ Get Fisheries New Zealand standard grid origin
 \code{\link{get_standard_grid}}
 }
 \author{
-Darcy Webber, Sophie Mormede
+Darcy Webber, Sophie Mormede, Charles Edwards
 }

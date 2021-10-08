@@ -21,7 +21,7 @@ get_standard_grid(
 \item{return_raster}{return a raster or polygons}
 }
 \value{
-New Zealands standard grid polygon as a \code{sf} object or as a raster.
+New Zealand's standard grid polygon as a \code{sf} object or as a raster.
 }
 \description{
 Get Fisheries New Zealand standard grid definitions
@@ -30,5 +30,5 @@ Get Fisheries New Zealand standard grid definitions
 \code{\link{get_standard_grid_origin}}
 }
 \author{
-Darcy Webber
+Darcy Webber, Sophie Mormede, Charles Edwards
 }
