@@ -6,12 +6,18 @@
 #' @return standard grid origin \code{data.frame}
 #'
 #' @seealso \code{\link{get_standard_grid}}
-#' @author Darcy Webber, Sophie Mormede
+#' @author Darcy Webber, Sophie Mormede, Charles Edwards
 #' @export
 #' 
 get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 422600)) {
   
   cell_size_m <- cell_size * 1000
+  
+  stnd_cell_size <- c(250, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000)
+  
+  if (!cell_size %in% stnd_cell_size) {
+    warning(paste0("The chosen grid size does not conform to the standard grid specification, consider setting cell_size to one of: ", paste(stnd_cell_size / 1000, collapse = ", "), "."))
+  }
 
   bb_xmin <- as.numeric(bounding_box$xmin)
   bb_xmax <- as.numeric(bounding_box$xmax)
@@ -35,10 +41,10 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' 
 #' @inheritParams get_standard_grid_origin
 #' @param return_raster return a raster or polygons
-#' @return New Zealands standard grid polygon as a \code{sf} object or as a raster.
+#' @return New Zealand's standard grid polygon as a \code{sf} object or as a raster.
 #'
 #' @seealso \code{\link{get_standard_grid_origin}}
-#' @author Darcy Webber
+#' @author Darcy Webber, Sophie Mormede, Charles Edwards
 #' 
 #' @importFrom sf st_make_grid st_join st_as_sf st_as_sfc
 #' @importFrom raster extent crs
@@ -50,8 +56,10 @@ get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), re
   
   if (return_raster) {
     grids <- raster(crs = proj_nzsf(), 
-                    xmn = grid_origin$xmin, ymn = grid_origin$ymin, 
-                    xmx = grid_origin$xmax, ymx = grid_origin$ymax, 
+                    xmn = grid_origin$xmin, 
+                    ymn = grid_origin$ymin, 
+                    xmx = grid_origin$xmax, 
+                    ymx = grid_origin$ymax, 
                     res = grid_origin$cell_size_m)
   } else {
     grids <- bounding_box %>% 

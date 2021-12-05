@@ -167,6 +167,38 @@
 "CCSBT"
 
 
+#' New Zealand squid QMAs
+#'
+#' New Zealand squid Quota Management Areas (QMAs).
+#'
+#' @format Simple feature collection with 1 features and 4 fields:
+#' \describe{
+#'   \item{QMA}{Quota Management Area or stock}
+#'   \item{SpeciesCode}{Species code}
+#'   \item{SpeciesScientific}{Scientific name}
+#'   \item{SpeciesCommon}{Common name}
+#' }
+#' @source Fisheries New Zealand
+#' 
+"Squid_QMA"
+
+
+#' New Zealand scampi QMAs
+#'
+#' New Zealand scampi Quota Management Areas (QMAs).
+#'
+#' @format Simple feature collection with 1 features and 4 fields:
+#' \describe{
+#'   \item{QMA}{Quota Management Area or stock}
+#'   \item{SpeciesCode}{Species code}
+#'   \item{SpeciesScientific}{Scientific name}
+#'   \item{SpeciesCommon}{Common name}
+#' }
+#' @source Fisheries New Zealand
+#' 
+"Scampi_QMA"
+
+
 #' New Zealand red rock lobster QMAs
 #'
 #' New Zealand red rock lobster (Jasus edwardsii) Quota Management Areas (QMAs).

@@ -47,6 +47,12 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
   if (qma %in% c("SCA", "scallop", "Scallop", "tupa", "Tupa", "Pecten novaezealandiae")) {
     x <- nzsf::Scallop_QMA
   }
+  if (qma %in% c("SQU", "squid", "Squid")) {
+    x <- nzsf::Squid_QMA
+  }
+  if (qma %in% c("SCI", "scampi", "Scapi")) {
+    x <- nzsf::Scampi_QMA
+  }
   
   # Finfish
   if (qma %in% c("JMA", "jack mackerel", "JMD", "JMM", "JMN")) {

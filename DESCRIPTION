@@ -28,6 +28,7 @@ Imports:
     viridis,
     stars,
     patchwork,
+    cowplot,
     ggnewscale
 Suggests:
     knitr,
