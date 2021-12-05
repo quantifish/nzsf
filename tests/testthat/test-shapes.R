@@ -23,12 +23,14 @@ test_that("number of QMAs", {
 test_that("number of shapes", {
   
   expect_equal(nrow(get_marine_reserves()), 44)
+  
   expect_equal(nrow(get_depth(resolution = "low")), 4571)
   expect_equal(nrow(get_depth(resolution = "med")), 14859)
   expect_equal(nrow(get_depth(resolution = "high")), 17157)
-  expect_equal(nrow(get_coast(resolution = "low")), 725)
-  expect_equal(nrow(get_coast(resolution = "med")), 1699)
-  expect_equal(nrow(get_coast(resolution = "high")), 9261)
+  
+  expect_equal(nrow(get_coast(resolution = "1500k")), 725)
+  expect_equal(nrow(get_coast(resolution = "1250k")), 1699)
+  expect_equal(nrow(get_coast(resolution = "150k")), 9261)
   
 })
 
@@ -40,6 +42,7 @@ test_that("return a plot", {
     plot_marine_reserves() + 
     plot_qma(qma = "CRA") + 
     plot_statistical_areas(area = "CRA")
+  
   expect_type(p1, "list")
   expect_true("ggplot" %in% class(p1))
   

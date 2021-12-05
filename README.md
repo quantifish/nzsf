@@ -17,8 +17,11 @@ lines/arrows, polygons, coastlines, and much more.
 
 The `nzsf` package can be installed from within R using:
 
-    library(devtools)
-    install_github(repo = "quantifish/nzsf", build_vignettes = TRUE)
+``` r
+library(devtools)
+install_github(repo = "ropensci/rnaturalearthhires")
+install_github(repo = "quantifish/nzsf", build_vignettes = TRUE)
+```
 
 In the future I hope to release `nzsf` as a formal R package on The
 Comprehensive R Archive Network (CRAN).
@@ -28,13 +31,17 @@ Comprehensive R Archive Network (CRAN).
 The package vignettes are a great place to see what `nzsf` can do. You
 can view the package vignettes from within R using:
 
-    browseVignettes(package = "nzsf")
-    vignette(topic = "nzsf", package = "nzsf")
+``` r
+browseVignettes(package = "nzsf")
+vignette(topic = "nzsf", package = "nzsf")
+```
 
 Alternatively, you can look at the help pages associated with each
 function and data set in `nzsf`. To see them all use:
 
-    help(package = "nzsf")
+``` r
+help(package = "nzsf")
+```
 
 ## Shapefiles
 
@@ -71,7 +78,9 @@ Other useful shapefiles include:
 These shapefiles can be accessed using the `data` command in R. For
 example:
 
-    data("doc_marine_reserves")
+``` r
+data("doc_marine_reserves")
+```
 
 If you would like additional shapefiles added just let me know in the
 issues (please include a link to the shapefiles).

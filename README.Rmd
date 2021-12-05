@@ -25,6 +25,7 @@ The `nzsf` package can be installed from within R using:
 
 ``` r
 library(devtools)
+install_github(repo = "ropensci/rnaturalearthhires")
 install_github(repo = "quantifish/nzsf", build_vignettes = TRUE)
 ```
 
