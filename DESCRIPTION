@@ -23,6 +23,7 @@ Imports:
     rmapshaper,
     rnaturalearth,
     rnaturalearthdata,
+    rnaturalearthhires,
     ggspatial,
     lwgeom,
     viridis,
