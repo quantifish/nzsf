@@ -10,4 +10,4 @@ logo.png
 standard_grid_BWBFJB_RM.docx
 ENV2020-04_Mormede_2021_grid_only_v2_SM.docx
 ENV2020-04_standard_grids_v3.docx
-*.png
+^.*\.png
