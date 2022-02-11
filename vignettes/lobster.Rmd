@@ -250,27 +250,81 @@ ggplot() +
   labs(fill = "Mean")
 ```
 
+# CRA 3
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+stat3 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA3")
+
+lab3 <- st_difference(stat3, sf_coast) %>% st_centroid()
+lab3$geometry[1] <- st_point(c(325000, 247645.9))
+lab3$geometry[2] <- st_point(c(297000, 152074.9))
+lab3$geometry[3] <- st_point(c(249018.7, 66000))
+
+box3 <- stat3 %>%
+  st_buffer(dist = 4e4) %>%
+  st_bbox() %>%
+  st_as_sfc()
+
+p2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  geom_sf_label(data = lab3, aes(label = area), colour = colour_stat) +
+  plot_clip(x = box3, expand = FALSE) +
+  annotation_scale(location = "tl", unit_category = "metric") +
+  labs(title = "CRA 3")
+
+pi2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box4, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p2) +
+  draw_plot(pi2, x = 0.68, y = 0.04, width = 0.3, height = 0.3)
+
+ggsave(filename = "CRA3.png", plot = p, width = 5, height = 7)
+
+p
+```
+
 # CRA 4
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 stat4 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA4")
 
 lab4 <- st_difference(stat4, sf_coast) %>% st_centroid()
+lab4$geometry[1] <- st_point(c(191000, 23806.92))
+lab4$geometry[2] <- st_point(c(120000, -98027.46))
 
 box4 <- stat4 %>%
   st_buffer(dist = 4e4) %>%
-  st_bbox()
+  st_bbox() %>%
+  st_as_sfc()
 
-p <- ggplot() +
-  plot_qma(qma = "CRA", fill = NA) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat, linetype = "dashed") +
+p2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
   plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
-  geom_sf_label(data = lab4, aes(label = area)) +
+  geom_sf_label(data = lab4, aes(label = area), colour = colour_stat) +
   plot_clip(x = box4, expand = FALSE) +
-  annotation_north_arrow(location = "tr", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric")
+  annotation_scale(location = "tr", unit_category = "metric") +
+  labs(title = "CRA 4")
 
-ggsave(filename = "CRA4.png", plot = p, width = 7, height = 7)
+pi2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box4, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p2) +
+  draw_plot(pi2, x = 0.72, y = 0.035, width = 0.3, height = 0.3)
+
+ggsave(filename = "CRA4.png", plot = p, width = 6, height = 7)
 
 p
 ```
@@ -278,28 +332,42 @@ p
 # CRA 5
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-stat5 <- get_statistical_areas("CRA") %>% 
-  filter(QMA %in% "CRA5")
-  # filter(QMA %in% stock | area %in% c(915, 934)
+stat5 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA5")
 
-lab5 <- st_difference(stat5, sf_coast) %>% 
-  st_point_on_surface()
+lab5 <- st_difference(stat5, sf_coast) %>% st_centroid()
+lab5$geometry[1] <- st_point(c(-52882, -200000)) # 916
+lab5$geometry[2] <- st_point(c(-116704.7, -300000)) # 917
+lab5$geometry[3] <- st_point(c(-145000, -433466)) # 918
+lab5$geometry[4] <- st_point(c(-287000, -500855.2)) # 919
+lab5$geometry[5] <- st_point(c(-169000, -78064)) # 932
+lab5$geometry[6] <- st_point(c(-80000, -71000)) # 933
 
 box5 <- stat5 %>%
   st_buffer(dist = 4e4) %>%
-  st_bbox()
+  st_bbox() %>%
+  st_as_sfc()
 
-p <- ggplot() +
+p2 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
-  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat, linetype = "dashed") +
+  plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
   plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
   geom_sf_label(data = lab5, aes(label = area), colour = colour_stat) +
   plot_clip(x = box5, expand = FALSE) +
-  annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric") +
+  annotation_scale(location = "tl", unit_category = "metric") +
   labs(title = "CRA 5")
 
-ggsave(filename = "CRA5.png", plot = p, width = 5, height = 7)
+pi2 <- ggplot() +
+  plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  geom_sf(data = box5, colour = NA, fill = colour_box, alpha = 0.5) +
+  plot_clip(x = "NZ") +
+  theme_void()
+
+p <- ggdraw() + 
+  draw_plot(p2) +
+  draw_plot(pi2, x = 0.68, y = 0.035, width = 0.3, height = 0.3)
+
+ggsave(filename = "CRA5.png", plot = p, width = 4.6, height = 7)
 
 p
 ```
