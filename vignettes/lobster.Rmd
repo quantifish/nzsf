@@ -277,7 +277,7 @@ p2 <- ggplot() +
 pi2 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
   plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
-  geom_sf(data = box4, colour = NA, fill = colour_box, alpha = 0.5) +
+  geom_sf(data = box3, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
 

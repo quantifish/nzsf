@@ -318,10 +318,8 @@ ggplot() +
 # stewart <- get_coast() %>%
 stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
   filter(name == "Stewart Island/Rakiura") %>%
+  st_transform(crs = proj_nzsf()) %>%
   st_buffer(dist = 4500)
-
-bbox <- stewart %>% 
-  st_bbox()
 
 # Simulate some points around Stewart Island
 pts <- st_sample(stewart, size = 5000) %>% 
@@ -331,11 +329,11 @@ pts <- st_sample(stewart, size = 5000) %>%
 p1 <- ggplot() +
   plot_depth(resolution = "med", size = 0.2, colour = "grey") +
   geom_sf(data = pts, aes(colour = z)) +
-  plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  plot_coast(resolution = "large", fill = "black", colour = NA, size = 0.3) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   # annotation_scale(location = "br", unit_category = "metric") +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  plot_clip(x = stewart) +
   labs(colour = "Points", title = "Rakiura")
 
 p2 <- ggplot() +
@@ -346,7 +344,7 @@ p2 <- ggplot() +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   # annotation_scale(location = "br", unit_category = "metric") +
-  coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
+  plot_clip(x = stewart) +
   labs(title = "Rakiura")
 
 p1 + p2
