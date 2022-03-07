@@ -196,7 +196,7 @@ rock_lobster_stat_areas <- unzip_and_clean("rock_lobster_stat_areas.zip") %>%
     area %in% 909:911 ~ "CRA3",
     area %in% c(912:915, 934) ~ "CRA4",
     area %in% c(916:919, 932, 933) ~ "CRA5",
-    area %in% 940:941 ~ "CRA6",
+    area %in% 940:943 ~ "CRA6",
     area %in% 920:921 ~ "CRA7",
     area %in% 922:928 ~ "CRA8",
     area %in% c(929:931, 935:938) ~ "CRA9",
