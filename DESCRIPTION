@@ -55,4 +55,5 @@ Collate:
     'nzsf.R'
     'plot-ccamlr.R'
     'plot-ccsbt.R'
+    'plot-brms.R'
     'theme-nzsf.R'

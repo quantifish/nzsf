@@ -11,7 +11,7 @@ theme_nzsf <- function(base_size = 14, base_family = "") {
   theme_grey(base_size = base_size, base_family = base_family) %+replace%
     theme(axis.title.x = element_text(margin = margin(10, 0, 0, 0)),
           #axis.title.x = element_text(vjust = -1.5),
-          #axis.title.y = element_text(margin = margin(0,20,0,0)),
+          #axis.title.y = element_text(margin = margin(0, 20, 0, 0)),
           #axis.title.y = element_text(vjust = -0.1),
           axis.text = element_text(size = rel(0.8)),
           axis.ticks = element_line(colour = "black"), 

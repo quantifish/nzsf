@@ -1,0 +1,8 @@
+# Grid sample on the 2021 GEBCO data
+
+grdinfo GEBCO_2021.nc
+grdsample GEBCO_2021.nc -GSIOFA.nc -R0/125/-75/15 -I20k
+grdinfo SIOFA.nc
+grdedit SIOFA.nc -GSIOFA.nc -Dzelevation
+grdinfo SIOFA.nc
+grdedit SIOFA.nc -fg

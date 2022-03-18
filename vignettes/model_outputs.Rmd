@@ -1,0 +1,77 @@
+---
+title: "New Zealand Spatial Features: Model Outputs"
+author: Darcy Webber
+date: 19 March 2022
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{New Zealand Spatial Features}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r echo=TRUE}
+library(tidyverse)
+library(nzsf)
+library(viridis)
+library(brms)
+library(reshape2)
+
+theme_set(theme_bw() + theme(axis.title = element_blank()))
+```
+
+# Plotting splines in brms
+
+```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
+# Use Stewart Island as the land
+stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
+  filter(name == "Stewart Island/Rakiura") %>%
+  st_transform(crs = proj_nzsf()) %>%
+  st_buffer(dist = 45000)
+
+# Use the volcano data set to come up with some values
+data(volcano)
+colnames(volcano) <- seq(st_bbox(stewart)[2], st_bbox(stewart)[4], length.out = ncol(volcano))
+rownames(volcano) <- seq(st_bbox(stewart)[1], st_bbox(stewart)[3], length.out = nrow(volcano))
+v <- volcano %>% 
+  melt(varnames = c("x", "y"), value.name = "z") %>%
+  st_as_sf(coords = c("x", "y"), crs = proj_nzsf()) %>%
+  mutate(x = st_coordinates(.)[,1], y = st_coordinates(.)[,2]) %>%
+  sample_n(size = 1000)
+head(v)
+
+# Plot the points
+ggplot() +
+  geom_sf(data = v, aes(colour = z)) +
+  scale_colour_viridis(alpha = 0.8) +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(colour = "Points", title = "Rakiura")
+```
+
+Fit a model to the data and use the brms conditional_smooths function to look at it
+
+```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
+fit <- brm(z ~ t2(x, y), data = v, chains = 1, iter = 1000)
+conditional_smooths(x = fit, resolution = 100, smooths = "t2(x, y)")
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
+ggplot() +
+  plot_conditional_smooths(x = fit, resolution = 100, smooths = "t2(x, y)") +
+  scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(colour = "Points", title = "Rakiura")
+```
