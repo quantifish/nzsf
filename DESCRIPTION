@@ -27,7 +27,9 @@ Imports:
     ggspatial,
     lwgeom,
     viridis,
+    reshape2,
     stars,
+    brms,
     patchwork,
     cowplot,
     ggnewscale

@@ -7,7 +7,7 @@ output:
     toc: true
     toc_depth: 2
 vignette: >
-  %\VignetteIndexEntry{New Zealand Spatial Features}
+  %\VignetteIndexEntry{New Zealand Spatial Features: Model Outputs}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
@@ -22,7 +22,9 @@ knitr::opts_chunk$set(
 ```
 
 ```{r echo=TRUE}
-library(tidyverse)
+# library(tidyverse)
+library(ggplot2)
+library(dplyr)
 library(nzsf)
 library(viridis)
 library(brms)

@@ -1,6 +1,6 @@
 #' Plot a conditional_smooths output
 #' 
-#' @inheritParams conditional_smooths
+#' @inheritParams brms::conditional_smooths
 #' @param ... Other arguments passed on to \code{conditional_smooths}.
 #' @return a ggplot.
 #' @importFrom brms conditional_smooths

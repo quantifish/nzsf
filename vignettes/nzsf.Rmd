@@ -24,7 +24,9 @@ knitr::opts_chunk$set(
 The `stsd` package makes extensive use of the `nzsf` package. The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`.
 
 ```{r echo=TRUE}
-library(tidyverse)
+# library(tidyverse)
+library(ggplot2)
+library(dplyr)
 library(nzsf)
 library(ggspatial)
 library(rnaturalearth)

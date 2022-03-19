@@ -7,6 +7,19 @@
 plot_conditional_smooths(x, resolution = 100, smooths = NULL, ...)
 }
 \arguments{
+\item{x}{An object of class \code{brmsfit}.}
+
+\item{resolution}{Number of support points used to generate 
+the plots. Higher resolution leads to smoother plots. 
+Defaults to \code{100}. If \code{surface} is \code{TRUE},
+this implies \code{10000} support points for interaction terms,
+so it might be necessary to reduce \code{resolution} 
+when only few RAM is available.}
+
+\item{smooths}{Optional character vector of smooth terms
+to display. If \code{NULL} (the default) all smooth terms
+are shown.}
+
 \item{...}{Other arguments passed on to \code{conditional_smooths}.}
 }
 \value{
