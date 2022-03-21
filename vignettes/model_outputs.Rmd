@@ -30,7 +30,7 @@ library(viridis)
 library(brms)
 library(reshape2)
 
-theme_set(theme_bw() + theme(axis.title = element_blank()))
+theme_set(theme_bw())
 ```
 
 # Plotting splines in brms
@@ -46,10 +46,11 @@ stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
 data(volcano)
 colnames(volcano) <- seq(st_bbox(stewart)[2], st_bbox(stewart)[4], length.out = ncol(volcano))
 rownames(volcano) <- seq(st_bbox(stewart)[1], st_bbox(stewart)[3], length.out = nrow(volcano))
-v <- volcano %>% 
+v0 <- volcano %>% 
   melt(varnames = c("x", "y"), value.name = "z") %>%
   st_as_sf(coords = c("x", "y"), crs = proj_nzsf()) %>%
-  mutate(x = st_coordinates(.)[,1], y = st_coordinates(.)[,2]) %>%
+  mutate(x = st_coordinates(.)[,1], y = st_coordinates(.)[,2])
+v <- v0 %>%
   sample_n(size = 1000)
 head(v)
 
@@ -66,14 +67,24 @@ Fit a model to the data and use the brms conditional_smooths function to look at
 
 ```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
 fit <- brm(z ~ t2(x, y), data = v, chains = 1, iter = 1000)
+
 conditional_smooths(x = fit, resolution = 100, smooths = "t2(x, y)")
 ```
 
 ```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
 ggplot() +
-  plot_conditional_smooths(x = fit, resolution = 100, smooths = "t2(x, y)") +
-  scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
+  plot_raster(data = v0, field = "z", fun = mean, nrow = 50, ncol = 80) +
+  scale_fill_viridis("volcano", alpha = 0.8, option = "plasma") +
   plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
   plot_clip(x = stewart) +
-  labs(colour = "Points", title = "Rakiura")
+  theme(axis.title = element_blank())
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
+ggplot() +
+  plot_conditional_smooths(x = fit, resolution = 100, smooths = "t2(x, y)", crs1 = proj_nzsf(), crs2 = proj_nzsf()) +
+  scale_fill_viridis("t2(x, y)", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  theme(axis.title = element_blank())
 ```
