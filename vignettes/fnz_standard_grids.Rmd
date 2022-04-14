@@ -134,9 +134,7 @@ Rasters are more useful than polygons...
 
 ```{r raster, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point)."}
 # Get standard grid as a raster
-r <- get_standard_grid(cell_size = 256, 
-                       bounding_box = st_bbox(eez), 
-                       return_raster = TRUE)
+r <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), return_raster = TRUE)
 
 # Fill the grid with random values and plot it
 r[] <- rnorm(n = ncell(r))
