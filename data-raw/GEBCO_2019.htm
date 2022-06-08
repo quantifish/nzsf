@@ -1,0 +1,820 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/strict.dtd">
+<html xmlns="http://www.w3.org/TR/xhtml1">
+
+<head>
+  <title>BODC Data Document 550406</title>
+</head>
+
+<body>
+  <h2>GEBCO_2019 Grid</h2>
+
+  <h3>1.0 Introduction</h3><img src="https://www.bodc.ac.uk/data/documents/nodb/images/gebco_2019_small.jpg" alt="The GEBCO_2019 Global Grid" />
+
+  <p><i>The GEBCO_2019 Grid</i></p>
+
+  <p>The GEBCO_2019 Grid is the latest global bathymetric product released by the General Bathymetric Chart of the Oceans (<a href="https://www.gebco.net/">GEBCO</a>) and has been developed through
+  the <a href="https://seabed2030.gebco.net/">Nippon Foundation-GEBCO Seabed 2030 Project</a>. This is a collaborative project between the <a href="https://www.nippon-foundation.or.jp/en/">Nippon
+  Foundation of Japan</a> and GEBCO. The Seabed 2030 Project aims to bring together all available bathymetric data to produce the definitive map of the world ocean floor and make it available to
+  all.</p>
+
+  <p>The Nippon Foundation of Japan is a non-profit philanthropic organisation active around the world. GEBCO is an international group of mapping experts developing a range of bathymetric data sets
+  and data products, operating under the joint auspices of the International Hydrographic Organization (<a href="https://www.iho.int/srv1/index.php?lang=en">IHO</a>) and <a href=
+  "https://en.unesco.org/">UNESCO</a>'s Intergovernmental Oceanographic Commission (<a href="http://www.unesco.org/new/en/natural-sciences/ioc-oceans/">IOC</a>).</p>
+
+  <p>The GEBCO_2019 product provides global coverage, spanning 89&deg; 59' 52.5''N, 179&deg; 59' 52.5''W to 89&deg; 59' 52.5''S, 179&deg; 59' 52.5''E on a 15 arc-second grid. It consists of 86400
+  rows x 43200 columns, giving 3,732,480,000 data points. The data values are pixel-centre registered i.e. they refer to elevations at the centre of grid cells.</p>
+
+  <p>The data are available to download according to the Terms of Use provided in Section 8 below, via several routes including: single-click download of the entire grid in NetCDF format, selection
+  of subsets and creation of output in alternative data formats (see Section 5).</p>
+
+  <h3>1.1 Seabed 2030 Data Center structure</h3>
+
+  <p>This latest GEBCO product has been developed by the Seabed 2030 data centers, comprised of four Regional <a href="https://seabed2030.gebco.net/data_centers/">Centers</a> and a Global Center.</p>
+
+  <p>The Regional Centers are responsible for championing mapping activities; assembling and compiling bathymetric information and collaborating with existing mapping initiatives in their regions.
+  The Global Center is responsible for producing and delivering centralized GEBCO products, such as bathymetric grids.</p><img src="https://www.bodc.ac.uk/data/documents/nodb/images/data_centers.jpg"
+  alt="Map of Center Locations" />
+
+  <p><i>Location of the Seabed 2030 Centers and their areas of responsibility.</i></p>
+
+  <h4>Seabed 2030 Centers</h4>
+
+  <ul>
+    <li><a href="https://seabed2030.gebco.net/southern_ocean/">Southern Ocean</a> - hosted at the Alfred Wegener Institute (AWI), Germany</li>
+
+    <li><a href="https://seabed2030.gebco.net/pacific/">South and West Pacific Ocean</a> - hosted at the National Institute of Water and Atmospheric Research (NIWA), New Zealand</li>
+
+    <li><a href="https://seabed2030.gebco.net/atlantic_indian/">Atlantic and Indian Oceans</a> - hosted at the Lamont Doherty Earth Observatory (LDEO), Columbia University, USA</li>
+
+    <li><a href="https://seabed2030.gebco.net/arctic_pacific/">Arctic and North Pacific Oceans</a> - hosted at Stockholm University (SU), Sweden and the Center for Coastal and Ocean Mapping at the
+    University of New Hampshire (UNH), USA</li>
+
+    <li><a href="https://seabed2030.gebco.net/gdacc/">Global Data Center</a> - hosted at the British Oceanographic Data Centre (BODC), National Oceanography Centre (NOC), UK</li>
+  </ul>
+
+  <h3>2.0 Grid Development</h3>
+
+  <p>The GEBCO_2019 Grid is a continuous, global terrain model for ocean and land with a spatial resolution of 15 arc seconds.</p>
+
+  <p>The grid uses as a 'base' Version 1 of the SRTM15+ data set (Olson <i>et al</i>, 2014). This data set is a fusion of land topography with measured and estimated seafloor topography. It is
+  largely based on version 11 of SRTM30+ (Becker <i>et al</i>, 2009; Sandwell <i>et al</i>, 2014), augmented with the gridded bathymetric data sets developed by the four Seabed 2030 Regional Centers.
+  The published data were recalculated on a cell-registered grid for use by GEBCO.</p>
+
+  <p>The Regional Centers have compiled gridded bathymetric data sets, largely based on multibeam data, on a sub-set of the global grid for their areas of responsibility. These regional grids were
+  then provided these to the Global Center. For areas outside of the polar regions (primarily south of 60N and north of 50S), these data sets are in the form of 'sparse grids', i.e. only grid cells
+  that contain data were populated. For the polar regions, complete grids were provided due to the complexities of incorporating data held in polar coordinates.</p>
+
+  <p>The compilation of the GEBCO_2019 Grid from these regional data grids, with some additional source data sets, was carried out at the Global Center, with the aim of producing a seamless global
+  terrain model.</p>
+
+  <p>The majority of the work, for the non-polar regions, was done using the 'remove-restore' procedure (Smith and Sandwell, 1997; Becker, Sandwell and Smith, 2009 and Hell and Jakobsson, 2011). This
+  is a two stage process of computing the difference between the new data and the 'base' grid, gridding the difference and adding this difference back to the existing 'base' grid. The aim is to
+  achieve a smooth transition between the 'new' and 'base' data sets with the minimum of perturbation of the existing base data set.</p>
+
+  <p>For the polar data sets, and the adjoining North Sea area, supplied in the form of complete grids these data sets were included using feather blending techniques from GlobalMapper software
+  version 11.01, made available by <a href="https://www.bluemarblegeo.com/products/global-mapper.php">Blue Marble Geographic</a>.</p>
+
+  <p>The GEBCO_2019 Grid includes data sets from a number of international and national data repositories and regional mapping initiatives. For information on the data sets included in the GEBCO_2019
+  Grid, please see Section 11 below.</p>
+
+  <h3>3.0 Land Data</h3>
+
+  <p>The land data in the GEBCO Grid are taken directly from SRTM15+ for all areas outside the Polar regions.</p>
+
+  <p>South of 60&deg;S, the land topography is determined from Bedmap2 (Fretwell <i>et al</i>, 2013).</p>
+
+  <h3>4.0 GEBCO Source Identifier (SID) Grid</h3>
+
+  <p>The GEBCO Grid is accompanied by a Source Identifier (SID) grid. This data set identifies which of the corresponding grid cells in the GEBCO Grid are based on bathymetric soundings or
+  bathymetric depth values from grids and which cells contain predicted or interpolated depth values. Further information about the format and coding of the data set is given below.</p>
+
+  <h3>4.1 GEBCO SID Grid coding</h3>
+
+  <p>The table below details the coding of the GEBCO_2019 Source Identifier (SID) grid.</p>
+
+  <table border="2" cellpadding="5">
+    <tr>
+      <td><strong>SID</strong></td>
+
+      <td><strong>Definition</strong></td>
+    </tr>
+
+    <tr>
+      <td>0</td>
+
+      <td>Predicted based on satellite-derived gravity data - depth value is an interpolated value guided by satellite-derived gravity data (from SRTM15_plus)</td>
+    </tr>
+
+    <tr>
+      <td>10</td>
+
+      <td>Singlebeam - depth value collected by a single beam echo-sounder</td>
+    </tr>
+
+    <tr>
+      <td>11</td>
+
+      <td>Multibeam - depth value collected by a multibeam echo-sounder</td>
+    </tr>
+
+    <tr>
+      <td>12</td>
+
+      <td>Seismic - depth value collected by seismic methods</td>
+    </tr>
+
+    <tr>
+      <td>13</td>
+
+      <td>Isolated sounding - depth value that is not part of a regular survey or trackline)</td>
+    </tr>
+
+    <tr>
+      <td>14</td>
+
+      <td>ENC sounding - depth value extracted from an Electronic Navigation Chart (ENC)</td>
+    </tr>
+
+    <tr>
+      <td>15</td>
+
+      <td>Interpolated based on a computer algorithm - depth value is an interpolated value based on a computer algorithm (e.g. Generic Mapping Tools).</td>
+    </tr>
+
+    <tr>
+      <td>16</td>
+
+      <td>Digital bathymetric contours from charts - depth value taken from a bathymetric contour data set</td>
+    </tr>
+
+    <tr>
+      <td>17</td>
+
+      <td>Digital bathymetric contours from ENCs - depth value taken from bathymetric contours from an Electronic Navigation Chart (ENC)</td>
+    </tr>
+
+    <tr>
+      <td>18</td>
+
+      <td>Pre-generated grid - depth value is taken from a pre-generated grid that is based on mixed source data types, e.g. single beam, multibeam, interpolation etc.</td>
+    </tr>
+
+    <tr>
+      <td>19</td>
+
+      <td>Unknown source - depth value from an unknown source</td>
+    </tr>
+
+    <tr>
+      <td>20</td>
+
+      <td>Steering points - depth value used to constrain the grid in areas of poor data coverage</td>
+    </tr>
+
+    <tr>
+      <td>21</td>
+
+      <td>Lidar - depth derived from a bathymetric lidar sensor</td>
+    </tr>
+
+    <tr>
+      <td>22</td>
+
+      <td>Bathymetric sounding - depth value at this location is constrained by bathymetric sounding(s) from the SRTM15_plus data set)</td>
+    </tr>
+
+    <tr>
+      <td>23</td>
+
+      <td>Pre-generated grid - depth value is based on the GEBCO_08 Grid. This data set is a global grid at 30 arc-seconds. It was largely generated from a data base of ship-track soundings with
+      interpolation between soundings guided by satellite-derived gravity data</td>
+    </tr>
+
+    <tr>
+      <td>-8888</td>
+
+      <td>Land elevations</td>
+    </tr>
+  </table>
+
+  <h3>5.0 Data Dissemination</h3>
+
+  <p>GEBCO's gridded data sets are made available as a global file in CF-netCDF format and for user-defined areas in CF-netCDF, Esri ASCII raster or data GeoTiff.</p>
+
+  <p>The complete data set provides global coverage, spanning 89&deg; 59' 52.5''N, 179&deg; 59' 52.5''W to 89&deg; 59' 52.5''S, 179&deg; 59' 52.5''E on a 15 arc-second grid. It consists of 86400 rows
+  x 43200 columns, giving 3,732,480,000 data points. The data values are pixel-centre registered i.e. they refer to elevations at the centre of grid cells.</p>
+
+  <p>The gridded data are available to download in a number of different formats as described in the following sections.</p>
+
+  <h3>5.1 CF-netCDF format</h3>
+
+  <p>A single, global CF-netCDF format file file is available for single-click download.</p>
+
+  <p>Within the file, the GEBCO_2019 Grid is stored as a two-dimensional array of 32-bit float values of elevation in metres, with negative values for bathymetric depths and positive values for
+  topographic heights. The netCDF storage is arranged as contiguous latitudinal bands. The total dataset is 12Gb.</p>
+
+  <p>The data file includes header information which conforms to the NetCDF Climate and Forecast (CF) Metadata Convention v1.6 (<a href="http://cfconventions.org/">http://cfconventions.org/</a>).</p>
+
+  <p>The GEBCO_2019 SID grid is provided in the same array format, but data are stored as a two-dimensional array of 2-byte integers.</p>
+
+  <h3>5.2 Esri ASCII raster format</h3>
+
+  <p>This is an ASCII format developed for the export/exchange of Esri ARC/INFO rasters. The format consists of a header that gives the geographic extent and grid interval of the data set, followed
+  by the actual grid cell data values. The GEBCO_2019 Grid and SID grids are made available as single-channel float and integer data values respectively, for user-defined areas, in Esri ASCII raster
+  format using the <a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/">download tool</a>.</p>
+
+  <h3>5.3 Data GeoTIFF</h3>
+
+  <p>The GeoTiff format contains geo-referencing (geographic extent and projection) information embedded within a Tiff file. The GEBCO_2019 Grid and SID grids are made available as single-channel
+  float and integer data values respectively for user-defined areas in GeoTiff format using the <a href="https://www.gebco.net/data_and_products/gridded_bathymetry_data/">download tool</a>.</p>
+
+  <h3>6.0 GEBCO's grids and vertical datum</h3>
+
+  <p>GEBCO's global elevation models are generated by the assimilation of heterogeneous data types, assuming all of them to be referred to mean sea level. However, in some shallow water areas, the
+  grids include data from sources having a vertical datum other than mean sea level. We are working to understand how best to fully assimilate these data.</p>
+
+  <h3>7.0 Data set attribution</h3>
+
+  <p>If the data sets are used in a presentation or publication then we ask that you acknowledge the source. This should be of the form:</p>
+
+  <p>GEBCO Compilation Group (2019) GEBCO 2019 Grid (doi:10.5285/836f016a-33be-6ddc-e053-6c86abc0788e)</p>
+
+  <h3>8.0 Terms of use and disclaimer</h3>
+
+  <h4>Scope</h4>
+
+  <ul>
+    <li>These terms of use apply to The GEBCO Grid and other GEBCO-derived information products</li>
+
+    <li>For brevity 'The GEBCO Grid' is used throughout and should be interpreted as meaning The GEBCO Grid and other GEBCO-derived information products</li>
+
+    <li>Bathymetric Data refers to measurements made by various instruments of the ocean depth, associated ocean properties and the supporting metadata</li>
+
+    <li>Information products are the result of applying algorithms, mathematical techniques, scientific theory and Intellectual Property to data to create useful, derived values.</li>
+
+    <li>As the GEBCO Grid is created by interpolating, applying algorithms and mathematical techniques to bathymetric data, GEBCO considers the GEBCO Grid to be an information product</li>
+
+    <li>GEBCO does not provide the underlying source bathymetric data when distributing the GEBCO Grid</li>
+  </ul>
+
+  <h4>Terms of use</h4>
+
+  <p>The GEBCO Grid is placed in the public domain and may be used free of charge.</p>
+
+  <p>Use of the GEBCO Grid indicates that the user accepts the conditions of use and disclaimer information given below.</p>
+
+  <h4>Users are free to:</h4>
+
+  <ul>
+    <li>Copy, publish, distribute and transmit The GEBCO Grid</li>
+
+    <li>Adapt The GEBCO Grid</li>
+
+    <li>Commercially exploit The GEBCO Grid, by, for example, combining it with other information, or by including it in their own product or application</li>
+  </ul>
+
+  <h4>Users must:</h4>
+
+  <ul>
+    <li>Acknowledge the source of The GEBCO Grid. A suitable form of attribution is given in the documentation that accompanies The GEBCO Grid.</li>
+
+    <li>Not use The GEBCO Grid in a way that suggests any official status or that GEBCO, or the IHO or IOC, endorses any particular application of The GEBCO Grid.</li>
+
+    <li>Not mislead others or misrepresent The GEBCO Grid or its source.</li>
+  </ul>
+
+  <h4>Disclaimer</h4>
+
+  <ul>
+    <li>The GEBCO Grid should NOT be used for navigation or for any other purpose involving safety at sea.</li>
+
+    <li>The GEBCO Grid is made available 'as is'. While every effort has been made to ensure reliability within the limits of present knowledge, the accuracy and completeness of The GEBCO Grid cannot
+    be guaranteed. No responsibility can be accepted by GEBCO, IHO, IOC, or those involved in its creation or publication for any consequential loss, injury or damage arising from its use or for
+    determining the fitness of The GEBCO Grid for any particular use.</li>
+
+    <li>The GEBCO Grid is based on bathymetric data from many different sources of varying quality and coverage.</li>
+
+    <li>As The GEBCO Grid is an information product created by interpolation of measured data, the resolution of The GEBCO Grid may be significantly different to that of the resolution of the
+    underlying measured data.</li>
+  </ul>
+
+  <h3>9.0 Reporting bugs in the GEBCO Grid</h3>
+
+  <p>While every effort is made to produce an error free grid, some artefacts may still appear in the data set. Please see our <a href=
+  "https://www.gebco.net/data_and_products/gridded_bathymetry_data/data_set_errata/">errata web page</a> for information on known bugs in the dataset.</p>
+
+  <p>If you find any anomalies in the grid then please report them via email (<a href="mailto:gdacc@seabed2030.org">gdacc@seabed2030.org</a>), giving the problem location, and we will
+  investigate.</p>
+
+  <h3>10.0 References</h3>
+
+  <p>Olson, C J, Becker, J J and Sandwell, D T (2014). A new global bathymetry map at 15 arcsecond resolution for resolving seafloor fabric: SRTM15_PLUS, AGU Fall Meeting Abstracts 2014.</p>
+
+  <p>Becker, J J, D T Sandwell, W H F Smith, J Braud, B Binder, J Depner, D Fabre, J. Factor, S Ingalls, S-H Kim, R Ladner, K Marks, S Nelson, A Pharaoh, R Trimmer, J Von Rosenberg, G Wallace, P
+  Weatherall (2009). Global Bathymetry and Elevation Data at 30 Arc Seconds Resolution: SRTM30_PLUS, Marine Geodesy, 32:4, 355-371.</p>
+
+  <p>Sandwell, D T., R D M&uuml;ller, W H F Smith, E Garcia, R Francis (2014). New global marine gravity model from CryoSat-2 and Jason-1 reveals buried tectonic structure, Science, Vol. 346, no.
+  6205, pp. 65-67, <a href="http://science.sciencemag.org/content/346/6205/65">doi: 10.1126/science.1258213</a>.</p>
+
+  <p>Smith, W H F and D T Sandwell (1997). Global seafloor topography from satellite altimetry and ship depth soundings, Science, v. 277, p. 1957-1962, 26 Sept.</p>
+
+  <p>Hell, B and M Jakobsson (2011), Gridding heterogeneous bathymetric data sets with stacked continuous curvature splines in tension, Mar. Geophys. Res., 32(4), 493-501, <a href=
+  "https://link.springer.com/article/10.1007/s11001-011-9141-1">doi:10.1007/s11001-011-9141-1</a>.</p>
+
+  <p>Fretwell, P, H D Pritchard D G Vaughan, J L Bamber, N E Barrand, R Bell, C. Bianchi, R G Bingham, D D Blankenship, G Casassa, G Catania, D Callens, H Conway, A J Cook, H F J Corr, D Damaske,V
+  Damm, F Ferraccioli, R Forsberg, S Fujita, Y Gim, P Gogineni, J A Griggs, R C A Hindmarsh, P Holmlund, J W Holt, R W Jacobel, A Jenkins, W Jokat, T Jordan, E C King, J Kohler, W Krabill, M
+  Riger-Kusk, K A Langley, G Leitchenkov, C Leusche, B P Luyendyk, K Matsuoka, J Mouginot,F O Nitsche, Y Nogi, O A Nost, S V Popov, E Rignot, D M Rippin, A Rivera, J Roberts, N Ros,M J Sieger, A M
+  Smith, D Steinhage, M Studinger, B Sun, B K Tinto, B C Welch, D Wilson, D A Young, C Xiangbin and A Zirizzotti (2013). Bedmap2: improved ice bed, surface and thickness datasets for Antarctica, The
+  Cryosphere, 7, 375-393, 2013. <a href="https://doi.org/10.5194/tc-7-375-2013">doi.org/10.5194/tc-7-375-2013</a></p>
+
+  <h3>11.0 Data sets included in the GEBCO_2019 Grid</h3>
+
+  <h4>Compilations and gridded contributions</h4>
+
+  <table border="2" cellpadding="5">
+    <tr>
+      <td><strong>Source</strong></td>
+
+      <td><strong>Description and Reference</strong></td>
+    </tr>
+
+    <tr>
+      <td>Scripps Institution of Oceanography</td>
+
+      <td><strong>SRTM15+ v1</strong><br />
+      Olson, C J, J J Becker and D T Sandwell (2016). SRTM15+: Data fusion of Shuttle Radar Topography Mission (SRTM) land topography with measured and estimated seafloor topography <a href=
+      "https://catalog.data.gov/dataset/srtm15-plus-data-fusion-of-shuttle-radar-topography-mission-srtm-land-topography-with-measured-">(NCEI Accession 0150537)</a>.<br />
+      Data resampled to cell registered format for GEBCO.</td>
+    </tr>
+
+    <tr>
+      <td>Alaska Fisheries Science Center of the US National Oceanic and Atmospheric Administration's National Marine Fisheries Service</td>
+
+      <td><strong>Bathymetry data from the Alaska bathymetry compilations for the Aleutian Islands, central Gulf of Alaska and Norton Sound.</strong><br />
+      <a href="https://www.afsc.noaa.gov/RACE/groundfish/Bathymetry/default.htm">https://www.afsc.noaa.gov/RACE/groundfish/Bathymetry/default.htm</a></td>
+    </tr>
+
+    <tr>
+      <td>Arndt NE Greenland model</td>
+
+      <td><strong>Digital bathymetric model of NE Greenland</strong><br />
+      Arndt, J E, W Jokat, B Dorschel, R Myklebust, J A Dowdeswell and J Evans (2015). A new bathymetry of the Northeast Greenland continental shelf: Constraints on glacial and other processes.
+      Geochemistry, Geophysics, Geosystems. 16. <a href="https://doi.org/10.1002/2015GC005931.">doi:10.1002/2015GC005931</a></td>
+    </tr>
+
+    <tr>
+      <td>Baltic Sea Bathymetry Database (BSBD) team</td>
+
+      <td><strong>Baltic Sea Hydrographic Commission (2013). Baltic Sea Bathymetry Database version 0.9.3</strong><br />
+      Downloaded from:<br />
+      <a href="http://data.bshc.pro/">http://data.bshc.pro/</a></td>
+    </tr>
+
+    <tr>
+      <td>Bureau of Ocean Energy Management (BOEM)</td>
+
+      <td><strong>Northern Gulf of Mexico Deepwater Bathymetry Grid from 3D Seismic</strong><br />
+      <a href="https://www.boem.gov/Gulf-of-Mexico-Deepwater-Bathymetry/">https://www.boem.gov/Gulf-of-Mexico-Deepwater-Bathymetry/</a></td>
+    </tr>
+
+    <tr>
+      <td>Canadian Hydrographic Service</td>
+
+      <td><strong>Non-Navigational (NONNA-100) Bathymetric Data</strong>: represent all currently validated, digital bathymetric sources acquired by CHS, combined at a resolution of approximately 100
+      metres. Contains information licensed under the Open Government Licence - Canada.<br />
+      <a href="https://open.canada.ca/data/en/dataset/d3881c4c-650d-4070-bf9b-1e00aabf0a1d">https://open.canada.ca/data/en/dataset/d3881c4c-650d-4070-bf9b-1e00aabf0a1d</a></td>
+    </tr>
+
+    <tr>
+      <td>Deep Reef Explorer (<a href="www.deepreef.org">www.deepreef.org</a>)</td>
+
+      <td><strong>High-resolution depth model for the Great Barrier Reef - 30</strong><br />
+      Beaman, R J (2018). High-resolution depth model for the Great Barrier Reef - 30 m. Geoscience Australia, Canberra, Australia.<br />
+      <a href="http://pid.geoscience.gov.au/dataset/115066">http://pid.geoscience.gov.au/dataset/115066</a></td>
+    </tr>
+
+    <tr>
+      <td>Deep Reef Explorer (<a href="www.deepreef.org">www.deepreef.org</a>)</td>
+
+      <td><strong>High-resolution depth model for Northern Australia - 100m, V3</strong><br />
+      Beaman, R J (2010). Project 3D-GBR: A high-resolution depth model for the Great Barrier Reef and Coral Sea. Marine and Tropical Sciences Research Facility (MTSRF) Project 2.5i.1a Final Report,
+      MTSRF, Cairns, Australia, pp. 13 plus Appendix 1 (Internal Report).<br />
+      <a href="https://www.deepreef.org/bathymetry/65-3dgbr-bathy.html">https://www.deepreef.org/bathymetry/65-3dgbr-bathy.html</a></td>
+    </tr>
+
+    <tr>
+      <td>EMODnet</td>
+
+      <td><strong>The EMODnet Digital Bathymetry (DTM) - 2018</strong>.<br />
+      A multilayer bathymetric product for Europe's sea basins, based upon more than 9400 bathymetric survey data sets and Composite DTMs gathered from 49 data providers from 24 countries<br />
+      EMODnet Bathymetry Consortium (2018): EMODnet Digital Bathymetry (DTM).<br />
+      <a href="http://doi.org/10.12770/18ff0d48-b203-4a65-94a9-5fd8b0ec35f6">http://doi.org/10.12770/18ff0d48-b203-4a65-94a9-5fd8b0ec35f6</a></td>
+    </tr>
+
+    <tr>
+      <td>Geological Survey of Israel</td>
+
+      <td>Hall, J K (2002). Bathymetric compilations of the seas around Israel I: The Caspian and Black Seas. Geological Survey of Israel, Current Research, Vol. 13, December 2002.</td>
+    </tr>
+
+    <tr>
+      <td>Geomar</td>
+
+      <td><strong>Bathymetric grid for part of the Red Sea region and the South East Pacific region</strong>:<br />
+      <a href="https://doi.org/10.1594/PANGAEA.860374">https://doi.org/10.1594/PANGAEA.860374</a> and <a href="https://doi.org/10.1594/PANGAEA.785515">https://doi.org/10.1594/PANGAEA.785515</a></td>
+    </tr>
+
+    <tr>
+      <td>Geoscience Australia</td>
+
+      <td><strong>High-resolution depth model for Northern Australia - 30 m (2018)</strong><br />
+      <a href="https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/121620">https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/121620</a></td>
+    </tr>
+
+    <tr>
+      <td>Geoscience Australia</td>
+
+      <td><strong>50m Multibeam Dataset of Australia 2012</strong><br />
+      Wilson, O, C Buchanan and M Spinoccia (2012). 50m Multibeam Dataset of Australia 2012<br />
+      <a href="https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/73842">https://ecat.ga.gov.au/geonetwork/srv/eng/catalog.search#/metadata/73842</a></td>
+    </tr>
+
+    <tr>
+      <td>Geoscience Australia</td>
+
+      <td><strong>Australian Bathymetry and Topography Grid, June 2009</strong><br />
+      ANZLIC unique identifier: ANZCW0703013116, Geoscience Australia<br />
+      Whiteway, T, (2009). Australian Bathymetry and Topography Grid, June 2009. Scale 1:5000000. Geoscience Australia, Canberra. <a href=
+      "http://dx.doi.org/10.4225/25/53D99B6581B9A">http://dx.doi.org/10.4225/25/53D99B6581B9A.</a></td>
+    </tr>
+
+    <tr>
+      <td>Geoscience Australia</td>
+
+      <td><strong>MH370 - Phase One Data Release</strong><br />
+      <a href="http://marine.projects.ga.gov.au/mh370-phase-one-data-release.html">http://marine.projects.ga.gov.au/mh370-phase-one-data-release.html</a></td>
+    </tr>
+
+    <tr>
+      <td>Global Multi-resolution Topography Data Synthesis (GMRT)</td>
+
+      <td><strong>GMRT version 3.5</strong><br />
+      A multi-resolutional compilation of edited multibeam sonar data collected by scientists and institutions worldwide, that is reviewed, processed and gridded by the GMRT Team and merged into a
+      single continuously updated compilation of global elevation data, provided at 15 arc sec resolution to GEBCO.<br />
+      <a href="https://www.gmrt.org/">https://www.gmrt.org/</a></td>
+    </tr>
+
+    <tr>
+      <td>Global Sea Mineral Resources NV (GSR), DEME Group, Belgium</td>
+
+      <td>Bathymetric grid, based on multibeam data, supplied to GEBCO for a region of the North Pacific, 1,800 km southwest of the Mexican Baja Peninsula.</td>
+    </tr>
+
+    <tr>
+      <td>IceBridge BedMachine Greenland</td>
+
+      <td><strong>IceBridge BedMachine Greenland, Version 3, -80 - 10&deg;E; 60-90&deg;N</strong>:<br />
+      Bed topography/bathymetry map of Greenland based on mass conservation, multi-beam data, and other techniques.<br />
+      Morlighem, M, C N Williams, E Rignot, L An, J E Arndt, J L Bamber, G Catania, N Chauch&eacute;, J A Dowdeswell, B Dorschel, I Fenty, K Hogan, I Howat, A Hubbard, M Jakobsson, T M Jordan, K K
+      Kjeldsen, R Millan, L Mayer, J Mouginot, B P Y No&euml;l, C O'Cofaigh, S Palmer, S Rysgaard, H Seroussi, M J Siegert, P Slabon, F Straneo, M R van den Broeke, W Weinrebe, M Wood and Zinglersen
+      (2017). BedMachine v3: Complete Bed Topography and Ocean Bathymetry Mapping of Greenland From Multibeam Echo Sounding Combined With Mass Conservation. Geophysical Research Letters 44,
+      11,051-011,061, <a href="https://doi.org/10.1002/2017GL074954">doi:10.1002/2017GL074954</a><br />
+      <a href="http://nsidc.org/data/IDBMG4">http://nsidc.org/data/IDBMG4</a></td>
+    </tr>
+
+    <tr>
+      <td>International Bathymetric Chart of the Arctic Ocean (IBCAO)</td>
+
+      <td><strong>IBCAO v3 bathymetric grid, 180&deg;W-180&deg;E; 64&deg;N-90&deg;N:</strong><br />
+      The grid for the Arctic Ocean area is based on the <strong>IBCAO V3 data base</strong>as documented in:<br />
+      Jakobsson, M, L A Mayer, B Coakley, J A Dowdeswell, S Forbes, B Fridman, H Hodnesdal, R Noormets, R Pedersen, M Rebesco, H-W Schenke, Y Zarayskaya, D Accettella, A Armstrong, R M Anderson, P
+      Bienhoff, A Camerlenghi, I Church, M Edwards, J V Gardner, J K Hall, B Hell, O B Hestvik, Y Kristoffersen, C Marcussen, R Mohammad, D Mosher, S V Nghiem, M T Pedrosa, P G Travaglini and P
+      Weatherall (2012). The International Bathymetric Chart of the Arctic Ocean (IBCAO) Version 3.0. Geophysical Research Letters, <a href="https://doi.org/10.1029/2012GL052219">doi:
+      10.1029/2012GL052219</a></td>
+    </tr>
+
+    <tr>
+      <td>International Bathymetric Chart of the Southern Ocean (IBCSO)</td>
+
+      <td><strong>IBCSO v1 bathymetric grid, 180&deg;W-180&deg;E; 60S-90&deg;S:</strong><br />
+      The grid for the Southern Ocean area is based on the <strong>IBCSO V1 data base</strong> as documented in the source id list: <a href=
+      "https://www.scar.org/science/ibcso/resources/">https://www.scar.org/science/ibcso/resources/</a><br />
+      Arndt, J E, H W Schenke, M Jakobsson, F Nitsche, G Buys, B Goleby, M Rebesco, F Bohoyo, J K Hong, J Black, R Greku, G Udintsev, F Barrios, W Reynoso-Peralta, T Morishita and R Wigley (2013).
+      The International Bathymetric Chart of the Southern Ocean (IBCSO) Version 1.0 - A new bathymetric compilation covering circum-Antarctic waters. Geophysical Research Letters, <a href=
+      "https://doi.org/10.1002/grl.50413">doi: 10.1002/grl.50413</a></td>
+    </tr>
+
+    <tr>
+      <td>Israeli Ministry of National Infrastructure, Energy and water Resources</td>
+
+      <td><strong>Israel EEZ</strong><br />
+      Hall J K, S Lippman, G Tibor, M Gardosh, A R Sade, H Sade, A Golan, G Amit, L Gur-Arie and I Nissim. A New Bathymetric Map for the Israeli EEZ: Preliminary Results<br />
+      <a href="http://www.energy.gov.il">www.energy.gov.il</a></td>
+    </tr>
+
+    <tr>
+      <td>Japan Oceanographic Data Center (JODC) of the Japan Coast Guard</td>
+
+      <td><strong>Japan Coast Guard Grid for the North Western Pacific Ocean</strong><br />
+      Provided at 30 arc-second intervals, Tthe grid for this area was originally developed from the following source data::<br />
+      Multibeam data from the Japan Coast Guard, A pre-prepared 500m interval grid based on measured sounding data: J-EGG500 grid JODC-Expert Grid data for Geographic -500m<br />
+      <a href="http://www.jodc.go.jp/data_set/jodc/jegg_intro.html">www.jodc.go.jp/data_set/jodc/jegg_intro.html</a></td>
+    </tr>
+
+    <tr>
+      <td>National Institute of Water and Atmospheric Research Ltd (NIWA), Wellington</td>
+
+      <td><strong>New Zealand Bathymetry compilation - 250 m</strong><br />
+      Mitchell, J S, K A Mackay, H L Neil, E J Mackay, A Pallentin and P Notman (2012). Undersea New Zealand, 1:5,000,000. NIWA Chart, Miscellaneous Series No. 92</td>
+    </tr>
+
+    <tr>
+      <td>NOAA Alaskan fisheries</td>
+
+      <td><strong>Digitized chart soundings, Alaska</strong><br />
+      Proofed digitized historical chart soundings from 'smooth sheets' covering Alaskan waters.<br />
+      Zimmermann, M, A De Robertis and O Ormseth (2018). Verification of historical smooth sheet bathymetry for the Gulf of Alaska - Integrated Ecosystem Research Program. Deep Sea Research Part II:
+      Topical Studies in Oceanography. <a href="http://doi.org/doi:10.1016/j.dsr2.2018.06.006">doi:10.1016/j.dsr2.2018.06.006</a>.<br />
+      Zimmermann, M and M Prescott (2018). Bathymetry and Canyons of the Eastern Bering Sea Slope. Geosciences. 8. 184. <a href=
+      "http://doi.org/doi:10.3390/geosciences8050184">doi:10.3390/geosciences8050184</a>.<br />
+      <a href="https://noaa.maps.arcgis.com/home/item.html?id=c41002831ed34ce0b63727ed7d3636cc">https://noaa.maps.arcgis.com/home/item.html?id=c41002831ed34ce0b63727ed7d3636cc</a></td>
+    </tr>
+
+    <tr>
+      <td>Norwegian Hydrographic Service (NHS)</td>
+
+      <td><strong>Svalbard bathymetry grid</strong><br />
+      Released in 2016, this dataset includes modern multibeam data from surveys up until autumn 2015. Data is gridded to 10x10 m.<br />
+      <a href="https://www.kartverket.no/">https://www.kartverket.no/</a></td>
+    </tr>
+
+    <tr>
+      <td>Norwegian Polar Institute (NPI)</td>
+
+      <td><strong>Svalbard topography grid</strong><br />
+      New topographical data of Svalbard with updated glacial fronts from satellite imaging.<br />
+      <a href="https://toposvalbard.npolar.no/">https://toposvalbard.npolar.no/</a><br />
+      <a href="http://www.npolar.no/no/">http://www.npolar.no/no/</a></td>
+    </tr>
+
+    <tr>
+      <td>Nunaoil A/S</td>
+
+      <td>New bathymetry models in Baffin Bay, Northeast and Western Greenland.<br />
+      <a href="http://nunaoil.gl/">http://nunaoil.gl/</a></td>
+    </tr>
+
+    <tr>
+      <td>Olex AS, Norway (<a href="www.olex.no">www.olex.no</a>)</td>
+
+      <td>Data supplied to GEBCO for:<br />
+      areas of the North Atlantic off the west coast of Africa<br />
+      areas of the Northwest European Continental Shelf<br />
+      in the Arctic Ocean area</td>
+    </tr>
+
+    <tr>
+      <td>Service Hydrographique et Oc&eacute;anographique de la Marine (shom), France</td>
+
+      <td>Bathymetric data supplied in the form of grids, largely from multibeam and Lidar bathymetric surveys and transect cruises in areas of the Pacific, Atlantic and Indian Oceans, from the data
+      holdings and cruises of shom<br />
+      <a href="https://data.shom.fr/">https://data.shom.fr/</a></td>
+    </tr>
+
+    <tr>
+      <td>South West Indian Ocean Bathymetry Compilation (SWIOBC)</td>
+
+      <td>Dorschel, B, L Jensen, J E Arndt, G-J Brummer, H de Haas, A Fielies, D Franke, W Jokat, R Krocker, D Kroon, J P&auml;tzold, R R. Schneider, V Spie&szlig;, H Stollhofen, G Uenzelmann-Neben,
+      M Watkeys and E Wiles (2018). The Southwest Indian Ocean Bathymetric Compilation (SwIOBC). Geochemistry, Geophysics, Geosystems 19, no. 3 (March 2018): 968-76.<br />
+      <a href="https://doi.org/10.1002/2017GC007274">https://doi.org/10.1002/2017GC007274</a></td>
+    </tr>
+
+    <tr>
+      <td>University of Alaska Fairbanks and its College of Fisheries and Ocean Sciences</td>
+
+      <td><strong>Alaska Region Digital Elevation Model (ARDEM) Version 2.0.</strong><br />
+      Danielson, S L, E L Dobbins, M Jakobsson, M A Johnson, T J Weingartner, W J Williams and Y Zarayskaya (2015), Sounding the northern seas, Eos, 96, <a href=
+      "https://eos.org/project-updates/sounding-northern-seas">doi:10.1029/2015EO040975</a></td>
+    </tr>
+
+    <tr>
+      <td>University of New Hampshire Center for Coastal and Ocean Mapping/Joint Hydrographic Center (UNH/CCOM-JHC)</td>
+
+      <td><strong>United States Atlantic Law of the sea bathymetric grid, version 2017</strong><br />
+      <a href="https://ccom.unh.edu/theme/law-sea/law-of-the-sea-data/atlantic">https://ccom.unh.edu/theme/law-sea/law-of-the-sea-data/atlantic</a></td>
+    </tr>
+
+    <tr>
+      <td>US-Extended Continental Shelf (ECS) cruises</td>
+
+      <td>
+        Cruise data in:
+
+        <ul>
+          <li>Gulf of Alaska</li>
+
+          <li>Necker Ridge</li>
+
+          <li>Kingman Palmyra</li>
+
+          <li>Mendocino</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+
+  <h4>Multibeam Survey data</h4><br />
+  <a href="https://www.ngdc.noaa.gov/iho/">https://www.ngdc.noaa.gov/iho/</a>
+
+  <table border="2" cellpadding="5">
+    <tr>
+      <td><strong>Source</strong></td>
+
+      <td><strong>Description and Reference</strong></td>
+    </tr>
+
+    <tr>
+      <td>IHO DCDB</td>
+
+      <td>Bathymetric Soundings extracted from the data maintained by the International Hydrographic Organization (IHO) Data Center for Digital Bathymetry (DCDB) at the US National Centers for
+      Environmental Information (NCEI).<br />
+      <a href="https://www.ngdc.noaa.gov/iho/">https://www.ngdc.noaa.gov/iho/</a></td>
+    </tr>
+
+    <tr>
+      <td>Alfred Wegener Institute (AWI)</td>
+
+      <td>81 Cruises of Multibeam data in the Atlantic and Indian Ocean region.<br />
+      11 Cruises of multibeam data in the South and West Pacific:<br />
+      <a href="https://www.awi.de/en/">https://www.awi.de/en/</a></td>
+    </tr>
+
+    <tr>
+      <td>British Antarctic Survey (BAS)</td>
+
+      <td>Multibeam data from three cruises of the RRS James Clark Ross.<br />
+      <a href="https://www.bas.ac.uk/">https://www.bas.ac.uk/</a></td>
+    </tr>
+
+    <tr>
+      <td>Fugro</td>
+
+      <td>8 Cruises of Multibeam data in the Atlantic and Indian Ocean region.</td>
+    </tr>
+
+    <tr>
+      <td>Dufek (Sonne)</td>
+
+      <td>2 cruises in the Atlantic Ocean.</td>
+    </tr>
+
+    <tr>
+      <td>Geological Institute, Russian Academy of Sciences (GIN RAS)</td>
+
+      <td>Knipovich Ridge<br />
+      Multibeam data from four surveys with RV Akademik Nikolaj Strakhov of the Knipovich Ridge. Updated since IBCAO v3 with higher resolution.<br />
+      Zayonchek A V, H Brekke, S Yu. Sokolov, A O Mazarovich, K O Dobrolyubova, V N Efimov, A S Abramova, Yu A Zaraiskaya, A V Kokhan, E A Moroz, A A Peive, N P Chamov and K P Yampol'skii (2010). The
+      Structure of Continent-Ocean transition zone at North-West Barents Sea Margin (results of 24-26-th cruises of RV 'Akademik Nikolaj Strakhov', 2006-2009) - Structure and evolution of the
+      Lithosphere. Contribution of Russia to International Polar Year. Vol.4. M Paulsen. pp.111-157.<br />
+      <a href="http://atlantic.ginras.ru/download/exp/grd/grd_data.html">http://atlantic.ginras.ru/download/exp/grd/grd_data.html</a></td>
+    </tr>
+
+    <tr>
+      <td>Greenland Institute of Natural Resources</td>
+
+      <td>Crowd source data and multibeam data from Weinrebe Poseidon cruise.<br />
+      <a href="http://www.natur.gl/en/">http://www.natur.gl/en/</a></td>
+    </tr>
+
+    <tr>
+      <td>Indian Ocean Bathymetric Compilation</td>
+
+      <td>102 Cruises of Multibeam data in the Atlantic and Indian Ocean region.</td>
+    </tr>
+
+    <tr>
+      <td>Irish Marine Institute</td>
+
+      <td>3 Cruises of Multibeam data in the Atlantic and Indian Ocean region.</td>
+    </tr>
+
+    <tr>
+      <td>Japan Agency for Marine-Earth Science and Technology (JAMSTEC)</td>
+
+      <td>22 cruises of MBES data in the South and West Pacific Ocean region<br />
+      Data and Sample Research System for Whole Cruise Information in JAMSTEC<br />
+      <a href="http://www.godac.jamstec.go.jp/darwin/e">http://www.godac.jamstec.go.jp/darwin/e</a></td>
+    </tr>
+
+    <tr>
+      <td>Korea Polar Research Institute (KOPRI)</td>
+
+      <td>Multibeam data from Araon cruise ARA02B.<br />
+      <a href="https://eng.kopri.re.kr/">https://eng.kopri.re.kr/</a></td>
+    </tr>
+
+    <tr>
+      <td>MARUM - Center for Marine Environmental Sciences, University of Bremen</td>
+
+      <td>Multibeam data from two cruises of the RV Heincke.<br />
+      <a href="https://www.marum.de/en/index.html">https://www.marum.de/en/index.html</a></td>
+    </tr>
+
+    <tr>
+      <td>NASA-OMG</td>
+
+      <td>Multibeam mapping carried out by the Ocean Melting Greenland Project (OMG).<br />
+      Fenty, I, J K Willis, A Khazendar, S Dinardo, R Forsberg, I Fukumori, D Holland, M Jakobsson, D Moller, J Morison, A M&uuml;nchow, E Rignot, M Schodlok, A F Thompson, K Tinto, M Rutherford and
+      N Trenholm (2016). Oceans Melting Greenland: Early results from NASA's ocean-ice mission in Greenland. Oceanography 29(4):72-83, <a href=
+      "https://doi.org/10.5670/oceanog.2016.100">https://doi.org/10.5670/oceanog.2016.100</a>.<br />
+      <a href="https://omg.jpl.nasa.gov/portal/">https://omg.jpl.nasa.gov/portal/</a></td>
+    </tr>
+
+    <tr>
+      <td>OET-Nautilus</td>
+
+      <td>US Non - ECS Nautilus west coast cruises<br />
+      20 Cruises of Multibeam data in the North Pacific.<br />
+      <a href="https://nautiluslive.org/expedition-map">https://nautiluslive.org/expedition-map</a></td>
+    </tr>
+
+    <tr>
+      <td>Stockholm University, Geological Sciences</td>
+
+      <td>Multibeam data from icebreaker Oden expeditions, e.g. Petermann 2015, SWERUS-C3 2014 and LOMROG 2012.<br />
+      Also included is the Vega expedition in 2013, with Explorer of Sweden.<br />
+      <a href="https://www.su.se/geo/english/">https://www.su.se/geo/english/</a><br />
+      Oden Mapping data: <a href="https://oden.geo.su.se/">https://oden.geo.su.se/</a></td>
+    </tr>
+
+    <tr>
+      <td>TelePost Greenland A/S</td>
+
+      <td>Multibeam data from South Greenland on the RV OGS Explora.<br />
+      <a href="https://telepost.gl/">https://telepost.gl/</a></td>
+    </tr>
+
+    <tr>
+      <td>The University Centre in Svalbard (UNIS)</td>
+
+      <td>Multibeam data from Svalbard, from four cruises on the RV Helmer Hanssen.<br />
+      <a href="https://www.unis.no">https://www.unis.no/</a></td>
+    </tr>
+
+    <tr>
+      <td>University of New Hampshire, Center for Coastal and Ocean Mapping, Joint Hydrography Centre (UNH/CCOM-JHC)</td>
+
+      <td>10 Cruises of Multibeam data in the North Pacific and the HLY1202 Arctic cruise.<br />
+      Multibeam data from cruise HLY1202 with icebreaker Healy.<br />
+      <a href="https://ccom.unh.edu/sites/default/files/publications/HEALY1202_FINAL_CRUISE%20REPORT.pdf">https://ccom.unh.edu/sites/default/files/publications/HEALY1202_FINAL_CRUISE
+      REPORT.pdf</a></td>
+    </tr>
+  </table>
+
+  <h4>Other contributions</h4>
+
+  <table border="2" cellpadding="5">
+    <tr>
+      <td><strong>Source</strong></td>
+
+      <td><strong>Description and Reference</strong></td>
+    </tr>
+
+    <tr>
+      <td>Member States of the International Hydrographic Organization (IHO)</td>
+
+      <td>Bathymetric soundings extracted from Electronic Navigation Charts (ENCs) provided by IHO Member States. Access further details about ENC contributions made to GEBCO. <a href=
+      "https://www.gebco.net/data_and_products/gridded_bathymetry_data/shallow_water_bathymetry">www.gebco.net/data_and_products/gridded_bathymetry_data/shallow_water_bathymetry</a></td>
+    </tr>
+
+    <tr>
+      <td>Geological Survey of Denmark and Greenland (GEUS)</td>
+
+      <td>Singlebeam data from BB2012, Baffin Bay, Greenland.<br />
+      <a href="https://eng.geus.dk/">https://eng.geus.dk/</a></td>
+    </tr>
+
+    <tr>
+      <td>National Geospatial-Intelligence Agency (NGA)</td>
+
+      <td>Singlebeam data in Melville Bay, Greenland.</td>
+    </tr>
+
+    <tr>
+      <td>South African Navy Hydrographic Office</td>
+
+      <td>ENC data for South African Waters</td>
+    </tr>
+
+    <tr>
+      <td>US Navy</td>
+
+      <td>Singlebeam data in Arctic region from US Navy submarines USS New Hampshire, USS Connecticut and USS Topeka.<br />
+      <a href="https://www.navy.mil/">https://www.navy.mil/</a></td>
+    </tr>
+  </table>
+</body>
+</html>
