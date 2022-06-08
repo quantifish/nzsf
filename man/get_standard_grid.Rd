@@ -8,7 +8,8 @@ get_standard_grid(
   cell_size,
   bounding_box,
   anchor = c(0, 422600),
-  return_raster = TRUE
+  return_raster = TRUE,
+  crs = proj_nzsf()
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ get_standard_grid(
 \item{anchor}{the point to anchor the grid to}
 
 \item{return_raster}{return a raster or polygons}
+
+\item{crs}{the CRS to use}
 }
 \value{
 New Zealand's standard grid polygon as a \code{sf} object or as a raster.
