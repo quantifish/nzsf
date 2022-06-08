@@ -40,6 +40,7 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' Get Fisheries New Zealand standard grid definitions
 #' 
 #' @inheritParams get_standard_grid_origin
+#' @param crs the CRS to use
 #' @param return_raster return a raster or polygons
 #' @return New Zealand's standard grid polygon as a \code{sf} object or as a raster.
 #'
@@ -50,12 +51,12 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' @importFrom raster extent crs
 #' @export
 #' 
-get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), return_raster = TRUE) {
+get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), return_raster = TRUE, crs = proj_nzsf()) {
   
   grid_origin <- get_standard_grid_origin(cell_size = cell_size, bounding_box = bounding_box, anchor = anchor)
   
   if (return_raster) {
-    grids <- raster(crs = proj_nzsf(), 
+    grids <- raster(crs = crs, 
                     xmn = grid_origin$xmin, 
                     ymn = grid_origin$ymin, 
                     xmx = grid_origin$xmax, 
@@ -65,7 +66,7 @@ get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), re
     grids <- bounding_box %>% 
       st_make_grid(cellsize = as.numeric(grid_origin["grid_size_km"]) * 1000, 
                    offset = as.numeric(grid_origin[c("xmin", "ymin")]), 
-                   crs = proj_nzsf()) %>%
+                   crs = crs) %>%
       st_as_sf()
   }
   
