@@ -25,6 +25,7 @@ Imports:
     rnaturalearthdata,
     rnaturalearthhires,
     ggspatial,
+    BH,
     lwgeom,
     viridis,
     reshape2,
@@ -41,7 +42,10 @@ Suggests:
     roxygen2,
     testthat,
     usethis
+Remotes:
+    ropensci/rnaturalearthhires
 LazyData: true
+LazyDataCompression: bzip2
 RoxygenNote: 7.2.0
 VignetteBuilder: knitr
 Collate: 
