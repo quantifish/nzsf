@@ -353,6 +353,19 @@ p1 + p2
 ```
 
 ```{r echo=TRUE, fig.height=8, fig.width=8, message=FALSE}
+eez <- get_statistical_areas("EEZ", proj = 4326) %>%
+  st_shift_longitude()
+r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), return_raster = FALSE, crs = 4326)
+
+ggplot(data = eez) +
+  geom_sf()
+
+ggplot(data = r) +
+  geom_sf(fill = "red", alpha = 0.1) +
+  plot_coast(proj = 4326) +
+  plot_clip(eez, proj = 4326) +
+  theme_bw()
+
 # library(ncdf4)
 # library(ncdf.tools)
 # library(ecmwfr)
