@@ -18,7 +18,8 @@ Depends:
     raster,
     sf
 Imports:
-    tidyverse,
+    gtools,
+    tidyr,
     stringr,
     rmapshaper,
     rnaturalearth,
