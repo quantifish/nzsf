@@ -5,6 +5,16 @@
 #' @format Simple feature collection with 153 features and 29 fields:
 #' @source Gebco
 #'
+"nz_rivers"
+
+
+#' Gebco depth
+#'
+#' Gebco depth as a raster.
+#'
+#' @format Simple feature collection with 153 features and 29 fields:
+#' @source Gebco
+#'
 "gebco"
 
 
