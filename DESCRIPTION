@@ -47,20 +47,22 @@ Remotes:
     ropensci/rnaturalearthhires
 LazyData: true
 LazyDataCompression: bzip2
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 VignetteBuilder: knitr
 Collate: 
-    'data.R'
-    'get-coast.R'
-    'get-depth.R'
-    'projection.R'
-    'get-statistical-areas.R'
-    'get-fnz-standard-grid.R'
-    'get-marine-reserves.R'
-    'get-qma.R'
-    'get-raster.R'
     'nzsf.R'
+    'data.R'
+    'projection.R'
+    'theme-nzsf.R'
+    'get-fnz-standard-grid.R'
+    'plot-coast.R'
+    'plot-rivers.R'
+    'plot-depth.R'
+    'plot-statistical-areas.R'
     'plot-ccamlr.R'
     'plot-ccsbt.R'
+    'plot-marine-reserves.R'
+    'plot-qma.R'
+    'plot-raster.R'
     'plot-brms.R'
-    'theme-nzsf.R'
+    'plot-clip.R'
