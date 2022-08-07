@@ -1,4 +1,3 @@
-# devtools::install_github("GuangchuangYu/hexSticker")
 library(hexSticker)
 library(nzsf)
 library(ggspatial)
