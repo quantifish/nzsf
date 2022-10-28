@@ -86,14 +86,10 @@ ggplot() +
 sf_stat <- get_statistical_areas("CRA")
 sf_diff <- st_difference(sf_stat, sf_coast)
 
-lab1 <- sf_diff %>% 
-  st_centroid()
+lab1 <- sf_diff %>% st_centroid()
+lab2 <- sf_diff %>% st_point_on_surface()
 
-lab2 <- sf_diff %>% 
-  st_point_on_surface()
-
-bb <- sf_qma %>%
-  st_bbox()
+bb <- sf_qma %>% st_bbox()
 # bb[1] <- -750000 # xmin
 # bb[2] <- -990000 # ymin
 # bb[3] <- 800000 # xmax
@@ -102,10 +98,10 @@ bb <- sf_qma %>%
 p <- ggplot() +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
-  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_text(data = lab, aes(label = QMA), colour = colour_qma) +
   # geom_sf_label(data = lab1, aes(label = area), size = 2.5) +
-  geom_sf_text(data = lab1, aes(label = area), size = 2, colour = colour_stat) +
+  # geom_sf_text(data = lab1, aes(label = area), size = 2, colour = colour_stat) +
   annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
   plot_clip(x = bb, expand = TRUE)
 
@@ -162,7 +158,7 @@ ggplot() +
 p1 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab1, aes(label = area), colour = colour_stat) +
   plot_clip(x = bbox) +
   # geom_sf_text(data = lab %>% filter(QMA %in% stock), 
@@ -172,7 +168,7 @@ p1 <- ggplot() +
 
 pi1 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -203,7 +199,7 @@ box2 <- stat2 %>%
 p2 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab2, aes(label = area), colour = colour_stat) +
   plot_clip(x = box2, expand = FALSE) +
   annotation_scale(location = "br", unit_category = "metric") +
@@ -211,7 +207,7 @@ p2 <- ggplot() +
 
 pi2 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box2, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -268,7 +264,7 @@ box3 <- stat3 %>%
 p2 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab3, aes(label = area), colour = colour_stat) +
   plot_clip(x = box3, expand = FALSE) +
   annotation_scale(location = "tl", unit_category = "metric") +
@@ -276,7 +272,7 @@ p2 <- ggplot() +
 
 pi2 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box3, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -307,7 +303,7 @@ box4 <- stat4 %>%
 p2 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab4, aes(label = area), colour = colour_stat) +
   plot_clip(x = box4, expand = FALSE) +
   annotation_scale(location = "tr", unit_category = "metric") +
@@ -315,7 +311,7 @@ p2 <- ggplot() +
 
 pi2 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box4, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -350,7 +346,7 @@ box5 <- stat5 %>%
 p2 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab5, aes(label = area), colour = colour_stat) +
   plot_clip(x = box5, expand = FALSE) +
   annotation_scale(location = "tl", unit_category = "metric") +
@@ -358,7 +354,7 @@ p2 <- ggplot() +
 
 pi2 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box5, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -393,7 +389,7 @@ box7 <- box7 %>%
 p7 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab7, aes(label = area), colour = colour_stat) +
   plot_clip(x = box7, expand = FALSE) +
   annotation_scale(location = "tl", unit_category = "metric") +
@@ -401,7 +397,7 @@ p7 <- ggplot() +
 
 pi7 <- ggplot() +
   plot_qma(qma = "CRA", colour = colour_qma, fill = "white", size = 0.3) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box7, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
@@ -438,7 +434,7 @@ box8 <- stat8 %>%
 p8 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
-  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3) +
+  plot_coast(resolution = "large", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
   geom_sf_label(data = lab8, aes(label = area), colour = colour_stat) +
   plot_clip(x = box8, expand = FALSE) +
   annotation_scale(location = "br", unit_category = "metric") +
@@ -446,7 +442,7 @@ p8 <- ggplot() +
 
 pi8 <- ggplot() +
   plot_qma(qma = "CRA", fill = "white", colour = colour_qma, size = 0.3) +
-  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05) +
+  plot_coast(resolution = "1500k", fill = colour_land, colour = colour_coast, size = 0.05, rivers = FALSE) +
   geom_sf(data = box8, colour = NA, fill = colour_box, alpha = 0.5) +
   plot_clip(x = "NZ") +
   theme_void()
