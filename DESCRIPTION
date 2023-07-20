@@ -6,8 +6,9 @@ Authors@R:
            family = "Webber",
            role = c("aut", "cre"),
            email = "darcy.webber@quantifish.co.nz")
-Description: New Zealand Spatial Features (nzsf) is a package for creating scientific maps in New Zealand waters.
-URL: https://github.com/quantifish/nzsf
+Description: New Zealand Spatial Features (nzsf) is a package for creating 
+    scientific maps in New Zealand waters.
+URL: https://github.com/quantifish/nzsf, http://www.quantifish.co.nz/nzsf/
 BugReports: https://github.com/quantifish/nzsf/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -47,7 +48,7 @@ Remotes:
     ropensci/rnaturalearthhires
 LazyData: true
 LazyDataCompression: bzip2
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 VignetteBuilder: knitr
 Collate: 
     'nzsf.R'

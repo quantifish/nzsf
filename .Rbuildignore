@@ -11,3 +11,7 @@ logo.png
 
 AEBR-283-R-Code-For-Standardised-Grids-For-New-Zealand-Marine-Science-Outputs.pdf
 standard_grid_BWBFJB_RM.docx
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
