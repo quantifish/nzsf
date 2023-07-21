@@ -96,15 +96,6 @@ vri <- pts1 %>%
   summarise(z = sum(z)) %>%
   st_intersection(CCSBT3994)
 
-# unique(gebco_contours$DEPTH)
-# x <- gebco_contours %>%
-#   st_make_valid() %>%
-#   # filter(DEPTH %in% c("-100", "-1000", "-2000", "-5000", "-10000")) %>%
-#   filter(DEPTH %in% c("-100", "-1000", "-10000")) %>%
-#   st_transform(crs = proj_ccsbt()) %>%
-#   st_crop(st_bbox(CCSBT3994)) %>%
-#   st_simplify(dTolerance = 1e5)
-
 ggplot() +
   geom_sf(data = vri, aes(fill = z), colour = NA) +
   scale_fill_viridis("Variable", alpha = 0.7, na.value = NA) +

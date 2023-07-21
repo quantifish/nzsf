@@ -13,9 +13,7 @@
 #' @import sf
 #' @export
 #' 
-get_coast <- function(proj = proj_nzsf(), 
-                      resolution = "medium", 
-                      keep = 1) {
+get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
   
   if (resolution %in% c("large", "high", "10")) {
     x <- ne_countries(scale = "large", returnclass = "sf")
@@ -52,9 +50,7 @@ get_coast <- function(proj = proj_nzsf(),
 #' @importFrom sf st_transform
 #' @export
 #' 
-plot_coast <- function(proj = proj_nzsf(), 
-                       resolution = "medium", 
-                       keep = 1,
+plot_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1,
                        rivers = FALSE, ...) {
   
   x <- get_coast(proj = proj, resolution = resolution, keep = keep)
