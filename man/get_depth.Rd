@@ -19,12 +19,6 @@ New Zealands depth polylines as a \code{sf} object.
 \description{
 Get depth polylines around New Zealand
 }
-\examples{
-x <- get_depth(resolution = "low")
-ggplot() +
-  geom_sf(data = x, colour = "lightblue")
-
-}
 \seealso{
 \code{\link{plot_depth}}
 }

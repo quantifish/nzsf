@@ -12,10 +12,6 @@
 #' @importFrom rnaturalearth ne_countries
 #' @import sf
 #' @export
-#' @examples
-#' x <- get_coast(resolution = "low")
-#' ggplot() +
-#'   geom_sf(data = x, fill = "forestgreen")
 #' 
 get_coast <- function(proj = proj_nzsf(), 
                       resolution = "medium", 
@@ -55,15 +51,11 @@ get_coast <- function(proj = proj_nzsf(),
 #' @import ggplot2
 #' @importFrom sf st_transform
 #' @export
-#' @examples
-#' ggplot() +
-#'   plot_coast(resolution = "150") +
-#'   plot_clip(x = "nz")
 #' 
 plot_coast <- function(proj = proj_nzsf(), 
                        resolution = "medium", 
                        keep = 1,
-                       rivers = TRUE, ...) {
+                       rivers = FALSE, ...) {
   
   x <- get_coast(proj = proj, resolution = resolution, keep = keep)
   

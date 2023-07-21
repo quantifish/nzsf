@@ -17,13 +17,6 @@ New Zealands statistical areas as a \code{sf} object.
 \description{
 CCAMLR coord
 }
-\examples{
-ggplot() +
-  geom_ccamlr(feature = "ssru") +
-  geom_ccamlr(feature = "land", fill = "black") +
-  coord_ccamlr()
-
-}
 \seealso{
 \code{\link{geom_ccamlr}}
 }

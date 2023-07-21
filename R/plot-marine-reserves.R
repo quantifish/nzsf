@@ -6,8 +6,6 @@
 #' @keywords reserve
 #' @importFrom utils data
 #' @export
-#' @examples
-#' get_marine_reserves()
 #' 
 get_marine_reserves <- function(proj = proj_nzsf()) {
   x <- nzsf::doc_marine_reserves

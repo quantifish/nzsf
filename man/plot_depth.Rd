@@ -32,11 +32,6 @@ A \code{ggplot} object of New Zealands depth polylines.
 \description{
 Plot depth polylines around New Zealand
 }
-\examples{
-ggplot() + 
-  plot_depth()
-
-}
 \seealso{
 \code{\link{get_depth}}
 }

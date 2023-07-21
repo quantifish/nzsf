@@ -19,11 +19,6 @@ A \code{ggplot} object of New Zealands depth polylines.
 \description{
 Plot GEBCO depth raster
 }
-\examples{
-ggplot() + 
-  geom_gebco()
-
-}
 \seealso{
 \code{\link{get_depth}}
 }

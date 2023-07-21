@@ -19,12 +19,6 @@ New Zealands coastline as a \code{sf} object.
 \description{
 Get the New Zealand coastline
 }
-\examples{
-x <- get_coast(resolution = "low")
-ggplot() +
-  geom_sf(data = x, fill = "forestgreen")
-
-}
 \seealso{
 \code{\link{plot_coast}}
 }

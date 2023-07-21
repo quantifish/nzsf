@@ -16,11 +16,6 @@
 #' @importFrom ggplot2 geom_sf
 #' @importFrom sf st_transform
 #' @export
-#' @examples
-#' ggplot() +
-#'   geom_ccamlr(feature = "ssru") +
-#'   geom_ccamlr(feature = "land", fill = "black") +
-#'   coord_ccamlr()
 #' 
 geom_ccamlr <- function(feature = "ssru", 
                         proj = proj_ccamlr(), 
@@ -83,11 +78,6 @@ geom_ccamlr <- function(feature = "ssru",
 #' @importFrom ggplot2 coord_sf
 #' @importFrom sf st_transform st_buffer st_bbox
 #' @export
-#' @examples
-#' ggplot() +
-#'   geom_ccamlr(feature = "ssru") +
-#'   geom_ccamlr(feature = "land", fill = "black") +
-#'   coord_ccamlr()
 #' 
 coord_ccamlr <- function(proj = proj_ccamlr(), ...) {
   

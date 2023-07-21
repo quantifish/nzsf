@@ -17,8 +17,3 @@ ggplot of New Zealands rivers.
 \description{
 Plot New Zealand rivers.
 }
-\examples{
-ggplot() +
-  plot_rivers()
-
-}

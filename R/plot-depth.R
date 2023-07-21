@@ -34,10 +34,6 @@ lookup_depth <- function(pts) {
 #' @importFrom dplyr filter
 #' @importFrom utils data
 #' @export
-#' @examples
-#' x <- get_depth(resolution = "low")
-#' ggplot() +
-#'   geom_sf(data = x, colour = "lightblue")
 #' 
 get_depth <- function(proj = proj_nzsf(), 
                       resolution = "low", 
@@ -73,9 +69,6 @@ get_depth <- function(proj = proj_nzsf(),
 #' @importFrom ggplot2 geom_sf
 #' @importFrom sf st_transform
 #' @export
-#' @examples
-#' ggplot() + 
-#'   plot_depth()
 #' 
 plot_depth <- function(proj = proj_nzsf(), 
                        resolution = "low", 
@@ -113,9 +106,6 @@ plot_depth <- function(proj = proj_nzsf(),
 #' @importFrom sf st_transform
 #' @importFrom stars st_as_stars geom_stars
 #' @export
-#' @examples
-#' ggplot() + 
-#'   geom_gebco()
 #' 
 geom_gebco <- function(proj = proj_nzsf(), 
                        downsample = 3, ...) {

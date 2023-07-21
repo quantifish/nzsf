@@ -7,9 +7,6 @@
 #' @importFrom ggplot2 geom_sf
 #' @importFrom sf st_transform
 #' @export
-#' @examples
-#' ggplot() +
-#'   plot_rivers()
 #' 
 plot_rivers <- function(proj = proj_nzsf(), ...) {
   

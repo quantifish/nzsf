@@ -15,8 +15,4 @@ New Zealands marine reserves as a \code{sf} object.
 \description{
 Get Marine Reserves
 }
-\examples{
-get_marine_reserves()
-
-}
 \keyword{reserve}

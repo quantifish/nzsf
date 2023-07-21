@@ -8,7 +8,7 @@ plot_coast(
   proj = proj_nzsf(),
   resolution = "medium",
   keep = 1,
-  rivers = TRUE,
+  rivers = FALSE,
   ...
 )
 }
@@ -28,12 +28,6 @@ ggplot of New Zealands coastline.
 }
 \description{
 Plot the New Zealand coastline.
-}
-\examples{
-ggplot() +
-  plot_coast(resolution = "150") +
-  plot_clip(x = "nz")
-
 }
 \seealso{
 \code{\link{get_coast}}
