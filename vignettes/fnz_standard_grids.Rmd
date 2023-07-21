@@ -1,7 +1,6 @@
 ---
 title: "Fisheries New Zealand standard grids"
 author: Darcy Webber, Sophie Mormede, Charles Edwards
-date: 26 June 2022
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -40,11 +39,10 @@ The standard grid can either be a simple feature collection of polygons (`return
 
 # Standard grids as polygons
 
-```{r EEZ_eg, fig.height=7, fig.width=7, fig.cap="Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (red lines), and the origin (green point)."}
+```{r echo=TRUE, message=FALSE}
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf())
 
-bb_eez <- st_bbox(eez) %>% 
-  st_as_sfc()
+bb_eez <- st_bbox(eez) %>% st_as_sfc()
 
 grd256_eez <- get_standard_grid(cell_size = 256, 
                                 bounding_box = st_bbox(eez), 
@@ -53,8 +51,11 @@ grd256_eez <- get_standard_grid(cell_size = 256,
 grd064_eez <- get_standard_grid(cell_size = 64, 
                                 bounding_box = st_bbox(eez), 
                                 return_raster = FALSE)
+```
 
-# Plot and check with center point and bounding box
+Plot and check with center point and bounding box
+
+```{r EEZ_eg, fig.height=7, fig.width=7, fig.cap="Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (red lines), and the origin (green point)."}
 ggplot() +
   geom_sf(data = grd064_eez,  colour = "lightblue",  fill = NA, alpha = 0.15) +
   geom_sf(data = grd256_eez,  colour = "tomato",  fill = NA, alpha = 0.5) +

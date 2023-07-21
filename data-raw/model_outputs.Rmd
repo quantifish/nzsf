@@ -1,0 +1,110 @@
+---
+title: "New Zealand Spatial Features: brms model outputs"
+author: Darcy Webber
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{New Zealand Spatial Features: brms model outputs}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r echo=TRUE}
+# library(tidyverse)
+library(tidyr)
+library(nzsf)
+library(viridis)
+library(brms)
+library(reshape2)
+library(patchwork)
+
+theme_set(theme_bw() + theme(axis.title = element_blank()))
+```
+
+# Simulate a data set
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+# Use Stewart Island as the land
+stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
+  filter(name == "Stewart Island/Rakiura") %>%
+  st_transform(crs = proj_nzsf()) %>%
+  st_buffer(dist = 45000)
+
+# Use the volcano data set to come up with some values
+data(volcano)
+
+colnames(volcano) <- seq(st_bbox(stewart)[2], st_bbox(stewart)[4], length.out = ncol(volcano))
+rownames(volcano) <- seq(st_bbox(stewart)[1], st_bbox(stewart)[3], length.out = nrow(volcano))
+
+v0 <- volcano %>% 
+  melt(varnames = c("x", "y"), value.name = "z") %>%
+  st_as_sf(coords = c("x", "y"), crs = proj_nzsf()) %>%
+  mutate(x = st_coordinates(.)[,1], y = st_coordinates(.)[,2])
+
+# Take a random sample of the points
+v <- v0 %>%
+  sample_n(size = 1000)
+```
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+# Plot the points
+ggplot() +
+  geom_sf(data = v, aes(colour = z)) +
+  scale_colour_viridis(alpha = 0.8) +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(colour = "Points", title = "Rakiura")
+```
+
+# Plotting spatial splines in brms
+
+Fit a model to the data using a `t2` spline. The default is `k = 10` and another model run with `k = 20` is trialed.
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+fit1 <- brm(z ~ t2(x, y), data = v, chains = 1, iter = 1000, file = "eg1_model_outputs")
+fit2 <- brm(z ~ t2(x, y, k = 20), data = v, chains = 1, iter = 1000, file = "eg2_model_outputs")
+```
+
+Use the brms `conditional_smooths` function to look at it the `t2` spline.
+
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+conditional_smooths(x = fit1, resolution = 100, smooths = "t2(x, y)")
+```
+
+```{r echo=TRUE, fig.height=50, fig.width=6, message=FALSE}
+p1 <- ggplot() +
+  plot_raster(data = v0, field = "z", fun = mean, nrow = 50, ncol = 80) +
+  scale_fill_viridis("volcano", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(title = "Observed")
+
+p2 <- ggplot() +
+  plot_conditional_smooths(x = fit1, resolution = 100, smooths = "t2(x, y)", 
+                           crs1 = proj_nzsf(), crs2 = proj_nzsf()) +
+  scale_fill_viridis("t2(x, y)", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(title = "Predicted (k = 10)")
+
+p3 <- ggplot() +
+  plot_conditional_smooths(x = fit2, resolution = 100, smooths = "t2(x, y, k = 20)", 
+                           crs1 = proj_nzsf(), crs2 = proj_nzsf()) +
+  scale_fill_viridis("t2(x, y)", alpha = 0.8, option = "plasma") +
+  plot_coast(resolution = "medium", fill = "black", colour = NA, size = 0.3) +
+  plot_clip(x = stewart) +
+  labs(title = "Predicted (k = 20)")
+
+p1 / p2 / p3
+```

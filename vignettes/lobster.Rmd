@@ -1,7 +1,5 @@
 ---
 title: "New Zealand Rock Lobster Maps"
-author: Darcy Webber
-date: 29 September 2021
 output: 
   rmarkdown::html_vignette:
     toc: true

@@ -1,6 +1,5 @@
 ---
 title: "New Zealand Spatial Features"
-author: Darcy Webber
 output: 
   rmarkdown::html_vignette:
     toc: true
@@ -20,17 +19,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `stsd` package makes extensive use of the `nzsf` package. The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`.
+The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`.
 
 ```{r echo=TRUE, message=FALSE}
 # devtools::install_github(repo = "ropensci/rnaturalearthhires")
-# library(rnaturalearthhires) # required for scale = "large" in ne_countries below
+# library(rnaturalearthhires) # required for scale = "large" in ne_countries
 library(rnaturalearth)
 library(rnaturalearthdata)
 
-# library(tidyverse)
-library(tidyr)
 library(nzsf)
+library(tidyverse)
 library(ggspatial)
 library(viridis)
 library(raster)
@@ -38,9 +36,7 @@ library(lwgeom)
 library(patchwork)
 library(stars)
 library(ggnewscale)
-```
 
-```{r echo=TRUE, message=FALSE}
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 ```
 
@@ -58,11 +54,12 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 #   st_transform(crs = proj_ccamlr())
 
 ggplot() +
-  geom_ccamlr("mpa", fill = "tomato", colour = "tomato", alpha = 0.25, size = 1.5) +
+  geom_ccamlr("mpa", fill = "tomato", colour = "tomato", alpha = 0.25) +
   geom_ccamlr("ssru") +
   geom_ccamlr("land", fill = "black") +
   geom_ccamlr("label") +
-  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical, pad_y = unit(1, "cm")) +
+  annotation_north_arrow(location = "tr", which_north = "true", 
+                         style = north_arrow_nautical, pad_y = unit(1, "cm")) +
   annotation_scale(location = "tr", unit_category = "metric") +
   coord_ccamlr()
 ```
@@ -153,7 +150,7 @@ ggplot() +
 # SPRFMO
 
 ```{r echo=TRUE, fig.width=7, fig.height=7, message=FALSE}
-SPRFMO3832 <- SPRFMO %>%
+SPRFMO3832 <- SPRFMO %>% 
   st_transform(crs = 3832)
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>%
