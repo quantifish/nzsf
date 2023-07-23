@@ -37,6 +37,7 @@ Imports:
     cowplot,
     ggnewscale
 Suggests:
+    tidyverse,
     knitr,
     devtools,
     markdown,

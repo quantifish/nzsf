@@ -16,5 +16,6 @@
 #'
 #' @docType package
 #' @name nzsf
+#' @keywords internal
 #' 
 NULL

@@ -22,3 +22,4 @@ different projection). These functions return a spatial features object.
 The plot functions include a get function and an appropriate \code{ggplot2} geom to plot the shapefile.
 }
 
+\keyword{internal}

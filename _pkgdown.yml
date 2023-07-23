@@ -1,3 +1,79 @@
 url: http://www.quantifish.co.nz/nzsf/
+
 template:
   bootstrap: 5
+  bootswatch: cerulean
+
+navbar:
+  structure:
+    left:  [intro, articles, tutorials, reference, news]
+    right: [search, github]
+
+reference:
+- title: Helpers
+  desc: Build or extract something.
+  contents:
+  - starts_with("get_")
+  - lookup_depth
+
+- title: Plots
+  desc: Plotting functions.
+  contents:
+  - starts_with("coord_")
+  - starts_with("geom_")
+  - starts_with("plot_")
+  - starts_with("proj_")
+  - theme_nzsf
+
+- title: Data
+  desc: Shapefiles that are available.
+  contents:
+  - CCSBT
+  - Cockle_QMA
+  - coastline_polyline_hydro_14k_122k
+  - FisheriesManagementAreas
+  - Gisborne_TToR_Habitats
+  - Gisborne_TToR_Reefs
+  - HAKE_QMA
+  - HOKI_QMA
+  - JackMackerel_QMA
+  - LING_QMA
+  - NZBathymetry_2016_grid
+  - OREO_QMA
+  - OrangeRoughy_QMA
+  - PackhorseRockLobster_QMA
+  - Paua_QMA
+  - Pipi_QMA
+  - Rocky_reef_National_NZ
+  - SIOFA
+  - SPRFMO
+  - Scallop_QMA
+  - Scampi_QMA
+  - SilverWarehou_QMA
+  - SouthernBlueWhiting_QMA
+  - SpinyRedRockLobster_QMA
+  - Squid_QMA
+  - ccamlr_eez
+  - ccamlr_mpa
+  - ccamlr_ssru
+  - ccamlr_statistical_areas
+  - depth_contour_polyline_hydro_122k_190k
+  - depth_contour_polyline_hydro_1350k_11500k
+  - depth_contour_polyline_hydro_190k_1350k
+  - doc_marine_reserves
+  - exclusive_economic_zone_outer_limits_200_mile
+  - gebco
+  - gebco_CCAMLR
+  - gebco_NZ
+  - gebco_SIOFA
+  - nz_coastlines_and_islands_polygons_topo_1250k
+  - nz_coastlines_and_islands_polygons_topo_1500k
+  - nz_coastlines_and_islands_polygons_topo_150k
+  - nz_coastlines_topo_1250k
+  - nz_coastlines_topo_1500k
+  - nz_coastlines_topo_150k
+  - nz_general_statistical_areas
+  - nz_inshore_statistical_areas
+  - nz_rivers
+  - rock_lobster_stat_areas
+  - territorial_sea_outer_limit_12_mile
