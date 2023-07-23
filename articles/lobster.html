@@ -29,7 +29,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">nzsf</a>
 
@@ -45,15 +45,15 @@
 <li class="nav-item">
   <a class="nav-link" href="../articles/nzsf.html">Get started</a>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
 <li class="active nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/fnz_standard_grids.html">Fisheries New Zealand standard grids</a>
     <a class="dropdown-item" href="../articles/lobster.html">New Zealand Rock Lobster Maps</a>
   </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -80,10 +80,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>New Zealand Rock Lobster Maps</h1>
-                        <h4 data-toc-skip class="author">Darcy
-Webber</h4>
             
-            <h4 data-toc-skip class="date">29 September 2021</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/quantifish/nzsf/blob/HEAD/vignettes/lobster.Rmd" class="external-link"><code>vignettes/lobster.Rmd</code></a></small>
       <div class="d-none name"><code>lobster.Rmd</code></div>
@@ -146,10 +143,12 @@ lobster.</p>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># geom_gebco(proj = proj_nzsf(), downsample = 0) +</span></span>
 <span>  <span class="fu"><a href="../reference/plot_qma.html">plot_qma</a></span><span class="op">(</span>qma <span class="op">=</span> <span class="st">"CRA"</span>, fill <span class="op">=</span> <span class="cn">NA</span>, colour <span class="op">=</span> <span class="va">colour_qma</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="../reference/plot_coast.html">plot_coast</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"medium"</span>, fill <span class="op">=</span> <span class="va">colour_land</span>, colour <span class="op">=</span> <span class="va">colour_coast</span>, size <span class="op">=</span> <span class="fl">0.3</span>, rivers <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/plot_coast.html">plot_coast</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"medium"</span>, fill <span class="op">=</span> <span class="va">colour_land</span>, colour <span class="op">=</span> <span class="va">colour_coast</span>, </span>
+<span>             size <span class="op">=</span> <span class="fl">0.3</span>, rivers <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">box</span>, colour <span class="op">=</span> <span class="cn">NA</span>, fill <span class="op">=</span> <span class="va">colour_box</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">lab</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">QMA</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2.5</span>, colour <span class="op">=</span> <span class="va">colour_qma</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_north_arrow.html" class="external-link">annotation_north_arrow</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tl"</span>, which_north <span class="op">=</span> <span class="st">"true"</span>, style <span class="op">=</span> <span class="va">north_arrow_nautical</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_north_arrow.html" class="external-link">annotation_north_arrow</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tl"</span>, which_north <span class="op">=</span> <span class="st">"true"</span>, </span>
+<span>                         style <span class="op">=</span> <span class="va">north_arrow_nautical</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">sf_qma</span><span class="op">)</span></span></code></pre></div>
 <p><img src="lobster_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -172,11 +171,13 @@ lobster.</p>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_statistical_areas.html">plot_statistical_areas</a></span><span class="op">(</span>area <span class="op">=</span> <span class="st">"CRA"</span>, fill <span class="op">=</span> <span class="cn">NA</span>, colour <span class="op">=</span> <span class="va">colour_stat</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_qma.html">plot_qma</a></span><span class="op">(</span>qma <span class="op">=</span> <span class="st">"CRA"</span>, fill <span class="op">=</span> <span class="cn">NA</span>, colour <span class="op">=</span> <span class="va">colour_qma</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="../reference/plot_coast.html">plot_coast</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"medium"</span>, fill <span class="op">=</span> <span class="va">colour_land</span>, colour <span class="op">=</span> <span class="va">colour_coast</span>, size <span class="op">=</span> <span class="fl">0.3</span>, rivers <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/plot_coast.html">plot_coast</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"medium"</span>, fill <span class="op">=</span> <span class="va">colour_land</span>, colour <span class="op">=</span> <span class="va">colour_coast</span>, </span>
+<span>             size <span class="op">=</span> <span class="fl">0.3</span>, rivers <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf_text</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">lab</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">QMA</span><span class="op">)</span>, colour <span class="op">=</span> <span class="va">colour_qma</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># geom_sf_label(data = lab1, aes(label = area), size = 2.5) +</span></span>
 <span>  <span class="co"># geom_sf_text(data = lab1, aes(label = area), size = 2, colour = colour_stat) +</span></span>
-<span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_north_arrow.html" class="external-link">annotation_north_arrow</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tl"</span>, which_north <span class="op">=</span> <span class="st">"true"</span>, style <span class="op">=</span> <span class="va">north_arrow_nautical</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_north_arrow.html" class="external-link">annotation_north_arrow</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tl"</span>, which_north <span class="op">=</span> <span class="st">"true"</span>, </span>
+<span>                         style <span class="op">=</span> <span class="va">north_arrow_nautical</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">bb</span>, expand <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span>filename <span class="op">=</span> <span class="st">"CRA_QMA_stat.png"</span>, plot <span class="op">=</span> <span class="va">p</span>, width <span class="op">=</span> <span class="fl">6</span>, height <span class="op">=</span> <span class="fl">8.5</span><span class="op">)</span></span>
@@ -324,7 +325,7 @@ lobster.</p>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">box2</span>, expand <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html" class="external-link">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tr"</span>, unit_category <span class="op">=</span> <span class="st">"metric"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"Mean"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning: Removed 3804 rows containing missing values (`geom_raster()`).</span></span></code></pre></div>
+<span><span class="co">#&gt; Warning: Removed 3798 rows containing missing values (`geom_raster()`).</span></span></code></pre></div>
 <p><img src="lobster_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
 </div>
 <div class="section level2">

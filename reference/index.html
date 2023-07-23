@@ -6,7 +6,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">nzsf</a>
 
@@ -21,15 +21,15 @@
       <ul class="navbar-nav me-auto"><li class="nav-item">
   <a class="nav-link" href="../articles/nzsf.html">Get started</a>
 </li>
-<li class="active nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
 <li class="nav-item dropdown">
   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
   <div class="dropdown-menu" aria-labelledby="dropdown-articles">
     <a class="dropdown-item" href="../articles/fnz_standard_grids.html">Fisheries New Zealand standard grids</a>
     <a class="dropdown-item" href="../articles/lobster.html">New Zealand Rock Lobster Maps</a>
   </div>
+</li>
+<li class="active nav-item">
+  <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
@@ -51,9 +51,171 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="helpers">Helpers<a class="anchor" aria-label="anchor" href="#helpers"></a></h2>
+      
+      <p class="section-desc"></p><p>Build or extract something.</p>
+
+      
+    </div><div id="" class="section level2">
       
       
+      
+
+      <dl><dt>
+          
+          <code><a href="get_coast.html">get_coast()</a></code> 
+        </dt>
+        <dd>Get the New Zealand coastline</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_conditional_smooths.html">get_conditional_smooths()</a></code> 
+        </dt>
+        <dd>Plot a conditional_smooths output</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_depth.html">get_depth()</a></code> 
+        </dt>
+        <dd>Get depth polylines around New Zealand</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_marine_reserves.html">get_marine_reserves()</a></code> 
+        </dt>
+        <dd>Get Marine Reserves</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_points_as_raster.html">get_points_as_raster()</a></code> 
+        </dt>
+        <dd>Convert points to a raster</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_qma.html">get_qma()</a></code> 
+        </dt>
+        <dd>Get Quota Management Area (QMA) polygons</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_standard_grid.html">get_standard_grid()</a></code> 
+        </dt>
+        <dd>Get Fisheries New Zealand standard grid definitions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_standard_grid_origin.html">get_standard_grid_origin()</a></code> 
+        </dt>
+        <dd>Get Fisheries New Zealand standard grid origin</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_statistical_areas.html">get_statistical_areas()</a></code> 
+        </dt>
+        <dd>Get Statistical Areas</dd>
+      </dl><dl><dt>
+          
+          <code><a href="lookup_depth.html">lookup_depth()</a></code> 
+        </dt>
+        <dd>Lookup the depth (m) at specific locations around New Zealand</dd>
+      </dl></div><div class="section level2">
+      <h2 id="plots">Plots<a class="anchor" aria-label="anchor" href="#plots"></a></h2>
+      
+      <p class="section-desc"></p><p>Plotting functions.</p>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="coord_ccamlr.html">coord_ccamlr()</a></code> 
+        </dt>
+        <dd>CCAMLR coord</dd>
+      </dl><dl><dt>
+          
+          <code><a href="coord_ccsbt.html">coord_ccsbt()</a></code> 
+        </dt>
+        <dd>CCSBT coord</dd>
+      </dl><dl><dt>
+          
+          <code><a href="geom_ccamlr.html">geom_ccamlr()</a></code> 
+        </dt>
+        <dd>CCAMLR geometries</dd>
+      </dl><dl><dt>
+          
+          <code><a href="geom_ccsbt.html">geom_ccsbt()</a></code> 
+        </dt>
+        <dd>CCSBT geometry</dd>
+      </dl><dl><dt>
+          
+          <code><a href="geom_gebco.html">geom_gebco()</a></code> 
+        </dt>
+        <dd>Plot GEBCO depth raster</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_clip.html">plot_clip()</a></code> 
+        </dt>
+        <dd>Clip to a shapefile.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_coast.html">plot_coast()</a></code> 
+        </dt>
+        <dd>Plot the New Zealand coastline.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_conditional_smooths.html">plot_conditional_smooths()</a></code> 
+        </dt>
+        <dd>Plot a conditional_smooths output</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_depth.html">plot_depth()</a></code> 
+        </dt>
+        <dd>Plot depth polylines around New Zealand</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_marine_reserves.html">plot_marine_reserves()</a></code> 
+        </dt>
+        <dd>Plot Marine Reserves</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_qma.html">plot_qma()</a></code> 
+        </dt>
+        <dd>Plot a Quota Management Area (QMA)</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_raster.html">plot_raster()</a></code> 
+        </dt>
+        <dd>Plot points as a raster</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_rivers.html">plot_rivers()</a></code> 
+        </dt>
+        <dd>Plot New Zealand rivers.</dd>
+      </dl><dl><dt>
+          
+          <code><a href="plot_statistical_areas.html">plot_statistical_areas()</a></code> 
+        </dt>
+        <dd>Get statistical areas</dd>
+      </dl><dl><dt>
+          
+          <code><a href="proj_ccamlr.html">proj_ccamlr()</a></code> 
+        </dt>
+        <dd>CCAMLR projection</dd>
+      </dl><dl><dt>
+          
+          <code><a href="proj_ccsbt.html">proj_ccsbt()</a></code> 
+        </dt>
+        <dd>CCSBT projection</dd>
+      </dl><dl><dt>
+          
+          <code><a href="proj_nzsf.html">proj_nzsf()</a></code> 
+        </dt>
+        <dd>New Zealand projection</dd>
+      </dl><dl><dt>
+          
+          <code><a href="theme_nzsf.html">theme_nzsf()</a></code> 
+        </dt>
+        <dd>nzsf theme</dd>
+      </dl></div><div class="section level2">
+      <h2 id="data">Data<a class="anchor" aria-label="anchor" href="#data"></a></h2>
+      
+      <p class="section-desc"></p><p>Shapefiles that are available.</p>
 
       
     </div><div id="" class="section level2">
@@ -71,6 +233,11 @@
           <code><a href="Cockle_QMA.html">Cockle_QMA</a></code> 
         </dt>
         <dd>New Zealand cockle QMAs</dd>
+      </dl><dl><dt>
+          
+          <code><a href="coastline_polyline_hydro_14k_122k.html">coastline_polyline_hydro_14k_122k</a></code> 
+        </dt>
+        <dd>New Zealand depth contours 14 by 122k</dd>
       </dl><dl><dt>
           
           <code><a href="FisheriesManagementAreas.html">FisheriesManagementAreas</a></code> 
@@ -203,21 +370,6 @@
         <dd>CCAMLR Statistical Areas</dd>
       </dl><dl><dt>
           
-          <code><a href="coastline_polyline_hydro_14k_122k.html">coastline_polyline_hydro_14k_122k</a></code> 
-        </dt>
-        <dd>New Zealand depth contours 14 by 122k</dd>
-      </dl><dl><dt>
-          
-          <code><a href="coord_ccamlr.html">coord_ccamlr()</a></code> 
-        </dt>
-        <dd>CCAMLR coord</dd>
-      </dl><dl><dt>
-          
-          <code><a href="coord_ccsbt.html">coord_ccsbt()</a></code> 
-        </dt>
-        <dd>CCSBT coord</dd>
-      </dl><dl><dt>
-          
           <code><a href="depth_contour_polyline_hydro_122k_190k.html">depth_contour_polyline_hydro_122k_190k</a></code> 
         </dt>
         <dd>New Zealand depth contours 122k by 190k</dd>
@@ -261,71 +413,6 @@
           <code><a href="gebco_SIOFA.html">gebco_SIOFA</a></code> 
         </dt>
         <dd>Gebco depth</dd>
-      </dl><dl><dt>
-          
-          <code><a href="geom_ccamlr.html">geom_ccamlr()</a></code> 
-        </dt>
-        <dd>CCAMLR geometries</dd>
-      </dl><dl><dt>
-          
-          <code><a href="geom_ccsbt.html">geom_ccsbt()</a></code> 
-        </dt>
-        <dd>CCSBT geometry</dd>
-      </dl><dl><dt>
-          
-          <code><a href="geom_gebco.html">geom_gebco()</a></code> 
-        </dt>
-        <dd>Plot GEBCO depth raster</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_coast.html">get_coast()</a></code> 
-        </dt>
-        <dd>Get the New Zealand coastline</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_conditional_smooths.html">get_conditional_smooths()</a></code> 
-        </dt>
-        <dd>Plot a conditional_smooths output</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_depth.html">get_depth()</a></code> 
-        </dt>
-        <dd>Get depth polylines around New Zealand</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_marine_reserves.html">get_marine_reserves()</a></code> 
-        </dt>
-        <dd>Get Marine Reserves</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_points_as_raster.html">get_points_as_raster()</a></code> 
-        </dt>
-        <dd>Convert points to a raster</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_qma.html">get_qma()</a></code> 
-        </dt>
-        <dd>Get Quota Management Area (QMA) polygons</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_standard_grid.html">get_standard_grid()</a></code> 
-        </dt>
-        <dd>Get Fisheries New Zealand standard grid definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_standard_grid_origin.html">get_standard_grid_origin()</a></code> 
-        </dt>
-        <dd>Get Fisheries New Zealand standard grid origin</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_statistical_areas.html">get_statistical_areas()</a></code> 
-        </dt>
-        <dd>Get Statistical Areas</dd>
-      </dl><dl><dt>
-          
-          <code><a href="lookup_depth.html">lookup_depth()</a></code> 
-        </dt>
-        <dd>Lookup the depth (m) at specific locations around New Zealand</dd>
       </dl><dl><dt>
           
           <code><a href="nz_coastlines_and_islands_polygons_topo_1250k.html">nz_coastlines_and_islands_polygons_topo_1250k</a></code> 
@@ -373,71 +460,6 @@
         <dd>Gebco depth</dd>
       </dl><dl><dt>
           
-          <code><a href="nzsf.html">nzsf</a></code> 
-        </dt>
-        <dd>New Zealand Spatial Features</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_clip.html">plot_clip()</a></code> 
-        </dt>
-        <dd>Clip to a shapefile.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_coast.html">plot_coast()</a></code> 
-        </dt>
-        <dd>Plot the New Zealand coastline.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_conditional_smooths.html">plot_conditional_smooths()</a></code> 
-        </dt>
-        <dd>Plot a conditional_smooths output</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_depth.html">plot_depth()</a></code> 
-        </dt>
-        <dd>Plot depth polylines around New Zealand</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_marine_reserves.html">plot_marine_reserves()</a></code> 
-        </dt>
-        <dd>Plot Marine Reserves</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_qma.html">plot_qma()</a></code> 
-        </dt>
-        <dd>Plot a Quota Management Area (QMA)</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_raster.html">plot_raster()</a></code> 
-        </dt>
-        <dd>Plot points as a raster</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_rivers.html">plot_rivers()</a></code> 
-        </dt>
-        <dd>Plot New Zealand rivers.</dd>
-      </dl><dl><dt>
-          
-          <code><a href="plot_statistical_areas.html">plot_statistical_areas()</a></code> 
-        </dt>
-        <dd>Get statistical areas</dd>
-      </dl><dl><dt>
-          
-          <code><a href="proj_ccamlr.html">proj_ccamlr()</a></code> 
-        </dt>
-        <dd>CCAMLR projection</dd>
-      </dl><dl><dt>
-          
-          <code><a href="proj_ccsbt.html">proj_ccsbt()</a></code> 
-        </dt>
-        <dd>CCSBT projection</dd>
-      </dl><dl><dt>
-          
-          <code><a href="proj_nzsf.html">proj_nzsf()</a></code> 
-        </dt>
-        <dd>New Zealand projection</dd>
-      </dl><dl><dt>
-          
           <code><a href="rock_lobster_stat_areas.html">rock_lobster_stat_areas</a></code> 
         </dt>
         <dd>New Zealand Rock Lobster Statistical Areas</dd>
@@ -446,13 +468,9 @@
           <code><a href="territorial_sea_outer_limit_12_mile.html">territorial_sea_outer_limit_12_mile</a></code> 
         </dt>
         <dd>New Zealand 12 mile limit</dd>
-      </dl><dl><dt>
-          
-          <code><a href="theme_nzsf.html">theme_nzsf()</a></code> 
-        </dt>
-        <dd>nzsf theme</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
