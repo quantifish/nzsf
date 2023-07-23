@@ -69,8 +69,7 @@ ggplot() +
 The `nzsf` package also includes functions for plotting CCSBT management areas. In the example below I simulate 100 points, generate a voronoi diagram around these points, then simulate values at 5000 points and sum the values of these points within the voronoi polygons:
 
 ```{r echo=TRUE, fig.width=11, message=FALSE}
-CCSBT3994 <- CCSBT %>% 
-  st_transform(proj_ccsbt()) %>%
+CCSBT3994 <- CCSBT %>% st_transform(proj_ccsbt()) %>% 
   st_union(by_feature = TRUE)
 
 # Simulate some points within the areas
@@ -150,10 +149,9 @@ ggplot() +
 # SPRFMO
 
 ```{r echo=TRUE, fig.width=7, fig.height=7, message=FALSE}
-SPRFMO3832 <- SPRFMO %>% 
-  st_transform(crs = 3832)
+SPRFMO3832 <- SPRFMO %>% st_transform(crs = 3832)
 
-world <- ne_countries(scale = "medium", returnclass = "sf") %>%
+world <- ne_countries(scale = "medium", returnclass = "sf") %>% 
   st_transform(crs = 3832)
 
 ggplot() +
@@ -168,18 +166,15 @@ ggplot() +
 # SIOFA
 
 ```{r echo=TRUE, fig.width=7, fig.height=7, message=FALSE}
-SIOFA3832 <- SIOFA %>%
-  st_transform(crs = 3832)
-
-world <- ne_countries(scale = "medium", returnclass = "sf") %>%
-  st_transform(crs = 3832)
+SIOFA3832 <- SIOFA %>% st_transform(crs = 3832)
 
 ggplot() +
   # geom_gebco(proj = 3832, downsample = 3) +
   # geom_stars(data = bathy, downsample = 3) +
   geom_sf(data = world, fill = "black", colour = "black") +
   new_scale("fill") +
-  geom_sf(data = SIOFA3832, aes(fill = factor(SubArea), colour = factor(SubArea)), alpha = 0.5) +
+  geom_sf(data = SIOFA3832, alpha = 0.5, 
+          aes(fill = factor(SubArea), colour = factor(SubArea))) +
   plot_clip(SIOFA3832) +
   theme_bw() +
   theme(legend.position = "none")
@@ -191,20 +186,24 @@ ggplot() +
 # Plot low resolution coastline
 p1 <- ggplot() +
   plot_statistical_areas(area = "EEZ") +
-  plot_coast(resolution = "1250k", fill = "black", colour = "black", size = 0.3) +
+  plot_coast(resolution = "1250k", fill = "black", colour = "black", 
+             size = 0.3) +
   plot_clip(x = "NZ") +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 
 # Get the coastline from the rnaturalearth package for comparison
-nz <- ne_countries(scale = "medium", returnclass = "sf", country = "New Zealand") %>%
+nz <- ne_countries(scale = "medium", returnclass = "sf", 
+                   country = "New Zealand") %>%
   st_transform(crs = proj_nzsf()) %>%
   st_crop(get_statistical_areas(area = "EEZ"))
 
 p2 <- ggplot() +
   plot_statistical_areas(area = "EEZ") +
   geom_sf(data = nz, fill = "black", colour = "black") +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 
 p1 + p2
@@ -228,9 +227,11 @@ ggplot() +
   geom_sf(data = aa, aes(fill = area)) +
   plot_qma(qma = "LIN", fill = "transparent") +
   # plot_statistical_areas(area = "stat area", fill = "transparent") +
-  plot_coast(resolution = "med", fill = "forestgreen", colour = "black", size = 0.3) +
+  plot_coast(resolution = "med", fill = "forestgreen", colour = "black", 
+             size = 0.3) +
   plot_clip("NZ") +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical)
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_nautical)
 ```
 
 Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be restricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
@@ -248,7 +249,8 @@ ggplot() +
   plot_qma(qma = "CRA", fill = NA) +
   plot_coast(resolution = "medium", fill = "grey", colour = NA, size = 0.3) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
-  annotation_north_arrow(location = "tr", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tr", which_north = "true", 
+                         style = north_arrow_nautical) +
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
@@ -256,11 +258,8 @@ Adding labels can be done with:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 sf_jma <- get_qma("JMA")
-sf_coast <- get_coast() %>% 
-  st_combine() %>% 
-  st_make_valid()
-lab <- st_difference(sf_jma, sf_coast) %>% 
-  st_point_on_surface()
+sf_coast <- get_coast() %>% st_combine() %>% st_make_valid()
+lab <- st_difference(sf_jma, sf_coast) %>% st_point_on_surface()
 # lab <- st_difference(sf_jma, sf_coast) %>% st_centroid()
 
 ggplot() +
@@ -279,10 +278,12 @@ You can then add polygons, points, lines/arrows, and/or rasters to maps and chan
 proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
-Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% st_transform(crs = proj, check = TRUE)
+Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% 
+  st_transform(crs = proj, check = TRUE)
 
 data("Rocky_reef_National_NZ")
-Rocky_reef_National_NZ <- Rocky_reef_National_NZ %>% st_transform(crs = proj, check = TRUE)
+Rocky_reef_National_NZ <- Rocky_reef_National_NZ %>% 
+  st_transform(crs = proj, check = TRUE)
 
 bbox <- get_marine_reserves() %>%
   st_transform(crs = proj, check = TRUE) %>%
@@ -295,7 +296,8 @@ ggplot() +
   geom_sf(data = Gisborne_TToR_Habitats, aes(fill = Habitat), colour = NA) +
   scale_fill_viridis_d(alpha = 0.5) +
   plot_marine_reserves(proj = proj, fill = NA) +
-  plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA, size = 0.3) +
+  plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA, 
+             size = 0.3) +
   # annotation_scale(location = "br", unit_category = "metric") +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Te Tapuwae o Rongokako Marine Reserve")
@@ -319,8 +321,6 @@ p1 <- ggplot() +
   geom_sf(data = pts, aes(colour = z)) +
   plot_coast(resolution = "large", fill = "black", colour = NA, size = 0.3) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
-  # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  # annotation_scale(location = "br", unit_category = "metric") +
   plot_clip(x = stewart) +
   labs(colour = "Points", title = "Rakiura")
 
@@ -330,8 +330,6 @@ p2 <- ggplot() +
   scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
   plot_coast(resolution = "large", fill = "black", colour = NA, size = 0.3) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
-  # annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
-  # annotation_scale(location = "br", unit_category = "metric") +
   plot_clip(x = stewart) +
   labs(title = "Rakiura")
 
@@ -339,12 +337,11 @@ p1 + p2
 ```
 
 ```{r echo=TRUE, fig.height=8, fig.width=8, message=FALSE}
-eez <- get_statistical_areas("EEZ", proj = 4326) %>%
-  st_shift_longitude()
-r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), return_raster = FALSE, crs = 4326)
+eez <- get_statistical_areas("EEZ", proj = 4326) %>% st_shift_longitude()
+r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), 
+                       return_raster = FALSE, crs = 4326)
 
-ggplot(data = eez) +
-  geom_sf()
+ggplot(data = eez) + geom_sf()
 
 ggplot(data = r) +
   geom_sf(fill = "red", alpha = 0.1) +

@@ -73,10 +73,12 @@ box <- st_as_sfc(bbox)
 ggplot() +
   # geom_gebco(proj = proj_nzsf(), downsample = 0) +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
-  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, 
+             size = 0.3, rivers = FALSE) +
   geom_sf(data = box, colour = NA, fill = colour_box, alpha = 0.5) +
   geom_sf_text(data = lab, aes(label = QMA), size = 2.5, colour = colour_qma) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_nautical) +
   plot_clip(x = sf_qma)
 ```
 
@@ -96,11 +98,13 @@ bb <- sf_qma %>% st_bbox()
 p <- ggplot() +
   plot_statistical_areas(area = "CRA", fill = NA, colour = colour_stat) +
   plot_qma(qma = "CRA", fill = NA, colour = colour_qma) +
-  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, size = 0.3, rivers = FALSE) +
+  plot_coast(resolution = "medium", fill = colour_land, colour = colour_coast, 
+             size = 0.3, rivers = FALSE) +
   geom_sf_text(data = lab, aes(label = QMA), colour = colour_qma) +
   # geom_sf_label(data = lab1, aes(label = area), size = 2.5) +
   # geom_sf_text(data = lab1, aes(label = area), size = 2, colour = colour_stat) +
-  annotation_north_arrow(location = "tl", which_north = "true", style = north_arrow_nautical) +
+  annotation_north_arrow(location = "tl", which_north = "true", 
+                         style = north_arrow_nautical) +
   plot_clip(x = bb, expand = TRUE)
 
 ggsave(filename = "CRA_QMA_stat.png", plot = p, width = 6, height = 8.5)

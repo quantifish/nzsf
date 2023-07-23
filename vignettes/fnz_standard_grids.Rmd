@@ -44,12 +44,10 @@ eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf())
 
 bb_eez <- st_bbox(eez) %>% st_as_sfc()
 
-grd256_eez <- get_standard_grid(cell_size = 256, 
-                                bounding_box = st_bbox(eez), 
+grd256_eez <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), 
                                 return_raster = FALSE)
 
-grd064_eez <- get_standard_grid(cell_size = 64, 
-                                bounding_box = st_bbox(eez), 
+grd064_eez <- get_standard_grid(cell_size = 64, bounding_box = st_bbox(eez), 
                                 return_raster = FALSE)
 ```
 
@@ -71,15 +69,12 @@ ggplot() +
 cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% 
   filter(QMA %in% "CRA1")
 
-bb_cra1 <- st_bbox(cra1) %>% 
-  st_as_sfc()
+bb_cra1 <- st_bbox(cra1) %>% st_as_sfc()
 
-grd256_cra1 <- get_standard_grid(cell_size = 256, 
-                                 bounding_box = st_bbox(cra1), 
+grd256_cra1 <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(cra1), 
                                  return_raster = FALSE)
 
-grd064_cra1 <- get_standard_grid(cell_size = 64, 
-                                 bounding_box = st_bbox(cra1), 
+grd064_cra1 <- get_standard_grid(cell_size = 64, bounding_box = st_bbox(cra1), 
                                  return_raster = FALSE)
 
 ggplot() +
@@ -103,8 +98,6 @@ ggplot() +
   geom_point(aes(x = 0, y = -422600), colour = "green") +
   annotation_scale(location = "tr", unit_category = "metric") +
   coord_sf(xlim = c(-5e+05, 2.5e+05), ylim = c(-422600, 895400))
-
-ggsave(filename = "nzsf_example.png", width = 6, height = 8)
 ```
 
 In the figure below, I show that you can specify the number of cells either side of the origin.
@@ -116,8 +109,7 @@ bb1[2] <- -422600 - 3000 # ymin (3 cells below the origin)
 bb1[3] <- 3000 # xmax (3 cells to the right of the origin)
 bb1[4] <- -400000 # ymax
 
-grd001_eez <- get_standard_grid(cell_size = 1, 
-                                bounding_box = bb1, 
+grd001_eez <- get_standard_grid(cell_size = 1, bounding_box = bb1, 
                                 return_raster = FALSE)
 
 # Plot and check center point at fine scale
@@ -135,7 +127,8 @@ Rasters are more useful than polygons...
 
 ```{r raster, fig.height=7, fig.width=7, fig.cap="EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point)."}
 # Get standard grid as a raster
-r <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), return_raster = TRUE)
+r <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), 
+                       return_raster = TRUE)
 
 # Fill the grid with random values and plot it
 r[] <- rnorm(n = ncell(r))
@@ -148,6 +141,4 @@ ggplot() +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA) +
   geom_point(aes(x = 0, y = -422600), colour = "green") +
   plot_clip("NZ")
-
-ggsave(filename = "nzsf_example.png", width = 6, height = 8)
 ```
