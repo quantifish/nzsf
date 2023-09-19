@@ -51,7 +51,8 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' @importFrom raster extent crs
 #' @export
 #' 
-get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), return_raster = TRUE, crs = proj_nzsf()) {
+get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), 
+                              return_raster = TRUE, crs = proj_nzsf()) {
   
   if (class(bounding_box) != "bbox") stop("bounding_box is not a bbox object")
   

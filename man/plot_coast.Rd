@@ -9,6 +9,7 @@ plot_coast(
   resolution = "medium",
   keep = 1,
   rivers = FALSE,
+  size = 0.3,
   ...
 )
 }
@@ -20,6 +21,8 @@ plot_coast(
 \item{keep}{proportion of points to retain (0-1; default 1).}
 
 \item{rivers}{Plot rivers over land as \code{geom_sf}.}
+
+\item{size}{The line size to pass on to \code{geom_sf}.}
 
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }

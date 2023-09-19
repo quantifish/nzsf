@@ -58,6 +58,7 @@ Collate:
     'theme-nzsf.R'
     'get-fnz-standard-grid.R'
     'plot-coast.R'
+    'plot-cra.R'
     'plot-rivers.R'
     'plot-depth.R'
     'plot-statistical-areas.R'

@@ -43,16 +43,6 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 # CCAMLR
 
 ```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
-# x <- gebco_CCAMLR %>%
-#   st_as_stars() %>%
-#   st_transform(crs = proj_ccamlr()) %>%
-#   as.data.frame()
-  # as("raster") %>%
-  # as("SpatialPixelsDataFrame")
-# x <- gebco_CCAMLR %>%
-#   as("SpatialPixelsDataFrame") %>%
-#   st_transform(crs = proj_ccamlr())
-
 ggplot() +
   geom_ccamlr("mpa", fill = "tomato", colour = "tomato", alpha = 0.25) +
   geom_ccamlr("ssru") +
@@ -73,10 +63,8 @@ CCSBT3994 <- CCSBT %>% st_transform(proj_ccsbt()) %>%
   st_union(by_feature = TRUE)
 
 # Simulate some points within the areas
-pts1 <- st_sample(CCSBT3994, size = 100) %>% 
-  st_sf()
-pts2 <- st_sample(CCSBT3994, size = 5000) %>% 
-  st_sf() %>% 
+pts1 <- st_sample(CCSBT3994, size = 100) %>% st_sf()
+pts2 <- st_sample(CCSBT3994, size = 5000) %>% st_sf() %>% 
   mutate(z = rnorm(1:n()))
 
 # Sum up points within voronoi polygons
@@ -100,50 +88,6 @@ ggplot() +
   geom_ccsbt("area", colour = "red") +
   geom_ccsbt("label", fill = "white", colour = "red") +
   coord_ccsbt()
-```
-
-```{r echo=TRUE, fig.height=6, fig.width=9, message=FALSE}
-# register_google(key = key)
-# 
-# ggmap_bbox <- function(map, crs = 3857) {
-#   if (!inherits(map, "ggmap")) stop("map must be a ggmap object")
-#   # Extract the bounding box (in lat/lon) from the ggmap to a numeric vector, 
-#   # and set the names to what sf::st_bbox expects:
-#   map_bbox <- setNames(unlist(attr(map, "bb")), c("ymin", "xmin", "ymax", "xmax"))
-# 
-#   # Coonvert the bbox to an sf polygon, transform it to 3857, 
-#   # and convert back to a bbox (convoluted, but it works)
-#   bbox_3857 <- st_bbox(map_bbox, crs = 4326) %>%
-#     st_as_sfc() %>%
-#     st_transform(crs = crs) %>%
-#     st_bbox()
-# 
-#   # Overwrite the bbox of the ggmap object with the transformed coordinates 
-#   attr(map, "bb")$ll.lat <- bbox_3857["ymin"]
-#   attr(map, "bb")$ll.lon <- bbox_3857["xmin"]
-#   attr(map, "bb")$ur.lat <- bbox_3857["ymax"]
-#   attr(map, "bb")$ur.lon <- bbox_3857["xmax"]
-#   map
-# }
-# 
-# 
-# library(ggmap)
-# get_map("Japan", zoom = 5, source = "stamen") %>% ggmap()
-# 
-# st_bbox(CCSBT %>% st_transform(crs = 4326))
-# # gm <- get_map(location = "New Zealand", zoom = 2, source = "google", maptype = "satellite")
-# gm <- get_map(location = c(lon = 0, lat = -30), zoom = 1, source = "google", maptype = "satellite")
-# ggmap(gm)
-# 
-# 
-# map <- ggmap_bbox(gm, crs = proj_ccsbt())
-# # map <- ggmap_bbox(gm)
-# # p <- ggmap(map) +
-# p <- ggplot() +
-#   annotation_map_tile(zoom = 7) +
-#   geom_sf(data = CCSBT, fill = NA)
-#   # coord_ccsbt()
-# p
 ```
 
 # SPRFMO
@@ -182,35 +126,27 @@ ggplot() +
 
 # New Zealand
 
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-# Plot low resolution coastline
-p1 <- ggplot() +
-  plot_statistical_areas(area = "EEZ") +
-  plot_coast(resolution = "1250k", fill = "black", colour = "black", 
-             size = 0.3) +
-  plot_clip(x = "NZ") +
-  annotation_north_arrow(location = "tl", which_north = "true", 
-                         style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric")
+Compare a plot of low resolution coastline to the `rnaturalearth` package.
 
-# Get the coastline from the rnaturalearth package for comparison
-nz <- ne_countries(scale = "medium", returnclass = "sf", 
-                   country = "New Zealand") %>%
+```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
+nz <- ne_countries(scale = "medium", country = "New Zealand", 
+                   returnclass = "sf") %>%
   st_transform(crs = proj_nzsf()) %>%
   st_crop(get_statistical_areas(area = "EEZ"))
 
+p1 <- ggplot() +
+  plot_coast(resolution = "1250k", fill = "black", colour = "black") +
+  plot_clip(x = "NZ")
 p2 <- ggplot() +
-  plot_statistical_areas(area = "EEZ") +
   geom_sf(data = nz, fill = "black", colour = "black") +
-  annotation_north_arrow(location = "tl", which_north = "true", 
-                         style = north_arrow_nautical) +
-  annotation_scale(location = "br", unit_category = "metric")
+  plot_clip(x = "NZ")
 
 p1 + p2
 ```
 
+An example that aggregates spatial features
+
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-# An example that aggregates spatial features
 aa <- nz_general_statistical_areas %>%
   dplyr::select(Statistica) %>%
   st_transform(crs = proj_nzsf()) %>%
@@ -227,8 +163,7 @@ ggplot() +
   geom_sf(data = aa, aes(fill = area)) +
   plot_qma(qma = "LIN", fill = "transparent") +
   # plot_statistical_areas(area = "stat area", fill = "transparent") +
-  plot_coast(resolution = "med", fill = "forestgreen", colour = "black", 
-             size = 0.3) +
+  plot_coast(resolution = "med", fill = "forestgreen", colour = "black") +
   plot_clip("NZ") +
   annotation_north_arrow(location = "tl", which_north = "true", 
                          style = north_arrow_nautical)
@@ -247,7 +182,7 @@ ggplot() +
   plot_depth(colour = "lightblue") +
   plot_marine_reserves(fill = "red", colour = "red") +
   plot_qma(qma = "CRA", fill = NA) +
-  plot_coast(resolution = "medium", fill = "grey", colour = NA, size = 0.3) +
+  plot_coast(resolution = "medium", fill = "grey", colour = NA) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   annotation_north_arrow(location = "tr", which_north = "true", 
                          style = north_arrow_nautical) +
@@ -265,14 +200,15 @@ lab <- st_difference(sf_jma, sf_coast) %>% st_point_on_surface()
 ggplot() +
   plot_qma(qma = "JMA", fill = NA) +
   plot_statistical_areas(area = "JMA", fill = NA) +
-  plot_coast(fill = "forestgreen", colour = NA, size = 0.3) +
+  plot_coast(fill = "forestgreen", colour = NA) +
   geom_sf_label(data = lab, aes(label = QMA)) +
   plot_clip(x = "NZ") +
   annotation_north_arrow(location = "tl", which_north = "true") +
   annotation_scale(location = "br", unit_category = "metric")
 ```
 
-You can then add polygons, points, lines/arrows, and/or rasters to maps and change the map projection:
+You can then add polygons, points, lines/arrows, and/or rasters to maps and 
+change the map projection:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 proj <- "+proj=longlat +datum=WGS84 +no_defs"
@@ -296,13 +232,12 @@ ggplot() +
   geom_sf(data = Gisborne_TToR_Habitats, aes(fill = Habitat), colour = NA) +
   scale_fill_viridis_d(alpha = 0.5) +
   plot_marine_reserves(proj = proj, fill = NA) +
-  plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA, 
-             size = 0.3) +
-  # annotation_scale(location = "br", unit_category = "metric") +
+  plot_coast(proj = proj, resolution = "med", fill = "black", colour = NA) +
   coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)]) +
   labs(title = "Te Tapuwae o Rongokako Marine Reserve")
 ```
 
+Simulate some points around Stewart Island.
 
 ```{r echo=TRUE, fig.height=6, fig.width=12, message=FALSE}
 # stewart <- get_coast() %>%
@@ -311,7 +246,6 @@ stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
   st_transform(crs = proj_nzsf()) %>%
   st_buffer(dist = 4500)
 
-# Simulate some points around Stewart Island
 pts <- st_sample(stewart, size = 5000) %>% 
   st_sf() %>% 
   mutate(z = rnorm(1:n()))
@@ -319,7 +253,7 @@ pts <- st_sample(stewart, size = 5000) %>%
 p1 <- ggplot() +
   plot_depth(resolution = "med", size = 0.2, colour = "grey") +
   geom_sf(data = pts, aes(colour = z)) +
-  plot_coast(resolution = "large", fill = "black", colour = NA, size = 0.3) +
+  plot_coast(resolution = "large", fill = "black", colour = NA) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   plot_clip(x = stewart) +
   labs(colour = "Points", title = "Rakiura")
@@ -328,7 +262,7 @@ p2 <- ggplot() +
   plot_depth(resolution = "med", size = 0.2, colour = "grey") +
   plot_raster(data = pts, field = "z", fun = mean, nrow = 50, ncol = 50) +
   scale_fill_viridis("Raster", alpha = 0.8, option = "plasma") +
-  plot_coast(resolution = "large", fill = "black", colour = NA, size = 0.3) +
+  plot_coast(resolution = "large", fill = "black", colour = NA) +
   annotation_north_arrow(location = "tl", style = north_arrow_nautical) +
   plot_clip(x = stewart) +
   labs(title = "Rakiura")
@@ -338,6 +272,7 @@ p1 + p2
 
 ```{r echo=TRUE, fig.height=8, fig.width=8, message=FALSE}
 eez <- get_statistical_areas("EEZ", proj = 4326) %>% st_shift_longitude()
+
 r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), 
                        return_raster = FALSE, crs = 4326)
 
@@ -348,95 +283,4 @@ ggplot(data = r) +
   plot_coast(proj = 4326) +
   plot_clip(eez, proj = 4326) +
   theme_bw()
-
-# library(ncdf4)
-# library(ncdf.tools)
-# library(ecmwfr)
-# 
-# wf_set_key(user = "youremail@gmail.com", key = "secretkey", service = "webapi")
-# 
-# request <- list(dataset      = "reanalysis-era5-single-levels-monthly-means",
-#                 product_type = "reanalysis",
-#                 variable     = "sea_surface_temperature",
-#                 year         = 1979:2020,
-#                 month        = 1:12,
-#                 area         = "-30/160/-55/185",
-#                 format       = "netcdf",
-#                 target       = "era5-nz_sst_to_2020.nc")
-# 
-# ncfile <- wf_request(user = "41999", request = request, transfer = TRUE, path = "", verbose = FALSE)
-
-# library(raster)
-# # should add code to get this direct from web
-# data(era5_nz_sst)
-# prj <- "+proj=merc +lon_0=100 +lat_ts=-41 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
-# 
-# suppressWarnings({
-#   sst1 <- era5_nz_sst %>% 
-#     projectRaster(crs = prj) %>%
-#     rasterToPoints()
-# })
-# 
-# sst <- sst1 %>%
-#   data.frame() %>%
-#   pivot_longer(cols = c(-x, -y)) %>%
-#   separate(col = name, into = c("year", "month", "day", "hr", "min", "sec"), sep = "\\.") %>%
-#   mutate(year = gsub("X", "", year), value = value - 273.15) %>%
-#   filter(year %in% c("1979", "1989", "2009", "2019"), month %in% c("01"))
-# nz <- get_coast(proj = prj, resolution = "med")
-# 
-# ggplot() +
-#   geom_tile(data = sst, aes(x = x, y = y, fill = value), alpha = 0.95) +
-#   facet_wrap(year ~ month) +
-#   geom_sf(data = nz, fill = "black", colour = NA, size = 0.3) +
-#   coord_sf() +
-#   scale_fill_viridis("SST (°C)", alpha = 0.8, option = "plasma")
-```
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-# f <- "../data-raw/mfe-average-seasurface-temperature-19932012-GTiff.zip"
-# fz <- unzip(zipfile = f, list = TRUE)
-# fz
-# unzip(zipfile = f)
-
-# mfe_average_sst <- raster::raster(x = "average-seasurface-temperature-19932012.tif", values = TRUE)# %>%
-  # projectRaster(crs = proj_nzsf)
-# names(mfe_average_sst) <- "layer"
-# mfe_average_sst[mfe_average_sst[] < -10 | mfe_average_sst[] > 35] <- NA
-# range(mfe_average_sst[], na.rm = TRUE)
-# plot(mfe_average_sst)
-# file.remove(fz$Name)
-# use_data(mfe_average_sst, overwrite = TRUE)
-
-  # st_transform(3994) %>%
-
-# data(mfe_average_sst)
-
-# rpts <- mfe_average_sst %>%
-#   rasterToPoints() %>%
-#   data.frame()
-
-# ggplot() +
-#   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
-#   # plot_statistical_areas(area = "EEZ", fill = NA) +
-#   # plot_coast(proj = projection(mfe_average_sst), resolution = "med", fill = "black", colour = NA, size = 0.3) +
-#   coord_sf() +
-#   scale_fill_viridis(alpha = 0.8, option = "magma") +
-#   labs(fill = "SST (°C)")
-```
-
-```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
-# data(gebco_depth_raster)
-# 
-# rpts <- gebco_depth_raster %>%
-#   rasterToPoints() %>%
-#   data.frame()
-# 
-# ggplot() +
-#   geom_raster(data = rpts, aes(x = x, y = y, fill = layer)) +
-#   plot_statistical_areas(area = "EEZ", fill = NA) +
-#   plot_coast(resolution = "med", fill = "black", colour = NA, size = 0.3) +
-#   coord_sf() +
-#   scale_fill_viridis(alpha = 0.8, option = "magma") +
-#   labs(fill = "Depth (m)")
 ```

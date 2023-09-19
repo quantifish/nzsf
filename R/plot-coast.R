@@ -41,6 +41,7 @@ get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
 #' 
 #' @inheritParams get_coast
 #' @param rivers Plot rivers over land as \code{geom_sf}.
+#' @param size The line size to pass on to \code{geom_sf}.
 #' @param ... Other arguments passed on to \code{geom_sf}.
 #' @return ggplot of New Zealands coastline.
 #' 
@@ -51,14 +52,14 @@ get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
 #' @export
 #' 
 plot_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1,
-                       rivers = FALSE, ...) {
+                       rivers = FALSE, size = 0.3, ...) {
   
   x <- get_coast(proj = proj, resolution = resolution, keep = keep)
   
   if (rivers) {
-    p <- list(geom_sf(data = x, ...), plot_rivers(proj = proj))
+    p <- list(geom_sf(data = x, size = size, ...), plot_rivers(proj = proj))
   } else {
-    p <- geom_sf(data = x, ...)
+    p <- geom_sf(data = x, size = size, ...)
   }
   
   return(p)
