@@ -1,7 +1,7 @@
 #' Get Fisheries New Zealand standard grid origin
 #' 
 #' @param cell_size square grid boundary length in km
-#' @param bounding_box limits generated from call to sf::st_bbox()
+#' @param bounding_box limits generated from call to \code{sf::st_bbox()}
 #' @param anchor the point to anchor the grid to
 #' @return standard grid origin \code{data.frame}
 #'
