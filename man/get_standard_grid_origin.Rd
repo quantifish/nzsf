@@ -9,7 +9,7 @@ get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 422600))
 \arguments{
 \item{cell_size}{square grid boundary length in km}
 
-\item{bounding_box}{limits generated from call to sf::st_bbox()}
+\item{bounding_box}{limits generated from call to \code{sf::st_bbox()}}
 
 \item{anchor}{the point to anchor the grid to}
 }

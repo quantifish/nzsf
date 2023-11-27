@@ -54,9 +54,11 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), 
                               return_raster = TRUE, crs = proj_nzsf()) {
   
-  if (class(bounding_box) != "bbox") stop("bounding_box is not a bbox object")
+  if (!is(bounding_box, "bbox")) stop("bounding_box is not a bbox object")
   
-  grid_origin <- get_standard_grid_origin(cell_size = cell_size, bounding_box = bounding_box, anchor = anchor)
+  grid_origin <- get_standard_grid_origin(cell_size = cell_size, 
+                                          bounding_box = bounding_box, 
+                                          anchor = anchor)
   
   if (return_raster) {
     grids <- raster(crs = crs, 
