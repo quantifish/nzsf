@@ -1,11 +1,11 @@
-pandoc: 2.19.2
-pkgdown: 2.0.7
+pandoc: 3.1.11
+pkgdown: 2.0.9
 pkgdown_sha: ~
 articles:
   fnz_standard_grids: fnz_standard_grids.html
   lobster: lobster.html
   nzsf: nzsf.html
-last_built: 2023-11-27T03:55Z
+last_built: 2024-05-21T08:47Z
 urls:
   reference: http://www.quantifish.co.nz/nzsf/reference
   article: http://www.quantifish.co.nz/nzsf/articles
