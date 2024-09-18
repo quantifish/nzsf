@@ -13,10 +13,7 @@ editor_options:
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 ```
 
 The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`.

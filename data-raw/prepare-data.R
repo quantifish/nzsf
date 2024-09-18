@@ -1,7 +1,7 @@
 library(usethis)
 library(sf)
 library(tidyverse)
-library(rgdal)
+# library(rgdal)
 library(raster)
 library(ncdf4)
 library(stars)
@@ -215,6 +215,15 @@ use_data(rock_lobster_stat_areas, overwrite = TRUE)
 
 doc_marine_reserves <- unzip_and_clean("kx-doc-marine-reserves-SHP.zip") %>%
   select(Name)
+
+motiti_marine_reserves <- unzip_and_clean("Coastal_Plan%3A_Motiti_Protection_Area_(Operative_11_Aug_2021).zip") %>%
+  rename(Name = Protection) %>%
+  select(Name) %>%
+  st_transform(crs = st_crs(doc_marine_reserves))
+
+doc_marine_reserves <- doc_marine_reserves %>%
+  bind_rows(motiti_marine_reserves)
+
 use_data(doc_marine_reserves, overwrite = TRUE)
 
 # Marine habitats ----

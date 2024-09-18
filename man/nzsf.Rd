@@ -2,6 +2,7 @@
 % Please edit documentation in R/nzsf.R
 \docType{package}
 \name{nzsf}
+\alias{nzsf-package}
 \alias{nzsf}
 \title{New Zealand Spatial Features}
 \description{
@@ -22,4 +23,17 @@ different projection). These functions return a spatial features object.
 The plot functions include a get function and an appropriate \code{ggplot2} geom to plot the shapefile.
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/quantifish/nzsf}
+  \item \url{http://www.quantifish.co.nz/nzsf/}
+  \item Report bugs at \url{https://github.com/quantifish/nzsf/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Darcy Webber \email{darcy.webber@quantifish.co.nz}
+
+}
 \keyword{internal}

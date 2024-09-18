@@ -49,7 +49,7 @@ Remotes:
     ropensci/rnaturalearthhires
 LazyData: true
 LazyDataCompression: bzip2
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 Collate: 
     'nzsf.R'
