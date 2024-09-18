@@ -1,267 +1,91 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/404.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/articles/fnz_standard_grids.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/articles/lobster.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/articles/nzsf.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/CCSBT.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Cockle_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/FisheriesManagementAreas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Habitats.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Reefs.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/HAKE_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/HOKI_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/JackMackerel_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/LING_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/NZBathymetry_2016_grid.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/OREO_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/OrangeRoughy_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/PackhorseRockLobster_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Paua_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Pipi_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Rocky_reef_National_NZ.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/SIOFA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/SPRFMO.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Scallop_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Scampi_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/SilverWarehou_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/SouthernBlueWhiting_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/SpinyRedRockLobster_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/Squid_QMA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_eez.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_mpa.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_ssru.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_statistical_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/coastline_polyline_hydro_14k_122k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/coord_ccamlr.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/coord_ccsbt.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_122k_190k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_1350k_11500k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_190k_1350k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/doc_marine_reserves.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/exclusive_economic_zone_outer_limits_200_mile.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/gebco.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/gebco_CCAMLR.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/gebco_NZ.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/gebco_SIOFA.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/geom_ccamlr.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/geom_ccsbt.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/geom_cra.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/geom_gebco.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_coast.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_conditional_smooths.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_depth.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_marine_reserves.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_points_as_raster.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_qma.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_standard_grid.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_standard_grid_origin.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/get_statistical_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/lookup_depth.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1250k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1500k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_150k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1250k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1500k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_150k.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_general_statistical_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_inshore_statistical_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nz_rivers.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/nzsf.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_clip.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_coast.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_conditional_smooths.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_depth.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_marine_reserves.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_qma.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_raster.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_rivers.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/plot_statistical_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/proj_ccamlr.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/proj_ccsbt.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/proj_nzsf.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/rock_lobster_stat_areas.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/territorial_sea_outer_limit_12_mile.html</loc>
-  </url>
-  <url>
-    <loc>http://www.quantifish.co.nz/nzsf/reference/theme_nzsf.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://www.quantifish.co.nz/nzsf/404.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/LICENSE-text.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/articles/fnz_standard_grids.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/articles/index.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/articles/lobster.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/articles/nzsf.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/authors.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/index.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/CCSBT.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Cockle_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/FisheriesManagementAreas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Habitats.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Reefs.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/HAKE_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/HOKI_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/JackMackerel_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/LING_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/NZBathymetry_2016_grid.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/OREO_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/OrangeRoughy_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/PackhorseRockLobster_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Paua_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Pipi_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Rocky_reef_National_NZ.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/SIOFA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/SPRFMO.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Scallop_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Scampi_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/SilverWarehou_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/SouthernBlueWhiting_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/SpinyRedRockLobster_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/Squid_QMA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_eez.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_mpa.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_ssru.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/ccamlr_statistical_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/coastline_polyline_hydro_14k_122k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/coord_ccamlr.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/coord_ccsbt.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_122k_190k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_1350k_11500k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_190k_1350k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/doc_marine_reserves.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/exclusive_economic_zone_outer_limits_200_mile.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/gebco.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/gebco_CCAMLR.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/gebco_NZ.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/gebco_SIOFA.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/geom_ccamlr.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/geom_ccsbt.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/geom_cra.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/geom_gebco.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_coast.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_conditional_smooths.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_depth.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_marine_reserves.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_points_as_raster.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_qma.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_standard_grid.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_standard_grid_origin.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/get_statistical_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/index.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/lookup_depth.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1250k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1500k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_150k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1250k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1500k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_150k.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_general_statistical_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_inshore_statistical_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nz_rivers.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/nzsf.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_clip.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_coast.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_conditional_smooths.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_depth.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_marine_reserves.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_qma.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_raster.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_rivers.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/plot_statistical_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/proj_ccamlr.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/proj_ccsbt.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/proj_nzsf.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/rock_lobster_stat_areas.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/territorial_sea_outer_limit_12_mile.html</loc></url>
+<url><loc>http://www.quantifish.co.nz/nzsf/reference/theme_nzsf.html</loc></url>
 </urlset>
+
