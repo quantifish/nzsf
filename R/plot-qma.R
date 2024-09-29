@@ -84,7 +84,8 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
     x <- x %>% 
       st_transform(crs = proj, check = TRUE) %>% 
       st_union(by_feature = TRUE) %>%
-      st_cast("MULTIPOLYGON")
+      st_cast("MULTIPOLYGON") %>%
+      st_make_valid()
   }
   return(x)
 }

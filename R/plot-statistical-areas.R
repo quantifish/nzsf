@@ -55,7 +55,8 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
     x <- x %>% 
       # st_transform(crs = proj, check = TRUE) %>% 
       st_transform(crs = proj) %>% 
-      st_union(by_feature = TRUE)
+      st_union(by_feature = TRUE) %>%
+      st_make_valid()
     # if (!area %in% "EEZ") {
     #   x <- x %>% st_cast("MULTIPOLYGON")
     # }
