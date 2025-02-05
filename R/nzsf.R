@@ -14,8 +14,8 @@
 #' @section Plot functions:
 #' The plot functions include a get function and an appropriate \code{ggplot2} geom to plot the shapefile.
 #'
-#' @docType package
 #' @name nzsf
 #' @keywords internal
 #' 
+"_PACKAGE"
 NULL
