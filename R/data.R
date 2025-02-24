@@ -589,6 +589,27 @@
 "doc_marine_reserves"
 
 
+#' Hauraki Gulf Marine Park
+#'
+#' Hauraki_Gulf_Marine_Park.
+#'
+#' @format Simple feature collection with 1 feature and 19 field:
+#' \describe{
+#'   \item{OBJECTID}{name of the marine reserve}
+#'   \item{NaPALIS_ID}{name of the marine reserve}
+#'   \item{Start_Date}{name of the marine reserve}
+#'   \item{End_Date}{name of the marine reserve}
+#'   \item{Type}{name of the marine reserve}
+#'   \item{Name}{name of the marine reserve}
+#'   \item{Legislatio}{name of the marine reserve}
+#'   \item{Section}{name of the marine reserve}
+#'   \item{Local_Purp}{name of the marine reserve}
+#' }
+#' @source \url{https://hub.arcgis.com/datasets/c6d428a2199046d2a39dc2208a2c921f/about?uiVersion=content-views}
+#' 
+"Hauraki_Gulf_Marine_Park"
+
+
 #' Gisborne Te Tapuwae o Rongokako Habitats
 #'
 #' Gisborne Te Tapuwae o Rongokako Habitats provided by the Department of Conservation (DOC).

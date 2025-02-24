@@ -22,7 +22,8 @@ test_that("number of QMAs", {
 
 test_that("number of shapes", {
   
-  expect_equal(nrow(get_marine_reserves()), 44)
+  expect_equal(nrow(get_marine_reserves()), 50)
+  expect_equal(nrow(Hauraki_Gulf_Marine_Park), 1)
   
   expect_equal(nrow(get_depth(resolution = "low")), 4571)
   expect_equal(nrow(get_depth(resolution = "med")), 14859)

@@ -213,6 +213,9 @@ use_data(rock_lobster_stat_areas, overwrite = TRUE)
 
 # Marine reserves ----
 
+Hauraki_Gulf_Marine_Park <- unzip_and_clean("Hauraki_Gulf_Marine_Park.zip")
+use_data(Hauraki_Gulf_Marine_Park, overwrite = TRUE)
+
 doc_marine_reserves <- unzip_and_clean("kx-doc-marine-reserves-SHP.zip") %>%
   select(Name)
 

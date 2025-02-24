@@ -49,6 +49,7 @@ get_standard_grid_origin <- function(cell_size, bounding_box, anchor = c(0, 4226
 #' 
 #' @importFrom sf st_make_grid st_join st_as_sf st_as_sfc
 #' @importFrom raster extent crs
+#' @importFrom methods is
 #' @export
 #' 
 get_standard_grid <- function(cell_size, bounding_box, anchor = c(0, 422600), 
