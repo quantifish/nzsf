@@ -23,6 +23,7 @@ Imports:
     stringr,
     rmapshaper,
     rnaturalearth,
+    ggnewscale,
     stars,
     brms,
 Suggests:
@@ -36,7 +37,6 @@ Suggests:
     lwgeom,
     patchwork,
     cowplot,
-    ggnewscale,
     rnaturalearthdata,
     rnaturalearthhires,
     knitr,
