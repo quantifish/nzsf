@@ -9,7 +9,8 @@ get_standard_grid(
   bounding_box,
   anchor = c(0, 422600),
   return_raster = TRUE,
-  crs = proj_nzsf()
+  crs = proj_nzsf(),
+  square = TRUE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ get_standard_grid(
 \item{return_raster}{return a raster or polygons}
 
 \item{crs}{the CRS to use}
+
+\item{square}{logical; if FALSE, create hexagonal grid}
 }
 \value{
 New Zealand's standard grid polygon as a \code{sf} object or as a raster.
