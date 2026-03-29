@@ -3,6 +3,7 @@
 data-raw/
 .travis.yml
 ^README\.Rmd$
+^README\.qmd$
 ^LICENSE\.md$
 other/
 logo.R
