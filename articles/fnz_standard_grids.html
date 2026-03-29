@@ -6,17 +6,19 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Fisheries New Zealand standard grids • nzsf</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fisheries New Zealand standard grids">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="fnz_standard_grids_files/libs/quarto-html/popper.min.js"></script><script src="fnz_standard_grids_files/libs/quarto-html/tippy.umd.min.js"></script><link href="fnz_standard_grids_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="fnz_standard_grids_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Fisheries New Zealand standard grids">
+<meta property="og:image" content="http://www.quantifish.co.nz/nzsf/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,55 +57,52 @@
 
 
   </div>
-</nav><div class="container template-article">
-
-
-
-
+</nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Fisheries New Zealand standard grids</h1>
-                        <h4 data-toc-skip class="author">Darcy Webber,
-Sophie Mormede, Charles Edwards</h4>
-            
-      
-      <small class="dont-index">Source: <a href="https://github.com/quantifish/nzsf/blob/master/vignettes/fnz_standard_grids.Rmd" class="external-link"><code>vignettes/fnz_standard_grids.Rmd</code></a></small>
-      <div class="d-none name"><code>fnz_standard_grids.Rmd</code></div>
+
+      <p class="author">Darcy Webber, Sophie Mormede, Charles Edwards</p>
+
+
+      <small class="dont-index">Source: <a href="https://github.com/quantifish/nzsf/blob/master/vignettes/fnz_standard_grids.qmd" class="external-link"><code>vignettes/fnz_standard_grids.qmd</code></a></small>
+      <div class="d-none name"><code></code></div>
     </div>
 
-    
-    
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+
+
+
+
+
+    <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantifish/nzsf" class="external-link">nzsf</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/ggspatial/" class="external-link">ggspatial</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/stars/" class="external-link">stars</a></span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+</div>
 <p>The process is:</p>
 <ul>
-<li>Identify the area of interest (e.g., the New Zealand EEZ, a
-QMA)</li>
+<li>Identify the area of interest (e.g., the New Zealand EEZ, a QMA)</li>
 <li>Place a bounding box around the area of interest</li>
-<li>Generate a standard grid, with the specified <code>cell_size</code>,
-that covers the bounding box</li>
+<li>Generate a standard grid, with the specified <code>cell_size</code>, that covers the bounding box</li>
 </ul>
-<p>The standard grid can either be a simple feature collection of
-polygons (<code>return_raster = FALSE</code>) or a raster
-(<code>return_raster = TRUE</code>). The standard grid can extend beyond
-the range of the bounding box, depending on the
-<code>cell_size</code>.</p>
-<div class="section level2">
-<h2 id="standard-grids-as-polygons">Standard grids as polygons<a class="anchor" aria-label="anchor" href="#standard-grids-as-polygons"></a>
+<p>The standard grid can either be a simple feature collection of polygons (<code>return_raster = FALSE</code>) or a raster (<code>return_raster = TRUE</code>). The standard grid can extend beyond the range of the bounding box, depending on the <code>cell_size</code>.</p>
+<section class="section level2"><h2 id="standard-grids-as-polygons">Standard grids as polygons<a class="anchor" aria-label="anchor" href="#standard-grids-as-polygons"></a>
 </h2>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eez</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_statistical_areas.html">get_statistical_areas</a></span><span class="op">(</span>area <span class="op">=</span> <span class="st">"EEZ"</span>, proj <span class="op">=</span> <span class="fu"><a href="../reference/proj_nzsf.html">proj_nzsf</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">bb_eez</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">eez</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sfc.html" class="external-link">st_as_sfc</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">grd256_eez</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_standard_grid.html">get_standard_grid</a></span><span class="op">(</span>cell_size <span class="op">=</span> <span class="fl">256</span>, bounding_box <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">eez</span><span class="op">)</span>, </span>
 <span>                                return_raster <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="va">grd064_eez</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_standard_grid.html">get_standard_grid</a></span><span class="op">(</span>cell_size <span class="op">=</span> <span class="fl">64</span>, bounding_box <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">eez</span><span class="op">)</span>, </span>
 <span>                                return_raster <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+</div>
 <p>Plot and check with center point and bounding box</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grd064_eez</span>,  colour <span class="op">=</span> <span class="st">"lightblue"</span>,  fill <span class="op">=</span> <span class="cn">NA</span>, alpha <span class="op">=</span> <span class="fl">0.15</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grd256_eez</span>,  colour <span class="op">=</span> <span class="st">"tomato"</span>,  fill <span class="op">=</span> <span class="cn">NA</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
@@ -113,14 +112,15 @@ the range of the bounding box, depending on the
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">422600</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span><span class="st">"NZ"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html" class="external-link">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tr"</span>, unit_category <span class="op">=</span> <span class="st">"metric"</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="fnz_standard_grids_files/figure-html/EEZ_eg-1.png" alt="Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (red lines), and the origin (green point)." width="672"><p class="caption">
-Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the
-EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km
-grid (red lines), and the origin (green point).
-</p>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="fnz_standard_grids_files/figure-html/EEZ_eg-1.png" width="672"></p>
+<figcaption>Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km grid (red lines), and the origin (green point).</figcaption></figure>
 </div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cra1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_statistical_areas.html">get_statistical_areas</a></span><span class="op">(</span>area <span class="op">=</span> <span class="st">"CRA"</span>, proj <span class="op">=</span> <span class="fu"><a href="../reference/proj_nzsf.html">proj_nzsf</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">QMA</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="st">"CRA1"</span><span class="op">)</span></span>
 <span></span>
@@ -140,15 +140,16 @@ grid (red lines), and the origin (green point).
 <span>  <span class="fu"><a href="../reference/plot_coast.html">plot_coast</a></span><span class="op">(</span>resolution <span class="op">=</span> <span class="st">"large"</span>, fill <span class="op">=</span> <span class="st">"black"</span>, colour <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html" class="external-link">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tr"</span>, unit_category <span class="op">=</span> <span class="st">"metric"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">grd256_cra1</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="fnz_standard_grids_files/figure-html/CRA1_eg-1.png" alt="The CRA 1 QMA (dashed black), a box bounding around CRA 1 (dashed red), a 64 x 64 km grid (blue), and 256 x 256 km grid (red). Note that there is no point of origin shown as it is outside of the CRA 1 QMA." width="672"><p class="caption">
-The CRA 1 QMA (dashed black), a box bounding around CRA 1 (dashed red),
-a 64 x 64 km grid (blue), and 256 x 256 km grid (red). Note that there
-is no point of origin shown as it is outside of the CRA 1 QMA.
-</p>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="fnz_standard_grids_files/figure-html/CRA1_eg-1.png" width="672"></p>
+<figcaption>The CRA 1 QMA (dashed black), a box bounding around CRA 1 (dashed red), a 64 x 64 km grid (blue), and 256 x 256 km grid (red). Note that there is no point of origin shown as it is outside of the CRA 1 QMA.</figcaption></figure>
+</div>
+</div>
 </div>
 <p>Plot and check overlap of two grids.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">grd256_eez</span>,  colour <span class="op">=</span> <span class="st">"lightblue"</span>,  fill <span class="op">=</span> <span class="cn">NA</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">cra1</span>, colour <span class="op">=</span> <span class="st">"orange"</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
@@ -158,15 +159,16 @@ is no point of origin shown as it is outside of the CRA 1 QMA.
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">422600</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html" class="external-link">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tr"</span>, unit_category <span class="op">=</span> <span class="st">"metric"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">coord_sf</a></span><span class="op">(</span>xlim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">5e+05</span>, <span class="fl">2.5e+05</span><span class="op">)</span>, ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">422600</span>, <span class="fl">895400</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="fnz_standard_grids_files/figure-html/overlap_eg-1.png" alt="EEZ 200 x 200 km grid (light blue), CRA 1 200 x 200 km grid (dashed blue), origin (green point)." width="672"><p class="caption">
-EEZ 200 x 200 km grid (light blue), CRA 1 200 x 200 km grid (dashed
-blue), origin (green point).
-</p>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="fnz_standard_grids_files/figure-html/overlap_eg-1.png" width="672"></p>
+<figcaption>EEZ 200 x 200 km grid (light blue), CRA 1 200 x 200 km grid (dashed blue), origin (green point).</figcaption></figure>
 </div>
-<p>In the figure below, I show that you can specify the number of cells
-either side of the origin.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+</div>
+</div>
+<p>In the figure below, I show that you can specify the number of cells either side of the origin.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bb1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">eez</span><span class="op">)</span></span>
 <span><span class="va">bb1</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">150000</span> <span class="co"># xmin</span></span>
 <span><span class="va">bb1</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">422600</span> <span class="op">-</span> <span class="fl">3000</span> <span class="co"># ymin (3 cells below the origin)</span></span>
@@ -183,20 +185,18 @@ either side of the origin.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">422600</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://paleolimbot.github.io/ggspatial/reference/annotation_scale.html" class="external-link">annotation_scale</a></span><span class="op">(</span>location <span class="op">=</span> <span class="st">"tr"</span>, unit_category <span class="op">=</span> <span class="st">"metric"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">grd001_eez</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="fnz_standard_grids_files/figure-html/fine_eg-1.png" alt="A 1 x 1 km grid (blue), origin (green point), and tip of Banks Peninsula to west. Note that the cell sizes agree well with the scale at top-right." width="1152"><p class="caption">
-A 1 x 1 km grid (blue), origin (green point), and tip of Banks Peninsula
-to west. Note that the cell sizes agree well with the scale at
-top-right.
-</p>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="fnz_standard_grids_files/figure-html/fine_eg-1.png" width="1152"></p>
+<figcaption>A 1 x 1 km grid (blue), origin (green point), and tip of Banks Peninsula to west. Note that the cell sizes agree well with the scale at top-right.</figcaption></figure>
 </div>
 </div>
-<div class="section level2">
-<h2 id="standard-grids-as-rasters">Standard grids as rasters<a class="anchor" aria-label="anchor" href="#standard-grids-as-rasters"></a>
+</div>
+</section><section class="section level2"><h2 id="standard-grids-as-rasters">Standard grids as rasters<a class="anchor" aria-label="anchor" href="#standard-grids-as-rasters"></a>
 </h2>
-<p>Rasters are more useful than polygons. Get standard grid as a raster.
-Fill the grid with random values and plot it.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>Rasters are more useful than polygons. Get standard grid as a raster. Fill the grid with random values and plot it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_standard_grid.html">get_standard_grid</a></span><span class="op">(</span>cell_size <span class="op">=</span> <span class="fl">256</span>, bounding_box <span class="op">=</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_bbox.html" class="external-link">st_bbox</a></span><span class="op">(</span><span class="va">eez</span><span class="op">)</span>, </span>
 <span>                       return_raster <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">r</span><span class="op">[</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://rspatial.github.io/terra/reference/dimensions.html" class="external-link">ncell</a></span><span class="op">(</span><span class="va">r</span><span class="op">)</span><span class="op">)</span></span>
@@ -209,17 +209,98 @@ Fill the grid with random values and plot it.</p>
 <span>  <span class="fu"><a href="../reference/plot_statistical_areas.html">plot_statistical_areas</a></span><span class="op">(</span>area <span class="op">=</span> <span class="st">"EEZ"</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span>, y <span class="op">=</span> <span class="op">-</span><span class="fl">422600</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/plot_clip.html">plot_clip</a></span><span class="op">(</span><span class="st">"NZ"</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="fnz_standard_grids_files/figure-html/raster-1.png" alt="EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point)." width="672"><p class="caption">
-EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as
-raster (blue), origin (green point).
-</p>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure><p><img src="fnz_standard_grids_files/figure-html/raster-1.png" width="672"></p>
+<figcaption>EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as raster (blue), origin (green point).</figcaption></figure>
 </div>
 </div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
 </div>
-
+</section><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config);
+    }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script></main>
+</div>
 
 
     <footer><div class="pkgdown-footer-left">
@@ -227,7 +308,7 @@ raster (blue), origin (green point).
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -1,0 +1,174 @@
+# Package index
+
+## Helpers
+
+Build or extract something.
+
+- [`get_coast()`](http://www.quantifish.co.nz/nzsf/reference/get_coast.md)
+  : Get the New Zealand coastline
+- [`get_conditional_smooths()`](http://www.quantifish.co.nz/nzsf/reference/get_conditional_smooths.md)
+  : Plot a conditional_smooths output
+- [`get_depth()`](http://www.quantifish.co.nz/nzsf/reference/get_depth.md)
+  : Get depth polylines around New Zealand
+- [`get_marine_reserves()`](http://www.quantifish.co.nz/nzsf/reference/get_marine_reserves.md)
+  : Get Marine Reserves
+- [`get_points_as_raster()`](http://www.quantifish.co.nz/nzsf/reference/get_points_as_raster.md)
+  : Convert points to a raster
+- [`get_qma()`](http://www.quantifish.co.nz/nzsf/reference/get_qma.md) :
+  Get Quota Management Area (QMA) polygons
+- [`get_standard_grid()`](http://www.quantifish.co.nz/nzsf/reference/get_standard_grid.md)
+  : Get Fisheries New Zealand standard grid definitions
+- [`get_standard_grid_origin()`](http://www.quantifish.co.nz/nzsf/reference/get_standard_grid_origin.md)
+  : Get Fisheries New Zealand standard grid origin
+- [`get_statistical_areas()`](http://www.quantifish.co.nz/nzsf/reference/get_statistical_areas.md)
+  : Get Statistical Areas
+- [`lookup_depth()`](http://www.quantifish.co.nz/nzsf/reference/lookup_depth.md)
+  : Lookup the depth (m) at specific locations around New Zealand
+
+## Plots
+
+Plotting functions.
+
+- [`coord_ccamlr()`](http://www.quantifish.co.nz/nzsf/reference/coord_ccamlr.md)
+  : CCAMLR coord
+- [`coord_ccsbt()`](http://www.quantifish.co.nz/nzsf/reference/coord_ccsbt.md)
+  : CCSBT coord
+- [`geom_ccamlr()`](http://www.quantifish.co.nz/nzsf/reference/geom_ccamlr.md)
+  : CCAMLR geometries
+- [`geom_ccsbt()`](http://www.quantifish.co.nz/nzsf/reference/geom_ccsbt.md)
+  : CCSBT geometry
+- [`geom_cra()`](http://www.quantifish.co.nz/nzsf/reference/geom_cra.md)
+  : Plot CRA labels
+- [`geom_gebco()`](http://www.quantifish.co.nz/nzsf/reference/geom_gebco.md)
+  : Plot GEBCO depth raster
+- [`plot_clip()`](http://www.quantifish.co.nz/nzsf/reference/plot_clip.md)
+  : Clip to a shapefile.
+- [`plot_coast()`](http://www.quantifish.co.nz/nzsf/reference/plot_coast.md)
+  : Plot the New Zealand coastline.
+- [`plot_conditional_smooths()`](http://www.quantifish.co.nz/nzsf/reference/plot_conditional_smooths.md)
+  : Plot a conditional_smooths output
+- [`plot_depth()`](http://www.quantifish.co.nz/nzsf/reference/plot_depth.md)
+  : Plot depth polylines around New Zealand
+- [`plot_marine_reserves()`](http://www.quantifish.co.nz/nzsf/reference/plot_marine_reserves.md)
+  : Plot Marine Reserves
+- [`plot_qma()`](http://www.quantifish.co.nz/nzsf/reference/plot_qma.md)
+  : Plot a Quota Management Area (QMA)
+- [`plot_raster()`](http://www.quantifish.co.nz/nzsf/reference/plot_raster.md)
+  : Plot points as a raster
+- [`plot_rivers()`](http://www.quantifish.co.nz/nzsf/reference/plot_rivers.md)
+  : Plot New Zealand rivers.
+- [`plot_statistical_areas()`](http://www.quantifish.co.nz/nzsf/reference/plot_statistical_areas.md)
+  : Get statistical areas
+- [`proj_ccamlr()`](http://www.quantifish.co.nz/nzsf/reference/proj_ccamlr.md)
+  : CCAMLR projection
+- [`proj_ccsbt()`](http://www.quantifish.co.nz/nzsf/reference/proj_ccsbt.md)
+  : CCSBT projection
+- [`proj_nzsf()`](http://www.quantifish.co.nz/nzsf/reference/proj_nzsf.md)
+  : New Zealand projection
+- [`theme_nzsf()`](http://www.quantifish.co.nz/nzsf/reference/theme_nzsf.md)
+  : nzsf theme
+
+## Data
+
+Shapefiles that are available.
+
+- [`CCSBT`](http://www.quantifish.co.nz/nzsf/reference/CCSBT.md) : CCSBT
+  Management Areas
+- [`Cockle_QMA`](http://www.quantifish.co.nz/nzsf/reference/Cockle_QMA.md)
+  : New Zealand cockle QMAs
+- [`coastline_polyline_hydro_14k_122k`](http://www.quantifish.co.nz/nzsf/reference/coastline_polyline_hydro_14k_122k.md)
+  : New Zealand depth contours 14 by 122k
+- [`FisheriesManagementAreas`](http://www.quantifish.co.nz/nzsf/reference/FisheriesManagementAreas.md)
+  : New Zealand Fisheries Management Areas (FMAs)
+- [`Gisborne_TToR_Habitats`](http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Habitats.md)
+  : Gisborne Te Tapuwae o Rongokako Habitats
+- [`Gisborne_TToR_Reefs`](http://www.quantifish.co.nz/nzsf/reference/Gisborne_TToR_Reefs.md)
+  : Gisborne Te Tapuwae o Rongokako Reefs
+- [`HAKE_QMA`](http://www.quantifish.co.nz/nzsf/reference/HAKE_QMA.md) :
+  New Zealand hake QMAs
+- [`Hauraki_Gulf_Marine_Park`](http://www.quantifish.co.nz/nzsf/reference/Hauraki_Gulf_Marine_Park.md)
+  : Hauraki Gulf Marine Park
+- [`HOKI_QMA`](http://www.quantifish.co.nz/nzsf/reference/HOKI_QMA.md) :
+  New Zealand hoki QMAs
+- [`JackMackerel_QMA`](http://www.quantifish.co.nz/nzsf/reference/JackMackerel_QMA.md)
+  : New Zealand jack mackerel QMAs
+- [`LING_QMA`](http://www.quantifish.co.nz/nzsf/reference/LING_QMA.md) :
+  New Zealand ling QMAs
+- [`NZBathymetry_2016_grid`](http://www.quantifish.co.nz/nzsf/reference/NZBathymetry_2016_grid.md)
+  : New Zealand depth ASCII grid
+- [`OREO_QMA`](http://www.quantifish.co.nz/nzsf/reference/OREO_QMA.md) :
+  New Zealand oreo QMAs
+- [`OrangeRoughy_QMA`](http://www.quantifish.co.nz/nzsf/reference/OrangeRoughy_QMA.md)
+  : New Zealand orange roughy QMAs
+- [`PackhorseRockLobster_QMA`](http://www.quantifish.co.nz/nzsf/reference/PackhorseRockLobster_QMA.md)
+  : New Zealand packhorse rock lobster QMAs
+- [`Paua_QMA`](http://www.quantifish.co.nz/nzsf/reference/Paua_QMA.md) :
+  New Zealand paua QMAs
+- [`Pipi_QMA`](http://www.quantifish.co.nz/nzsf/reference/Pipi_QMA.md) :
+  New Zealand pipi QMAs
+- [`Rocky_reef_National_NZ`](http://www.quantifish.co.nz/nzsf/reference/Rocky_reef_National_NZ.md)
+  : New Zealand Rocky Reefs
+- [`SIOFA`](http://www.quantifish.co.nz/nzsf/reference/SIOFA.md) : SIOFA
+  polygon
+- [`SPRFMO`](http://www.quantifish.co.nz/nzsf/reference/SPRFMO.md) :
+  SPRFMO polygon
+- [`Scallop_QMA`](http://www.quantifish.co.nz/nzsf/reference/Scallop_QMA.md)
+  : New Zealand scallop QMAs
+- [`Scampi_QMA`](http://www.quantifish.co.nz/nzsf/reference/Scampi_QMA.md)
+  : New Zealand scampi QMAs
+- [`SilverWarehou_QMA`](http://www.quantifish.co.nz/nzsf/reference/SilverWarehou_QMA.md)
+  : New Zealand silver warehou QMAs
+- [`SouthernBlueWhiting_QMA`](http://www.quantifish.co.nz/nzsf/reference/SouthernBlueWhiting_QMA.md)
+  : New Zealand southern blue whiting QMAs
+- [`SpinyRedRockLobster_QMA`](http://www.quantifish.co.nz/nzsf/reference/SpinyRedRockLobster_QMA.md)
+  : New Zealand red rock lobster QMAs
+- [`Squid_QMA`](http://www.quantifish.co.nz/nzsf/reference/Squid_QMA.md)
+  : New Zealand squid QMAs
+- [`ccamlr_eez`](http://www.quantifish.co.nz/nzsf/reference/ccamlr_eez.md)
+  : CCAMLR EEZ
+- [`ccamlr_mpa`](http://www.quantifish.co.nz/nzsf/reference/ccamlr_mpa.md)
+  : CCAMLR Marine Protected Areas
+- [`ccamlr_ssru`](http://www.quantifish.co.nz/nzsf/reference/ccamlr_ssru.md)
+  : CCAMLR Small Scale Research Units
+- [`ccamlr_statistical_areas`](http://www.quantifish.co.nz/nzsf/reference/ccamlr_statistical_areas.md)
+  : CCAMLR Statistical Areas
+- [`depth_contour_polyline_hydro_122k_190k`](http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_122k_190k.md)
+  : New Zealand depth contours 122k by 190k
+- [`depth_contour_polyline_hydro_1350k_11500k`](http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_1350k_11500k.md)
+  : New Zealand depth contours 1350k by 11500k
+- [`depth_contour_polyline_hydro_190k_1350k`](http://www.quantifish.co.nz/nzsf/reference/depth_contour_polyline_hydro_190k_1350k.md)
+  : New Zealand depth contours 190k by 1350k
+- [`doc_marine_reserves`](http://www.quantifish.co.nz/nzsf/reference/doc_marine_reserves.md)
+  : New Zealand marine reserves
+- [`exclusive_economic_zone_outer_limits_200_mile`](http://www.quantifish.co.nz/nzsf/reference/exclusive_economic_zone_outer_limits_200_mile.md)
+  : New Zealand Exclusive Economic Zone (EEZ)
+- [`gebco`](http://www.quantifish.co.nz/nzsf/reference/gebco.md) : Gebco
+  depth
+- [`gebco_CCAMLR`](http://www.quantifish.co.nz/nzsf/reference/gebco_CCAMLR.md)
+  : Gebco depth
+- [`gebco_NZ`](http://www.quantifish.co.nz/nzsf/reference/gebco_NZ.md) :
+  Gebco depth
+- [`gebco_SIOFA`](http://www.quantifish.co.nz/nzsf/reference/gebco_SIOFA.md)
+  : Gebco depth
+- [`nz_coastlines_and_islands_polygons_topo_1250k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1250k.md)
+  : New Zealand coastlines and islands 1250k
+- [`nz_coastlines_and_islands_polygons_topo_1500k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_1500k.md)
+  : New Zealand coastlines and islands 1500k
+- [`nz_coastlines_and_islands_polygons_topo_150k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_and_islands_polygons_topo_150k.md)
+  : New Zealand coastlines and islands 150k
+- [`nz_coastlines_topo_1250k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1250k.md)
+  : New Zealand coastlines 1250k
+- [`nz_coastlines_topo_1500k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_1500k.md)
+  : New Zealand coastlines 1500k
+- [`nz_coastlines_topo_150k`](http://www.quantifish.co.nz/nzsf/reference/nz_coastlines_topo_150k.md)
+  : New Zealand coastlines 150k
+- [`nz_general_statistical_areas`](http://www.quantifish.co.nz/nzsf/reference/nz_general_statistical_areas.md)
+  : New Zealand General Statistical Areas
+- [`nz_inshore_statistical_areas`](http://www.quantifish.co.nz/nzsf/reference/nz_inshore_statistical_areas.md)
+  : New Zealand Inshore Statistical Areas
+- [`nz_rivers`](http://www.quantifish.co.nz/nzsf/reference/nz_rivers.md)
+  : Gebco depth
+- [`rock_lobster_stat_areas`](http://www.quantifish.co.nz/nzsf/reference/rock_lobster_stat_areas.md)
+  : New Zealand Rock Lobster Statistical Areas
+- [`territorial_sea_outer_limit_12_mile`](http://www.quantifish.co.nz/nzsf/reference/territorial_sea_outer_limit_12_mile.md)
+  : New Zealand 12 mile limit
