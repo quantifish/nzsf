@@ -23,7 +23,6 @@ Imports:
     stringr,
     rmapshaper,
     rnaturalearth,
-    ggnewscale,
     stars,
     brms,
 Suggests:
@@ -34,12 +33,14 @@ Suggests:
     viridis,
     BH,
     gtools,
+    ggnewscale,
     lwgeom,
     patchwork,
     cowplot,
     rnaturalearthdata,
     rnaturalearthhires,
     knitr,
+    quarto,
     devtools,
     markdown,
     rmarkdown,
@@ -51,7 +52,7 @@ Remotes:
 LazyData: true
 LazyDataCompression: bzip2
 RoxygenNote: 7.3.3
-VignetteBuilder: knitr
+VignetteBuilder: knitr, quarto
 Collate: 
     'nzsf.R'
     'data.R'

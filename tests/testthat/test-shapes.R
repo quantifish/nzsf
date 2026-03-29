@@ -44,7 +44,7 @@ test_that("return a plot", {
     plot_qma(qma = "CRA") + 
     plot_statistical_areas(area = "CRA")
   
-  expect_type(p1, "list")
+  expect_s3_class(p1, "gg")
   expect_true("ggplot" %in% class(p1))
   
 })

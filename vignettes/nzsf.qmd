@@ -1,13 +1,13 @@
 ---
 title: "New Zealand Spatial Features"
-output: 
-  rmarkdown::html_vignette:
+format:
+  html:
     toc: true
-    toc_depth: 2
+    toc-depth: 2
 vignette: >
   %\VignetteIndexEntry{New Zealand Spatial Features}
   %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEngine{quarto::html}
 editor_options: 
   chunk_output_type: console
 ---
