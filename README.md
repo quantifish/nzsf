@@ -1,9 +1,10 @@
 
+
 <!-- README.md is generated from README.qmd. Please edit that file -->
 
 # New Zealand Spatial Features <img src="man/figures/logo.png" align="right" height=140/>
 
-[![R-CMD-check](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
+[![](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
 
 New Zealand Spatial Features (`nzsf`) is an R package for creating
 scientific maps in New Zealand waters. The `nzsf` package relies heavily
@@ -48,21 +49,21 @@ The `nzsf` package includes many different shapefiles including New
 Zealand Quota Management Area (QMA) boundaries for many finfish and
 shellfish stocks including:
 
-| Species code | Common name            | Scientific name             | Maori name           |
-|:-------------|:-----------------------|:----------------------------|:---------------------|
-| COC          | Cockle                 | *Austrovenus stutchburyi*   | Tuangi               |
-| CRA          | Red rock lobster       | *Jasus edwardsii*           | Kōura                |
-| HAK          | Hake                   | *Merluccius australis*      | Kehe, tiikati        |
-| HOK          | Hoki                   | *Macruronus novaezelandiae* | Hoki                 |
-| LIN          | Ling                   | *Genypterus blacodes*       | Hoka, hokarari, rari |
-| OEO          | Oreo                   |                             |                      |
-| ORH          | Orange roughy          | *Hoplostethus atlanticus*   | Nihorota             |
-| PAU          | Paua                   | *Haliotis iris*             | Pāua                 |
-| PHC          | Packhorse rock lobster | *Sagmariasus verreauxi*     | Kōura Papatia        |
-| PPI          | Pipi                   | *Paphies australis*         | Pipi                 |
-| SWA          | Silver warehou         | *Seriolella punctata*       | Warehou hiriwa       |
-| SBW          | Southern blue whiting  | *Micromesistius australis*  |                      |
-| SCA          | Scallop                | *Pecten novaezealandiae*    | Tupa                 |
+| Species code | Common name | Scientific name | Maori name |
+|:---|:---|:---|:---|
+| COC | Cockle | *Austrovenus stutchburyi* | Tuangi |
+| CRA | Red rock lobster | *Jasus edwardsii* | Kōura |
+| HAK | Hake | *Merluccius australis* | Kehe, tiikati |
+| HOK | Hoki | *Macruronus novaezelandiae* | Hoki |
+| LIN | Ling | *Genypterus blacodes* | Hoka, hokarari, rari |
+| OEO | Oreo |  |  |
+| ORH | Orange roughy | *Hoplostethus atlanticus* | Nihorota |
+| PAU | Paua | *Haliotis iris* | Pāua |
+| PHC | Packhorse rock lobster | *Sagmariasus verreauxi* | Kōura Papatia |
+| PPI | Pipi | *Paphies australis* | Pipi |
+| SWA | Silver warehou | *Seriolella punctata* | Warehou hiriwa |
+| SBW | Southern blue whiting | *Micromesistius australis* |  |
+| SCA | Scallop | *Pecten novaezealandiae* | Tupa |
 
 Other useful shapefiles include:
 
