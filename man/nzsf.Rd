@@ -35,5 +35,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Darcy Webber \email{darcy.webber@quantifish.co.nz}
 
+Authors:
+\itemize{
+  \item Darcy Webber \email{darcy.webber@quantifish.co.nz}
+}
+
 }
 \keyword{internal}

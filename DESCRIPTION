@@ -51,7 +51,6 @@ Remotes:
     ropensci/rnaturalearthhires
 LazyData: true
 LazyDataCompression: bzip2
-RoxygenNote: 7.3.3
 VignetteBuilder: knitr, quarto
 Collate: 
     'nzsf.R'
@@ -71,3 +70,4 @@ Collate:
     'plot-raster.R'
     'plot-brms.R'
     'plot-clip.R'
+Config/roxygen2/version: 8.0.0
