@@ -1,11 +1,13 @@
 # Projections
 
 ``` r
+
 library(nzsf)
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 ```
 
 ``` r
+
 get_projection_center <- function(proj) {
   crs_info <- st_crs(proj)
   lat_0 <- as.numeric(gsub(".*lat_0=([-0-9.]+).*", "\\1", crs_info$input))

@@ -1,6 +1,7 @@
 # Fisheries New Zealand standard grids
 
 ``` r
+
 library(nzsf)
 library(ggspatial)
 library(stars)
@@ -23,6 +24,7 @@ on the `cell_size`.
 ## Standard grids as polygons
 
 ``` r
+
 eez <- get_statistical_areas(area = "EEZ", proj = proj_nzsf())
 bb_eez <- st_bbox(eez) %>% st_as_sfc()
 grd256_eez <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), 
@@ -34,6 +36,7 @@ grd064_eez <- get_standard_grid(cell_size = 64, bounding_box = st_bbox(eez),
 Plot and check with center point and bounding box
 
 ``` r
+
 ggplot() +
   geom_sf(data = grd064_eez,  colour = "lightblue",  fill = NA, alpha = 0.15) +
   geom_sf(data = grd256_eez,  colour = "tomato",  fill = NA, alpha = 0.5) +
@@ -52,6 +55,7 @@ EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km
 grid (red lines), and the origin (green point).
 
 ``` r
+
 cra1 <- get_statistical_areas(area = "CRA", proj = proj_nzsf()) %>% 
   filter(QMA %in% "CRA1")
 
@@ -82,6 +86,7 @@ is no point of origin shown as it is outside of the CRA 1 QMA.
 Plot and check overlap of two grids.
 
 ``` r
+
 ggplot() +
   geom_sf(data = grd256_eez,  colour = "lightblue",  fill = NA, alpha = 0.5) +
   geom_sf(data = cra1, colour = "orange", fill = NA) +
@@ -102,6 +107,7 @@ In the figure below, I show that you can specify the number of cells
 either side of the origin.
 
 ``` r
+
 bb1 <- st_bbox(eez)
 bb1[1] <- -150000 # xmin
 bb1[2] <- -422600 - 3000 # ymin (3 cells below the origin)
@@ -132,6 +138,7 @@ Rasters are more useful than polygons. Get standard grid as a raster.
 Fill the grid with random values and plot it.
 
 ``` r
+
 r <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), 
                        return_raster = TRUE)
 r[] <- rnorm(n = ncell(r))

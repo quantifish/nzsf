@@ -29,3 +29,7 @@ Useful links:
 ## Author
 
 **Maintainer**: Darcy Webber <darcy.webber@quantifish.co.nz>
+
+Authors:
+
+- Darcy Webber <darcy.webber@quantifish.co.nz>

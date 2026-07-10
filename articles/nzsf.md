@@ -4,6 +4,7 @@ The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`,
 and `sf`. Maps can be built up in layers in the same way as `ggplot2`.
 
 ``` r
+
 # devtools::install_github(repo = "ropensci/rnaturalearthhires")
 # library(rnaturalearthhires) # required for scale = "large" in ne_countries
 library(rnaturalearth)
@@ -25,6 +26,7 @@ theme_set(theme_bw() + theme(axis.title = element_blank()))
 ## CCAMLR
 
 ``` r
+
 ggplot() +
   geom_ccamlr("mpa", fill = "tomato", colour = "tomato", alpha = 0.25) +
   geom_ccamlr("ssru") +
@@ -46,6 +48,7 @@ diagram around these points, then simulate values at 5000 points and sum
 the values of these points within the voronoi polygons:
 
 ``` r
+
 CCSBT3994 <- CCSBT %>% st_transform(proj_ccsbt()) %>% 
   st_union(by_feature = TRUE)
 
@@ -85,6 +88,7 @@ ggplot() +
 ## SPRFMO
 
 ``` r
+
 SPRFMO3832 <- SPRFMO %>% st_transform(crs = 3832)
 
 world <- ne_countries(scale = "medium", returnclass = "sf") %>% 
@@ -104,6 +108,7 @@ ggplot() +
 ## SIOFA
 
 ``` r
+
 SIOFA3832 <- SIOFA %>% st_transform(crs = 3832)
 
 ggplot() +
@@ -126,6 +131,7 @@ Compare a plot of low resolution coastline to the `rnaturalearth`
 package.
 
 ``` r
+
 nz <- ne_countries(scale = "medium", country = "New Zealand", 
                    returnclass = "sf") %>%
   st_transform(crs = proj_nzsf()) %>%
@@ -148,6 +154,7 @@ p1 + p2
 An example that aggregates spatial features
 
 ``` r
+
 aa <- nz_general_statistical_areas %>%
   dplyr::select(Statistica) %>%
   st_transform(crs = proj_nzsf()) %>%
@@ -179,6 +186,7 @@ helper functions including `plot_marine_reserves`, `plot_depth`, and
 a bounding box generated using `st_bbox` from the `sf` package:
 
 ``` r
+
 # bbox <- get_coast() %>% 
 bbox <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
   st_transform(crs = proj_nzsf()) %>%
@@ -201,6 +209,7 @@ ggplot() +
 Adding labels can be done with:
 
 ``` r
+
 sf_jma <- get_qma("JMA")
 sf_coast <- get_coast() %>% st_combine() %>% st_make_valid()
 lab <- st_difference(sf_jma, sf_coast) %>% st_point_on_surface()
@@ -225,6 +234,7 @@ You can then add polygons, points, lines/arrows, and/or rasters to maps
 and change the map projection:
 
 ``` r
+
 proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
@@ -256,6 +266,7 @@ ggplot() +
 Simulate some points around Stewart Island.
 
 ``` r
+
 # stewart <- get_coast() %>%
 stewart <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k %>%
   filter(name == "Stewart Island/Rakiura") %>%
@@ -289,6 +300,7 @@ p1 + p2
 ![](nzsf_files/figure-html/unnamed-chunk-12-1.png)
 
 ``` r
+
 eez <- get_statistical_areas("EEZ", proj = 4326) %>% st_shift_longitude()
 
 r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), 
@@ -304,6 +316,7 @@ ggplot(data = eez) + geom_sf()
 ![](nzsf_files/figure-html/unnamed-chunk-13-1.png)
 
 ``` r
+
 
 ggplot(data = r) +
   geom_sf(fill = "red", alpha = 0.1) +

@@ -3,6 +3,7 @@
 This vignette showcases `nzsf` applied to New Zealand rock lobster.
 
 ``` r
+
 library(nzsf)
 library(ggspatial)
 library(lwgeom)
@@ -20,6 +21,7 @@ col_qma <- col_box <- "#F8766D"
 ```
 
 ``` r
+
 sf_qma <- get_qma("CRA")
 
 sf_coast <- get_coast(resolution = "medium") %>% 
@@ -52,6 +54,7 @@ ggplot() +
 ![](lobster_files/figure-html/unnamed-chunk-3-1.png)
 
 ``` r
+
 sf_stat <- get_statistical_areas("CRA")
 sf_diff <- st_difference(sf_stat, sf_coast)
 #> Warning: attribute variables are assumed to be spatially constant throughout
@@ -85,6 +88,7 @@ p
 ![](lobster_files/figure-html/unnamed-chunk-4-1.png)
 
 ``` r
+
 bathy <- cbind(coordinates(gebco_NZ), as.data.frame(gebco_NZ)) %>%
   mutate(z = ifelse(z > 10, NA, z)) %>%
   filter(x > -1.4e6, x < 1.4e6, y > -2e6, y < 2e6)
@@ -102,6 +106,7 @@ ggplot() +
 ![](lobster_files/figure-html/unnamed-chunk-5-1.png)
 
 ``` r
+
 sf_diff <- st_difference(sf_stat, sf_coast)
 #> Warning: attribute variables are assumed to be spatially constant throughout
 #> all geometries
@@ -122,6 +127,7 @@ ggplot() +
 ## CRA 1
 
 ``` r
+
 p1 <- ggplot() +
   plot_qma(qma = "CRA", fill = NA, colour = col_qma) +
   plot_statistical_areas(area = "CRA", fill = NA, colour = col_stat) +
@@ -155,6 +161,7 @@ p
 ## CRA 2
 
 ``` r
+
 stat2 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA2")
 
 box2 <- stat2 %>%
@@ -194,6 +201,7 @@ p
 ![](lobster_files/figure-html/unnamed-chunk-8-1.png)
 
 ``` r
+
 pts <- st_sample(stat2, size = 1000) %>% 
   st_sf() %>% 
   mutate(z = rnorm(1:n()))
@@ -219,7 +227,7 @@ ggplot() +
   plot_clip(x = box2, expand = FALSE) +
   annotation_scale(location = "tr", unit_category = "metric") +
   labs(fill = "Mean")
-#> Warning: Removed 3821 rows containing missing values or values outside the scale range
+#> Warning: Removed 3793 rows containing missing values or values outside the scale range
 #> (`geom_raster()`).
 ```
 
@@ -228,6 +236,7 @@ ggplot() +
 ## CRA 3
 
 ``` r
+
 stat3 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA3")
 
 box3 <- stat3 %>%
@@ -269,6 +278,7 @@ p
 ## CRA 4
 
 ``` r
+
 stat4 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA4")
 
 box4 <- stat4 %>%
@@ -310,6 +320,7 @@ p
 ## CRA 5
 
 ``` r
+
 stat5 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA5")
 
 box5 <- stat5 %>%
@@ -351,6 +362,7 @@ p
 ## CRA 6
 
 ``` r
+
 stat6 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA6")
 
 box6 <- stat6 %>%
@@ -392,6 +404,7 @@ p
 ## CRA 7
 
 ``` r
+
 stat7 <- get_statistical_areas("CRA") %>% filter(QMA %in% "CRA7")
 
 box7 <- stat7 %>% st_buffer(dist = 1e4) %>% st_bbox()
@@ -432,6 +445,7 @@ p
 ## CRA 8
 
 ``` r
+
 stat8 <- get_statistical_areas(area = "CRA") %>% 
   filter(QMA %in% "CRA8" | area %in% 929)
 
@@ -472,6 +486,7 @@ p
 ![](lobster_files/figure-html/unnamed-chunk-15-1.png)
 
 ``` r
+
 gebco8 <- crop(gebco_NZ, get_qma(qma = "CRA") %>% 
                  filter(QMA == "CRA8") %>% st_bbox())
 
@@ -494,6 +509,7 @@ p
 ![](lobster_files/figure-html/unnamed-chunk-16-1.png)
 
 ``` r
+
 p <- ggplot() +
   plot_statistical_areas(area = "CRA", fill = NA, colour = col_stat)
 
@@ -530,6 +546,7 @@ s1 + s2 + s3 + s4 + s5 + s6
 ## Combinations
 
 ``` r
+
 stat78 <- get_statistical_areas(area = "CRA") %>% 
   filter(QMA %in% c("CRA7", "CRA8") | area %in% 929)
 
