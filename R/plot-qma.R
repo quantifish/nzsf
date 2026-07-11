@@ -28,6 +28,12 @@
 #'   
 get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 
+  if (!is.character(qma) || length(qma) != 1L || is.na(qma)) {
+    stop("`qma` must be a single, non-missing character value.", call. = FALSE)
+  }
+
+  x <- NULL
+
   # Shellfish
   if (qma %in% c("CRA", "crayfish", "koura", "Koura", "Jasus", "Jasus edwardsii")) {
     x <- nzsf::SpinyRedRockLobster_QMA
@@ -78,6 +84,13 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
   }
   if (qma %in% c("SWA", "silver warehou", "warehou hiriwa", "Seriolella punctata")) {
     x <- nzsf::SilverWarehou_QMA
+  }
+
+  if (is.null(x)) {
+    stop(
+      sprintf("Unsupported `qma`: %s.", encodeString(qma, quote = "\"")),
+      call. = FALSE
+    )
   }
   
   if (!is.null(proj)) {

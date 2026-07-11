@@ -12,16 +12,19 @@
 #' 
 geom_cra <- function(feature = "label", proj = proj_nzsf(),
                      qma = NULL, area = NULL, ...) {
+
+  feature <- match.arg(feature, choices = "label")
+  base_proj <- proj_nzsf()
   
-  coast <- get_coast(resolution = "medium") %>% 
+  coast <- get_coast(proj = base_proj, resolution = "medium") %>%
     st_combine() %>% 
     st_buffer(dist = 4500) %>%
     st_make_valid()
   
-  labs <- get_statistical_areas("CRA") %>%
+  labs <- get_statistical_areas("CRA", proj = base_proj) %>%
     st_difference(coast) %>% 
     st_centroid() %>%
-    dplyr::select(.data$QMA, .data$area)
+    dplyr::select("QMA", "area")
 
   labs$geometry[labs$area == 905] <- st_point(c(21042, 454394)) # CRA 2
   labs$geometry[labs$area == 907] <- st_point(c(156026, 276000))
@@ -66,6 +69,10 @@ geom_cra <- function(feature = "label", proj = proj_nzsf(),
     labs <- labs %>% filter(.data$QMA %in% qma)
   } else if (is.null(qma) & !is.null(area))  {
     labs <- labs %>% filter(.data$area %in% area)
+  }
+
+  if (!is.null(proj)) {
+    labs <- labs %>% st_transform(crs = proj)
   }
 
   # geom_sf_text(data = lab %>% filter(QMA %in% stock), aes(label = QMA), size = 5.5, nudge_x = -60000, nudge_y = 20000) +

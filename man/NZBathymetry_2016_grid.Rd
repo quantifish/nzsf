@@ -8,7 +8,7 @@
 A RasterLayer
 }
 \source{
-NIWA \url{https://niwa.co.nz/our-science/oceans/bathymetry}
+NIWA \url{https://data.niwa.co.nz/products/new-zealand-bathymetry-data}
 }
 \usage{
 NZBathymetry_2016_grid

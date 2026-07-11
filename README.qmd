@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# New Zealand Spatial Features <img src="man/figures/logo.png" align="right" height=140/>
+# New Zealand Spatial Features <img src="man/figures/logo.png" alt="nzsf logo" align="right" height=140/>
 
 [![R-CMD-check](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
 

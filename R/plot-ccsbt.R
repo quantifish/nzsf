@@ -24,6 +24,16 @@
 #'   coord_ccsbt()
 #' 
 geom_ccsbt <- function(feature = "area", proj = proj_ccsbt(), fill = NA, colour = "black", ...) {
+  if (!is.character(feature) || length(feature) != 1L || is.na(feature)) {
+    stop("`feature` must be a single, non-missing character value.", call. = FALSE)
+  }
+  if (!feature %in% c("Area", "area", "label", "land")) {
+    stop(
+      sprintf("Unsupported `feature`: %s.", encodeString(feature, quote = "\"")),
+      call. = FALSE
+    )
+  }
+
   if (feature %in% c("Area", "area")) {
     x <- nzsf::CCSBT %>% 
       st_transform(crs = proj)

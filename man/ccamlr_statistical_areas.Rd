@@ -11,7 +11,7 @@ Simple feature collection with 19 features and 13 fields:
 }
 }
 \source{
-CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+CCAMLR \url{https://spatial.ccamlr.org/}
 }
 \usage{
 ccamlr_statistical_areas

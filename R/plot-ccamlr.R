@@ -21,6 +21,16 @@ geom_ccamlr <- function(feature = "ssru",
                         proj = proj_ccamlr(), 
                         fill = NA, 
                         colour = "black", ...) {
+
+  if (!is.character(feature) || length(feature) != 1L || is.na(feature)) {
+    stop("`feature` must be a single, non-missing character value.", call. = FALSE)
+  }
+  if (!feature %in% c("ssru", "SSRU", "label", "statistical_area", "mpa", "MPA", "land", "gebco", "GEBCO")) {
+    stop(
+      sprintf("Unsupported `feature`: %s.", encodeString(feature, quote = "\"")),
+      call. = FALSE
+    )
+  }
   
   if (feature %in% c("ssru", "SSRU")) {
     x <- nzsf::ccamlr_ssru %>%

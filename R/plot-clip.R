@@ -6,21 +6,38 @@
 #' @return a coord_sf.
 #' 
 #' @importFrom ggplot2 coord_sf
-#' @importFrom sf st_bbox
+#' @importFrom sf st_as_sfc st_bbox st_crs st_transform
 #' @export
 #' 
 plot_clip <- function(x, proj = proj_nzsf(), ...) {
-  
-  if ("bbox" %in% class(x)) {
+
+  if (inherits(x, "bbox")) {
     bbox <- x
-    p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
-  } else if (any(c("sf", "sfc", "stars") %in% class(x))) {
+    if (!is.null(proj) && !is.na(st_crs(bbox))) {
+      bbox <- bbox %>%
+        st_as_sfc() %>%
+        st_transform(crs = proj) %>%
+        st_bbox()
+    }
+  } else if (inherits(x, c("sf", "sfc", "stars"))) {
+    if (!is.null(proj)) x <- st_transform(x, crs = proj)
     bbox <- st_bbox(x)
-    p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
-  } else if (x %in% c("nz", "NZ", "new zealand", "New Zealand")) {
+  } else if (is.character(x) && length(x) == 1L && !is.na(x) &&
+             tolower(x) %in% c("nz", "new zealand")) {
     bbox <- st_bbox(get_statistical_areas(area = "EEZ", proj = proj))
-    p <- coord_sf(xlim = bbox[c(1, 3)], ylim = bbox[c(2, 4)], ...)
+  } else {
+    stop(
+      "`x` must be an sf, sfc, stars, bbox, or New Zealand label.",
+      call. = FALSE
+    )
   }
-  
+
+  p <- coord_sf(
+    crs = proj,
+    xlim = unname(bbox[c("xmin", "xmax")]),
+    ylim = unname(bbox[c("ymin", "ymax")]),
+    ...
+  )
+
   return(p)
 }
