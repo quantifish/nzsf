@@ -28,7 +28,7 @@ get_marine_reserves <- function(proj = proj_nzsf()) {
 #'   plot_marine_reserves()
 #' 
 plot_marine_reserves <- function(proj = proj_nzsf(), ...) {
-  x <- get_marine_reserves()
+  x <- get_marine_reserves(proj = proj)
   p <- geom_sf(data = x, ...)
   return(p)
 }

@@ -21,11 +21,10 @@ Depends:
     sf
 Imports:
     stringr,
-    rmapshaper,
     rnaturalearth,
-    stars,
-    brms,
+    stars
 Suggests:
+    brms,
     tidyverse,
     tidyr,
     ggspatial,
@@ -39,6 +38,7 @@ Suggests:
     cowplot,
     rnaturalearthdata,
     rnaturalearthhires,
+    rmapshaper,
     knitr,
     quarto,
     devtools,

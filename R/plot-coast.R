@@ -8,12 +8,18 @@
 #' @seealso \code{\link{plot_coast}}
 #' 
 #' @importFrom utils data
-#' @importFrom rmapshaper ms_simplify
 #' @importFrom rnaturalearth ne_countries
 #' @import sf
 #' @export
 #' 
 get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
+
+  if (!is.character(resolution) || length(resolution) != 1L || is.na(resolution)) {
+    stop("`resolution` must be a single, non-missing character value.", call. = FALSE)
+  }
+  if (!is.numeric(keep) || length(keep) != 1L || is.na(keep) || keep <= 0 || keep > 1) {
+    stop("`keep` must be a single number greater than 0 and at most 1.", call. = FALSE)
+  }
   
   if (resolution %in% c("large", "high", "10")) {
     x <- ne_countries(scale = "large", returnclass = "sf")
@@ -27,9 +33,22 @@ get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
     x <- nzsf::nz_coastlines_and_islands_polygons_topo_1250k
   } else if (resolution %in% c("1500k", "1500")) {
     x <- nzsf::nz_coastlines_and_islands_polygons_topo_1500k
+  } else {
+    stop(
+      sprintf("Unsupported `resolution`: %s.", encodeString(resolution, quote = "\"")),
+      call. = FALSE
+    )
   }
   
-  if (keep < 1) x <- x %>% ms_simplify(keep = keep, keep_shapes = FALSE)
+  if (keep < 1) {
+    if (!requireNamespace("rmapshaper", quietly = TRUE)) {
+      stop(
+        "Package `rmapshaper` is required when `keep < 1`.",
+        call. = FALSE
+      )
+    }
+    x <- rmapshaper::ms_simplify(x, keep = keep, keep_shapes = FALSE)
+  }
   
   if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
   

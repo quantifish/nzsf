@@ -47,8 +47,7 @@ plot_raster <- function(data, field, fun = "sum", nrow = 100, ncol = 100, ...) {
   r <- get_points_as_raster(data = data, field = field, fun = fun, nrow = nrow, ncol = ncol)
   
   df <- rasterToPoints(r) %>%
-    data.frame() %>%
-    mutate(layer = ifelse(layer == 0, NA, layer))
+    data.frame()
   
   p <- geom_raster(data = df, aes(x = .data$x, y = .data$y, fill = .data$layer), ...)
   

@@ -65,7 +65,7 @@
 #' New Zealand depth ASCII grid
 #' 
 #' @format A RasterLayer
-#' @source NIWA \url{https://niwa.co.nz/our-science/oceans/bathymetry}
+#' @source NIWA \url{https://data.niwa.co.nz/products/new-zealand-bathymetry-data}
 #' 
 "NZBathymetry_2016_grid"
 
@@ -116,7 +116,7 @@
 #'   \item{StartDate}{CCAMLR Statistical Areas}
 #'   \item{EndDate}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+#' @source CCAMLR \url{https://spatial.ccamlr.org/}
 #' 
 "ccamlr_mpa"
 
@@ -132,7 +132,7 @@
 #'   \item{ShortLabel}{CCAMLR Statistical Areas}
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+#' @source CCAMLR \url{https://spatial.ccamlr.org/}
 #' 
 "ccamlr_ssru"
 
@@ -145,7 +145,7 @@
 #' \describe{
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+#' @source CCAMLR \url{https://spatial.ccamlr.org/}
 #' 
 "ccamlr_eez"
 
@@ -158,7 +158,7 @@
 #' \describe{
 #'   \item{LongLabel}{CCAMLR Statistical Areas}
 #' }
-#' @source CCAMLR \url{https://data.ccamlr.org/search/field_topic/reference-data-3}
+#' @source CCAMLR \url{https://spatial.ccamlr.org/}
 #' 
 "ccamlr_statistical_areas"
 

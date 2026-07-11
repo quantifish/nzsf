@@ -17,6 +17,12 @@
 #' 
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
+  if (!is.character(area) || length(area) != 1L || is.na(area)) {
+    stop("`area` must be a single, non-missing character value.", call. = FALSE)
+  }
+
+  x <- NULL
+
   if (area %in% c("statistical area", "statistical areas", "stat area", "stat areas")) {
     x <- nzsf::nz_general_statistical_areas
   }
@@ -49,6 +55,13 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   
   if (area %in% c("SPRFMO")) {
     x <- nzsf::SPRFMO
+  }
+
+  if (is.null(x)) {
+    stop(
+      sprintf("Unsupported `area`: %s.", encodeString(area, quote = "\"")),
+      call. = FALSE
+    )
   }
   
   if (!is.null(proj)) {
