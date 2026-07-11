@@ -38,4 +38,4 @@ Simple feature collection with 19 features and 13 fields:
 
 ## Source
 
-CCAMLR <https://data.ccamlr.org/search/field_topic/reference-data-3>
+CCAMLR <https://spatial.ccamlr.org/>

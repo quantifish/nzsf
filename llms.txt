@@ -1,6 +1,6 @@
 # New Zealand Spatial Features
 
-[![](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
 
 New Zealand Spatial Features (`nzsf`) is an R package for creating
 scientific maps in New Zealand waters. The `nzsf` package relies heavily

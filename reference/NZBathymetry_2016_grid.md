@@ -14,4 +14,4 @@ A RasterLayer
 
 ## Source
 
-NIWA <https://niwa.co.nz/our-science/oceans/bathymetry>
+NIWA <https://data.niwa.co.nz/products/new-zealand-bathymetry-data>
