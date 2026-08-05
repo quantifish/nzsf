@@ -227,7 +227,7 @@ ggplot() +
   plot_clip(x = box2, expand = FALSE) +
   annotation_scale(location = "tr", unit_category = "metric") +
   labs(fill = "Mean")
-#> Warning: Removed 3818 rows containing missing values or values outside the scale range
+#> Warning: Removed 3820 rows containing missing values or values outside the scale range
 #> (`geom_raster()`).
 ```
 
