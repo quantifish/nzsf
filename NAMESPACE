@@ -33,33 +33,41 @@ import(dplyr)
 import(ggplot2)
 import(sf)
 importFrom(dplyr,filter)
-importFrom(ggplot2,coord_sf)
-importFrom(ggplot2,geom_sf)
+importFrom(ggplot2,
+  coord_sf,
+  geom_sf
+)
 importFrom(methods,is)
-importFrom(raster,crs)
-importFrom(raster,extent)
-importFrom(raster,raster)
-importFrom(raster,rasterToPoints)
-importFrom(raster,rasterize)
+importFrom(raster,
+  crs,
+  extent,
+  raster,
+  rasterToPoints,
+  rasterize
+)
 importFrom(rnaturalearth,ne_countries)
-importFrom(sf,st_as_sf)
-importFrom(sf,st_as_sfc)
-importFrom(sf,st_bbox)
-importFrom(sf,st_buffer)
-importFrom(sf,st_cast)
-importFrom(sf,st_centroid)
-importFrom(sf,st_combine)
-importFrom(sf,st_crs)
-importFrom(sf,st_difference)
-importFrom(sf,st_join)
-importFrom(sf,st_make_grid)
-importFrom(sf,st_make_valid)
-importFrom(sf,st_point)
-importFrom(sf,st_sample)
-importFrom(sf,st_sf)
-importFrom(sf,st_transform)
-importFrom(sf,st_union)
-importFrom(stars,geom_stars)
-importFrom(stars,st_as_stars)
+importFrom(sf,
+  st_as_sf,
+  st_as_sfc,
+  st_bbox,
+  st_buffer,
+  st_cast,
+  st_centroid,
+  st_combine,
+  st_crs,
+  st_difference,
+  st_join,
+  st_make_grid,
+  st_make_valid,
+  st_point,
+  st_sample,
+  st_sf,
+  st_transform,
+  st_union
+)
+importFrom(stars,
+  geom_stars,
+  st_as_stars
+)
 importFrom(stringr,str_detect)
 importFrom(utils,data)
