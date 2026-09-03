@@ -12,7 +12,8 @@ get_statistical_areas(area = "CRA", proj = proj_nzsf())
 
 - area:
 
-  A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
+  A fisheries area. Supported values include EEZ, CRA, FMA, JMA,
+  statistical areas, CCSBT, SIOFA, and SPRFMO.
 
 - proj:
 
@@ -20,17 +21,17 @@ get_statistical_areas(area = "CRA", proj = proj_nzsf())
 
 ## Value
 
-New Zealands statistical areas as a `sf` object.
+New Zealand's statistical areas as an `sf` object.
 
 ## See also
 
-[`plot_statistical_areas`](http://www.quantifish.co.nz/nzsf/reference/plot_statistical_areas.md)
+[`plot_statistical_areas`](https://www.quantifish.co.nz/nzsf/reference/plot_statistical_areas.md)
 
 ## Examples
 
 ``` r
 x <- get_statistical_areas(area = "CRA")
-ggplot() +
-  geom_sf(data = x, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = x, fill = NA)
 
 ```

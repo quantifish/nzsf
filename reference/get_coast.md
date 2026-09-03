@@ -25,8 +25,8 @@ get_coast(proj = proj_nzsf(), resolution = "medium", keep = 1)
 
 ## Value
 
-New Zealands coastline as a `sf` object.
+New Zealand's coastline as an `sf` object.
 
 ## See also
 
-[`plot_coast`](http://www.quantifish.co.nz/nzsf/reference/plot_coast.md)
+[`plot_coast`](https://www.quantifish.co.nz/nzsf/reference/plot_coast.md)

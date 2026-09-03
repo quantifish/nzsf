@@ -17,4 +17,4 @@ get_marine_reserves(proj = proj_nzsf())
 
 ## Value
 
-New Zealands marine reserves as a `sf` object.
+New Zealand's marine reserves as an `sf` object.

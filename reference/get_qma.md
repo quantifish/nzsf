@@ -26,7 +26,7 @@ A simple feature collection of QMA polygons as a `sf` object.
 
 ## See also
 
-[`plot_qma`](http://www.quantifish.co.nz/nzsf/reference/plot_qma.md) to
+[`plot_qma`](https://www.quantifish.co.nz/nzsf/reference/plot_qma.md) to
 plot Quota Management Area's.
 
 ## Examples
@@ -34,20 +34,20 @@ plot Quota Management Area's.
 ``` r
 # Red rock lobster
 x <- get_qma(qma = "CRA")
-ggplot() +
-  geom_sf(data = x, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = x, fill = NA)
 
 
 # Hake
 y <- get_qma(qma = "HAK")
-ggplot() +
-  geom_sf(data = y, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = y, fill = NA)
 
   
 # Ling
 z <- get_qma(qma = "LIN")
-ggplot() +
-  geom_sf(data = z, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = z, fill = NA)
 
   
 ```

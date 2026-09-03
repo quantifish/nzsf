@@ -44,8 +44,8 @@ plot_coast(
 
 ## Value
 
-ggplot of New Zealands coastline.
+A ggplot of New Zealand's coastline.
 
 ## See also
 
-[`get_coast`](http://www.quantifish.co.nz/nzsf/reference/get_coast.md)
+[`get_coast`](https://www.quantifish.co.nz/nzsf/reference/get_coast.md)

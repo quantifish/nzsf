@@ -16,12 +16,13 @@ coord_ccamlr(proj = proj_ccamlr(), ...)
 
 - ...:
 
-  A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
+  Other arguments passed to
+  [`ggplot2::geom_sf()`](https://ggplot2.tidyverse.org/reference/ggsf.html).
 
 ## Value
 
-New Zealands statistical areas as a `sf` object.
+A CCAMLR `ggplot2` layer.
 
 ## See also
 
-[`geom_ccamlr`](http://www.quantifish.co.nz/nzsf/reference/geom_ccamlr.md)
+[`geom_ccamlr`](https://www.quantifish.co.nz/nzsf/reference/geom_ccamlr.md)

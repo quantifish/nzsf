@@ -26,7 +26,7 @@ a `ggplot` object of New Zealand's marine reserves.
 ## Examples
 
 ``` r
-ggplot() +
+ggplot2::ggplot() +
   plot_marine_reserves()
 
 ```

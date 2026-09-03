@@ -3,6 +3,8 @@
 ``` r
 
 library(nzsf)
+library(ggplot2)
+library(sf)
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 ```
 
@@ -17,9 +19,12 @@ get_projection_center <- function(proj) {
 
 x <- get_projection_center(proj_nzsf())
 
-points_df <- data.frame(lon = x$lon, lat = x$lat) |>
-  st_as_sf(coords = c("lon", "lat"), crs = 4326) |>
-  st_transform(crs = proj_nzsf())
+points_df <- st_as_sf(
+  data.frame(lon = x$lon, lat = x$lat),
+  coords = c("lon", "lat"),
+  crs = 4326
+)
+points_df <- st_transform(points_df, crs = proj_nzsf())
 
 ggplot() +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA, linetype = "dashed") +

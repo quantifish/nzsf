@@ -5,7 +5,7 @@ Get Fisheries New Zealand standard grid origin
 ## Usage
 
 ``` r
-get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 422600))
+get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 0))
 ```
 
 ## Arguments
@@ -21,7 +21,9 @@ get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 422600))
 
 - anchor:
 
-  the point to anchor the grid to
+  projected coordinates, in metres, used to anchor a shared grid cell
+  corner. The default is the EPSG:9191 origin at 175 degrees E, 40
+  degrees S.
 
 ## Value
 
@@ -29,7 +31,7 @@ standard grid origin `data.frame`
 
 ## See also
 
-[`get_standard_grid`](http://www.quantifish.co.nz/nzsf/reference/get_standard_grid.md)
+[`get_standard_grid`](https://www.quantifish.co.nz/nzsf/reference/get_standard_grid.md)
 
 ## Author
 

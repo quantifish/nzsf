@@ -21,4 +21,4 @@ plot_rivers(proj = proj_nzsf(), ...)
 
 ## Value
 
-ggplot of New Zealands rivers.
+A ggplot of New Zealand's rivers.

@@ -27,11 +27,11 @@ geom_gebco(proj = proj_nzsf(), downsample = 3, ...)
 
 ## Value
 
-A `ggplot` object of New Zealands depth polylines.
+A `ggplot` object of New Zealand's depth raster.
 
 ## See also
 
-[`get_depth`](http://www.quantifish.co.nz/nzsf/reference/get_depth.md)
+[`get_depth`](https://www.quantifish.co.nz/nzsf/reference/get_depth.md)
 
 ## Author
 

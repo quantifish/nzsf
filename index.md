@@ -1,6 +1,6 @@
 # New Zealand Spatial Features
 
-[![R-CMD-check](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
+[![](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/quantifish/nzsf/actions/workflows/R-CMD-check.yaml)
 
 New Zealand Spatial Features (`nzsf`) is an R package for creating
 scientific maps in New Zealand waters. The `nzsf` package relies heavily
@@ -15,9 +15,8 @@ The `nzsf` package can be installed from within R using:
 
 ``` r
 
-library(devtools)
-install_github(repo = "ropensci/rnaturalearthhires")
-install_github(repo = "quantifish/nzsf", build_vignettes = TRUE)
+remotes::install_github("ropensci/rnaturalearthhires")
+remotes::install_github("quantifish/nzsf", build_vignettes = TRUE)
 ```
 
 In the future I hope to release `nzsf` as a formal R package on The
@@ -48,7 +47,7 @@ The `nzsf` package includes many different shapefiles including New
 Zealand Quota Management Area (QMA) boundaries for many finfish and
 shellfish stocks including:
 
-| Species code | Common name | Scientific name | Maori name |
+| Species code | Common name | Scientific name | Māori name |
 |:---|:---|:---|:---|
 | COC | Cockle | *Austrovenus stutchburyi* | Tuangi |
 | CRA | Red rock lobster | *Jasus edwardsii* | Kōura |
@@ -68,7 +67,7 @@ Other useful shapefiles include:
 
 - The New Zealand coastline (in high, medium, and low resolution)
 - Depth contours (in high, medium, and low resolution)
-- New Zealands Exclusive Economic Zone (EEZ)
+- New Zealand’s Exclusive Economic Zone (EEZ)
 - Department of Conservation (DOC) marine reserves
 - Rock lobster statistical areas
 - New Zealand rocky reefs

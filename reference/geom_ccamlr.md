@@ -18,7 +18,8 @@ geom_ccamlr(
 
 - feature:
 
-  A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
+  A CCAMLR feature. Supported values are \`ssru\`, \`label\`,
+  \`statistical_area\`, \`mpa\`, \`land\`, and \`gebco\`.
 
 - proj:
 
@@ -26,20 +27,20 @@ geom_ccamlr(
 
 - fill:
 
-  The projection to use.
+  The fill colour for vector features.
 
 - colour:
 
-  The projection to use.
+  The line or text colour for vector features.
 
 - ...:
 
-  The projection to use.
+  Other arguments passed to the selected ggplot2 geom.
 
 ## Value
 
-New Zealands statistical areas as a `sf` object.
+A ggplot2 layer containing the selected CCAMLR feature.
 
 ## See also
 
-[`coord_ccamlr`](http://www.quantifish.co.nz/nzsf/reference/coord_ccamlr.md)
+[`coord_ccamlr`](https://www.quantifish.co.nz/nzsf/reference/coord_ccamlr.md)

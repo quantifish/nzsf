@@ -33,7 +33,7 @@ geom_ccsbt(
 
 - colour:
 
-  The colour for the seleceted feature.
+  The colour for the selected feature.
 
 - ...:
 
@@ -45,15 +45,15 @@ A `geom_sf` object.
 
 ## See also
 
-[`coord_ccsbt`](http://www.quantifish.co.nz/nzsf/reference/coord_ccsbt.md)
+[`coord_ccsbt`](https://www.quantifish.co.nz/nzsf/reference/coord_ccsbt.md)
 for coord and
-[`proj_ccsbt`](http://www.quantifish.co.nz/nzsf/reference/proj_ccsbt.md)
+[`proj_ccsbt`](https://www.quantifish.co.nz/nzsf/reference/proj_ccsbt.md)
 for projection.
 
 ## Examples
 
 ``` r
-ggplot() +
+ggplot2::ggplot() +
   geom_ccsbt(feature = "area") +
   geom_ccsbt(feature = "land", fill = "black") +
   coord_ccsbt()

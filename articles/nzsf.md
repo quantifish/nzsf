@@ -179,7 +179,7 @@ ggplot() +
 
 ![](nzsf_files/figure-html/unnamed-chunk-8-1.png)
 
-Layers such as New Zealand marine reserves, depth countours, and Quota
+Layers such as New Zealand marine reserves, depth contours, and Quota
 Management Areas (QMAs) can be added easily with several of the `nzsf`
 helper functions including `plot_marine_reserves`, `plot_depth`, and
 `plot_qma`. Maps can be restricted (e.g. to the North Island only) using
@@ -239,14 +239,14 @@ proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
 Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% 
-  st_transform(crs = proj, check = TRUE)
+  st_transform(crs = proj)
 
 data("Rocky_reef_National_NZ")
 Rocky_reef_National_NZ <- Rocky_reef_National_NZ %>% 
-  st_transform(crs = proj, check = TRUE)
+  st_transform(crs = proj)
 
 bbox <- get_marine_reserves() %>%
-  st_transform(crs = proj, check = TRUE) %>%
+  st_transform(crs = proj) %>%
   filter(Name == "Te Tapuwae o Rongokako Marine Reserve") %>%
   st_bbox()
 
@@ -301,28 +301,19 @@ p1 + p2
 
 ``` r
 
-eez <- get_statistical_areas("EEZ", proj = 4326) %>% st_shift_longitude()
+eez <- get_statistical_areas("EEZ")
+grid_64_km <- get_standard_grid(
+  cell_size = 64,
+  bounding_box = st_bbox(eez),
+  return_raster = FALSE
+)
 
-r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), 
-                       return_raster = FALSE, crs = 4326)
-#> Warning in get_standard_grid_origin(cell_size = cell_size, bounding_box =
-#> bounding_box, : The chosen grid size does not conform to the standard grid
-#> specification, consider setting cell_size to one of: 0.25, 0.5, 1, 2, 4, 8, 16,
-#> 32, 64, 128, 256, 512, 1024.
-
-ggplot(data = eez) + geom_sf()
-```
-
-![](nzsf_files/figure-html/unnamed-chunk-13-1.png)
-
-``` r
-
-
-ggplot(data = r) +
-  geom_sf(fill = "red", alpha = 0.1) +
-  plot_coast(proj = 4326) +
-  plot_clip(eez, proj = 4326) +
+ggplot() +
+  geom_sf(data = grid_64_km, fill = NA, colour = "red", alpha = 0.3) +
+  geom_sf(data = eez, fill = NA, colour = "black") +
+  plot_coast(fill = "grey40", colour = NA) +
+  plot_clip(eez) +
   theme_bw()
 ```
 
-![](nzsf_files/figure-html/unnamed-chunk-13-2.png)
+![](nzsf_files/figure-html/unnamed-chunk-13-1.png)

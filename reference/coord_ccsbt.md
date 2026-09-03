@@ -24,12 +24,12 @@ A `geom_coord` object.
 
 ## See also
 
-[`geom_ccsbt`](http://www.quantifish.co.nz/nzsf/reference/geom_ccsbt.md)
+[`geom_ccsbt`](https://www.quantifish.co.nz/nzsf/reference/geom_ccsbt.md)
 
 ## Examples
 
 ``` r
-ggplot() +
+ggplot2::ggplot() +
   geom_ccsbt(feature = "area") +
   geom_ccsbt(feature = "land", fill = "black") +
   coord_ccsbt()

@@ -1,6 +1,6 @@
-# Lookup the depth (m) at specific locations around New Zealand
+# Look up GEBCO elevation at specific locations around New Zealand
 
-Lookup the depth (m) at specific locations around New Zealand
+Look up GEBCO elevation at specific locations around New Zealand
 
 ## Usage
 
@@ -12,11 +12,12 @@ lookup_depth(pts)
 
 - pts:
 
-  The points to generate a depth for.
+  An sf or sfc object containing point geometries.
 
 ## Value
 
-Depth at each location.
+GEBCO elevation, in metres, at each location. Ocean depths are returned
+as negative elevations.
 
 ## Author
 

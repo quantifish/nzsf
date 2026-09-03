@@ -27,11 +27,11 @@ get_depth(proj = proj_nzsf(), resolution = "low", depths = NULL)
 
 ## Value
 
-New Zealands depth polylines as a `sf` object.
+New Zealand's depth polylines as an `sf` object.
 
 ## See also
 
-[`plot_depth`](http://www.quantifish.co.nz/nzsf/reference/plot_depth.md)
+[`plot_depth`](https://www.quantifish.co.nz/nzsf/reference/plot_depth.md)
 
 ## Author
 

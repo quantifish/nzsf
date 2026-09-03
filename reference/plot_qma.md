@@ -30,24 +30,24 @@ A `ggplot` object of the selected QMA.
 
 ## See also
 
-[`get_qma`](http://www.quantifish.co.nz/nzsf/reference/get_qma.md) to
+[`get_qma`](https://www.quantifish.co.nz/nzsf/reference/get_qma.md) to
 return Quota Management Area (QMA) polygons as `sf` objects.
 
 ## Examples
 
 ``` r
 # Packhorse rock lobster
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "PHC")
 
   
 # Jack mackerel
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "JMA")
 
 
 # Paua
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "PAU")
 
 ```

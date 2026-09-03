@@ -5,12 +5,16 @@ This vignette showcases `nzsf` applied to New Zealand rock lobster.
 ``` r
 
 library(nzsf)
+library(dplyr)
+library(ggplot2)
 library(ggspatial)
 library(lwgeom)
 library(ggnewscale)
 library(stars)
 library(cowplot)
 library(patchwork)
+library(raster)
+library(sf)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
 
@@ -209,7 +213,7 @@ pts <- st_sample(stat2, size = 1000) %>%
 r0 <- get_standard_grid(cell_size = 5, bounding_box = st_bbox(stat2), 
                         return_raster = TRUE)
 #> Warning in get_standard_grid_origin(cell_size = cell_size, bounding_box =
-#> bounding_box, : The chosen grid size does not conform to the standard grid
+#> projected_box, : The chosen grid size does not conform to the standard grid
 #> specification, consider setting cell_size to one of: 0.25, 0.5, 1, 2, 4, 8, 16,
 #> 32, 64, 128, 256, 512, 1024.
 
@@ -227,7 +231,7 @@ ggplot() +
   plot_clip(x = box2, expand = FALSE) +
   annotation_scale(location = "tr", unit_category = "metric") +
   labs(fill = "Mean")
-#> Warning: Removed 3820 rows containing missing values or values outside the scale range
+#> Warning: Removed 3807 rows containing missing values or values outside the scale range
 #> (`geom_raster()`).
 ```
 

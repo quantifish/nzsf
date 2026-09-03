@@ -3,7 +3,10 @@
 ``` r
 
 library(nzsf)
+library(dplyr)
+library(ggplot2)
 library(ggspatial)
+library(sf)
 library(stars)
 
 theme_set(theme_bw() + theme(axis.title = element_blank()))
@@ -21,6 +24,10 @@ The standard grid can either be a simple feature collection of polygons
 standard grid can extend beyond the range of the bounding box, depending
 on the `cell_size`.
 
+By default, the grid is anchored to the coordinate (0, 0) in EPSG:9191,
+which is 175 degrees E, 40 degrees S. This coordinate is a shared cell
+corner, so the supported cell sizes remain nested.
+
 ## Standard grids as polygons
 
 ``` r
@@ -33,7 +40,7 @@ grd064_eez <- get_standard_grid(cell_size = 64, bounding_box = st_bbox(eez),
                                 return_raster = FALSE)
 ```
 
-Plot and check with center point and bounding box
+Plot and check with centre point and bounding box.
 
 ``` r
 
@@ -43,7 +50,7 @@ ggplot() +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA, linetype = "dashed") +
   geom_sf(data = bb_eez, colour = "red", fill = NA, linetype = "dashed") +
   plot_coast(resolution = "medium", fill = "black", colour = "black") +
-  geom_point(aes(x = 0, y = -422600), colour = "green") + 
+  geom_point(aes(x = 0, y = 0), colour = "green") +
   plot_clip("NZ") +
   annotation_scale(location = "tr", unit_category = "metric")
 ```
@@ -51,7 +58,7 @@ ggplot() +
 ![](fnz_standard_grids_files/figure-html/EEZ_eg-1.png)
 
 Figure 1: The New Zealand EEZ (dashed black lines), a box bounding the
-EEZ (dashed red lines), a 50 x 50 km grid (blue lines), a 200 x 200 km
+EEZ (dashed red lines), a 64 x 64 km grid (blue lines), a 256 x 256 km
 grid (red lines), and the origin (green point).
 
 ``` r
@@ -93,14 +100,14 @@ ggplot() +
   geom_sf(data = grd256_cra1,  colour = "blue",  fill = NA, alpha = 0.5, linetype = "dashed") +
   geom_sf(data = grd064_cra1,  colour = "tomato",  fill = NA, alpha = 0.5, linetype = "dashed") +
   plot_coast(resolution = "high", fill = "black", colour = "black") +
-  geom_point(aes(x = 0, y = -422600), colour = "green") +
+  geom_point(aes(x = 0, y = 0), colour = "green") +
   annotation_scale(location = "tr", unit_category = "metric") +
-  coord_sf(xlim = c(-5e+05, 2.5e+05), ylim = c(-422600, 895400))
+  coord_sf(xlim = c(-5e+05, 2.5e+05), ylim = c(0, 1318000))
 ```
 
 ![](fnz_standard_grids_files/figure-html/overlap_eg-1.png)
 
-EEZ 200 x 200 km grid (light blue), CRA 1 200 x 200 km grid (dashed
+EEZ 256 x 256 km grid (light blue), CRA 1 256 x 256 km grid (dashed
 blue), origin (green point).
 
 In the figure below, I show that you can specify the number of cells
@@ -109,28 +116,27 @@ either side of the origin.
 ``` r
 
 bb1 <- st_bbox(eez)
-bb1[1] <- -150000 # xmin
-bb1[2] <- -422600 - 3000 # ymin (3 cells below the origin)
-bb1[3] <- 3000 # xmax (3 cells to the right of the origin)
-bb1[4] <- -400000 # ymax
+bb1[1] <- -3000 # xmin (3 cells west of the origin)
+bb1[2] <- -3000 # ymin (3 cells south of the origin)
+bb1[3] <- 3000 # xmax (3 cells east of the origin)
+bb1[4] <- 3000 # ymax (3 cells north of the origin)
 
 grd001_eez <- get_standard_grid(cell_size = 1, bounding_box = bb1, 
                                 return_raster = FALSE)
 
-# Plot and check center point at fine scale
+# Plot and check the origin at fine scale
 ggplot() +
   geom_sf(data = grd001_eez,  colour = "lightblue",  fill = NA, alpha = 0.15) +
-  plot_coast(resolution = "150k", fill = "black", colour = "black") +
-  geom_point(aes(x = 0, y = -422600), colour = "green") + 
-  annotation_scale(location = "tr", unit_category = "metric") +
-  plot_clip(x = grd001_eez)
+  geom_point(aes(x = 0, y = 0), colour = "green4", size = 3) +
+  annotate("text", x = 100, y = 100, label = "(0, 0)", colour = "green4",
+           hjust = 0, vjust = 0) +
+  coord_sf(datum = NA, expand = FALSE)
 ```
 
 ![](fnz_standard_grids_files/figure-html/fine_eg-1.png)
 
-A 1 x 1 km grid (blue), origin (green point), and tip of Banks Peninsula
-to west. Note that the cell sizes agree well with the scale at
-top-right.
+A 1 x 1 km grid (blue) surrounding the EPSG:9191 origin (green point).
+The origin is a shared grid-cell corner.
 
 ## Standard grids as rasters
 
@@ -141,7 +147,7 @@ Fill the grid with random values and plot it.
 
 r <- get_standard_grid(cell_size = 256, bounding_box = st_bbox(eez), 
                        return_raster = TRUE)
-r[] <- rnorm(n = ncell(r))
+r[] <- rnorm(n = raster::ncell(r))
 rstar <- st_as_stars(r)
 
 ggplot() +
@@ -149,11 +155,11 @@ ggplot() +
   geom_sf(data = grd256_eez, fill = NA, colour = "red", linetype = "dotted") +
   plot_coast(resolution = "large", fill = "black", colour = "black") +
   plot_statistical_areas(area = "EEZ", colour = "black", fill = NA) +
-  geom_point(aes(x = 0, y = -422600), colour = "green") +
+  geom_point(aes(x = 0, y = 0), colour = "green") +
   plot_clip("NZ")
 ```
 
 ![](fnz_standard_grids_files/figure-html/raster-1.png)
 
-EEZ 200 x 200 km grid as polygons (dotted red), EEZ 200 x 200 km grid as
+EEZ 256 x 256 km grid as polygons (dotted red), EEZ 256 x 256 km grid as
 raster (blue), origin (green point).

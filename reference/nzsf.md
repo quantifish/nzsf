@@ -7,14 +7,14 @@ useful projection to use.
 
 ## Get functions
 
-The get functions obtain shapefiles using a call to `data` and do some
-processing of that data (e.g. transform to a different projection).
-These functions return a spatial features object.
+The get functions retrieve bundled spatial data and perform requested
+processing, such as transformation to a different projection. These
+functions return simple-feature or raster objects.
 
 ## Plot functions
 
-The plot functions include a get function and an appropriate `ggplot2`
-geom to plot the shapefile.
+The plot functions combine a get function with an appropriate `ggplot2`
+geom.
 
 ## See also
 
@@ -22,7 +22,7 @@ Useful links:
 
 - <https://github.com/quantifish/nzsf>
 
-- <http://www.quantifish.co.nz/nzsf/>
+- <https://www.quantifish.co.nz/nzsf/>
 
 - Report bugs at <https://github.com/quantifish/nzsf/issues>
 
