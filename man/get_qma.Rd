@@ -20,18 +20,18 @@ This function is used to return a Quota Management Area (QMA) as a \code{sf} obj
 \examples{
 # Red rock lobster
 x <- get_qma(qma = "CRA")
-ggplot() +
-  geom_sf(data = x, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = x, fill = NA)
 
 # Hake
 y <- get_qma(qma = "HAK")
-ggplot() +
-  geom_sf(data = y, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = y, fill = NA)
   
 # Ling
 z <- get_qma(qma = "LIN")
-ggplot() +
-  geom_sf(data = z, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = z, fill = NA)
   
 }
 \seealso{

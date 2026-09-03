@@ -27,7 +27,7 @@ plot_coast(
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
-ggplot of New Zealands coastline.
+A ggplot of New Zealand's coastline.
 }
 \description{
 Plot the New Zealand coastline.

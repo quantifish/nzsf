@@ -13,18 +13,19 @@ geom_ccamlr(
 )
 }
 \arguments{
-\item{feature}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
+\item{feature}{A CCAMLR feature. Supported values are `ssru`, `label`,
+`statistical_area`, `mpa`, `land`, and `gebco`.}
 
 \item{proj}{The projection to use.}
 
-\item{fill}{The projection to use.}
+\item{fill}{The fill colour for vector features.}
 
-\item{colour}{The projection to use.}
+\item{colour}{The line or text colour for vector features.}
 
-\item{...}{The projection to use.}
+\item{...}{Other arguments passed to the selected ggplot2 geom.}
 }
 \value{
-New Zealands statistical areas as a \code{sf} object.
+A ggplot2 layer containing the selected CCAMLR feature.
 }
 \description{
 CCAMLR geometries

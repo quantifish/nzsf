@@ -10,7 +10,7 @@ get_marine_reserves(proj = proj_nzsf())
 \item{proj}{The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.}
 }
 \value{
-New Zealands marine reserves as a \code{sf} object.
+New Zealand's marine reserves as an \code{sf} object.
 }
 \description{
 Get Marine Reserves

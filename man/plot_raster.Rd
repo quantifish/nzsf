@@ -27,10 +27,10 @@ Plot points as a raster
 }
 \examples{
 x <- get_qma("CRA")
-pts <- st_sample(x, size = 1000) \%>\% 
-  st_sf() \%>\% 
-  mutate(z = rnorm(1:n()))
-ggplot() +
+set.seed(4277)
+pts <- sf::st_sf(sf::st_sample(x, size = 1000))
+pts$z <- rnorm(nrow(pts))
+ggplot2::ggplot() +
   plot_raster(data = pts, field = "z")
 
 }

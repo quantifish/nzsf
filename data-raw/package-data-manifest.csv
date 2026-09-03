@@ -1,0 +1,50 @@
+"file","object","md5","bytes","class","features","attributes","crs","all_valid"
+"ccamlr_eez.rda","ccamlr_eez","33a33de60b0916814c8f1471bcf3a141",405064,"sf;data.frame",7,13,"+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=180 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",TRUE
+"ccamlr_mpa.rda","ccamlr_mpa","db8d215b13fbd0eb11e9879310066e04",94160,"sf;data.frame",6,12,"+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=180 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",TRUE
+"ccamlr_ssru.rda","ccamlr_ssru","fb26c28fe66354ee747ddd401a85d60d",288816,"sf;data.frame",63,13,"+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=180 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",TRUE
+"ccamlr_statistical_areas.rda","ccamlr_statistical_areas","57acc1d620d73b2654ab48d5a5b63cb8",421724,"sf;data.frame",19,6,"+proj=stere +lat_0=-90 +lat_ts=-71 +lon_0=180 +k=1 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",TRUE
+"CCSBT.rda","CCSBT","5e939cbeee51e20ded12c483b4138d1c",912,"sf;data.frame",12,2,"EPSG:4326",TRUE
+"coastline_polyline_hydro_14k_122k.rda","coastline_polyline_hydro_14k_122k","6d9bf651351372b4a5d01d2c8b8a868c",2255752,"sf;data.frame",5043,17,"EPSG:4326",TRUE
+"Cockle_QMA.rda","Cockle_QMA","9a466a50fd30959b6a237e18c1c8eaa9",137948,"sf;data.frame",13,5,"EPSG:4326",TRUE
+"depth_contour_polyline_hydro_122k_190k.rda","depth_contour_polyline_hydro_122k_190k","c1a010c81d40a7d2c56add71b2683ade",10099304,"sf;data.frame",17157,4,"EPSG:4326",TRUE
+"depth_contour_polyline_hydro_1350k_11500k.rda","depth_contour_polyline_hydro_1350k_11500k","fa29eb7b80b36277ab977b8541860281",3388904,"sf;data.frame",4571,4,"EPSG:4326",TRUE
+"depth_contour_polyline_hydro_190k_1350k.rda","depth_contour_polyline_hydro_190k_1350k","e576cb165f2586beae6f50b0c5e07546",8387532,"sf;data.frame",14859,4,"EPSG:4326",TRUE
+"doc_marine_reserves.rda","doc_marine_reserves","2fcd461ed64ac44dd2347b97df413b5c",1054432,"sf;data.frame",50,1,"EPSG:4326",TRUE
+"exclusive_economic_zone_outer_limits_200_mile.rda","exclusive_economic_zone_outer_limits_200_mile","de51323cbfeaa3f323c04153c7d3e57e",79872,"sf;data.frame",153,29,"EPSG:4326",TRUE
+"FisheriesManagementAreas.rda","FisheriesManagementAreas","0206d979a91d2cc6bc65f40340b5cf51",211244,"sf;data.frame",25,11,"EPSG:4326",TRUE
+"gebco_CCAMLR.rda","gebco_CCAMLR","64039254e190786a3439c57c6b687f76",735284,"RasterStack",231000,1,"+proj=longlat +datum=WGS84 +no_defs",
+"gebco_NZ.rda","gebco_NZ","741e7f64c76fc19f702f146ce1e5d360",2161844,"RasterLayer",322734,1,"+proj=aea +lat_0=-40 +lon_0=175 +lat_1=-30 +lat_2=-50 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs",
+"gebco_SIOFA.rda","gebco_SIOFA","ef151fdc6373a27143868f04a8bdad73",982880,"RasterStack",301000,1,"+proj=longlat +datum=WGS84 +no_defs",
+"gebco.rda","gebco","697b1c84915b63ccfe80bdb0643b70e6",6279552,"RasterStack",2004002,1,"+proj=longlat +datum=WGS84 +no_defs",
+"Gisborne_TToR_Habitats.rda","Gisborne_TToR_Habitats","add360c51b0133cbd1fbe737707f8433",43680,"sf;data.frame",482,15,"EPSG:2193",TRUE
+"Gisborne_TToR_Reefs.rda","Gisborne_TToR_Reefs","74efb812539e7af193af5d0d12fb8226",5536,"sf;data.frame",3,1,"EPSG:2193",TRUE
+"HAKE_QMA.rda","HAKE_QMA","efe6aa4e107d2144b2f2c59af7c19bba",137144,"sf;data.frame",4,4,"EPSG:4326",TRUE
+"Hauraki_Gulf_Marine_Park.rda","Hauraki_Gulf_Marine_Park","a510b345790941a1bd12e2a9626531a2",5207684,"sf;data.frame",1,19,"EPSG:4326",TRUE
+"HOKI_QMA.rda","HOKI_QMA","c0356b0dd85ef98fd9b8c295fff433f4",132996,"sf;data.frame",2,4,"EPSG:4326",TRUE
+"JackMackerel_QMA.rda","JackMackerel_QMA","e764909bc1f3a30f37cbb7d18a4b8829",137556,"sf;data.frame",4,4,"EPSG:4326",TRUE
+"LING_QMA.rda","LING_QMA","db5ef2343e9e3b02630d0095cef80fb6",144360,"sf;data.frame",8,4,"EPSG:4326",TRUE
+"nz_coastlines_and_islands_polygons_topo_1250k.rda","nz_coastlines_and_islands_polygons_topo_1250k","868cff203f20e1bbaa0bff271359abc4",1122740,"sf;data.frame",1699,6,"EPSG:2193",TRUE
+"nz_coastlines_and_islands_polygons_topo_1500k.rda","nz_coastlines_and_islands_polygons_topo_1500k","54132d7494d7c213dd5ecf194f539343",945204,"sf;data.frame",725,2,"EPSG:2193",TRUE
+"nz_coastlines_and_islands_polygons_topo_150k.rda","nz_coastlines_and_islands_polygons_topo_150k","484713ba4f946e77fb7d04706f44a606",6381152,"sf;data.frame",9261,7,"EPSG:4167",TRUE
+"nz_coastlines_topo_1250k.rda","nz_coastlines_topo_1250k","1a6ed34d08cf8560047303417fc0cd8a",757216,"sf;data.frame",4,2,"EPSG:2193",TRUE
+"nz_coastlines_topo_1500k.rda","nz_coastlines_topo_1500k","586c2443e40d77709543e2e12f438366",696976,"sf;data.frame",3,1,"EPSG:2193",TRUE
+"nz_coastlines_topo_150k.rda","nz_coastlines_topo_150k","8089198a456d4fad2b3da914ede13fe9",4456504,"sf;data.frame",39,2,"EPSG:2193",TRUE
+"nz_general_statistical_areas.rda","nz_general_statistical_areas","a33a409e5bacdf407a14aa87fc6ae3f1",91128,"sf;data.frame",121,3,"EPSG:3994",TRUE
+"nz_inshore_statistical_areas.rda","nz_inshore_statistical_areas","e101f019440ef4ed0cc0f056eb4d5217",11764,"sf;data.frame",53,3,"EPSG:3994",TRUE
+"nz_rivers.rda","nz_rivers","7c528cbfab560902a207ded8cdfc573b",10245016,"sf;data.frame",4866,1,"EPSG:2193",TRUE
+"OrangeRoughy_QMA.rda","OrangeRoughy_QMA","6db95eb64e3ccddb60108385fa6f2204",142292,"sf;data.frame",8,4,"EPSG:4326",TRUE
+"OREO_QMA.rda","OREO_QMA","b6f916a6af5ffc8b6dadb29442f1d78d",134072,"sf;data.frame",5,4,"EPSG:4326",TRUE
+"PackhorseRockLobster_QMA.rda","PackhorseRockLobster_QMA","6d48c8737a55ca5e2bd2ae4e80b2a251",127520,"sf;data.frame",1,4,"EPSG:2193",TRUE
+"Paua_QMA.rda","Paua_QMA","11739de3d8cf6eda70456e196d691828",142044,"sf;data.frame",11,4,"EPSG:4326",TRUE
+"Pipi_QMA.rda","Pipi_QMA","e2671470248050ac11a99f424b1d61c1",135080,"sf;data.frame",10,5,"EPSG:4326",TRUE
+"rock_lobster_stat_areas.rda","rock_lobster_stat_areas","9540e1375f88fb5a04cdae560d2b541e",39416,"sf;data.frame",43,16,"EPSG:4326",TRUE
+"Rocky_reef_National_NZ.rda","Rocky_reef_National_NZ","fe0fe3880e82cc0565342d166baca9c7",3813096,"sf;data.frame",4817,1,"EPSG:2193",TRUE
+"Scallop_QMA.rda","Scallop_QMA","3fa454dd52dc2e644a3390b96cd35d09",147460,"sf;data.frame",13,5,"EPSG:4326",TRUE
+"Scampi_QMA.rda","Scampi_QMA","bd9ffb8f6d6412b9145f5a89f0019867",76892,"sf;data.frame",11,4,"EPSG:3994",TRUE
+"SilverWarehou_QMA.rda","SilverWarehou_QMA","9c93af94572a39cc30e51c5f970f370e",133748,"sf;data.frame",4,4,"EPSG:4326",TRUE
+"SIOFA.rda","SIOFA","070d5a9f31e8b2f187285321aab9bb3d",12196,"sf;data.frame",9,29,"WGS 84",TRUE
+"SouthernBlueWhiting_QMA.rda","SouthernBlueWhiting_QMA","10408e3c5199177dfaa1d015adfb2195",142708,"sf;data.frame",5,4,"EPSG:4326",TRUE
+"SpinyRedRockLobster_QMA.rda","SpinyRedRockLobster_QMA","a4c1c2b795fc3c3c14bd13f9c41e34cd",148308,"sf;data.frame",10,4,"EPSG:4326",TRUE
+"SPRFMO.rda","SPRFMO","cbb2a05f878c19592ddb6d7959e1dc47",86072,"sf;data.frame",8,3,"WGS 84",TRUE
+"Squid_QMA.rda","Squid_QMA","b4747af36fdf19de915456fa4d8bfc0d",65624,"sf;data.frame",3,4,"EPSG:3994",TRUE
+"territorial_sea_outer_limit_12_mile.rda","territorial_sea_outer_limit_12_mile","679ce53b8f13b9e38662910c9a0ccb79",211848,"sf;data.frame",930,4,"EPSG:4326",TRUE

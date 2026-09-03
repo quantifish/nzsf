@@ -6,17 +6,56 @@ library(raster)
 library(ncdf4)
 library(stars)
 library(conflicted)
+library(s2)
 
 conflict_prefer("select", "dplyr")
 conflict_prefer("filter", "dplyr")
 
+make_valid_for_storage <- function(x) {
+  validity <- st_is_valid(x)
+  if (all(validity %in% TRUE)) return(x)
+
+  invalid <- which(is.na(validity) | !validity)
+  repaired <- st_make_valid(st_geometry(x)[invalid])
+  if (any(!st_is_valid(repaired))) {
+    geography <- s2_geog_from_wkb(
+      st_as_binary(repaired),
+      check = FALSE
+    )
+    geography <- s2_rebuild(
+      geography,
+      options = s2_options(snap = s2_snap_precision(1e6))
+    )
+    repaired <- st_as_sfc(geography, crs = st_crs(x))
+  }
+
+  if (any(!st_is_valid(repaired))) stop("Geometry repair failed.")
+  st_geometry(x)[invalid] <- repaired
+  geometry_types <- unique(as.character(st_geometry_type(x)))
+  if (all(geometry_types %in% c("POLYGON", "MULTIPOLYGON"))) {
+    x <- suppressWarnings(st_cast(x, "MULTIPOLYGON"))
+  }
+  if (any(!st_is_valid(x))) stop("Geometry repair failed after assignment.")
+  x
+}
+
 unzip_and_clean <- function(f) {
+  extract_dir <- tempfile("nzsf-shapefile-")
+  dir.create(extract_dir)
+  on.exit(unlink(extract_dir, recursive = TRUE, force = TRUE), add = TRUE)
+
   fz <- unzip(zipfile = f, list = TRUE)
-  unzip(zipfile = f)
-  dsn <- fz$Name[grep(".shp", fz$Name)]
-  layer <- gsub(".shp", "", dsn)
-  x <- st_read(dsn = ".", layer = layer)
-  file.remove(fz$Name)
+  shape_files <- fz$Name[grepl("[.]shp$", fz$Name, ignore.case = TRUE)]
+  if (length(shape_files) != 1L) {
+    stop("Expected exactly one shapefile in ", f, "; found ",
+         length(shape_files), ".")
+  }
+
+  unzip(zipfile = f, exdir = extract_dir)
+  shape_path <- file.path(extract_dir, shape_files)
+  layer <- tools::file_path_sans_ext(basename(shape_path))
+  x <- st_read(dsn = dirname(shape_path), layer = layer, quiet = TRUE) %>%
+    make_valid_for_storage()
   layer_name <- gsub("-", "_", layer)
   print(layer_name)
   return(x)
@@ -25,7 +64,7 @@ unzip_and_clean <- function(f) {
 # setwd("/home/darcy/Projects/nzsf/data-raw")
 # setwd("/home/darcy/Projects/nzsf")
 
-# proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+# proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat_0=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 source("../R/projection.R")
 proj_nzsf <- proj_nzsf()
 
@@ -323,17 +362,6 @@ use_data(gebco_CCAMLR, overwrite = TRUE)
 file.remove("CCAMLR.nc")
 
 # file.remove(fz$Name)
-
-# This file is too big
-# f <- "NZBathy_DTM_2016_ascii_grid.zip"
-# fz <- unzip(zipfile = f, list = TRUE)
-# unzip(zipfile = f)
-# NZBathymetry_2016_grid <- readGDAL("nzbathymetry_2016_ascii-grid.txt") %>%
-#   raster()
-# crs(NZBathymetry_2016_grid) <- "+proj=merc +lat_ts=-41 +lon_0=100 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs"
-# file.remove(fz$Name)
-NZBathymetry_2016_grid <- NULL
-use_data(NZBathymetry_2016_grid, overwrite = TRUE)
 
 # gebco_contours <- unzip_and_clean("gebco_2019_contours.zip")
 # use_data(gebco_contours, overwrite = TRUE)

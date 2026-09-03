@@ -19,7 +19,7 @@ geom_ccsbt(
 
 \item{fill}{The fill colour for the selected feature.}
 
-\item{colour}{The colour for the seleceted feature.}
+\item{colour}{The colour for the selected feature.}
 
 \item{...}{Any additional arguments passed to \code{geom_sf}.}
 }
@@ -31,7 +31,7 @@ A helper function for obtaining a CCSBT related feature and returning a \code{ge
 management areas, labels or land. By default the projection returned by the function \code{proj_ccsbt} is used.
 }
 \examples{
-ggplot() +
+ggplot2::ggplot() +
   geom_ccsbt(feature = "area") +
   geom_ccsbt(feature = "land", fill = "black") +
   coord_ccsbt()

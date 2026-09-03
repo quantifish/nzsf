@@ -14,7 +14,7 @@ get_depth(proj = proj_nzsf(), resolution = "low", depths = NULL)
 \item{depths}{a vector of specific depths to filter. Depths (in metres) that are available include: 0, 2, 5, 10, 20, 30, 50, 100, 200, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, and 10000.}
 }
 \value{
-New Zealands depth polylines as a \code{sf} object.
+New Zealand's depth polylines as an \code{sf} object.
 }
 \description{
 Get depth polylines around New Zealand

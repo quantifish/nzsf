@@ -1,4 +1,4 @@
-url: http://www.quantifish.co.nz/nzsf/
+url: https://www.quantifish.co.nz/nzsf/
 
 template:
   bootstrap: 5
@@ -39,7 +39,6 @@ reference:
   - HOKI_QMA
   - JackMackerel_QMA
   - LING_QMA
-  - NZBathymetry_2016_grid
   - OREO_QMA
   - OrangeRoughy_QMA
   - PackhorseRockLobster_QMA

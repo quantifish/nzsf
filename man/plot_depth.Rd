@@ -27,7 +27,7 @@ plot_depth(
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
-A \code{ggplot} object of New Zealands depth polylines.
+A \code{ggplot} object of New Zealand's depth polylines.
 }
 \description{
 Plot depth polylines around New Zealand

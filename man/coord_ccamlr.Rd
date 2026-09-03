@@ -9,10 +9,10 @@ coord_ccamlr(proj = proj_ccamlr(), ...)
 \arguments{
 \item{proj}{The projection to use.}
 
-\item{...}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
+\item{...}{Other arguments passed to \code{ggplot2::geom_sf()}.}
 }
 \value{
-New Zealands statistical areas as a \code{sf} object.
+A CCAMLR \code{ggplot2} layer.
 }
 \description{
 CCAMLR coord

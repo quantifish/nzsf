@@ -7,7 +7,7 @@
 get_standard_grid(
   cell_size,
   bounding_box,
-  anchor = c(0, 422600),
+  anchor = c(0, 0),
   return_raster = TRUE,
   crs = proj_nzsf(),
   square = TRUE
@@ -18,7 +18,9 @@ get_standard_grid(
 
 \item{bounding_box}{limits generated from call to \code{sf::st_bbox()}}
 
-\item{anchor}{the point to anchor the grid to}
+\item{anchor}{projected coordinates, in metres, used to anchor a shared grid
+cell corner. The default is the EPSG:9191 origin at 175 degrees E,
+40 degrees S.}
 
 \item{return_raster}{return a raster or polygons}
 

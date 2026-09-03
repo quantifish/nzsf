@@ -3,7 +3,7 @@
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
 #' @param resolution the resolution, choose from "10", "50". "110", "150", "1250", "1500".
 #' @param keep proportion of points to retain (0-1; default 1).
-#' @return New Zealands coastline as a \code{sf} object.
+#' @return New Zealand's coastline as an \code{sf} object.
 #' 
 #' @seealso \code{\link{plot_coast}}
 #' 
@@ -50,7 +50,7 @@ get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
     x <- rmapshaper::ms_simplify(x, keep = keep, keep_shapes = FALSE)
   }
   
-  if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
+  if (!is.null(proj)) x <- x %>% st_transform(crs = proj)
   
   return(x)
 }
@@ -62,7 +62,7 @@ get_coast <- function(proj = proj_nzsf(), resolution = "medium", keep = 1) {
 #' @param rivers Plot rivers over land as \code{geom_sf}.
 #' @param size The line size to pass on to \code{geom_sf}.
 #' @param ... Other arguments passed on to \code{geom_sf}.
-#' @return ggplot of New Zealands coastline.
+#' @return A ggplot of New Zealand's coastline.
 #' 
 #' @seealso \code{\link{get_coast}}
 #' 

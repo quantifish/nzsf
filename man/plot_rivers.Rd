@@ -12,7 +12,7 @@ plot_rivers(proj = proj_nzsf(), ...)
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
-ggplot of New Zealands rivers.
+A ggplot of New Zealand's rivers.
 }
 \description{
 Plot New Zealand rivers.

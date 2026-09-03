@@ -1,8 +1,9 @@
 #' Get Statistical Areas
 #' 
-#' @param area A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
+#' @param area A fisheries area. Supported values include EEZ, CRA, FMA, JMA,
+#'   statistical areas, CCSBT, SIOFA, and SPRFMO.
 #' @param proj The projection to use.
-#' @return New Zealands statistical areas as a \code{sf} object.
+#' @return New Zealand's statistical areas as an \code{sf} object.
 #' 
 #' @seealso \code{\link{plot_statistical_areas}}
 #' 
@@ -12,8 +13,8 @@
 #' @export
 #' @examples
 #' x <- get_statistical_areas(area = "CRA")
-#' ggplot() +
-#'   geom_sf(data = x, fill = NA)
+#' ggplot2::ggplot() +
+#'   ggplot2::geom_sf(data = x, fill = NA)
 #' 
 get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 
@@ -29,20 +30,25 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   
   if (area %in% c("EEZ")) {
     # x <- nzsf::exclusive_economic_zone_outer_limits_200_mile
-    x <- nzsf::FisheriesManagementAreas %>% 
+    geometry <- nzsf::FisheriesManagementAreas %>%
       filter(.data$LayerName == "General FMAs") %>%
       st_make_valid() %>%
       st_union()
+    x <- sf::st_sf(area = "EEZ", geometry = geometry)
   }
   
   if (area %in% c("CRA")) {
     x <- nzsf::rock_lobster_stat_areas
   }
   
-  if (area %in% c("FMA", "JMA")) {
+  if (area %in% c("FMA")) {
     x <- nzsf::FisheriesManagementAreas %>% 
       filter(.data$LayerName == "General FMAs") %>%
       st_make_valid()
+  }
+
+  if (area %in% c("JMA")) {
+    x <- nzsf::nz_general_statistical_areas
   }
   
   if (area %in% c("CCSBT")) {
@@ -65,14 +71,9 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
   }
   
   if (!is.null(proj)) {
-    x <- x %>% 
-      # st_transform(crs = proj, check = TRUE) %>% 
-      st_transform(crs = proj) %>% 
-      st_union(by_feature = TRUE) %>%
+    x <- x %>%
+      st_transform(crs = proj) %>%
       st_make_valid()
-    # if (!area %in% "EEZ") {
-    #   x <- x %>% st_cast("MULTIPOLYGON")
-    # }
   }
   
   return(x)
@@ -90,7 +91,7 @@ get_statistical_areas <- function(area = "CRA", proj = proj_nzsf()) {
 #' @importFrom ggplot2 geom_sf
 #' @export
 #' @examples
-#' ggplot() + 
+#' ggplot2::ggplot() +
 #'   plot_statistical_areas(area = "CRA")
 #' 
 plot_statistical_areas <- function(proj = proj_nzsf(), 

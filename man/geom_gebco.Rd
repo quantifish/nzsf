@@ -14,7 +14,7 @@ geom_gebco(proj = proj_nzsf(), downsample = 3, ...)
 \item{...}{Other arguments passed on to \code{geom_sf}.}
 }
 \value{
-A \code{ggplot} object of New Zealands depth polylines.
+A \code{ggplot} object of New Zealand's depth raster.
 }
 \description{
 Plot GEBCO depth raster

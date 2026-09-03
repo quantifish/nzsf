@@ -21,15 +21,15 @@ This function is used to plot a Quota Management Area (QMA) as a \code{ggplot2} 
 }
 \examples{
 # Packhorse rock lobster
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "PHC")
   
 # Jack mackerel
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "JMA")
 
 # Paua
-ggplot() + 
+ggplot2::ggplot() +
   plot_qma(qma = "PAU")
 
 }

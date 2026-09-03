@@ -14,20 +14,22 @@ such as the \code{proj} functions which can be used to easily specify a useful p
 }
 \section{Get functions}{
 
-The get functions obtain shapefiles using a call to \code{data} and do some processing of that data (e.g. transform to a 
-different projection). These functions return a spatial features object.
+The get functions retrieve bundled spatial data and perform requested
+processing, such as transformation to a different projection. These
+functions return simple-feature or raster objects.
 }
 
 \section{Plot functions}{
 
-The plot functions include a get function and an appropriate \code{ggplot2} geom to plot the shapefile.
+The plot functions combine a get function with an appropriate
+\code{ggplot2} geom.
 }
 
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/quantifish/nzsf}
-  \item \url{http://www.quantifish.co.nz/nzsf/}
+  \item \url{https://www.quantifish.co.nz/nzsf/}
   \item Report bugs at \url{https://github.com/quantifish/nzsf/issues}
 }
 

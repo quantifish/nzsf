@@ -1,7 +1,7 @@
 #' Get Marine Reserves
 #' 
 #' @param proj The coordinate reference system to use: integer with the EPSG code, or character with \code{proj4string}.
-#' @return New Zealands marine reserves as a \code{sf} object.
+#' @return New Zealand's marine reserves as an \code{sf} object.
 #' 
 #' @keywords reserve
 #' @importFrom utils data
@@ -9,7 +9,7 @@
 #' 
 get_marine_reserves <- function(proj = proj_nzsf()) {
   x <- nzsf::doc_marine_reserves
-  if (!is.null(proj)) x <- x %>% st_transform(crs = proj, check = TRUE)
+  if (!is.null(proj)) x <- x %>% st_transform(crs = proj)
   return(x)
 }
 
@@ -24,7 +24,7 @@ get_marine_reserves <- function(proj = proj_nzsf()) {
 #' @importFrom sf st_transform
 #' @export
 #' @examples
-#' ggplot() +
+#' ggplot2::ggplot() +
 #'   plot_marine_reserves()
 #' 
 plot_marine_reserves <- function(proj = proj_nzsf(), ...) {

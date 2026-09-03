@@ -62,3 +62,32 @@ test_that("standard grids support raster and polygon outputs", {
   expect_gt(nrow(polygon_grid), 0)
   expect_gt(raster::ncell(raster_grid), 0)
 })
+
+test_that("standard grids use the EPSG:9191 origin as a shared cell corner", {
+  geographic_origin <- sf::st_sfc(
+    sf::st_point(c(175, -40)),
+    crs = 4326
+  )
+  projected_origin <- sf::st_coordinates(
+    sf::st_transform(geographic_origin, crs = proj_nzsf())
+  )
+
+  expect_equal(unname(projected_origin[1, ]), c(0, 0), tolerance = 0.01)
+
+  bbox <- sf::st_bbox(
+    c(xmin = -200000, ymin = -200000, xmax = 200000, ymax = 200000),
+    crs = sf::st_crs(proj_nzsf())
+  )
+  grid_64 <- get_standard_grid_origin(cell_size = 64, bounding_box = bbox)
+  grid_128 <- get_standard_grid_origin(cell_size = 128, bounding_box = bbox)
+
+  boundaries_64_x <- seq(grid_64$xmin, grid_64$xmax, by = grid_64$cell_size_m)
+  boundaries_64_y <- seq(grid_64$ymin, grid_64$ymax, by = grid_64$cell_size_m)
+  boundaries_128_x <- seq(grid_128$xmin, grid_128$xmax, by = grid_128$cell_size_m)
+  boundaries_128_y <- seq(grid_128$ymin, grid_128$ymax, by = grid_128$cell_size_m)
+
+  expect_true(0 %in% boundaries_64_x)
+  expect_true(0 %in% boundaries_64_y)
+  expect_true(all(boundaries_128_x %in% boundaries_64_x))
+  expect_true(all(boundaries_128_y %in% boundaries_64_y))
+})

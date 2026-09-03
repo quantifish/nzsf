@@ -1,710 +1,249 @@
-#' Gebco depth
+#' GEBCO bathymetry rasters
 #'
-#' Gebco depth as a raster.
+#' GEBCO elevation rasters bundled for offline plotting and lookup. Elevations
+#' are in metres, with ocean depths represented by negative values.
 #'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#'
-"nz_rivers"
+#' @format Raster objects: `gebco` has 2,004,002 cells; `gebco_NZ` has 322,734
+#'   cells; `gebco_CCAMLR` has 231,000 cells; and `gebco_SIOFA` has 301,000
+#'   cells. Each object contains one elevation layer.
+#' @source GEBCO gridded bathymetry data
+#'   \url{https://www.gebco.net/data_and_products/gridded_bathymetry_data/}
+#' @name gebco-data
+NULL
 
-
-#' Gebco depth
-#'
-#' Gebco depth as a raster.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#'
+#' @rdname gebco-data
 "gebco"
 
-
-#' Gebco depth
-#'
-#' Gebco depth as a raster.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#'
+#' @rdname gebco-data
 "gebco_NZ"
 
-
-#' Gebco depth
-#'
-#' Gebco depth as a raster.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#'
+#' @rdname gebco-data
 "gebco_CCAMLR"
 
-
-#' Gebco depth
-#'
-#' Gebco depth as a raster.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Gebco
-#'
+#' @rdname gebco-data
 "gebco_SIOFA"
 
 
-#' SPRFMO polygon
-#' 
-#' @format A sf polygon
-#' 
-"SPRFMO"
-
-
-#' SIOFA polygon
-#' 
-#' @format A sf polygon
-#' 
-"SIOFA"
-
-
-#' New Zealand depth ASCII grid
-#' 
-#' @format A RasterLayer
-#' @source NIWA \url{https://data.niwa.co.nz/products/new-zealand-bathymetry-data}
-#' 
-"NZBathymetry_2016_grid"
-
-
-#' New Zealand General Statistical Areas
+#' New Zealand fisheries boundaries and statistical areas
 #'
-#' The \code{nz_general_statistical_areas} data set is a \code{sf} shapefile. A more detailed summary 
-#' for the New Zealand General Statistical Areas can be found at 
-#' \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}. 
-#' 
-#' @format Simple feature collection with 153 features and 3 fields:
-#' \describe{
-#'   \item{OBJECTID}{the object ID}
-#'   \item{Statistica}{the statistical area}
-#'   \item{Statisti_2}{the statistical area}
-#'  }
-#' @source Fisheries New Zealand \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
-#' 
+#' Snapshot boundary layers used by Fisheries New Zealand mapping helpers.
+#'
+#' @format Simple-feature objects with the following feature and attribute
+#'   counts: `nz_general_statistical_areas` (121, 3),
+#'   `nz_inshore_statistical_areas` (53, 3), `FisheriesManagementAreas` (25,
+#'   11), `exclusive_economic_zone_outer_limits_200_mile` (153, 29),
+#'   `territorial_sea_outer_limit_12_mile` (930, 4), and
+#'   `rock_lobster_stat_areas` (43, 16).
+#' @source Fisheries New Zealand fisheries maps
+#'   \url{https://www.mpi.govt.nz/legal/legislation-standards-and-reviews/fisheries-legislation/maps-of-nz-fisheries}
+#'   and Land Information New Zealand
+#'   \url{https://data.linz.govt.nz/}
+#' @name nz-fisheries-boundaries
+NULL
+
+#' @rdname nz-fisheries-boundaries
 "nz_general_statistical_areas"
 
-
-#' New Zealand Inshore Statistical Areas
-#'
-#' A more detailed summary for the New Zealand inshore Statistical Areas can be 
-#' found at \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}.
-#' 
-#' @format Simple feature collection with 53 features and 3 fields:
-#' \describe{
-#'   \item{OBJECTID}{the object ID}
-#'   \item{Statistica}{the statistical area}
-#'   \item{Statisti_2}{the statistical area}
-#'  }
-#' @source Fisheries New Zealand \url{https://data-mpi.opendata.arcgis.com/datasets/general-statistical-areas}
-#' 
+#' @rdname nz-fisheries-boundaries
 "nz_inshore_statistical_areas"
 
+#' @rdname nz-fisheries-boundaries
+"FisheriesManagementAreas"
 
-#' CCAMLR Marine Protected Areas
-#'
-#' CCAMLR Marine Protected Areas (MPAs).
-#'
-#' @format Simple feature collection with 19 features and 13 fields:
-#' \describe{
-#'   \item{GAR_ID}{CCAMLR Statistical Areas}
-#'   \item{Name}{CCAMLR Statistical Areas}
-#'   \item{ShortLabel}{CCAMLR Statistical Areas}
-#'   \item{LongLabel}{CCAMLR Statistical Areas}
-#'   \item{StartDate}{CCAMLR Statistical Areas}
-#'   \item{EndDate}{CCAMLR Statistical Areas}
-#' }
-#' @source CCAMLR \url{https://spatial.ccamlr.org/}
-#' 
-"ccamlr_mpa"
-
-
-#' CCAMLR Small Scale Research Units
-#'
-#' CCAMLR Small Scale Research Units (SSRUs).
-#'
-#' @format Simple feature collection with 19 features and 13 fields:
-#' \describe{
-#'   \item{GAR_ID}{CCAMLR Statistical Areas}
-#'   \item{Name}{CCAMLR Statistical Areas}
-#'   \item{ShortLabel}{CCAMLR Statistical Areas}
-#'   \item{LongLabel}{CCAMLR Statistical Areas}
-#' }
-#' @source CCAMLR \url{https://spatial.ccamlr.org/}
-#' 
-"ccamlr_ssru"
-
-
-#' CCAMLR EEZ
-#'
-#' CCAMLR EEZs.
-#'
-#' @format Simple feature collection with 7 features and 13 fields:
-#' \describe{
-#'   \item{LongLabel}{CCAMLR Statistical Areas}
-#' }
-#' @source CCAMLR \url{https://spatial.ccamlr.org/}
-#' 
-"ccamlr_eez"
-
-
-#' CCAMLR Statistical Areas
-#'
-#' CCAMLR Areas.
-#'
-#' @format Simple feature collection with 19 features and 13 fields:
-#' \describe{
-#'   \item{LongLabel}{CCAMLR Statistical Areas}
-#' }
-#' @source CCAMLR \url{https://spatial.ccamlr.org/}
-#' 
-"ccamlr_statistical_areas"
-
-
-#' CCSBT Management Areas
-#'
-#' The Commission for the Conservation of Southern Bluefin Tuna (CCSBT) Management Areas data set is a \code{sf} shapefile.
-#'
-#' @format Simple feature collection with 12 features and 2 fields:
-#' \describe{
-#'   \item{id}{The CCSBT Management Area}
-#'   \item{Area}{The CCSBT Management Area}
-#' }
-#' @source The CCSBT Data Manager (\email{datamanager@@ccsbt.org}).
-#' 
-"CCSBT"
-
-
-#' New Zealand squid QMAs
-#'
-#' New Zealand squid Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 1 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Squid_QMA"
-
-
-#' New Zealand scampi QMAs
-#'
-#' New Zealand scampi Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 1 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Scampi_QMA"
-
-
-#' New Zealand red rock lobster QMAs
-#'
-#' New Zealand red rock lobster (Jasus edwardsii) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 10 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"SpinyRedRockLobster_QMA"
-
-
-#' New Zealand packhorse rock lobster QMAs
-#'
-#' New Zealand packhorse rock lobster Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 1 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"PackhorseRockLobster_QMA"
-
-
-#' New Zealand jack mackerel QMAs
-#'
-#' New Zealand jack mackerel (JMA) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 4 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"JackMackerel_QMA"
-
-
-#' New Zealand hake QMAs
-#'
-#' New Zealand hake (HAK) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 4 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"HAKE_QMA"
-
-
-#' New Zealand hoki QMAs
-#'
-#' New Zealand hoki (HOK) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 2 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"HOKI_QMA"
-
-
-#' New Zealand ling QMAs
-#'
-#' New Zealand ling (LIN) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 8 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"LING_QMA"
-
-
-#' New Zealand oreo QMAs
-#'
-#' New Zealand oreo (OEO) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 5 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"OREO_QMA"
-
-
-#' New Zealand silver warehou QMAs
-#'
-#' New Zealand silver warehou (SWA) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 4 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"SilverWarehou_QMA"
-
-
-#' New Zealand southern blue whiting QMAs
-#'
-#' New Zealand southern blue whiting (SBW) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 4 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"SouthernBlueWhiting_QMA"
-
-
-#' New Zealand orange roughy QMAs
-#'
-#' New Zealand orange roughy (ORH) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 4 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"OrangeRoughy_QMA"
-
-
-#' New Zealand cockle QMAs
-#'
-#' New Zealand cockle (COC) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 13 features and 5 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#'   \item{QmaName}{Quota Management Area or stock name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Cockle_QMA"
-
-
-#' New Zealand pipi QMAs
-#'
-#' New Zealand pipi (PIP) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 10 features and 5 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#'   \item{QmaName}{Quota Management Area or stock name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Pipi_QMA"
-
-
-#' New Zealand scallop QMAs
-#'
-#' New Zealand scallop (SCA) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 13 features and 5 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#'   \item{QmaName}{Quota Management Area or stock name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Scallop_QMA"
-
-
-#' New Zealand paua QMAs
-#'
-#' New Zealand paua (PAU) Quota Management Areas (QMAs).
-#'
-#' @format Simple feature collection with 11 features and 4 fields:
-#' \describe{
-#'   \item{QMA}{Quota Management Area or stock}
-#'   \item{SpeciesCode}{Species code}
-#'   \item{SpeciesScientific}{Scientific name}
-#'   \item{SpeciesCommon}{Common name}
-#'   \item{QmaName}{Quota Management Area or stock name}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"Paua_QMA"
-
-
-#' New Zealand coastlines 150k
-#'
-#' New Zealand coastlines 150k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_topo_150k"
-
-
-#' New Zealand coastlines 1250k
-#'
-#' New Zealand coastlines 1250k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_topo_1250k"
-
-
-#' New Zealand coastlines 1500k
-#'
-#' New Zealand coastlines 1500k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_topo_1500k"
-
-
-#' New Zealand coastlines and islands 150k
-#'
-#' New Zealand coastlines and islands 150k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' \describe{
-#'   \item{name}{blah}
-#'   \item{macronated}{blah}
-#'   \item{grp_macron}{blah}
-#'   \item{TARGET_FID}{blah}
-#'   \item{grp_ascii}{blah}
-#'   \item{grp_name}{blah}
-#'   \item{name_ascii}{blah}
-#' }
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_and_islands_polygons_topo_150k"
-
-
-#' New Zealand coastlines and islands 1250k
-#'
-#' New Zealand coastlines and islands 1250k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' \describe{
-#'   \item{name}{blah}
-#'   \item{macronated}{blah}
-#'   \item{grp_macron}{blah}
-#'   \item{TARGET_FID}{blah}
-#'   \item{grp_ascii}{blah}
-#'   \item{grp_name}{blah}
-#'   \item{name_ascii}{blah}
-#' }
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_and_islands_polygons_topo_1250k"
-
-
-#' New Zealand coastlines and islands 1500k
-#'
-#' New Zealand coastlines and islands 1500k.
-#'
-#' @format Simple feature collection with 9261 features and 7 fields:
-#' \describe{
-#'   \item{name}{blah}
-#'   \item{macronated}{blah}
-#'   \item{grp_macron}{blah}
-#'   \item{TARGET_FID}{blah}
-#'   \item{grp_ascii}{blah}
-#'   \item{grp_name}{blah}
-#'   \item{name_ascii}{blah}
-#' }
-#' @source \url{https://data.linz.govt.nz/layer/51153-nz-coastlines-and-islands-polygons-topo-150k/}
-#' 
-"nz_coastlines_and_islands_polygons_topo_1500k"
-
-
-#' New Zealand depth contours 14 by 122k
-#'
-#' New Zealand depth contours 14 by 122k.
-#'
-#' @format Simple feature collection with 17157 features and 4 fields:
-#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
-#' 
-"coastline_polyline_hydro_14k_122k"
-
-
-#' New Zealand depth contours 122k by 190k
-#'
-#' New Zealand depth contours 122k by 190k.
-#'
-#' @format Simple feature collection with 17157 features and 4 fields:
-#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
-#' 
-"depth_contour_polyline_hydro_122k_190k"
-
-
-#' New Zealand depth contours 1350k by 11500k
-#'
-#' New Zealand depth contours 1350k by 11500k.
-#'
-#' @format Simple feature collection with 17157 features and 4 fields:
-#' \describe{
-#'   \item{depth}{the depth in m}
-#'   \item{SCAMIN}{blah}
-#'   \item{SORDAT}{blah}
-#'   \item{SORIND}{blah}
-#' }
-#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
-#' 
-"depth_contour_polyline_hydro_1350k_11500k"
-
-
-#' New Zealand depth contours 190k by 1350k
-#'
-#' New Zealand depth contours 190k by 1350k.
-#'
-#' @format Simple feature collection with 17157 features and 4 fields:
-#' \describe{
-#'   \item{depth}{the depth in m}
-#'   \item{SCAMIN}{blah}
-#'   \item{SORDAT}{blah}
-#'   \item{SORIND}{blah}
-#' }
-#' @source \url{https://data.linz.govt.nz/layer/50554-depth-contour-polyline-hydro-122k-190k/}
-#' 
-"depth_contour_polyline_hydro_190k_1350k"
-
-
-#' New Zealand marine reserves
-#'
-#' New Zealand Department of Conservation (DOC) marine reserves.
-#'
-#' @format Simple feature collection with 44 features and 1 field:
-#' \describe{
-#'   \item{Name}{name of the marine reserve}
-#' }
-#' @source \url{https://koordinates.com/layer/6026-doc-marine-reserves/}
-#' 
-"doc_marine_reserves"
-
-
-#' Hauraki Gulf Marine Park
-#'
-#' Hauraki_Gulf_Marine_Park.
-#'
-#' @format Simple feature collection with 1 feature and 19 field:
-#' \describe{
-#'   \item{OBJECTID}{name of the marine reserve}
-#'   \item{NaPALIS_ID}{name of the marine reserve}
-#'   \item{Start_Date}{name of the marine reserve}
-#'   \item{End_Date}{name of the marine reserve}
-#'   \item{Type}{name of the marine reserve}
-#'   \item{Name}{name of the marine reserve}
-#'   \item{Legislatio}{name of the marine reserve}
-#'   \item{Section}{name of the marine reserve}
-#'   \item{Local_Purp}{name of the marine reserve}
-#' }
-#' @source \url{https://hub.arcgis.com/datasets/c6d428a2199046d2a39dc2208a2c921f/about?uiVersion=content-views}
-#' 
-"Hauraki_Gulf_Marine_Park"
-
-
-#' Gisborne Te Tapuwae o Rongokako Habitats
-#'
-#' Gisborne Te Tapuwae o Rongokako Habitats provided by the Department of Conservation (DOC).
-#'
-#' @format Simple feature collection with 482 features and 15 fields:
-#' \describe{
-#'   \item{DEPTH}{the depth (m) of the habitat}
-#'   \item{SUBSTRATE}{the type of subsrate}
-#'   \item{Habitat}{the type of habitat}
-#'   \item{TYPE}{the type of habitat}
-#' }
-#' 
-"Gisborne_TToR_Habitats"
-
-
-#' Gisborne Te Tapuwae o Rongokako Reefs
-#'
-#' Gisborne Te Tapuwae o Rongokako Reefs.
-#'
-#' @format Simple feature collection with 3 features and 1 field:
-#' \describe{
-#'   \item{Reef_name}{the name of the reef}
-#' }
-#' @source New Zealand Department of Conservation (DOC)
-#' 
-"Gisborne_TToR_Reefs"
-
-
-#' New Zealand Rocky Reefs
-#'
-#' New Zealand Rocky Reefs.
-#'
-#' @format Simple feature collection with 4817 features and 1 field:
-#' \describe{
-#'   \item{Source}{the source of the reef polygon}
-#' }
-#' @source New Zealand Department of Conservation (DOC)
-#' 
-"Rocky_reef_National_NZ"
-
-
-#' New Zealand Exclusive Economic Zone (EEZ)
-#'
-#' New Zealand Exclusive Economic Zone (EEZ).
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Fisheries New Zealand
-#' 
+#' @rdname nz-fisheries-boundaries
 "exclusive_economic_zone_outer_limits_200_mile"
 
-
-#' New Zealand 12 mile limit
-#'
-#' New Zealand 12 mile limit.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Fisheries New Zealand
-#' 
+#' @rdname nz-fisheries-boundaries
 "territorial_sea_outer_limit_12_mile"
 
-
-#' New Zealand Rock Lobster Statistical Areas
-#'
-#' New Zealand rock lobster Statistical Areas.
-#'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' @source Fisheries New Zealand
-#' 
+#' @rdname nz-fisheries-boundaries
 "rock_lobster_stat_areas"
 
 
-#' New Zealand Fisheries Management Areas (FMAs)
+#' New Zealand Quota Management Areas
 #'
-#' New Zealand Fisheries Management Areas (FMAs).
+#' Snapshot Quota Management Area (QMA) boundaries. The common core fields are
+#' `QMA`, `SpeciesCode`, `SpeciesScientific`, and the historically named
+#' `SpeciesCommmon`; some shellfish layers also include `QmaName`.
 #'
-#' @format Simple feature collection with 153 features and 29 fields:
-#' \describe{
-#'   \item{FeatureKey}{the}
-#'   \item{LayerKey}{the}
-#'   \item{LayerGroup}{the}
-#'   \item{LayerName}{the}
-#'   \item{MetadataKe}{the}
-#'   \item{PortalUrl}{the}
-#'   \item{SpeciesCode}{the}
-#' }
-#' @source Fisheries New Zealand
-#' 
-"FisheriesManagementAreas"
+#' @format Simple-feature objects with the following feature counts:
+#'   `Cockle_QMA` (13), `HAKE_QMA` (4), `HOKI_QMA` (2),
+#'   `JackMackerel_QMA` (4), `LING_QMA` (8), `OrangeRoughy_QMA` (8),
+#'   `OREO_QMA` (5), `PackhorseRockLobster_QMA` (1), `Paua_QMA` (11),
+#'   `Pipi_QMA` (10), `Scallop_QMA` (13), `Scampi_QMA` (11),
+#'   `SilverWarehou_QMA` (4), `SouthernBlueWhiting_QMA` (5),
+#'   `SpinyRedRockLobster_QMA` (10), and `Squid_QMA` (3). Objects have four
+#'   attributes, except `Cockle_QMA`, `Pipi_QMA`, and `Scallop_QMA`, which have
+#'   five.
+#' @source Fisheries New Zealand fisheries maps
+#'   \url{https://www.mpi.govt.nz/legal/legislation-standards-and-reviews/fisheries-legislation/maps-of-nz-fisheries}
+#' @name qma-data
+NULL
+
+#' @rdname qma-data
+"Cockle_QMA"
+
+#' @rdname qma-data
+"HAKE_QMA"
+
+#' @rdname qma-data
+"HOKI_QMA"
+
+#' @rdname qma-data
+"JackMackerel_QMA"
+
+#' @rdname qma-data
+"LING_QMA"
+
+#' @rdname qma-data
+"OrangeRoughy_QMA"
+
+#' @rdname qma-data
+"OREO_QMA"
+
+#' @rdname qma-data
+"PackhorseRockLobster_QMA"
+
+#' @rdname qma-data
+"Paua_QMA"
+
+#' @rdname qma-data
+"Pipi_QMA"
+
+#' @rdname qma-data
+"Scallop_QMA"
+
+#' @rdname qma-data
+"Scampi_QMA"
+
+#' @rdname qma-data
+"SilverWarehou_QMA"
+
+#' @rdname qma-data
+"SouthernBlueWhiting_QMA"
+
+#' @rdname qma-data
+"SpinyRedRockLobster_QMA"
+
+#' @rdname qma-data
+"Squid_QMA"
 
 
-##' Average SST
-##'
-##' Average SST.
-##'
-##' @format Simple feature collection with 153 features and 29 fields:
-##' @source MFE
-##' 
-#"mfe_average_sst"
+#' New Zealand coast, rivers, and depth contours
+#'
+#' Snapshot topographic and hydrographic simple-feature layers at several
+#' source scales.
+#'
+#' @format Feature and attribute counts are: `nz_rivers` (4,866, 1),
+#'   `nz_coastlines_topo_150k` (39, 2), `nz_coastlines_topo_1250k` (4, 2),
+#'   `nz_coastlines_topo_1500k` (3, 1),
+#'   `nz_coastlines_and_islands_polygons_topo_150k` (9,261, 7),
+#'   `nz_coastlines_and_islands_polygons_topo_1250k` (1,699, 6),
+#'   `nz_coastlines_and_islands_polygons_topo_1500k` (725, 2),
+#'   `coastline_polyline_hydro_14k_122k` (5,043, 17),
+#'   `depth_contour_polyline_hydro_122k_190k` (17,157, 4),
+#'   `depth_contour_polyline_hydro_190k_1350k` (14,859, 4), and
+#'   `depth_contour_polyline_hydro_1350k_11500k` (4,571, 4). Depth-contour
+#'   objects include a `depth` attribute in metres.
+#' @source Land Information New Zealand
+#'   \url{https://data.linz.govt.nz/}
+#' @name nz-topographic-data
+NULL
+
+#' @rdname nz-topographic-data
+"nz_rivers"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_topo_150k"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_topo_1250k"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_topo_1500k"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_and_islands_polygons_topo_150k"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_and_islands_polygons_topo_1250k"
+
+#' @rdname nz-topographic-data
+"nz_coastlines_and_islands_polygons_topo_1500k"
+
+#' @rdname nz-topographic-data
+"coastline_polyline_hydro_14k_122k"
+
+#' @rdname nz-topographic-data
+"depth_contour_polyline_hydro_122k_190k"
+
+#' @rdname nz-topographic-data
+"depth_contour_polyline_hydro_190k_1350k"
+
+#' @rdname nz-topographic-data
+"depth_contour_polyline_hydro_1350k_11500k"
+
+
+#' New Zealand protected areas and marine habitats
+#'
+#' Snapshot protected-area and habitat layers used for contextual mapping.
+#'
+#' @format Simple-feature objects: `doc_marine_reserves` has 50 features and
+#'   one attribute; `Hauraki_Gulf_Marine_Park` has one feature and 19
+#'   attributes; `Gisborne_TToR_Habitats` has 482 features and 15 attributes;
+#'   `Gisborne_TToR_Reefs` has three features and one attribute; and
+#'   `Rocky_reef_National_NZ` has 4,817 features and one attribute.
+#' @source New Zealand Department of Conservation and source authorities
+#'   recorded in `data-raw/README.md`.
+#' @name nz-habitat-data
+NULL
+
+#' @rdname nz-habitat-data
+"doc_marine_reserves"
+
+#' @rdname nz-habitat-data
+"Hauraki_Gulf_Marine_Park"
+
+#' @rdname nz-habitat-data
+"Gisborne_TToR_Habitats"
+
+#' @rdname nz-habitat-data
+"Gisborne_TToR_Reefs"
+
+#' @rdname nz-habitat-data
+"Rocky_reef_National_NZ"
+
+
+#' International fisheries areas
+#'
+#' Snapshot statistical, management, and convention-area boundaries for
+#' international fisheries organisations.
+#'
+#' @format Simple-feature objects: `SPRFMO` (8 features, 3 attributes),
+#'   `SIOFA` (9, 29), `CCSBT` (12, 2), `ccamlr_eez` (7, 13), `ccamlr_mpa`
+#'   (6, 12), `ccamlr_ssru` (63, 13), and `ccamlr_statistical_areas` (19, 6).
+#' @source SPRFMO, SIOFA, CCSBT, and CCAMLR; CCAMLR spatial data are available
+#'   from \url{https://spatial.ccamlr.org/}.
+#' @name international-fisheries-data
+NULL
+
+#' @rdname international-fisheries-data
+"SPRFMO"
+
+#' @rdname international-fisheries-data
+"SIOFA"
+
+#' @rdname international-fisheries-data
+"CCSBT"
+
+#' @rdname international-fisheries-data
+"ccamlr_eez"
+
+#' @rdname international-fisheries-data
+"ccamlr_mpa"
+
+#' @rdname international-fisheries-data
+"ccamlr_ssru"
+
+#' @rdname international-fisheries-data
+"ccamlr_statistical_areas"

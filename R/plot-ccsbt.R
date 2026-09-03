@@ -6,7 +6,7 @@
 #' @param feature A CCSBT feature such as a management area, label or land.
 #' @param proj The projection to use.
 #' @param fill The fill colour for the selected feature.
-#' @param colour The colour for the seleceted feature.
+#' @param colour The colour for the selected feature.
 #' @param ... Any additional arguments passed to \code{geom_sf}.
 #' @return A \code{geom_sf} object.
 #' 
@@ -18,7 +18,7 @@
 #' @importFrom sf st_transform st_union st_centroid
 #' @export
 #' @examples
-#' ggplot() +
+#' ggplot2::ggplot() +
 #'   geom_ccsbt(feature = "area") +
 #'   geom_ccsbt(feature = "land", fill = "black") +
 #'   coord_ccsbt()
@@ -89,7 +89,7 @@ geom_ccsbt <- function(feature = "area", proj = proj_ccsbt(), fill = NA, colour 
 #' @importFrom sf st_transform st_buffer st_bbox
 #' @export
 #' @examples
-#' ggplot() +
+#' ggplot2::ggplot() +
 #'   geom_ccsbt(feature = "area") +
 #'   geom_ccsbt(feature = "land", fill = "black") +
 #'   coord_ccsbt()

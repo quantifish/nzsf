@@ -2,18 +2,19 @@
 % Please edit documentation in R/plot-depth.R
 \name{lookup_depth}
 \alias{lookup_depth}
-\title{Lookup the depth (m) at specific locations around New Zealand}
+\title{Look up GEBCO elevation at specific locations around New Zealand}
 \usage{
 lookup_depth(pts)
 }
 \arguments{
-\item{pts}{The points to generate a depth for.}
+\item{pts}{An sf or sfc object containing point geometries.}
 }
 \value{
-Depth at each location.
+GEBCO elevation, in metres, at each location. Ocean depths are
+  returned as negative elevations.
 }
 \description{
-Lookup the depth (m) at specific locations around New Zealand
+Look up GEBCO elevation at specific locations around New Zealand
 }
 \author{
 Darcy Webber \email{darcy@quantifish.co.nz}

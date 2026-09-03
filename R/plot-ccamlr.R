@@ -1,11 +1,12 @@
 #' CCAMLR geometries
 #' 
-#' @param feature A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
+#' @param feature A CCAMLR feature. Supported values are `ssru`, `label`,
+#'   `statistical_area`, `mpa`, `land`, and `gebco`.
 #' @param proj The projection to use.
-#' @param fill The projection to use.
-#' @param colour The projection to use.
-#' @param ... The projection to use.
-#' @return New Zealands statistical areas as a \code{sf} object.
+#' @param fill The fill colour for vector features.
+#' @param colour The line or text colour for vector features.
+#' @param ... Other arguments passed to the selected ggplot2 geom.
+#' @return A ggplot2 layer containing the selected CCAMLR feature.
 #' 
 #' @seealso \code{\link{coord_ccamlr}}
 #' 
@@ -65,7 +66,7 @@ geom_ccamlr <- function(feature = "ssru",
   }
   
   if (feature %in% c("gebco", "GEBCO")) {
-    x <- nzsf::gebco %>%
+    x <- nzsf::gebco_CCAMLR %>%
       st_as_stars() %>%
       st_transform(crs = proj)
     p <- geom_stars(data = x, ...)
@@ -78,8 +79,8 @@ geom_ccamlr <- function(feature = "ssru",
 #' CCAMLR coord
 #' 
 #' @param proj The projection to use.
-#' @param ... A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.
-#' @return New Zealands statistical areas as a \code{sf} object.
+#' @param ... Other arguments passed to \code{ggplot2::geom_sf()}.
+#' @return A CCAMLR \code{ggplot2} layer.
 #' 
 #' @seealso \code{\link{geom_ccamlr}}
 #' 

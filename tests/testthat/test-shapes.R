@@ -37,7 +37,7 @@ test_that("number of shapes", {
 
 test_that("return a plot", {
   
-  p1 <- ggplot() + 
+  p1 <- ggplot2::ggplot() +
     plot_coast() + 
     plot_depth() + 
     plot_marine_reserves() + 

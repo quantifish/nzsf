@@ -14,7 +14,7 @@ get_coast(proj = proj_nzsf(), resolution = "medium", keep = 1)
 \item{keep}{proportion of points to retain (0-1; default 1).}
 }
 \value{
-New Zealands coastline as a \code{sf} object.
+New Zealand's coastline as an \code{sf} object.
 }
 \description{
 Get the New Zealand coastline

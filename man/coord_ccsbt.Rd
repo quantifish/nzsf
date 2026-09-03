@@ -18,7 +18,7 @@ A \code{geom_coord} object.
 CCSBT coord
 }
 \examples{
-ggplot() +
+ggplot2::ggplot() +
   geom_ccsbt(feature = "area") +
   geom_ccsbt(feature = "land", fill = "black") +
   coord_ccsbt()

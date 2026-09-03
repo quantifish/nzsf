@@ -14,6 +14,7 @@ editor_options:
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+set.seed(4277)
 ```
 
 The `nzsf` package relies heavily on the R packages `ggplot2`, `dplyr`, and `sf`. Maps can be built up in layers in the same way as `ggplot2`.
@@ -166,7 +167,7 @@ ggplot() +
                          style = north_arrow_nautical)
 ```
 
-Layers such as New Zealand marine reserves, depth countours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be restricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
+Layers such as New Zealand marine reserves, depth contours, and Quota Management Areas (QMAs) can be added easily with several of the `nzsf` helper functions including `plot_marine_reserves`, `plot_depth`, and `plot_qma`. Maps can be restricted (e.g. to the North Island only) using a bounding box generated using `st_bbox` from the `sf` package:
 
 ```{r echo=TRUE, fig.height=6, fig.width=6, message=FALSE}
 # bbox <- get_coast() %>% 
@@ -212,14 +213,14 @@ proj <- "+proj=longlat +datum=WGS84 +no_defs"
 
 data("Gisborne_TToR_Habitats")
 Gisborne_TToR_Habitats <- Gisborne_TToR_Habitats %>% 
-  st_transform(crs = proj, check = TRUE)
+  st_transform(crs = proj)
 
 data("Rocky_reef_National_NZ")
 Rocky_reef_National_NZ <- Rocky_reef_National_NZ %>% 
-  st_transform(crs = proj, check = TRUE)
+  st_transform(crs = proj)
 
 bbox <- get_marine_reserves() %>%
-  st_transform(crs = proj, check = TRUE) %>%
+  st_transform(crs = proj) %>%
   filter(Name == "Te Tapuwae o Rongokako Marine Reserve") %>%
   st_bbox()
 
@@ -268,16 +269,17 @@ p1 + p2
 ```
 
 ```{r echo=TRUE, fig.height=8, fig.width=8, message=FALSE}
-eez <- get_statistical_areas("EEZ", proj = 4326) %>% st_shift_longitude()
+eez <- get_statistical_areas("EEZ")
+grid_64_km <- get_standard_grid(
+  cell_size = 64,
+  bounding_box = st_bbox(eez),
+  return_raster = FALSE
+)
 
-r <- get_standard_grid(cell_size = 1/1000, bounding_box = st_bbox(eez), 
-                       return_raster = FALSE, crs = 4326)
-
-ggplot(data = eez) + geom_sf()
-
-ggplot(data = r) +
-  geom_sf(fill = "red", alpha = 0.1) +
-  plot_coast(proj = 4326) +
-  plot_clip(eez, proj = 4326) +
+ggplot() +
+  geom_sf(data = grid_64_km, fill = NA, colour = "red", alpha = 0.3) +
+  geom_sf(data = eez, fill = NA, colour = "black") +
+  plot_coast(fill = "grey40", colour = NA) +
+  plot_clip(eez) +
   theme_bw()
 ```

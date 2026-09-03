@@ -13,18 +13,18 @@
 #' @examples
 #' # Red rock lobster
 #' x <- get_qma(qma = "CRA")
-#' ggplot() +
-#'   geom_sf(data = x, fill = NA)
+#' ggplot2::ggplot() +
+#'   ggplot2::geom_sf(data = x, fill = NA)
 #'
 #' # Hake
 #' y <- get_qma(qma = "HAK")
-#' ggplot() +
-#'   geom_sf(data = y, fill = NA)
+#' ggplot2::ggplot() +
+#'   ggplot2::geom_sf(data = y, fill = NA)
 #'   
 #' # Ling
 #' z <- get_qma(qma = "LIN")
-#' ggplot() +
-#'   geom_sf(data = z, fill = NA)
+#' ggplot2::ggplot() +
+#'   ggplot2::geom_sf(data = z, fill = NA)
 #'   
 get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 
@@ -95,7 +95,7 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
   
   if (!is.null(proj)) {
     x <- x %>% 
-      st_transform(crs = proj, check = TRUE) %>% 
+      st_transform(crs = proj) %>%
       st_union(by_feature = TRUE) %>%
       st_cast("MULTIPOLYGON") %>%
       st_make_valid()
@@ -117,15 +117,15 @@ get_qma <- function(qma = "CRA", proj = proj_nzsf()) {
 #' @export
 #' @examples
 #' # Packhorse rock lobster
-#' ggplot() + 
+#' ggplot2::ggplot() +
 #'   plot_qma(qma = "PHC")
 #'   
 #' # Jack mackerel
-#' ggplot() + 
+#' ggplot2::ggplot() +
 #'   plot_qma(qma = "JMA")
 #'
 #' # Paua
-#' ggplot() + 
+#' ggplot2::ggplot() +
 #'   plot_qma(qma = "PAU")
 #' 
 plot_qma <- function(qma = "CRA", proj = proj_nzsf(), ...) {

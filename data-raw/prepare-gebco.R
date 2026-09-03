@@ -4,7 +4,7 @@ library(tidyverse)
 library(ncdf4)
 library(raster)
 
-proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+proj_nzsf <- "+proj=aea +lat_1=-30 +lat_2=-50 +lat_0=-40 +lon_0=175 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
 
 # setwd("/home/darcy/Projects/nzsf/data-raw")
 # fz <- unzip(zipfile = "GEBCO_2019.zip", list = TRUE)
@@ -24,7 +24,7 @@ df1 <- ncvar_get(nc = nc_data, varid = "elevation", start = c(min(ix), min(iy)),
 df1[df1 >= 0] <- NA
 
 r1 <- raster(t(df1), xmn = min(lon[ix]), xmx = max(lon[ix]), ymn = min(lat[iy]), ymx = max(lat[iy]), 
-             crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+"))
+             crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
 r1 <- flip(r1, direction = "y")
 
 ix <- which(lon <= -170)
@@ -32,9 +32,9 @@ df2 <- ncvar_get(nc = nc_data, varid = "elevation", start = c(min(ix), min(iy)),
 df2[df2 >= 0] <- NA
 
 # r2 <- raster(t(df2), xmn = min(lon[ix]) %% 360, xmx = max(lon[ix]) %% 360, ymn = min(lat[iy]), ymx = max(lat[iy]), 
-#              crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+"))
+#              crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
 r2 <- raster(t(df2), xmn = min(lon[ix]), xmx = max(lon[ix]), ymn = min(lat[iy]), ymx = max(lat[iy]), 
-             crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs+"))
+             crs = CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
 r2 <- flip(r2, direction = "y")
 
 nc_close(nc_data)
@@ -76,4 +76,3 @@ dfr <- gebco_depth_raster %>%
 
 ggplot() +
   geom_tile(data = dfr, aes(x = x, y = y, fill = layer))
-

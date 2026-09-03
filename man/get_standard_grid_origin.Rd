@@ -4,14 +4,16 @@
 \alias{get_standard_grid_origin}
 \title{Get Fisheries New Zealand standard grid origin}
 \usage{
-get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 422600))
+get_standard_grid_origin(cell_size, bounding_box, anchor = c(0, 0))
 }
 \arguments{
 \item{cell_size}{square grid boundary length in km}
 
 \item{bounding_box}{limits generated from call to \code{sf::st_bbox()}}
 
-\item{anchor}{the point to anchor the grid to}
+\item{anchor}{projected coordinates, in metres, used to anchor a shared grid
+cell corner. The default is the EPSG:9191 origin at 175 degrees E,
+40 degrees S.}
 }
 \value{
 standard grid origin \code{data.frame}

@@ -18,7 +18,7 @@ a \code{ggplot} object of New Zealand's marine reserves.
 Plot Marine Reserves
 }
 \examples{
-ggplot() +
+ggplot2::ggplot() +
   plot_marine_reserves()
 
 }

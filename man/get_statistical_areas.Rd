@@ -7,20 +7,21 @@
 get_statistical_areas(area = "CRA", proj = proj_nzsf())
 }
 \arguments{
-\item{area}{A Quota Managemetn Area (QMA). Can be EEZ, CRA, JMA.}
+\item{area}{A fisheries area. Supported values include EEZ, CRA, FMA, JMA,
+statistical areas, CCSBT, SIOFA, and SPRFMO.}
 
 \item{proj}{The projection to use.}
 }
 \value{
-New Zealands statistical areas as a \code{sf} object.
+New Zealand's statistical areas as an \code{sf} object.
 }
 \description{
 Get Statistical Areas
 }
 \examples{
 x <- get_statistical_areas(area = "CRA")
-ggplot() +
-  geom_sf(data = x, fill = NA)
+ggplot2::ggplot() +
+  ggplot2::geom_sf(data = x, fill = NA)
 
 }
 \seealso{
